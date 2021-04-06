@@ -17,7 +17,7 @@ import java.util.List;
 // Feuille de match
 @Entity
 @Table(name = "MatchSheet")
-
+//TODO: Renommer en match
 public class MatchSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,8 @@ public class MatchSheet {
 
     @OneToOne
     public Events event;
-
+    
+    //TODO: Remplacer en mettant 2 Team
     @OneToMany
     @JoinColumn(name="Match_Sheet_teams",referencedColumnName = "id")
     public List<Team> team;

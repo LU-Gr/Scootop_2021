@@ -33,6 +33,7 @@ public class Events {
     @OneToMany
     public List <Scoot> scoots;
 
+    //TODO: supprimer gameSheets
     @OneToMany
     public List <GameSheet> gameSheets;
     public boolean status;
@@ -41,6 +42,8 @@ public class Events {
     public boolean prestaWearable;
     public boolean prestaScoot;
     public boolean prestaZoom;
+    
+    //TODO: Ajouter liste pour lers presta bool
 
     @ManyToOne
     @JoinColumn(name = "saison_id")

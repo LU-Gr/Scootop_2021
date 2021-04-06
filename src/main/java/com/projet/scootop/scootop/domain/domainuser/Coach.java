@@ -18,7 +18,7 @@ public class Coach {
     @OneToOne
     @JoinColumn(name = "USER_ID")
     public User user;
-
+    //TODO: Supprimer
     @ManyToMany(mappedBy = "coaches", fetch = FetchType.LAZY)
     public List<Team> teams;
 
@@ -35,6 +35,7 @@ public class Coach {
         this.user = user;
     }
 
+    //TODO: Faire le setter de Coach dans Team et pas ici
     public List<Team> getTeams() {
         return teams;
     }

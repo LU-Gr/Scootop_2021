@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Analyste")
-
+//Role restrictif qui sert juste a faire analyse des joueurs lors des matchs
 public class Analyste {
 
     @Id

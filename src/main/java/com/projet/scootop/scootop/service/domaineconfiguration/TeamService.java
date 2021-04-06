@@ -1,14 +1,11 @@
 package com.projet.scootop.scootop.service.domaineconfiguration;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.services.Wearable;
 import com.projet.scootop.scootop.model.domainconfiguration.TeamDTO;
-import com.projet.scootop.scootop.model.services.WearableDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.CategoryRepository;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.scootop.repository.domainuser.CoachRepository;
 import com.projet.scootop.scootop.repository.domainuser.PlayerRepository;
-import com.projet.scootop.scootop.user.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +30,7 @@ public class TeamService {
         return teamRepository.save(team);
 
     }
-    public Team update(TeamDTO teamDTO,Integer id) throws Exception {
+    public Team update(TeamDTO teamDTO,Long id) throws Exception {
         coachRepository.saveAll(teamDTO.coaches);
         categoryRepository.save(teamDTO.category);
         Team team = new Team(teamDTO.club,teamDTO.category,teamDTO.players,teamDTO.coaches);
@@ -52,7 +49,7 @@ public class TeamService {
     }
 
     public Team updatePlayerList(List<Team> teams, Team team) {
-        playerRepository.saveAll(teams.get(team.id).players);
+        playerRepository.saveAll(teams.get(team.id.intValue()).players);
         System.out.println("aaaa");
         categoryRepository.save(team.category);
         System.out.println("bbbbb");
@@ -60,7 +57,7 @@ public class TeamService {
         return teamRepository.save(team);
 
     }
-    public TeamDTO get(Integer id){
+    public TeamDTO get(Long id){
 
 
         Team team = teamRepository.findById(id).orElse(null);
@@ -71,7 +68,7 @@ public class TeamService {
         return TeamDTO.get(team.id, team.club, team.name,team.coaches,team.players, team.category);
     }
 
-    public String delete(Integer id){
+    public String delete(Long id){
         Team team = teamRepository.findById(id).orElse(null);
         if(team==null){
             return null;

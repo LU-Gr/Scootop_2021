@@ -1,8 +1,8 @@
 package com.projet.scootop.scootop.domain.provider;
 
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import javax.persistence.*;
 
@@ -13,7 +13,7 @@ public class Analyste {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     @OneToOne
     @JoinColumn(name = "USER_TYPE_ID")
     public User user;

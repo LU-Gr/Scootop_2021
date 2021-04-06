@@ -2,7 +2,7 @@ package com.projet.scootop.scootop.model.statistical;
 
 
 public class TypeTouchDTO {
-    public Integer id;
+    public Long id;
     public String physical;
 
     public static TypeTouchDTO create(String physical) {

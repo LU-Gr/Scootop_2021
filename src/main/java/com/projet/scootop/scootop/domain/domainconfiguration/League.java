@@ -1,6 +1,9 @@
 package com.projet.scootop.scootop.domain.domainconfiguration;
 
 import javax.persistence.*;
+
+import com.projet.scootop.scootop.domain.domaintools.Saison;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +17,16 @@ import java.util.List;
 public class League {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String name;
     @OneToMany(orphanRemoval=true, fetch=FetchType.EAGER)
     public List<Division> divisions;
+    
+    @ManyToOne
+    private CompetitionType competitionType;
+    
+    @ManyToOne
+    private Saison saison;
     
     //TODO: Ajouter CompetitionType
     //TODO: Ajouter Saison

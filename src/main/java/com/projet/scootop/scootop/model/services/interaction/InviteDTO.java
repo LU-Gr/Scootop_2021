@@ -3,13 +3,13 @@ package com.projet.scootop.scootop.model.services.interaction;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.services.Events;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 import java.time.LocalDate;
 
 public class InviteDTO {
 
-    public Integer id;
+    public Long id;
     public Saison saison;
     public Events events;
     public User user;
@@ -27,7 +27,7 @@ public class InviteDTO {
         invite.response = response;
         return invite;
     }
-    public  static InviteDTO get(Integer id, Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
+    public  static InviteDTO get(Long id, Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
         InviteDTO invite = new InviteDTO();
         invite.id = id;
         invite.saison = saison;

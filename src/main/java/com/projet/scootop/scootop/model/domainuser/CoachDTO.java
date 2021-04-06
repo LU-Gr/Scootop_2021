@@ -1,13 +1,13 @@
 package com.projet.scootop.scootop.model.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 import java.util.List;
 
 public class CoachDTO {
 
-    public Integer id;
+    public Long id;
     public User user;
 
     public List<Team> teams;
@@ -20,7 +20,7 @@ public class CoachDTO {
         coach.teams = teams;
         return coach;
     }
-    public static CoachDTO get(int id, User user, List<Team> teams) {
+    public static CoachDTO get(Long id, User user, List<Team> teams) {
         CoachDTO coach = new CoachDTO();
         coach.id = id;
         coach.user = user;

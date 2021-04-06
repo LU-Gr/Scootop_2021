@@ -12,7 +12,7 @@ import java.util.List;
 public class Poste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String name;
     
     @ManyToMany
@@ -27,7 +27,7 @@ public class Poste {
         this.players = player;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

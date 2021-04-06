@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.projet.scootop.scootop.domain.stastistical.physical.TypeTouch;
 
 @Repository
-public interface TypeTouchRepository extends JpaRepository<TypeTouch,Integer> {
+public interface TypeTouchRepository extends JpaRepository<TypeTouch,Long> {
 
 }

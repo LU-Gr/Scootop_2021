@@ -5,7 +5,7 @@ import com.projet.scootop.scootop.domain.provider.Agence;
 
 public class ManagerDTO {
 
-    public Integer id;
+    public Long id;
     public String name;
     public Agence agence;
 
@@ -15,7 +15,7 @@ public class ManagerDTO {
         managerDTO.agence = agence;
         return managerDTO;
     }
-    public static ManagerDTO get(Integer id, String name, Agence agence) {
+    public static ManagerDTO get(Long id, String name, Agence agence) {
         ManagerDTO managerDTO= new ManagerDTO();
         managerDTO.id = id;
         managerDTO.name = name;

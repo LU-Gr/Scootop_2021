@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public LocalDate date;
     @OneToOne
     public Shoot shoot;
@@ -22,7 +22,7 @@ public class Goal {
 
 
 
-    public Goal( LocalDate date, Shoot shoot, String tag, Integer distance, Integer rating) {
+    public Goal(LocalDate date, Shoot shoot, String tag, Integer distance, Integer rating) {
         super();
         this.date = date;
         this.shoot = shoot;

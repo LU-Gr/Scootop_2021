@@ -6,12 +6,11 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Coach;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.user.Contact;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.Contact;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import java.util.*;
-import java.util.zip.ZipEntry;
 
 public class ScootopTest {
 

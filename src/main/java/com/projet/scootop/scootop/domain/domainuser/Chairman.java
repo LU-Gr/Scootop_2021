@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.domain.domainuser;
 
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Chairman {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     @JoinColumn(name = "USER_ID")
@@ -21,7 +21,7 @@ public class Chairman {
 
     }
 
-    public Chairman( User user) throws Exception {
+    public Chairman(User user) throws Exception {
         boolean isCorrect=false;
         for (UserType userType: user.types
         ) {

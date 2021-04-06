@@ -3,14 +3,11 @@ package com.projet.scootop.scootop.service.domainuser;
 import com.projet.scootop.scootop.domain.domainuser.Chairman;
 import com.projet.scootop.scootop.model.domainuser.ChairmanDTO;
 import com.projet.scootop.scootop.repository.domainuser.ChairmanRepository;
-import com.projet.scootop.scootop.service.UserService;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.service.user.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,11 +22,11 @@ public class ChairmanService {
 
         return chairmanRepository.save(chairman);
     }
-    public Chairman get(Integer id) throws Exception{
+    public Chairman get(Long id) throws Exception{
         return chairmanRepository.findById(id).orElse(null);
 
     }
-    public Chairman update(ChairmanDTO chairmanDTO,Integer id) throws Exception{
+    public Chairman update(ChairmanDTO chairmanDTO,Long id) throws Exception{
         userService.updateEntity(chairmanDTO.user);
         Chairman chairman=new Chairman(chairmanDTO.user);
         chairman.id=id;
@@ -39,7 +36,7 @@ public class ChairmanService {
     public List<Chairman> getAll(){
         return chairmanRepository.findAll();
     }
-    public String delete(Integer id){
+    public String delete(Long id){
         Chairman chairman = chairmanRepository.findById(id).orElse(null);
         if(chairman==null){
             return null;

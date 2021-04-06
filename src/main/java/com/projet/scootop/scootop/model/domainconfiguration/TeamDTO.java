@@ -11,7 +11,7 @@ import java.util.List;
 
 public class TeamDTO {
 
-    public Integer id;
+    public Long id;
     public Club club;
     public String name;
     public List<Coach> coaches;
@@ -28,7 +28,7 @@ public class TeamDTO {
 
         return teamDTO;
     }
-    public  static TeamDTO get(Integer id, Club club, String name, List<Coach> coaches, List<Player> players, Category category) {
+    public  static TeamDTO get(Long id, Club club, String name, List<Coach> coaches, List<Player> players, Category category) {
         TeamDTO teamDTO= new TeamDTO();
         teamDTO.id = id;
         teamDTO.club = club;

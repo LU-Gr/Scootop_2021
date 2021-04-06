@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.domain.provider;
 
-import com.projet.scootop.scootop.user.Contact;
+import com.projet.scootop.scootop.domain.user.Contact;
 
 import javax.persistence.*;
 
@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class WearableSociety {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String name;
     // <> name?
     public String societe;
@@ -27,7 +27,7 @@ public class WearableSociety {
 
     }
 
-    public WearableSociety(String name, String societe, String ceo, String specialite, Integer tarif, com.projet.scootop.scootop.user.Contact contact) {
+    public WearableSociety(String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
         super();
         this.name = name;
         this.societe = societe;

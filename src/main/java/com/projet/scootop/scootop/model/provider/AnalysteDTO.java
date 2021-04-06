@@ -1,14 +1,10 @@
 package com.projet.scootop.scootop.model.provider;
 
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.user.User;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import com.projet.scootop.scootop.domain.user.User;
 
 public class AnalysteDTO {
-    public Integer id;
+    public Long id;
     public User user;
     public Integer tarif;
     public Integer experience;
@@ -22,7 +18,7 @@ public class AnalysteDTO {
         analysteDTO.matchSheet = matchSheet;
         return analysteDTO;
     }
-    public static AnalysteDTO get(Integer id,User user, Integer tarif, Integer experience, MatchSheet matchSheet) {
+    public static AnalysteDTO get(Long id,User user, Integer tarif, Integer experience, MatchSheet matchSheet) {
         AnalysteDTO analysteDTO= new AnalysteDTO();
         analysteDTO.id=id;
         analysteDTO.user = user;

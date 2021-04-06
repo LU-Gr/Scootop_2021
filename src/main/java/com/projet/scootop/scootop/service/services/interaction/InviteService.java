@@ -12,14 +12,16 @@ import java.util.List;
 @Service
 
 public class InviteService {
+	
     @Autowired
     public InviteRepository inviteRepository;
+    
     public InviteDTO add(InviteDTO inviteDTO){
         Invite invite= new Invite(inviteDTO.saison,inviteDTO.events,inviteDTO.user,inviteDTO.player,inviteDTO.createAt,inviteDTO.response);
         inviteRepository.save(invite);
         return inviteDTO;
     }
-    public InviteDTO get(Integer id){
+    public InviteDTO get(Long id){
 
         Invite invite = inviteRepository.findById(id).orElse(null);
         if(invite==null){
@@ -32,15 +34,14 @@ public class InviteService {
 
         List<Invite> invites = inviteRepository.findAll();
         ArrayList<InviteDTO> inviteDTOArrayList = new ArrayList<>();
-        for (Invite invite: invites
-        ) {
+        for (Invite invite: invites) {
             InviteDTO inviteDTO = InviteDTO.create(invite.saison,invite.events,invite.user,invite.player,invite.createAt,invite.response);
             inviteDTOArrayList.add(inviteDTO);
 
         }
         return inviteDTOArrayList;
     }
-    public String delete(Integer id){
+    public String delete(Long id){
         Invite invite = inviteRepository.findById(id).orElse(null);
         if(invite==null){
             return null;

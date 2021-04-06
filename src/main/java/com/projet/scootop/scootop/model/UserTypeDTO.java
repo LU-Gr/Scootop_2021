@@ -1,13 +1,10 @@
 package com.projet.scootop.scootop.model;
 
-import com.projet.scootop.scootop.user.Contact;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
-
+import com.projet.scootop.scootop.domain.user.User;
 import java.util.List;
 
 public class UserTypeDTO {
-    public Integer id;
+    public Long id;
     public String type;
     public List<User> users;
 
@@ -16,7 +13,7 @@ public class UserTypeDTO {
         user.type=type;
         return user;
     }
-    public static UserTypeDTO get(Integer id, String type) {
+    public static UserTypeDTO get(Long id, String type) {
         UserTypeDTO user= new UserTypeDTO();
         user.id=id;
         user.type=type;

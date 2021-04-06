@@ -1,22 +1,16 @@
 package com.projet.scootop.scootop.domain.services;
 
-import com.projet.scootop.scootop.ApiApplication;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
+import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
 import com.projet.scootop.scootop.domain.stastistical.Pass;
 import com.projet.scootop.scootop.domain.stastistical.Goal;
 import com.projet.scootop.scootop.domain.stastistical.Action;
 
-import org.springframework.boot.SpringApplication;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 // Stats d'un joueur selon le type de compétition
@@ -25,18 +19,18 @@ import java.util.List;
 
 public class UserResume {
 
-    public UserResume(Player player, CompetitionType competitionType, List<Goal> goals, List<Pass> assists, List<StatisticalSheet> statisticalSheets, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
+    public UserResume(Player player, Competition competitionType, List<Goal> goals, List<Pass> assists, List<StatisticalSheet> statisticalSheets, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     public Player player;
 
     
     @OneToOne
-    public CompetitionType competitionType;
+    public Competition competitionType;
     
     @OneToMany
     public List<StatisticalSheet> statisticalSheets;
@@ -71,7 +65,7 @@ public class UserResume {
     public int defensiveSkills;
     public int OffensiveSkills;
 
-    public UserResume(Integer id, Player player, CompetitionType competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
+    public UserResume(Long id, Player player, Competition competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
         this.id = id;
         this.player = player;
         this.competitionType = competitionType;
@@ -109,7 +103,7 @@ public class UserResume {
     public UserResume() {
     }
 
-    public void GenerateSaison(Saison saison, CompetitionType competitionType, Team team){
+    public void GenerateSaison(Saison saison, Competition competitionType, Team team){
 
         for (int i = 0; i < saisons.size() ; i++) {
 
@@ -552,11 +546,11 @@ public class UserResume {
         this.player = player;
     }
 
-    public CompetitionType getCompetitionType() {
+    public Competition getCompetitionType() {
         return competitionType;
     }
 
-    public void setCompetitionType(CompetitionType competitionType) {
+    public void setCompetitionType(Competition competitionType) {
         this.competitionType = competitionType;
     }
 

@@ -2,9 +2,7 @@ package com.projet.scootop.scootop.model;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.model.domainconfiguration.TeamDTO;
-import com.projet.scootop.scootop.model.domainuser.ScootDTO;
-import com.projet.scootop.scootop.user.Contact;
+import com.projet.scootop.scootop.domain.user.Contact;
 
 import java.util.List;
 
@@ -16,6 +14,7 @@ public class ClubDTO {
     public Integer id;
     public List<Scoot> scoot;
     public List<Team> teams;
+    
     public static ClubDTO create(String name, Contact contact, String colorInside, String colorOutSide, List<Team> teams,List<Scoot> scoot) {
         ClubDTO club = new ClubDTO();
         club.name=name;

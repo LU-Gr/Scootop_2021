@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Pass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @ManyToOne
     public MatchSheet matchSheet;
@@ -44,7 +44,7 @@ public class Pass {
         this.longPass = longPass;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

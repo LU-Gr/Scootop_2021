@@ -37,11 +37,11 @@ public class ApiDomainUser {
         return chairmanService.getAll();
     }
     @GetMapping("api/chairman/{id}")
-    Chairman getStaffChairman(@PathVariable("id") int id) throws Exception{
-        return chairmanService.get(1);
+    Chairman getStaffChairman(@PathVariable("id") Long id) throws Exception{
+        return chairmanService.get(id);
     }
     @PutMapping("api/chairman/{id}")
-    Chairman updateStaffChairman(@RequestBody ChairmanDTO body,@PathVariable("id") int id) throws Exception {
+    Chairman updateStaffChairman(@RequestBody ChairmanDTO body,@PathVariable("id") Long id) throws Exception {
         return chairmanService.update(body,id);
     }
     @PostMapping("api/chairman")
@@ -49,7 +49,7 @@ public class ApiDomainUser {
         return chairmanService.add(body);
     }
     @DeleteMapping("api/chairman/{id}")
-    String deleteStaffChairman(@PathVariable("id") int id) {
+    String deleteStaffChairman(@PathVariable("id") Long id) {
         return chairmanService.delete(id);
     }
 
@@ -58,11 +58,11 @@ public class ApiDomainUser {
         return scootService.add(body);
     }
     @GetMapping("api/scoot/{id}")
-    ScootDTO getScoot(@PathVariable int id){
+    ScootDTO getScoot(@PathVariable Long id){
         return scootService.get(id);
     }
     @PutMapping("api/scoot/{id}")
-    Scoot updateScoot(@RequestBody ScootDTO body,@PathVariable int id) throws Exception {
+    Scoot updateScoot(@RequestBody ScootDTO body,@PathVariable Long id) throws Exception {
         return scootService.update(body,id);
     }
     @GetMapping("api/scoots")
@@ -70,7 +70,7 @@ public class ApiDomainUser {
         return scootService.getAll();
     }
     @DeleteMapping("api/scoots/{id}")
-    String deleteScoot(@PathVariable("id") int id) {
+    String deleteScoot(@PathVariable("id") Long id) {
         return scootService.delete(id);
     }
 
@@ -80,22 +80,22 @@ public class ApiDomainUser {
         return playerService.getAll();
     }
     @GetMapping("api/players/{id}")
-    Player getPlayer(@PathVariable int id){
+    Player getPlayer(@PathVariable Long id){
         return playerService.get(id);
     }
     @PostMapping("api/player")
-    Player addPlayer(@RequestBody PlayerDTO body, int id){
+    Player addPlayer(@RequestBody PlayerDTO body, Long id){
 
         return playerService.add(body,id);
     }
 
     @PutMapping("api/players/{id}")
-    Player updatePlayer(@RequestBody PlayerDTO body, @PathVariable int id){
+    Player updatePlayer(@RequestBody PlayerDTO body, @PathVariable Long id){
         return playerService.update(body,id);
 
     }
     @DeleteMapping("api/players/{id}")
-    String deletePlayer(@PathVariable int id){
+    String deletePlayer(@PathVariable Long id){
         return playerService.delete(id);
     }
     @GetMapping("api/coaches")
@@ -107,15 +107,15 @@ public class ApiDomainUser {
         return coachService.add(body);
     }
     @GetMapping("api/coach/{id}")
-    Coach getCoach(@PathVariable int id){
+    Coach getCoach(@PathVariable Long id){
         return coachService.get(id);
     }
     @PutMapping("api/coach/{id}")
-    Coach updateCoach(@RequestBody CoachDTO body, @PathVariable int id) throws Exception {
+    Coach updateCoach(@RequestBody CoachDTO body, @PathVariable Long id) throws Exception {
         return coachService.update(body,id);
     }
     @DeleteMapping("api/coach/{id}")
-    String deleteCoach(@PathVariable int id){
+    String deleteCoach(@PathVariable Long id){
         return coachService.delete(id);
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String region;
     @OneToMany
     @JoinColumn(name = "MaketingAdvisor_id")

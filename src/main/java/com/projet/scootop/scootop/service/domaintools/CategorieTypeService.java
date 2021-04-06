@@ -20,20 +20,20 @@ public class CategorieTypeService {
         return categoryTypeRepository.save(categorieType);
 
     }
-    public CategoryType update(CategoryTypeDTO categorieDTO,Integer id){
+    public CategoryType update(CategoryTypeDTO categorieDTO, Long id){
         CategoryType categorieType = new CategoryType(categorieDTO.name,categorieDTO.dateAgeMax);
         categorieType.id=id;
         return categoryTypeRepository.save(categorieType);
 
     }
-    public CategoryType get(Integer id){
+    public CategoryType get(Long id){
         return categoryTypeRepository.findById(id).orElse(null);
 
     }
     public List<CategoryType> getAll(){
         return categoryTypeRepository.findAll();
     }
-    public String delete(Integer id){
+    public String delete(Long id){
         CategoryType categorie = categoryTypeRepository.findById(id).orElse(null);
         if(categorie==null){
             return null;

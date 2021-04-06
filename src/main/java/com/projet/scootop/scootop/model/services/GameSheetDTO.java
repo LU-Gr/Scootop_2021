@@ -1,26 +1,24 @@
 package com.projet.scootop.scootop.model.services;
 
-import com.projet.scootop.scootop.domain.domainconfiguration.Stadium;
+import com.projet.scootop.scootop.domain.domainconfiguration.Stade;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
 import com.projet.scootop.scootop.domain.services.Events;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import java.util.Date;
 import java.util.List;
 
 public class GameSheetDTO {
-    int id;
+	Long id;
     public User user;
     public List<Team> teams;
     public List<StatisticalSheet> stactisticalSheets;
-    public Stadium stade;
+    public Stade stade;
     public Events events;
     public Date date;
 
-    public static GameSheetDTO create(int id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stadium stade, Events events, Date date) {
+    public static GameSheetDTO create(Long id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stade stade, Events events, Date date) {
         GameSheetDTO gamesheet = new GameSheetDTO();
 
         gamesheet.id = id;
@@ -34,7 +32,7 @@ public class GameSheetDTO {
         return gamesheet;
     }
 
-    public static GameSheetDTO get(int id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stadium stade, Events events, Date date) {
+    public static GameSheetDTO get(Long id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stade stade, Events events, Date date) {
         GameSheetDTO gamesheet = new GameSheetDTO();
 
         gamesheet.id = id;

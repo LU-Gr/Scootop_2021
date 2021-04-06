@@ -1,23 +1,18 @@
 package com.projet.scootop.scootop.service.services;
 
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
 import com.projet.scootop.scootop.domain.services.UserResume;
-import com.projet.scootop.scootop.domain.stastistical.Pass;
-import com.projet.scootop.scootop.domain.stastistical.Goal;
 import com.projet.scootop.scootop.model.services.UserResumeDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.scootop.repository.domainetools.CompetitionTypeRepository;
+import com.projet.scootop.scootop.repository.domainetools.CompetitionRepository;
 import com.projet.scootop.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.scootop.repository.domainuser.PlayerRepository;
 import com.projet.scootop.scootop.repository.inprogress.StatisticalSheetRepository;
 import com.projet.scootop.scootop.repository.services.UserResumeRepository;
-import com.projet.scootop.scootop.repository.statistical.AssistRepository;
+import com.projet.scootop.scootop.repository.statistical.PassRepository;
 import com.projet.scootop.scootop.repository.statistical.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,13 +25,13 @@ public class UserResumeService {
     public PlayerRepository playerRepository;
 
     @Autowired
-    public CompetitionTypeRepository competitionTypeRepository;
+    public CompetitionRepository competitionTypeRepository;
 
     @Autowired
     public GoalRepository goalRepository;
 
     @Autowired
-    public AssistRepository assistRepository;
+    public PassRepository assistRepository;
 
     @Autowired
     public StatisticalSheetRepository statisticalsheetRepository;
@@ -62,7 +57,7 @@ public class UserResumeService {
         return userResumeDTO;
     }
 
-    public UserResumeDTO get(Integer id){
+    public UserResumeDTO get(Long id){
 
         UserResume userResume = userResumeRepository.findById(id).orElse(null);
 

@@ -16,9 +16,11 @@ public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     //TODO Add relation ManyToOne
+    @ManyToOne
+    @JoinColumn
     public Club club;
 
     public String name;
@@ -127,11 +129,11 @@ public class Team {
         this.coaches = coaches;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

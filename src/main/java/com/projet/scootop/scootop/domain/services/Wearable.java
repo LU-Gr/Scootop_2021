@@ -12,7 +12,7 @@ import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 public class Wearable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     @ManyToOne
     @JoinColumn(name = "player_id")
 
@@ -55,7 +55,7 @@ public class Wearable {
     public Wearable(Player player, Team team, MatchSheet matchSheet, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

@@ -1,9 +1,9 @@
 package com.projet.scootop.scootop.domain.services;
 
-import com.projet.scootop.scootop.domain.domainconfiguration.Stadium;
+import com.projet.scootop.scootop.domain.domainconfiguration.Stade;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.List;
 public class GameSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     @OneToOne
     public User user;
     @ManyToMany
@@ -24,7 +24,7 @@ public class GameSheet {
     @ManyToMany
     public List<StatisticalSheet> stactisticalSheets;
     @OneToOne
-    public Stadium stade;
+    public Stade stade;
     @OneToOne
     public Events events;
 
@@ -34,7 +34,7 @@ public class GameSheet {
     public GameSheet() {
 
     }
-    public GameSheet(User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stadium stade, Events events, Date date) {
+    public GameSheet(User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stade stade, Events events, Date date) {
         this.user = user;
         this.teams = teams;
         this.stactisticalSheets = stactisticalSheets;
@@ -43,11 +43,11 @@ public class GameSheet {
         this.date = date;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,11 +75,11 @@ public class GameSheet {
         this.stactisticalSheets = stactisticalSheets;
     }
 
-    public Stadium getStade() {
+    public Stade getStade() {
         return stade;
     }
 
-    public void setStade(Stadium stade) {
+    public void setStade(Stade stade) {
         this.stade = stade;
     }
 

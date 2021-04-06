@@ -3,11 +3,11 @@ package com.projet.scootop.scootop.controller;
 import com.projet.scootop.scootop.model.ContactDTO;
 import com.projet.scootop.scootop.model.UserDTO;
 import com.projet.scootop.scootop.model.UserTypeDTO;
-import com.projet.scootop.scootop.service.ContactService;
-import com.projet.scootop.scootop.service.UserService;
-import com.projet.scootop.scootop.service.UserTypeService;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.service.user.ContactService;
+import com.projet.scootop.scootop.service.user.UserService;
+import com.projet.scootop.scootop.service.user.UserTypeService;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,12 +33,12 @@ public class ApiUserController {
     }
 
     @GetMapping("api/contact/{id}")
-    ContactDTO getContact(@PathVariable("id") int id){
+    ContactDTO getContact(@PathVariable("id") Long id){
         return contactService.get(id);
     }
 
     @PutMapping("api/contact/{id}")
-    String updateContact(@RequestBody String body,@PathVariable("id") int id){
+    String updateContact(@RequestBody String body,@PathVariable("id") Long id){
         String contact = body;
         return contact;
     }
@@ -47,11 +47,9 @@ public class ApiUserController {
         return contactService.addContact(body);
     }
     @DeleteMapping("api/contact/{id}")
-    String deleteContact(@PathVariable("id") int id) {
+    String deleteContact(@PathVariable("id") Long id) {
         return contactService.delete(id);
     }
-
-
 
     // Dans l'ojet user le parametre contact, contient une methode toString. Quel valeur attend la clé ContactRepository dans la methode get  all user
     @GetMapping("api/users")
@@ -59,11 +57,11 @@ public class ApiUserController {
         return userService.getAll();
     }
     @GetMapping("api/user/{id}")
-    User getUser(@PathVariable("id") int id){
+    User getUser(@PathVariable("id") Long id){
         return userService.get(id);
     }
     @PutMapping("api/user/{id}")
-    ResponseEntity<User> updateUser(@RequestBody UserDTO body,@PathVariable("id") int id){
+    ResponseEntity<User> updateUser(@RequestBody UserDTO body,@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.update(body,id), HttpStatus.OK);
     }
     @PostMapping("api/user")
@@ -71,7 +69,7 @@ public class ApiUserController {
         return new ResponseEntity<>(userService.addUser(body), HttpStatus.OK) ;
     }
     @DeleteMapping("api/user/{id}")
-    ResponseEntity<Integer>  deleteUser(@PathVariable("id") int id) {
+    ResponseEntity<Integer>  deleteUser(@PathVariable("id") Long id) {
         return userService.delete(id);
     }
 
@@ -81,11 +79,11 @@ public class ApiUserController {
         return userTypeService.getAll();
     }
     @GetMapping("api/user_type/{id}")
-    UserType getUserType(@PathVariable("id") int id){
+    UserType getUserType(@PathVariable("id") Long id){
         return userTypeService.get(id);
     }
     @PutMapping("api/user_type/{id}")
-    UserType updateUserType(@RequestBody UserTypeDTO body,@PathVariable("id") int id){
+    UserType updateUserType(@RequestBody UserTypeDTO body,@PathVariable("id") Long id){
         return userTypeService.update(body,id);
     }
     @PostMapping("api/user_type")
@@ -93,7 +91,7 @@ public class ApiUserController {
         return userTypeService.addUserType(body);
     }
     @DeleteMapping("api/user_type/{id}")
-    String deleteUserType(@PathVariable("id") int id) {
+    String deleteUserType(@PathVariable("id") Long id) {
         return userTypeService.delete(id);
     }
 

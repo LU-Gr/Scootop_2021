@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class SkillType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String name;
 
     public SkillType(String name) {

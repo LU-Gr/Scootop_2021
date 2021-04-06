@@ -1,11 +1,11 @@
 package com.projet.scootop.scootop.model.provider;
 
 import com.projet.scootop.scootop.domain.provider.Agence;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 public class MarketingAdvisorDTO {
 
-    int id;
+	Long id;
     public User user;
     public Agence agence;
 
@@ -15,7 +15,7 @@ public class MarketingAdvisorDTO {
         marketingAdvisorDTO.agence = agence;
         return marketingAdvisorDTO;
     }
-    public static MarketingAdvisorDTO get(Integer id,User user, Agence agence) {
+    public static MarketingAdvisorDTO get(Long id,User user, Agence agence) {
         MarketingAdvisorDTO marketingAdvisorDTO=new MarketingAdvisorDTO();
         marketingAdvisorDTO.user = user;
         marketingAdvisorDTO.id = id;

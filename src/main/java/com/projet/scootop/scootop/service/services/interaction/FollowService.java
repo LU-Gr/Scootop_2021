@@ -6,22 +6,23 @@ import com.projet.scootop.scootop.repository.services.interaction.FollowReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 
 public class FollowService {
+	
     @Autowired
     public FollowRepository followRepository;
+    
     public FollowDTO add(FollowDTO followDTO){
         Follow follow= new Follow(followDTO.dateCreated,followDTO.user,followDTO.player,followDTO.saison);
         followRepository.save(follow);
         return followDTO;
     }
-    public FollowDTO get(Integer id){
+    
+    public FollowDTO get(Long id){
 
         Follow follow = followRepository.findById(id).orElse(null);
         if(follow==null){
@@ -30,6 +31,7 @@ public class FollowService {
         FollowDTO followDTO = FollowDTO.get(follow.id,follow.dateCreated,follow.user,follow.player,follow.saison);
         return followDTO;
     }
+    
     public List<FollowDTO> getAll(){
 
         List<Follow> follows = followRepository.findAll();
@@ -43,7 +45,8 @@ public class FollowService {
         }
         return followDTOArrayList;
     }
-    public String delete(Integer id){
+    
+    public String delete(Long id){
         Follow follow = followRepository.findById(id).orElse(null);
         if(follow==null){
             return null;

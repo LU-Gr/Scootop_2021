@@ -1,12 +1,9 @@
 package com.projet.scootop.scootop.domain.services;
 
-import com.projet.scootop.scootop.ApiApplication;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.user.User;
-import org.springframework.boot.SpringApplication;
-
+import com.projet.scootop.scootop.domain.user.User;
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class Shortlist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     public User user;
@@ -38,7 +35,7 @@ public class Shortlist {
     public Shortlist(User user, List<Player> players, List<Scoot> scoots, List<Team> teams, int rank) {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

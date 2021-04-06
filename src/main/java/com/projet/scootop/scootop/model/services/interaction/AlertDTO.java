@@ -2,12 +2,12 @@ package com.projet.scootop.scootop.model.services.interaction;
 
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 import java.time.LocalDate;
 
 public class AlertDTO {
-    int id;
+	Long id;
     public LocalDate dateCreated;
     public User user;
     public Player player;
@@ -21,7 +21,7 @@ public class AlertDTO {
         alertDTO.saison = saison;
         return alertDTO;
     }
-    public static AlertDTO get(int id, LocalDate dateCreated, User user, Player player, Saison saison) {
+    public static AlertDTO get(Long id, LocalDate dateCreated, User user, Player player, Saison saison) {
         AlertDTO alertDTO = new AlertDTO();
         alertDTO.id = id;
         alertDTO.dateCreated = dateCreated;

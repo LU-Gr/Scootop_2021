@@ -1,10 +1,10 @@
 package com.projet.scootop.scootop.model.domainuser;
 
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 public class ChairmanDTO {
 
-    public int id;
+    public Long id;
     public User user;
 
     public static ChairmanDTO create( User user) {
@@ -12,7 +12,7 @@ public class ChairmanDTO {
         chairmanDTO.user = user;
         return chairmanDTO;
     }
-    public static ChairmanDTO get(int id, User user) {
+    public static ChairmanDTO get(Long id, User user) {
         ChairmanDTO chairmanDTO = new ChairmanDTO();
         chairmanDTO.id = id;
         chairmanDTO.user = user;

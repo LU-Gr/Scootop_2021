@@ -18,7 +18,7 @@ public class SaisonService {
         saisonRepository.save(saison);
         return saisonDTO;
     }
-    public SaisonDTO get(Integer id){
+    public SaisonDTO get(Long id){
 
         Saison saison = saisonRepository.findById(id).orElse(null);
         if(saison==null){
@@ -35,7 +35,7 @@ public class SaisonService {
     }
 
 
-    public String delete(Integer id){
+    public String delete(Long id){
         Saison scoot = saisonRepository.findById(id).orElse(null);
         if(scoot==null){
             return null;

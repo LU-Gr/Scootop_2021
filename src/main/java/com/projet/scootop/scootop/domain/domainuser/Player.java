@@ -1,13 +1,12 @@
 package com.projet.scootop.scootop.domain.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
 import com.projet.scootop.scootop.domain.stastistical.physical.PlayerHead;
-import com.projet.scootop.scootop.servicetools.videosservices.Video;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,11 +18,7 @@ import java.util.List;
 public class Player{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-
-    //TODO DELETE (présent dans team)
-    @OneToOne
-    public Club club;
+    public Long id;
 
     @OneToOne
     public User user;
@@ -76,9 +71,8 @@ public class Player{
     @JoinColumn(name="player_videos",referencedColumnName = "id")
     public List<Video> videos;
 
-   public Player(Club club, List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, String nationalite, String origin, int interaction, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, PlayerHead playerHead, List<MatchSheet> matchSheets, List<Video> videos, boolean selected, User user) {
+   public Player(List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, String nationalite, String origin, int interaction, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, PlayerHead playerHead, List<MatchSheet> matchSheets, List<Video> videos, boolean selected, User user) {
         super();
-        this.club = club;
         this.teams = teams;
         this.category = category;
         this.evaluation = evaluation;

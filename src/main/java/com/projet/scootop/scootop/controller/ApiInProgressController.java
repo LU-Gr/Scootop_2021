@@ -2,7 +2,6 @@ package com.projet.scootop.scootop.controller;
 
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
-import com.projet.scootop.scootop.model.domainconfiguration.TypeDTO;
 import com.projet.scootop.scootop.model.inprogress.MatchSheetDTO;
 import com.projet.scootop.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.scootop.service.inprogess.MatchSheetService;
@@ -23,7 +22,7 @@ public class ApiInProgressController {
     }
 
     @GetMapping("api/matchsheet/{id}")
-    MatchSheet getMatchSheet(@PathVariable int id){
+    MatchSheet getMatchSheet(@PathVariable Long id){
         return matchSheetService.get(id);
     }
 
@@ -32,11 +31,11 @@ public class ApiInProgressController {
         return matchSheetService.add(body);
     }
     @PutMapping("api/matchsheet/{id}")
-    MatchSheet updateMatchSheet(@RequestBody MatchSheetDTO body,@PathVariable int id) throws Exception {
+    MatchSheet updateMatchSheet(@RequestBody MatchSheetDTO body,@PathVariable Long id) throws Exception {
         return matchSheetService.update(body,id);
     }
     @DeleteMapping("api/matchsheet/{id}")
-    ResponseEntity<Integer> deleteMatchSheet(@PathVariable int id){
+    ResponseEntity<Integer> deleteMatchSheet(@PathVariable Long id){
         return matchSheetService.delete(id);
     }
     @GetMapping("api/matchsheets")
@@ -46,20 +45,20 @@ public class ApiInProgressController {
     }
     @GetMapping("api/statisticalsheet/{id}")
 
-    StatisticalSheet getStatisticalSheet(@PathVariable int id){
+    StatisticalSheet getStatisticalSheet(@PathVariable Long id){
     return statisticalSheetService.get(id);
     }
 
     @PostMapping("api/statisticalsheet/{id}")
-    StatisticalSheet addStatisticalSheet(@RequestBody StatisticalSheetDTO body, @PathVariable int id) throws Exception {
+    StatisticalSheet addStatisticalSheet(@RequestBody StatisticalSheetDTO body, @PathVariable Long id) throws Exception {
         return statisticalSheetService.add(body);
     }
     @PutMapping("api/statisticalsheet/{id}")
-    StatisticalSheet updateStatisticalSheet(@RequestBody StatisticalSheetDTO body,@PathVariable int id) throws Exception {
+    StatisticalSheet updateStatisticalSheet(@RequestBody StatisticalSheetDTO body,@PathVariable Long id) throws Exception {
         return statisticalSheetService.update(body,id);
     }
     @DeleteMapping("api/statisticalsheet/{id}")
-    ResponseEntity<Integer> deleteStatisticalSheet(@PathVariable int id){
+    ResponseEntity<Integer> deleteStatisticalSheet(@PathVariable Long id){
         return statisticalSheetService.delete(id);
     }
     @GetMapping("api/statisticalsheet")

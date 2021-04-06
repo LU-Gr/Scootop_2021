@@ -3,7 +3,7 @@ package com.projet.scootop.scootop.model.services;
 import java.util.List;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
+import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
@@ -12,9 +12,9 @@ import com.projet.scootop.scootop.domain.stastistical.Goal;
 
 public class UserResumeDTO {
 
-    public int id;
+    public Long id;
     public Player player;
-    public CompetitionType competitionType;
+    public Competition competitionType;
     public List<Goal> goals;
     public List<Pass> assists;
     public List<StatisticalSheet> statisticalSheets;
@@ -27,7 +27,7 @@ public class UserResumeDTO {
     public int offensiveSkills;
 
 
-    public static UserResumeDTO create(Player player, CompetitionType competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams,List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
+    public static UserResumeDTO create(Player player, Competition competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams,List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
         UserResumeDTO userResumeDTO = new UserResumeDTO();
         userResumeDTO.player = player;
         userResumeDTO.competitionType = competitionType;
@@ -45,7 +45,7 @@ public class UserResumeDTO {
         return userResumeDTO;
     }
 
-    public static UserResumeDTO get(Integer id,Player player, CompetitionType competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams,List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
+    public static UserResumeDTO get(Long id,Player player, Competition competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams,List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
         UserResumeDTO userResumeDTO = new UserResumeDTO();
         userResumeDTO.id = id;
         userResumeDTO.player = player;

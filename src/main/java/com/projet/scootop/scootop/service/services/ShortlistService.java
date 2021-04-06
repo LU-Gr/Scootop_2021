@@ -10,8 +10,6 @@ import com.projet.scootop.scootop.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -47,7 +45,7 @@ public class ShortlistService {
 
         return shortlistDTO;
     }
-    public ShortlistDTO get(Integer id){
+    public ShortlistDTO get(Long id){
 
         Shortlist shortlist = shortlistRepository.findById(id).orElse(null);
         if(shortlist==null){
@@ -64,7 +62,7 @@ public class ShortlistService {
     }
 
 
-    public String delete(Integer id){
+    public String delete(Long id){
         Shortlist shortlist = shortlistRepository.findById(id).orElse(null);
         if(shortlist==null){
             return null;

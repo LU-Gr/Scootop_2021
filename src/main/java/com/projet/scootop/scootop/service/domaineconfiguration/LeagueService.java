@@ -22,11 +22,10 @@ public class LeagueService {
 
     public LeagueDTO add(LeagueDTO leagueDTO){
         List<DivisionsDTO> divisionsDTOS = leagueDTO.divisions;
-        ArrayList<Division> divisions=  new ArrayList<>();
+        ArrayList<Division> divisions =  new ArrayList<>();
         League newLeague = new League(leagueDTO.name);
         League league=leagueRepository.save(newLeague);
-        for (DivisionsDTO divisionDTO: divisionsDTOS
-             ) {
+        for (DivisionsDTO divisionDTO: divisionsDTOS) {
             League league1=leagueRepository.findById(league.id).orElse(null);
             Division newDivision = new Division(divisionDTO.name);
             league1.divisions.add(newDivision);
@@ -40,7 +39,7 @@ public class LeagueService {
         }
         return leagueDTO;
     }
-    public LeagueDTO get(Integer id){
+    public LeagueDTO get(Long id){
 
         League league = leagueRepository.findById(id).orElse(null);
         if(league==null){
@@ -50,7 +49,7 @@ public class LeagueService {
         List<Division> divisions = divisionsRepository.findAllByLeagueId(id);
         for (Division division: divisions
              ) {
-            DivisionsDTO newDivision = DivisionsDTO.get(division.id,division.name);
+            DivisionsDTO newDivision = DivisionsDTO.get(division.getId(),division.getName());
             divisionsDTOS.add(newDivision);
         }
         LeagueDTO leagueDTO = LeagueDTO.get(league.id,league.name,divisionsDTOS);
@@ -66,7 +65,7 @@ public class LeagueService {
             List<Division> divisions = divisionsRepository.findAllByLeagueId(league.id);
             for (Division division: divisions
             ) {
-                DivisionsDTO newDivision = DivisionsDTO.get(division.id,division.name);
+                DivisionsDTO newDivision = DivisionsDTO.get(division.getId(),division.getName());
                 divisionsDTOS.add(newDivision);
             }
 
@@ -76,7 +75,7 @@ public class LeagueService {
         }
         return leagueDTOS;
     }
-    public String delete(Integer id){
+    public String delete(Long id){
         League league = leagueRepository.findById(id).orElse(null);
         if(league==null){
             return null;

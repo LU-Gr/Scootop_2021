@@ -1,9 +1,9 @@
 package com.projet.scootop.scootop.repository.user;
 
-import com.projet.scootop.scootop.user.Contact;
+import com.projet.scootop.scootop.domain.user.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface ContactRepository extends JpaRepository<Contact, Integer> {
+public interface ContactRepository extends JpaRepository<Contact, Long> {
 
 }

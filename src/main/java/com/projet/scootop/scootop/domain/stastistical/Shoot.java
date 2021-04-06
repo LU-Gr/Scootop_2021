@@ -13,7 +13,7 @@ public class Shoot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     @ManyToOne
     public MatchSheet matchSheet;
     @OneToOne

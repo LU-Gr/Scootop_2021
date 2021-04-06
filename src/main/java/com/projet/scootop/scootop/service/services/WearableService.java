@@ -1,42 +1,22 @@
 package com.projet.scootop.scootop.service.services;
 
-import com.projet.scootop.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.scootop.domain.domainconfiguration.Club;
-import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
-import com.projet.scootop.scootop.domain.domaintools.Saison;
-import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
-import com.projet.scootop.scootop.domain.services.Events;
-import com.projet.scootop.scootop.domain.services.GameSheet;
 import com.projet.scootop.scootop.domain.services.Wearable;
-import com.projet.scootop.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.scootop.model.inprogress.MatchSheetDTO;
-import com.projet.scootop.scootop.model.services.GameSheetDTO;
 import com.projet.scootop.scootop.model.services.WearableDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.scootop.repository.domainuser.PlayerRepository;
 import com.projet.scootop.scootop.repository.services.WearableRepository;
-import com.projet.scootop.scootop.servicetools.videosservices.Video;
-import com.projet.scootop.scootop.user.User;
-import org.h2.api.TimestampWithTimeZone;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class WearableService {
+	
     @Autowired
     public WearableRepository wearableRepository;
+    
     @Autowired
     public PlayerRepository playerRepository;
 
@@ -51,10 +31,9 @@ public class WearableService {
         wearableRepository.save(wearable);
 
         return wearableDTO;
-
     }
 
-    public WearableDTO get(Integer id){
+    public WearableDTO get(Long id){
 
         Wearable wearable = wearableRepository.findById(id).orElse(null);
         if(wearable==null){
@@ -64,7 +43,7 @@ public class WearableService {
         return WearableDTO.get(wearable.id, wearable.player, wearable.team,wearable.distanceRun,wearable.distancePlay,wearable.vMax,wearable.vMaxWithBall,wearable.ballPlay,wearable.looseBall,wearable.ballRecovered,wearable.tackle,wearable.foulSuffered,wearable.failPass,wearable.assist,wearable.shortPass,wearable.head,wearable.headOffensive,wearable.headDefensive,wearable.shots,wearable.shotOnTarget,wearable.shotOffTarget,wearable.longShot,wearable.successSkill,wearable.failSkill);
     }
 
-    public WearableDTO getOneByMatchSheetAndTeamAndPlayer(int matchsheetId,int teamId, int playersId){
+    public WearableDTO getOneByMatchSheetAndTeamAndPlayer(Long matchsheetId,Long teamId, Long playersId){
 
 
         Wearable wearable = wearableRepository.findByMatchSheetAndTeamAndPlayer(matchsheetId,teamId,playersId);
@@ -75,7 +54,7 @@ public class WearableService {
         return WearableDTO.get(wearable.id, wearable.player, wearable.team,wearable.distanceRun,wearable.distancePlay,wearable.vMax,wearable.vMaxWithBall,wearable.ballPlay,wearable.looseBall,wearable.ballRecovered,wearable.tackle,wearable.foulSuffered,wearable.failPass,wearable.assist,wearable.shortPass,wearable.head,wearable.headOffensive,wearable.headDefensive,wearable.shots,wearable.shotOnTarget,wearable.shotOffTarget,wearable.longShot,wearable.successSkill,wearable.failSkill);
     }
 
-    public Wearable update(WearableDTO wearableDTO,Integer id){
+    public Wearable update(WearableDTO wearableDTO, Long id){
         playerRepository.save(wearableDTO.player);
 
         teamRepository.save(wearableDTO.team);
@@ -90,14 +69,14 @@ public class WearableService {
 
     }
 
-    public List<WearableDTO> getAllByMatcSheetId(int matchSheet){
+    public List<WearableDTO> getAllByMatcSheetId(Long matchSheet){
 
         List<Wearable> wearables = wearableRepository.findAllById(matchSheet);
         return wearables.stream().map(wearable -> WearableDTO.get(wearable.id, wearable.player, wearable.team, wearable.distanceRun,wearable.distancePlay,wearable.vMax,wearable.vMaxWithBall,wearable.ballPlay,wearable.looseBall,wearable.ballRecovered,wearable.tackle,wearable.foulSuffered,wearable.failPass,wearable.assist,wearable.shortPass,wearable.head,wearable.headOffensive,wearable.headDefensive,wearable.shots,wearable.shotOnTarget,wearable.shotOffTarget,wearable.longShot,wearable.successSkill,wearable.failSkill)).collect(Collectors.toList());
 
     }
 
-    public List<WearableDTO> getAllByMatchSheetAndTeam(int matchSheet, int team){
+    public List<WearableDTO> getAllByMatchSheetAndTeam(Long matchSheet, Long team){
 
         List<Wearable> wearables = wearableRepository.findAllByMatchSheetAndTeam(matchSheet,team);
         return wearables.stream().map(wearable -> WearableDTO.get(wearable.id, wearable.player, wearable.team, wearable.distanceRun,wearable.distancePlay,wearable.vMax,wearable.vMaxWithBall,wearable.ballPlay,wearable.looseBall,wearable.ballRecovered,wearable.tackle,wearable.foulSuffered,wearable.failPass,wearable.assist,wearable.shortPass,wearable.head,wearable.headOffensive,wearable.headDefensive,wearable.shots,wearable.shotOnTarget,wearable.shotOffTarget,wearable.longShot,wearable.successSkill,wearable.failSkill)).collect(Collectors.toList());
@@ -105,7 +84,7 @@ public class WearableService {
     }
 
 
-    public String delete(Integer id){
+    public String delete(Long id){
         wearableRepository.deleteById(id);
 
         return "Deleted";

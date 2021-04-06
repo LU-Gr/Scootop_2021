@@ -14,12 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 
 @Service
 public class MatchSheetService {
+	
     @Autowired
     public MatchSheetRepository matchSheetRepository;
     @Autowired
@@ -30,7 +29,6 @@ public class MatchSheetService {
     public TeamRepository teamRepository;
     @Autowired
     public SaisonRepository saisonRepository;
-
     @Autowired
     public WearableRepository wearableRepository;
 
@@ -41,9 +39,9 @@ public class MatchSheetService {
         saisonRepository.save(matchSheetDTO.saison);
         MatchSheet matchSheet=new MatchSheet(matchSheetDTO.event,matchSheetDTO.team,matchSheetDTO.statisticalSheets,matchSheetDTO.stade,matchSheetDTO.matchScoots, matchSheetDTO.wearables,matchSheetDTO.saison,matchSheetDTO.competitionType);
         return matchSheetRepository.save(matchSheet);
-
     }
-    public MatchSheet update(MatchSheetDTO matchSheetDTO, Integer id) throws Exception {
+    
+    public MatchSheet update(MatchSheetDTO matchSheetDTO, Long id) throws Exception {
         scootRepository.saveAll(matchSheetDTO.matchScoots);
         statisticalSheetRepository.saveAll(matchSheetDTO.statisticalSheets);
         teamRepository.saveAll(matchSheetDTO.team);
@@ -52,23 +50,26 @@ public class MatchSheetService {
         matchSheet.id=id;
         return matchSheetRepository.save(matchSheet);
     }
-    public MatchSheet get(Integer id){
+    
+    public MatchSheet get(Long id){
         return matchSheetRepository.findById(id).orElse(null);
     }
+    
     public List<MatchSheet> getAll(){
         return matchSheetRepository.findAll();
     }
-    public List<Wearable> getWearableAll(Integer id){
-
+    
+    public List<Wearable> getAllWearable(Integer id){
         return wearableRepository.findAll();
     }
-    public ResponseEntity<Integer> delete(Integer id){
+    
+    public ResponseEntity<Integer> delete(Long id){
         MatchSheet matchSheet = matchSheetRepository.findById(id).orElse(null);
         if(matchSheet==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         matchSheetRepository.deleteById(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
 }

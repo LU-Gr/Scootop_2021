@@ -10,14 +10,19 @@ import javax.persistence.*;
 public class Division {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-    public String name;
+    private Long id;
+    private String name;
     
     @ManyToOne
     @JoinColumn(name = "divisions_id" )
-    public League league;
+    private League league;
     
     //TODO: Ajouter Category
+    @ManyToOne
+    @JoinColumn
+    private Category category;
+    
+    
 
     public Division(){
     }
@@ -26,4 +31,34 @@ public class Division {
         super();
         this.name = name;
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public League getLeague() {
+		return league;
+	}
+
+	public void setLeague(League league) {
+		this.league = league;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+    
+    
 }

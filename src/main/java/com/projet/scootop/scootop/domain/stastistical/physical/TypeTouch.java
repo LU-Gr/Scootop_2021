@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class TypeTouch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public String physical;
 
     public TypeTouch(String physical) {

@@ -1,13 +1,12 @@
 package com.projet.scootop.scootop.domain.services;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
+import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,13 +18,11 @@ public class Events {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public LocalDate date;
     
-    
-
     @OneToOne
-    public CompetitionType competitiontype;
+    public Competition competitiontype;
     
     @OneToMany
     public List <Team> teams;
@@ -54,10 +51,10 @@ public class Events {
 
     }
 
-    public Events(Integer id, LocalDate date, CompetitionType competitiontype, List<Team> teams, List<Scoot> scoots, List<GameSheet> gameSheets, boolean status, boolean prestaAnalyst, boolean prestaCameraman, boolean prestaWearable, boolean prestaScoot, boolean prestaZoom, Saison saison, List<Video> videos) {
+    public Events(Long id, LocalDate date, Competition competitiontype, List<Team> teams, List<Scoot> scoots, List<GameSheet> gameSheets, boolean status, boolean prestaAnalyst, boolean prestaCameraman, boolean prestaWearable, boolean prestaScoot, boolean prestaZoom, Saison saison, List<Video> videos) {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -69,11 +66,11 @@ public class Events {
         this.date = date;
     }
 
-    public CompetitionType getCompetitiontype() {
+    public Competition getCompetitiontype() {
         return competitiontype;
     }
 
-    public void setCompetitiontype(CompetitionType competiontype) {
+    public void setCompetitiontype(Competition competiontype) {
         this.competitiontype = competiontype;
     }
 

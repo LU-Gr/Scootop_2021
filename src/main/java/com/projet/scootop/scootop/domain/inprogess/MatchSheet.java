@@ -2,9 +2,9 @@ package com.projet.scootop.scootop.domain.inprogess;
 
 import javax.persistence.*;
 
-import com.projet.scootop.scootop.domain.domainconfiguration.Stadium;
+import com.projet.scootop.scootop.domain.domainconfiguration.Stade;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
+import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
@@ -21,7 +21,7 @@ import java.util.List;
 public class MatchSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     public Events event;
@@ -34,7 +34,7 @@ public class MatchSheet {
     @JoinColumn(name="Match_Sheet_statistical",referencedColumnName = "id")
     public List<StatisticalSheet> statisticalSheets;
     @OneToOne
-    public Stadium stade;
+    public Stade stade;
     @ManyToMany
     @JoinColumn(name="Match_Sheet_scoot",referencedColumnName = "id")
     public List <Scoot> matchScoots;
@@ -48,9 +48,9 @@ public class MatchSheet {
     public Saison saison;
 
     @OneToOne
-    public CompetitionType competitionType;
+    public Competition competitionType;
 
-    public MatchSheet(Events event, List<Team> team, List<StatisticalSheet> statisticalSheets, Stadium stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, CompetitionType competitionType) throws Exception {
+    public MatchSheet(Events event, List<Team> team, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competitionType) throws Exception {
         this.event = event;
         this.competitionType = competitionType;
         this.statisticalSheets = statisticalSheets;
@@ -149,7 +149,7 @@ public class MatchSheet {
 
 }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -169,11 +169,11 @@ public class MatchSheet {
         this.event = event;
     }
 
-    public Stadium getStade() {
+    public Stade getStade() {
         return stade;
     }
 
-    public void setStade(Stadium stade) {
+    public void setStade(Stade stade) {
         this.stade = stade;
     }
 
@@ -193,11 +193,11 @@ public class MatchSheet {
         this.saison = saison;
     }
 
-    public CompetitionType getCompetitionType() {
+    public Competition getCompetitionType() {
         return competitionType;
     }
 
-    public void setCompetitionType(CompetitionType competitionType) {
+    public void setCompetitionType(Competition competitionType) {
         this.competitionType = competitionType;
     }
 

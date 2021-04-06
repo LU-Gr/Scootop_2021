@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.domain.provider;
 
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 
 import javax.persistence.*;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class MarketingAdvisor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     @OneToOne
     public User user;
     @ManyToOne

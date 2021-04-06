@@ -10,7 +10,7 @@ public class Manager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     // USER?
     public String name;
     @ManyToOne
@@ -24,7 +24,7 @@ public class Manager {
     public Manager() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

@@ -2,18 +2,14 @@ package com.projet.scootop.scootop.service.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Coach;
-import com.projet.scootop.scootop.domain.domainuser.Scoot;
 import com.projet.scootop.scootop.model.domainuser.CoachDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.scootop.repository.domainuser.CoachRepository;
-import com.projet.scootop.scootop.service.UserService;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.service.user.UserService;
+import com.projet.scootop.scootop.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,10 +36,10 @@ public class CoachService {
 
         return coachRepository.save(coach);
     }
-    public Coach get(Integer id){
+    public Coach get(Long id){
         return coachRepository.findById(id).orElse(null);
     }
-    public Coach update(CoachDTO coachDTO,Integer id) throws Exception {
+    public Coach update(CoachDTO coachDTO,Long id) throws Exception {
         User newUser = userService.updateEntity(coachDTO.user);
         Coach coach =new Coach(newUser,coachDTO.teams);
         coach.id=id;
@@ -54,7 +50,7 @@ public class CoachService {
 
         return coachRepository.findAll();
     }
-    public String delete(Integer id){
+    public String delete(Long id){
         Coach coach = coachRepository.findById(id).orElse(null);
         if(coach==null){
             return null;

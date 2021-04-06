@@ -1,17 +1,13 @@
 package com.projet.scootop.scootop.model.domainconfiguration;
 
-import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.model.ContactDTO;
-import com.projet.scootop.scootop.user.Contact;
-
-import java.util.List;
+import com.projet.scootop.scootop.domain.user.Contact;
 
 public class StadeDTO {
-    public int id;
+    public Long id;
     public String name;
     public Contact contact;
 
-    public static StadeDTO create(Integer id,String name, Contact contact) {
+    public static StadeDTO create(Long id,String name, Contact contact) {
 
         StadeDTO stadeDTO =new StadeDTO();
         stadeDTO.id = id;
@@ -21,7 +17,7 @@ public class StadeDTO {
 
     }
 
-    public static StadeDTO get(Integer id,String name, Contact contact) {
+    public static StadeDTO get(Long id,String name, Contact contact) {
 
         StadeDTO stadeDTO=new StadeDTO();
         stadeDTO.id = id;

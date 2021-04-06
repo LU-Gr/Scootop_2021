@@ -6,7 +6,7 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Coach;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;

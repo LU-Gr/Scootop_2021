@@ -1,18 +1,14 @@
 package com.projet.scootop.scootop.service.stastistical;
 
-import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.stastistical.Goal;
 import com.projet.scootop.scootop.model.statistical.GoalDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.ClubRepository;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.scootop.repository.domainuser.PlayerRepository;
 import com.projet.scootop.scootop.repository.statistical.GoalRepository;
 import com.projet.scootop.scootop.repository.statistical.ShootRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 
 @Service
@@ -31,13 +27,13 @@ public class GoalService {
 
 
     }
-    public Goal get(Integer id){
+    public Goal get(Long id){
         return goalRepository.findById(id).orElse(null);
     }
     public List<Goal> getAll(){
         return goalRepository.findAll();
     }
-    public String delete(Integer id){
+    public String delete(Long id){
 
         goalRepository.deleteById(id);
 

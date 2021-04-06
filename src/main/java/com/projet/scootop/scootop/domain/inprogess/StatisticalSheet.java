@@ -21,7 +21,7 @@ public class StatisticalSheet {
 	//global
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     public MatchSheet matchSheet;
@@ -81,7 +81,7 @@ public class StatisticalSheet {
 
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

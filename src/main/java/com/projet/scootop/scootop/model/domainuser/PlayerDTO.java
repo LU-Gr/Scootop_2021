@@ -1,21 +1,19 @@
 package com.projet.scootop.scootop.model.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
 import com.projet.scootop.scootop.domain.stastistical.physical.PlayerHead;
-import com.projet.scootop.scootop.servicetools.videosservices.Video;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.user.User;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class PlayerDTO {
 
-    public Integer id;
-    public Club club;
+    public Long id;
     public List<Team> teams;
     public Category category;
     public int evaluation;
@@ -35,10 +33,9 @@ public class PlayerDTO {
     public User user;
 
 
-    public static PlayerDTO create(Club club, List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead,List<StatisticalSheet> statisticalSheets, List<MatchSheet> matchSheets, List<Video> videos, String origin, String nationalite, User user) {
+    public static PlayerDTO create(List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead,List<StatisticalSheet> statisticalSheets, List<MatchSheet> matchSheets, List<Video> videos, String origin, String nationalite, User user) {
         PlayerDTO player = new PlayerDTO();
 
-        player.club = club;
         player.teams = teams;
         player.category = category;
         player.evaluation = evaluation;
@@ -60,11 +57,10 @@ public class PlayerDTO {
         return player;
     }
 
-    public static PlayerDTO get(Integer id, Club club, List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, String nationalite,String origin, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead, List<StatisticalSheet> statisticalSheets,List<MatchSheet> matchSheets, List<Video> videos, User user) {
+    public static PlayerDTO get(Long id, List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, String nationalite,String origin, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead, List<StatisticalSheet> statisticalSheets,List<MatchSheet> matchSheets, List<Video> videos, User user) {
         PlayerDTO player = new PlayerDTO();
 
         player.id = id;
-        player.club = club;
         player.teams = teams;
         player.category = category;
         player.evaluation = evaluation;
@@ -89,7 +85,6 @@ public class PlayerDTO {
     @Override
     public String toString() {
         return "PlayerDTO{" +
-                "club=" + club +
                 ", team=" + teams +
                 ", category=" + category +
                 ", Evaluation=" + evaluation +

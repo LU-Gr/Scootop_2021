@@ -2,12 +2,11 @@ package com.projet.scootop.scootop.model.statistical;
 
 import java.time.LocalDate;
 
-import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.stastistical.Shoot;
 
 public class GoalDTO {
 
-    int id;
+	Long id;
     public LocalDate date;
     public Shoot shoot;
     public String tag;

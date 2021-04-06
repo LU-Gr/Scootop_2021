@@ -3,13 +3,13 @@ package com.projet.scootop.scootop.model.services.interaction;
 
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 import java.time.LocalDate;
 
 public class FollowDTO {
 
-    int id;
+	Long id;
     public LocalDate dateCreated;
     public User user;
     public Player player;
@@ -23,7 +23,7 @@ public class FollowDTO {
         followDTO.saison = saison;
         return followDTO;
     }
-    public static FollowDTO get(int id, LocalDate dateCreated, User user, Player player, Saison saison) {
+    public static FollowDTO get(Long id, LocalDate dateCreated, User user, Player player, Saison saison) {
         FollowDTO followDTO = new FollowDTO();
         followDTO.id = id;
         followDTO.dateCreated = dateCreated;

@@ -7,7 +7,7 @@ import com.projet.scootop.scootop.domain.stastistical.physical.TypeTouch;
 
 public class ShootDTO {
 
-    public int id;
+    public Long id;
     public MatchSheet matchSheet;
     public TypeTouch typeTouch;
     public Player player;

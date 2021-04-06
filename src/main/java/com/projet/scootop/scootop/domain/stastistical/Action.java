@@ -2,21 +2,27 @@ package com.projet.scootop.scootop.domain.stastistical;
 
 import javax.persistence.*;
 
+import com.projet.scootop.scootop.domain.domaintools.Skill;
 import com.projet.scootop.scootop.domain.domaintools.SkillType;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 
 // Action : Exemple : Skill: Controle
 @Entity
-@Table(name = "Skill")
+@Table(name = "Action")
 
 public class Action {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     
-    // public Skill
+    @ManyToOne
+    @JoinColumn
+    public Skill skill;
     
+    @ManyToOne
+    @JoinColumn
     public SkillType skillType;
 
     @OneToOne
@@ -29,7 +35,7 @@ public class Action {
     public Boolean isDefensive;
     public Boolean isSuccessful;
 
-    public Action(Integer id, MatchSheet matchSheet, Player player, Boolean isDefensive, Boolean succesSkill, Boolean isLong) {
+    public Action(Long id, MatchSheet matchSheet, Player player, Boolean isDefensive, Boolean succesSkill, Boolean isLong) {
         super();
         this.id = id;
         this.matchSheet = matchSheet;
@@ -41,7 +47,7 @@ public class Action {
     public Action() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

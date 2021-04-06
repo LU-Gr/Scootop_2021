@@ -6,7 +6,7 @@ import com.projet.scootop.scootop.domain.provider.Manager;
 import com.projet.scootop.scootop.domain.provider.MarketingAdvisor;
 
 public class AgenceDTO {
-    public Integer id;
+    public Long id;
     public String region;
     public List<MarketingAdvisor> marketingAdvisors;
     public List<Manager> manager;
@@ -18,7 +18,7 @@ public class AgenceDTO {
         agenceDTO.manager = manager;
         return agenceDTO;
     }
-    public static AgenceDTO get(Integer id, String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
+    public static AgenceDTO get(Long id, String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
         AgenceDTO agenceDTO= new AgenceDTO();
         agenceDTO.id = id;
         agenceDTO.region = region;

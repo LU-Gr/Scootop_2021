@@ -2,17 +2,14 @@ package com.projet.scootop.scootop.service.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.domain.services.Wearable;
-import com.projet.scootop.scootop.model.UserDTO;
+import com.projet.scootop.scootop.domain.user.User;
 import com.projet.scootop.scootop.model.domainuser.ScootDTO;
-import com.projet.scootop.scootop.model.services.WearableDTO;
 import com.projet.scootop.scootop.repository.domainuser.ScootRepository;
-import com.projet.scootop.scootop.service.UserService;
 import com.projet.scootop.scootop.service.domaineconfiguration.ClubService;
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.service.user.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +29,7 @@ public class ScootService {
    
     return  scootRepository.save(scoot);
   }
-  public ScootDTO get(Integer id){
+  public ScootDTO get(Long id){
 
     Scoot scoot = scootRepository.findById(id).orElse(null);
 
@@ -48,14 +45,14 @@ public class ScootService {
 
   }
 
-  public List<ScootDTO> getAllByMatcSheetId(int matchSheet){
+  public List<ScootDTO> getAllByMatcSheetId(Long matchSheet){
 
     List<Scoot> scoots = scootRepository.findAllById(matchSheet);
     return scoots.stream().map(scoot -> ScootDTO.get(scoot.id,scoot.user, scoot.clubs, scoot.shortlist)).collect(Collectors.toList());
 
   }
 
-  public Scoot update(ScootDTO scootDTO,Integer id) throws Exception {
+  public Scoot update(ScootDTO scootDTO,Long id) throws Exception {
     User newUser = userService.updateEntity(scootDTO.user);
     Scoot scoot=new Scoot(newUser,scootDTO.clubs, scootDTO.shortlist);
     scoot.id=id;
@@ -64,7 +61,7 @@ public class ScootService {
 
   }
 
-  public String delete(Integer id){
+  public String delete(Long id){
     Scoot scoot = scootRepository.findById(id).orElse(null);
     if(scoot==null){
       return null;

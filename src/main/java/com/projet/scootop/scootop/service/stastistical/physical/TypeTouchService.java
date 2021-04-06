@@ -20,24 +20,28 @@ public class TypeTouchService {
         return typeTouchRepository.save(typeTouch);
 
     }
-    public TypeTouch update(TypeTouchDTO typeTouchDTO,Integer id) {
+    
+    public TypeTouch update(TypeTouchDTO typeTouchDTO, Long id) {
         TypeTouch typeTouch=new TypeTouch(typeTouchDTO.physical);
         typeTouch.id=id;
         return typeTouchRepository.save(typeTouch);
     }
-    public TypeTouch get(Integer id){
+    
+    public TypeTouch get(Long id){
         return typeTouchRepository.findById(id).orElse(null);
     }
+    
     public List<TypeTouch> getAll(){
         return typeTouchRepository.findAll();
     }
-    public ResponseEntity<Integer> delete(Integer id){
+    
+    public ResponseEntity<Integer> delete(Long id){
         TypeTouch typeTouch = typeTouchRepository.findById(id).orElse(null);
         if(typeTouch==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         typeTouchRepository.deleteById(id);
-        return new ResponseEntity<>(id, HttpStatus.OK);
+        return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
 }

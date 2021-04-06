@@ -1,9 +1,9 @@
 package com.projet.scootop.scootop.model.provider;
 
-import com.projet.scootop.scootop.user.Contact;
+import com.projet.scootop.scootop.domain.user.Contact;
 
 public class WearableSocietyDTO {
-    public Integer id;
+    public Long id;
     public String name;
     public String societe;
     public String ceo;
@@ -12,7 +12,7 @@ public class WearableSocietyDTO {
     public Contact contact;
 
 
-    public static WearableSocietyDTO create( String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
+    public static WearableSocietyDTO create(String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
         WearableSocietyDTO wearableSocietyDTO=new WearableSocietyDTO();
         wearableSocietyDTO.name = name;
         wearableSocietyDTO.societe = societe;
@@ -22,7 +22,7 @@ public class WearableSocietyDTO {
         wearableSocietyDTO.contact = contact;
         return wearableSocietyDTO;
     }
-    public static WearableSocietyDTO get(Integer id, String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
+    public static WearableSocietyDTO get(Long id, String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
         WearableSocietyDTO wearableSocietyDTO=new WearableSocietyDTO();
 
         wearableSocietyDTO.id = id;

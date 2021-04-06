@@ -12,7 +12,7 @@ import com.projet.scootop.scootop.domain.stastistical.Action;
 import com.projet.scootop.scootop.domain.stastistical.physical.PlayerHead;
 
 public class StatisticalSheetDTO {
-    public Integer id;
+    public Long id;
     public MatchSheet matchSheet;
     public List<Player> players;
     public Events events;
@@ -49,7 +49,7 @@ public class StatisticalSheetDTO {
         return statisticalSheetDTO;
     }
 
-    public static StatisticalSheetDTO get(int id, MatchSheet matchSheet,List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
+    public static StatisticalSheetDTO get(Long id, MatchSheet matchSheet,List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
         StatisticalSheetDTO statisticalSheetDTO= new StatisticalSheetDTO();
         statisticalSheetDTO.id =id;
         statisticalSheetDTO.matchSheet = matchSheet;

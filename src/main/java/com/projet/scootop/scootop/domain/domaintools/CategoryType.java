@@ -12,7 +12,7 @@ import java.util.Date;
 public class CategoryType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     //TODO: Supprimer name
     public String name;
     public int ageMin;

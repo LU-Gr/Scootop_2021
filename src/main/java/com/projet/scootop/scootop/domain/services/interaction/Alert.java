@@ -2,9 +2,7 @@ package com.projet.scootop.scootop.domain.services.interaction;
 
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
-
+import com.projet.scootop.scootop.domain.user.User;
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -13,7 +11,7 @@ import java.time.LocalDate;
 public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public LocalDate dateCreated;
     @ManyToOne
     public User user;

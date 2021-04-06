@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.model.domainconfiguration;
 
 public class DivisionsDTO {
-    public int id;
+    public Long id;
     public String name;
 
     public static DivisionsDTO create(String name) {
@@ -10,7 +10,7 @@ public class DivisionsDTO {
         divisions.name = name;
         return divisions;
     }
-    public static DivisionsDTO get(int id, String name) {
+    public static DivisionsDTO get(Long id, String name) {
 
         DivisionsDTO divisions = new DivisionsDTO();
         divisions.id = id;

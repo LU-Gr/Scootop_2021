@@ -2,8 +2,8 @@ package com.projet.scootop.scootop.domain.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.scootop.domain.services.Shortlist;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class Scoot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     @JoinColumn(name = "USER_ID")
@@ -47,7 +47,7 @@ public class Scoot {
     public Scoot() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

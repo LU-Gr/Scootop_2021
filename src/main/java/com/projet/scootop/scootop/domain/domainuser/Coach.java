@@ -1,8 +1,8 @@
 package com.projet.scootop.scootop.domain.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Coach {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
 
     @OneToOne
     @JoinColumn(name = "USER_ID")
@@ -23,7 +23,7 @@ public class Coach {
     public List<Team> teams;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -63,7 +63,7 @@ public class Coach {
         this.teams = teams;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

@@ -1,10 +1,8 @@
 package com.projet.scootop.scootop.controller;
 
-
 import com.projet.scootop.scootop.domain.domainconfiguration.*;
 import com.projet.scootop.scootop.model.ClubDTO;
 import com.projet.scootop.scootop.model.domainconfiguration.*;
-import com.projet.scootop.scootop.model.services.WearableDTO;
 import com.projet.scootop.scootop.service.domaineconfiguration.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +17,10 @@ public class ApiDomainConfigController {
     private DivisionsService divisionsService;
     private PosteService posteService;
     private TeamService teamService;
-    private TypeService typeService;
+    private CompetitionTypeService typeService;
 
 
-    public ApiDomainConfigController(StadeService stadeService, LeagueService leagueService, CategoryService categoryService, ClubService clubService, DivisionsService divisionsService, PosteService posteService, TeamService teamService, TypeService typeService) {
+    public ApiDomainConfigController(StadeService stadeService, LeagueService leagueService, CategoryService categoryService, ClubService clubService, DivisionsService divisionsService, PosteService posteService, TeamService teamService, CompetitionTypeService typeService) {
         super();
         this.stadeService = stadeService;
         this.leagueService = leagueService;
@@ -41,7 +39,7 @@ public class ApiDomainConfigController {
 
 
     @GetMapping("api/category/{id}")
-    CategoryDTO getCategory(@PathVariable int id){
+    CategoryDTO getCategory(@PathVariable Long id){
         return categoryService.get(id);
     }
 
@@ -52,13 +50,13 @@ public class ApiDomainConfigController {
     }
 
     @PutMapping("api/category/{id}")
-    String updateCategory(@RequestBody String body,@PathVariable int id){
+    String updateCategory(@RequestBody String body,@PathVariable Long id){
         String category = body;
         return category;
     }
 
     @DeleteMapping("api/category/{id}")
-    String deleteCategory(@PathVariable int id){
+    String deleteCategory(@PathVariable Long id){
 
         return "Category delete";
     }
@@ -68,7 +66,7 @@ public class ApiDomainConfigController {
     List<ClubDTO> getAllClubs(){ return clubService.getAll();}
 
     @GetMapping("api/club/{id}")
-    ClubDTO getClub(@PathVariable int id){
+    ClubDTO getClub(@PathVariable Long id){
         return clubService.get(id);
     }
 
@@ -79,31 +77,31 @@ public class ApiDomainConfigController {
     }
 
     @PutMapping("api/club/{id}")
-    String updateClub(@RequestBody String body,@PathVariable int id) {
+    String updateClub(@RequestBody String body,@PathVariable Long id) {
         String club = body;
         return club;
     }
 
     @DeleteMapping("api/club/{id}")
-    String deleteClub(@PathVariable int id){
+    String deleteClub(@PathVariable Long id){
         return clubService.delete(id);
     }
 
 
     @GetMapping("api/division/{id}")
-    DivisionsDTO getDivision(@PathVariable("id") int id){
+    DivisionsDTO getDivision(@PathVariable("id") Long id){
         return divisionsService.get(id);
     }
     @PutMapping("api/division/{id}")
-    String uploadDivision(@RequestBody String body, @PathVariable("id") int id){
+    String uploadDivision(@RequestBody String body, @PathVariable("id") Long id){
         return body;
     }
     @PostMapping("api/division")
     DivisionsDTO uploadDivision(@RequestBody DivisionsDTO body){
-        return divisionsService.add(body,1);
+        return null;//divisionsService.add(body,1);
     }
     @DeleteMapping("api/division/{id}")
-    String deleteDivision(@PathVariable("id") int id){
+    String deleteDivision(@PathVariable("id") Long id){
         return divisionsService.delete(id);
     }
     @GetMapping("api/divisions")
@@ -112,12 +110,12 @@ public class ApiDomainConfigController {
     }
 
     @GetMapping("api/league/{id}")
-    LeagueDTO getLeague(@PathVariable("id") int id){
+    LeagueDTO getLeague(@PathVariable("id") Long id){
         return leagueService.get(id);
 
     }
     @PutMapping("api/league/{id}")
-    String uploadLeague(@RequestBody String body, @PathVariable("id") int id){
+    String uploadLeague(@RequestBody String body, @PathVariable("id") Long id){
         return body;
     }
     @PostMapping("api/league")
@@ -126,7 +124,7 @@ public class ApiDomainConfigController {
         return leagueService.add(body);
     }
     @DeleteMapping("api/league/{id}")
-    String deleteLeague(@PathVariable("id") int id){
+    String deleteLeague(@PathVariable("id") Long id){
         return leagueService.delete(id);
     }
     @GetMapping("api/leagues")
@@ -135,7 +133,7 @@ public class ApiDomainConfigController {
     }
 
     @GetMapping("api/poste/{id}")
-    PosteDTO getPoste(@PathVariable int id){
+    PosteDTO getPoste(@PathVariable Long id){
         return posteService.get(id);
     }
 
@@ -145,12 +143,12 @@ public class ApiDomainConfigController {
     }
 
     @PutMapping("api/poste/{id}")
-    Poste updatePoste(@RequestBody PosteDTO body,@PathVariable int id){
+    Poste updatePoste(@RequestBody PosteDTO body,@PathVariable Long id){
         return posteService.update(body,id);
     }
 
     @DeleteMapping("api/poste/{id}")
-    String deletePoste(@PathVariable int id){
+    String deletePoste(@PathVariable Long id){
         return posteService.delete(id);
     }
 
@@ -161,22 +159,22 @@ public class ApiDomainConfigController {
     }
 
     @GetMapping("api/stade/{id}")
-    StadeDTO getStade(@PathVariable int id){
+    StadeDTO getStade(@PathVariable Long id){
         return stadeService.get(id);
     }
 
     @PostMapping("api/stade")
-    Stadium addStade(@RequestBody StadeDTO body){
+    Stade addStade(@RequestBody StadeDTO body){
        return stadeService.add(body);
     }
 
     @PutMapping("api/stade/{id}")
-    Stadium updateStade(@RequestBody StadeDTO body,@PathVariable int id){
+    Stade updateStade(@RequestBody StadeDTO body,@PathVariable Long id){
         return stadeService.update(body,id);
     }
 
     @DeleteMapping("api/stade/{id}")
-    String deleteStade(@PathVariable int id){
+    String deleteStade(@PathVariable Long id){
         return stadeService.delete(id);
     }
 
@@ -193,16 +191,16 @@ public class ApiDomainConfigController {
     }
 
     @GetMapping("api/team/{id}")
-    TeamDTO getTeam(@PathVariable int id){
+    TeamDTO getTeam(@PathVariable Long id){
         return teamService.get(id);
     }
     @PutMapping("api/team/{id}")
-    String updateTeam(@RequestBody String body, @PathVariable int id) {
+    String updateTeam(@RequestBody String body, @PathVariable Long id) {
         String team = body;
         return team;
     }
     @DeleteMapping("api/team/{id}")
-    String deleteTeam(@PathVariable int id){
+    String deleteTeam(@PathVariable Long id){
         return "Team delete";
     }
 
@@ -214,8 +212,8 @@ public class ApiDomainConfigController {
 
     @GetMapping("api/types/{id}")
 
-    String getType(@PathVariable int id){
-        return TypeDTO.create(id,"parc des princes").toString();
+    String getType(@PathVariable Long id){
+        return CompetitionTypeDTO.create(id,"parc des princes").toString();
     }
 
     @PostMapping("api/types")
@@ -223,11 +221,11 @@ public class ApiDomainConfigController {
         return body;
     }
     @PutMapping("api/types/{id}")
-    String updateType(@RequestBody String body,@PathVariable int id){
+    String updateType(@RequestBody String body,@PathVariable Long id){
         return body;
     }
     @DeleteMapping("api/types/{id}")
-    String deleteType(@PathVariable int id){
+    String deleteType(@PathVariable Long id){
         return "delete";
     }
     @GetMapping("api/types")

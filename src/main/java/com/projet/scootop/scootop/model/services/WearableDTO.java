@@ -6,7 +6,7 @@ import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
 
 public class WearableDTO {
 
-    public int id;
+    public Long id;
     public Player player;
     public Team team;
     public MatchSheet matchSheet;
@@ -33,7 +33,7 @@ public class WearableDTO {
     public Integer successSkill;
     public Integer failSkill;
 
-    public static WearableDTO create(int id, Player player, Team team, MatchSheet matchSheet, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
+    public static WearableDTO create(Long id, Player player, Team team, MatchSheet matchSheet, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
         WearableDTO wearable = new WearableDTO();
 
         wearable.id = id;
@@ -65,7 +65,7 @@ public class WearableDTO {
         return wearable;
     }
 
-    public static WearableDTO get( int id, Player player, Team team, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
+    public static WearableDTO get(Long id, Player player, Team team, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
         WearableDTO wearable = new WearableDTO();
 
         wearable.id = id;

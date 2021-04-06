@@ -1,8 +1,7 @@
 package com.projet.scootop.scootop.domain.provider;
 
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.User;
-import com.projet.scootop.scootop.user.UserType;
+import com.projet.scootop.scootop.domain.user.User;
+import com.projet.scootop.scootop.domain.user.UserType;
 
 import javax.persistence.*;
 
@@ -13,7 +12,7 @@ public class Cameraman {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    public Long id;
     public Integer tarif;
     public Integer experience;
     @OneToOne

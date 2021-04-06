@@ -1,12 +1,9 @@
 package com.projet.scootop.scootop.service.services;
 
-import com.projet.scootop.scootop.domain.domaintools.CompetitionType;
 import com.projet.scootop.scootop.domain.services.Events;
-import com.projet.scootop.scootop.domain.services.GameSheet;
 import com.projet.scootop.scootop.model.services.EventsDTO;
-import com.projet.scootop.scootop.model.services.GameSheetDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.scootop.repository.domainetools.CompetitionTypeRepository;
+import com.projet.scootop.scootop.repository.domainetools.CompetitionRepository;
 import com.projet.scootop.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.scootop.repository.domainuser.ScootRepository;
 import com.projet.scootop.scootop.repository.services.EventsRepository;
@@ -15,8 +12,6 @@ import com.projet.scootop.scootop.repository.servicetools.videosservices.VideoRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +29,7 @@ public class EventsService {
     @Autowired
     public ScootRepository scootRepository;
     @Autowired
-    public CompetitionTypeRepository competitiontypeRepository;
+    public CompetitionRepository competitiontypeRepository;
     @Autowired
     public GameSheetRepository gameSheetRepository;
 
@@ -54,7 +49,7 @@ public class EventsService {
         return eventsDTO;
 
     }
-    public EventsDTO get(Integer id){
+    public EventsDTO get(Long id){
 
         Events events = eventsRepository.findById(id).orElse(null);
 
@@ -66,7 +61,7 @@ public class EventsService {
 
     }
 
-    public Events update(EventsDTO eventsDTO,Integer id){
+    public Events update(EventsDTO eventsDTO, Long id){
         Events events = new Events(eventsDTO.id, eventsDTO.date, eventsDTO.competitiontype,eventsDTO.teams, eventsDTO.scoots, eventsDTO.gameSheets, eventsDTO.status,eventsDTO.prestaAnalyst,eventsDTO.prestaCameraman,eventsDTO.prestaWearable,eventsDTO.prestaScoot,eventsDTO.prestaZoom,eventsDTO.saison,eventsDTO.videos);
         events.id=id;
         return eventsRepository.save(events);
@@ -79,7 +74,7 @@ public class EventsService {
 
     }
 
-    public String delete(Integer id){
+    public String delete(Long id){
         eventsRepository.deleteById(id);
 
         return "Deleted";

@@ -1,10 +1,10 @@
 package com.projet.scootop.scootop.model.provider;
 
-import com.projet.scootop.scootop.user.User;
+import com.projet.scootop.scootop.domain.user.User;
 
 public class CameramanDTO {
 
-    public Integer id;
+    public Long id;
     public Integer tarif;
     public Integer experience;
     public User user;
@@ -16,7 +16,7 @@ public class CameramanDTO {
         cameramanDTO.user = user;
         return cameramanDTO;
     }
-    public static CameramanDTO get(Integer id,Integer tarif, Integer experience, User user) {
+    public static CameramanDTO get(Long id,Integer tarif, Integer experience, User user) {
         CameramanDTO cameramanDTO = new CameramanDTO();
         cameramanDTO.id = id;
         cameramanDTO.tarif = tarif;

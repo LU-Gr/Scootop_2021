@@ -54,7 +54,7 @@ public class StatisticalSheet {
     
     // équipe
     @OneToMany
-    public Player players;
+    public List<Player> players;
 
     // joueur
     public float distancekm;

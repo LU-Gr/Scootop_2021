@@ -194,15 +194,15 @@ public class UserResume {
 
     public int CountYearsSuccessAssists(LocalDate Years, Player player){
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
+        LocalDate StartSaison = Years;
+        LocalDate EndSaison = StartSaison.plusMonths(8);
 
         List<Pass> SaisonsSuccessAssistsList = null;
         int SuccessAssistsCountYears = 0;
 
         for (int j = 0; j < assists.size() ; j++) {
 
-            if( assists.get(j).date.isBefore(EndSaision) && assists.get(j).date.isAfter(StartSaision)){
+            if( assists.get(j).date.isBefore(EndSaison) && assists.get(j).date.isAfter(StartSaison)){
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 

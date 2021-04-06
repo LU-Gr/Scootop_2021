@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Agence")
-
+//SERT A GERER L'IMAGE D'UN JOUEUR
 public class Agence {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

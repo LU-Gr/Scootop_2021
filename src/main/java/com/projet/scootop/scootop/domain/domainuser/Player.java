@@ -39,12 +39,12 @@ public class Player{
     public int vma;
     public String nationalite;
     public String origin;
+    //TODO: Supprimer Interaction
     public int interaction;
 
-    public boolean selected;
-
-
-    public boolean substitute;
+    public boolean selected; // sert a dire si joueur en train de jouer en temps réel
+    
+    public boolean substitute; // Sert a dire si il est remplacant
 
     public String strongFoot;
 
@@ -55,7 +55,7 @@ public class Player{
 
     @OneToMany
     public List<MatchSheet> matchSheets;
-
+    //TODO: Supprimer
     @OneToOne
     public PlayerHead playerHead;
 /*

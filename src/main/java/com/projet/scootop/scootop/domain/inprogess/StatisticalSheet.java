@@ -14,6 +14,7 @@ import java.util.List;
 
 //Feuille de stats pour un joueur/ pour une team/ pour un event
 @Entity
+//TODO: Renommer PlayerStatsSheet
 @Table(name = "STATISTICALSHEET")
 
 public class StatisticalSheet {
@@ -53,7 +54,7 @@ public class StatisticalSheet {
     
     // équipe
     @OneToMany
-    public List<Player> players;
+    public Player players;
 
     // joueur
     public float distancekm;

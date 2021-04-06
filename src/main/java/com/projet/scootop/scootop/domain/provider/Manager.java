@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Manager")
-
+// AGENT DE JOUEUR != d'un scoot qui travaille pour un club, l'agent sert interet d'un joueur -> c'est unn apporteur d'affaires 
 
 public class Manager {
 

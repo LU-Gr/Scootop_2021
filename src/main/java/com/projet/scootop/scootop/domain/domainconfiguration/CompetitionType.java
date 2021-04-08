@@ -2,15 +2,21 @@ package com.projet.scootop.scootop.domain.domainconfiguration;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
 //Type compétition (Foot a 11/8/futsal, etc...)
 @Entity
 @Table(name = "CompetitionType")
 public class CompetitionType {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    @Getter @Setter
+    private Integer id;
 
-    String name;
+    @Getter @Setter
+    private String name;
 
 
     public CompetitionType(String name) {
@@ -18,17 +24,5 @@ public class CompetitionType {
     }
 
     public CompetitionType() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

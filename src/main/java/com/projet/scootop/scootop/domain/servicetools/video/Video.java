@@ -1,10 +1,13 @@
-package com.projet.scootop.scootop.domain.servicetools.videosservices;
+package com.projet.scootop.scootop.domain.servicetools.video;
 
 import javax.persistence.*;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.CompetitionType;
 import com.projet.scootop.scootop.domain.domainuser.Player;
 import com.projet.scootop.scootop.domain.services.Events;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.List;
@@ -15,31 +18,36 @@ public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    private Integer id;
 
     @ManyToOne
-
     @JoinColumn(name="videos_player",referencedColumnName = "id")
-    Player player;
+    @Getter @Setter
+    private Player player;
 
-    String url;
+    @Getter @Setter
+    private String url;
 
     @ManyToOne
     @JoinColumn(name="event_videos",referencedColumnName = "id")
-    Events events;
+    @Getter @Setter
+    private Events events;
 
-    Date posted;
+    @Getter @Setter
+    private Date posted;
 
     @OneToOne
-    CompetitionType competition;
+    @Getter @Setter
+    private CompetitionType competition;
+
+    @ManyToMany
+    @Getter @Setter
+    private List<SearchKeyWord> keyword;
 
     @OneToMany
-    @JoinColumn(name="video_keywords",referencedColumnName = "id")
-    List<SearchKeyWord> keyword;
-
-    @OneToMany
+    @Getter @Setter
     @JoinColumn(name="video_view",referencedColumnName = "id")
-    List<VideoView> view;
+    private List<VideoView> view;
 
 
     public Video() {

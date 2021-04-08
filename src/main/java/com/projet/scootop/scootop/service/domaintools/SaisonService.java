@@ -14,7 +14,7 @@ public class SaisonService {
     @Autowired
     public SaisonRepository saisonRepository;
     public SaisonDTO addSaison(SaisonDTO saisonDTO) {
-        Saison saison = new Saison(saisonDTO.name,saisonDTO.dateDebut,saisonDTO.dateFin,saisonDTO.matchSheets);
+        Saison saison = new Saison(saisonDTO.getDateDebut(),saisonDTO.getDateFin(),saisonDTO.getMatchSheets());
         saisonRepository.save(saison);
         return saisonDTO;
     }
@@ -25,13 +25,13 @@ public class SaisonService {
             return null;
         }
 
-        return SaisonDTO.get(saison.id,saison.name,saison.dateDebut,saison.dateFin,saison.matchSheets);
+        return SaisonDTO.get(saison.getId(),saison.getDateDebut(),saison.getDateFin(),saison.getMatchSheets());
     }
 
     public List<SaisonDTO> getAll(){
 
         List<Saison> saisons = saisonRepository.findAll();
-        return saisons.stream().map(saison -> SaisonDTO.get(saison.id,saison.name,saison.dateDebut,saison.dateFin,saison.matchSheets)).collect(Collectors.toList());
+        return saisons.stream().map(saison -> SaisonDTO.get(saison.getId(),saison.getDateDebut(),saison.getDateFin(),saison.getMatchSheets())).collect(Collectors.toList());
     }
 
 

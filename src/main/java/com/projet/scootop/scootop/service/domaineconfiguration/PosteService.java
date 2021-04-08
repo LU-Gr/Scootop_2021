@@ -26,13 +26,13 @@ public class PosteService {
         if(poste==null){
             return null;
         }
-        return PosteDTO.get(poste.id, poste.name,poste.players);
+        return PosteDTO.get(poste.getId(), poste.getName(),poste.getPlayers());
 
     }
     public Poste update(PosteDTO posteDTO, Long id) {
 
         Poste poste=new Poste(posteDTO.name,posteDTO.playerList);
-        poste.id = id;
+        poste.setId(id);
         return posteRepository.save(poste);
 
     }
@@ -40,7 +40,7 @@ public class PosteService {
 
         List<Poste> postes = posteRepository.findAll();
 
-        return postes.stream().map(poste -> PosteDTO.get(poste.id, poste.name, poste.players)).collect(Collectors.toList());
+        return postes.stream().map(poste -> PosteDTO.get(poste.getId(), poste.getName(), poste.getPlayers())).collect(Collectors.toList());
 
     }
 

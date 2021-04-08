@@ -2,6 +2,9 @@ package com.projet.scootop.scootop.domain.domainconfiguration;
 
 import com.projet.scootop.scootop.domain.user.Contact;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /*
@@ -10,16 +13,22 @@ import javax.persistence.*;
  * - Lattitude/longitude
  */
 @Entity
-@Table(name = "Stadium")
+@Table(name = "stade")
 
 public class Stade {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String name;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private String name;
+    
     @OneToOne(orphanRemoval=true)
     @JoinColumn(name = "CONTACT_ID")
-    public Contact contact;
+    @Getter @Setter
+    private Contact contact;
 
     public Stade( String name,Contact contact) {
         super();

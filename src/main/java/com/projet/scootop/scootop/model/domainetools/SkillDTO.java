@@ -1,8 +1,15 @@
 package com.projet.scootop.scootop.model.domainetools;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class SkillDTO {
-    public Long id;
-    public String name;
+	
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private String name;
 
     public static SkillDTO create(String name) {
 

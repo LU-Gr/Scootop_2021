@@ -4,19 +4,27 @@ import javax.persistence.*;
 
 import com.projet.scootop.scootop.domain.domainuser.Player;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 
 @Entity
 @Table(name = "Poste")
 public class Poste {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String name;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private String name;
     
     @ManyToMany
-    public List<Player> players;
+    @Getter @Setter
+    private List<Player> players;
 
     public Poste() {
     }
@@ -25,25 +33,5 @@ public class Poste {
         super();
         this.name = name;
         this.players = player;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
     }
 }

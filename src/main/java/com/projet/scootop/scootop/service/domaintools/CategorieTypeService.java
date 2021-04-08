@@ -16,13 +16,13 @@ public class CategorieTypeService {
     public CategoryTypeRepository categoryTypeRepository;
 
     public CategoryType add(CategoryTypeDTO categorieDTO){
-        CategoryType categorieType = new CategoryType(categorieDTO.name,categorieDTO.dateAgeMax);
+        CategoryType categorieType = new CategoryType(categorieDTO.getDateAgeMax());
         return categoryTypeRepository.save(categorieType);
 
     }
     public CategoryType update(CategoryTypeDTO categorieDTO, Long id){
-        CategoryType categorieType = new CategoryType(categorieDTO.name,categorieDTO.dateAgeMax);
-        categorieType.id=id;
+        CategoryType categorieType = new CategoryType(categorieDTO.getDateAgeMax());
+        categorieType.setId(id);
         return categoryTypeRepository.save(categorieType);
 
     }

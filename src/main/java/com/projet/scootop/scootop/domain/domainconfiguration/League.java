@@ -4,6 +4,9 @@ import javax.persistence.*;
 
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,21 +18,29 @@ import java.util.List;
 @Entity
 @Table(name = "League")
 public class League {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String name;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private String name;
+    
     @OneToMany(orphanRemoval=true, fetch=FetchType.EAGER)
-    public List<Division> divisions;
+    @Getter @Setter
+    private List<Division> divisions;
     
     @ManyToOne
+    @JoinColumn
+    @Getter @Setter
     private CompetitionType competitionType;
     
     @ManyToOne
+    @JoinColumn
+    @Getter @Setter
     private Saison saison;
     
-    //TODO: Ajouter CompetitionType
-    //TODO: Ajouter Saison
 
     public League() {
     }

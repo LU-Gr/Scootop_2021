@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.domain.domaintools;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.servicetools.video.Video;
 
 import javax.persistence.*;
 

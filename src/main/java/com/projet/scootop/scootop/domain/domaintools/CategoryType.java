@@ -1,29 +1,34 @@
 package com.projet.scootop.scootop.domain.domaintools;
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
 // définit l'âge min/max de la catégorie
 @Entity
 @Table(name = "CategoryType")
 
 public class CategoryType {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    //TODO: Supprimer name
-    public String name;
-    public int ageMin;
-    public int ageMax;
-    public LocalDate dateAgeMax;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private int ageMin;
+    @Getter @Setter
+    private int ageMax;
+    @Getter @Setter
+    private LocalDate dateAgeMax;
 
 
-    public CategoryType(String name,LocalDate dateAgeMax) {
-        this.name = name;
+    public CategoryType(LocalDate dateAgeMax) {
         this.dateAgeMax = dateAgeMax;
-
         this.ageMax = CategoryCalcul(dateAgeMax);
         this.ageMin = this.ageMax - 5;
     }
@@ -41,7 +46,6 @@ public class CategoryType {
     public String toString() {
         return "CategorieType{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", ageMin=" + ageMin +
                 ", ageMax=" + dateAgeMax +
                 '}';

@@ -4,7 +4,7 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.servicetools.video.Video;
 
 import javax.persistence.*;
 import java.time.LocalDate;

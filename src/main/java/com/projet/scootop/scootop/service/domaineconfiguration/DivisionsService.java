@@ -20,7 +20,7 @@ public class DivisionsService {
     public DivisionsDTO add(DivisionsDTO divisionsDTO, Long leagueId){
         League leagues=leagueRepository.findById(leagueId).orElse(null);
         Division newDivision = new Division(divisionsDTO.name);
-        leagues.divisions.add(newDivision);
+        leagues.getDivisions().add(newDivision);
         divisionsRepository.save(newDivision);
         return divisionsDTO;
     }

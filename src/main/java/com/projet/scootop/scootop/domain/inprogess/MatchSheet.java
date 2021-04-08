@@ -63,8 +63,8 @@ public class MatchSheet {
 
             this.team = team;
 
-            List<Player>  playersTeamA = this.team.get(1).players;
-            List<Player>  playersTeamB = this.team.get(2).players;
+            List<Player>  playersTeamA = this.team.get(1).getPlayers();
+            List<Player>  playersTeamB = this.team.get(2).getPlayers();
             StatisticalSheet statisticalSheetsTeamA = new StatisticalSheet();
             StatisticalSheet statisticalSheetsTeamB = new StatisticalSheet();
             StatisticalSheet statisticalSheetsGame =  new StatisticalSheet();

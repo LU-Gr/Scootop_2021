@@ -3,17 +3,22 @@ package com.projet.scootop.scootop.model.domainetools;
 import java.time.LocalDate;
 import java.time.Period;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class CategoryTypeDTO {
 
-    public Integer id;
-    public String name;
-    public int ageMin;
-    public int ageMax;
-    public LocalDate dateAgeMax;
+	@Getter @Setter
+    private Integer id;
+	@Getter @Setter
+    private int ageMin;
+	@Getter @Setter
+    private int ageMax;
+	@Getter @Setter
+    private LocalDate dateAgeMax;
 
-    public static CategoryTypeDTO create( String name,  LocalDate dateAgeMax) {
+    public static CategoryTypeDTO create(LocalDate dateAgeMax) {
         CategoryTypeDTO categoryTypeDTO= new CategoryTypeDTO();
-        categoryTypeDTO.name = name;
 
         categoryTypeDTO.ageMax = categoryTypeDTO.CategoryCalcul(dateAgeMax);
         categoryTypeDTO.ageMin = categoryTypeDTO.ageMax - 5;
@@ -21,10 +26,9 @@ public class CategoryTypeDTO {
         categoryTypeDTO.dateAgeMax = dateAgeMax;
         return categoryTypeDTO;
     }
-    public static CategoryTypeDTO get(Integer id, String name, int ageMin, int ageMax, LocalDate dateAgeMax) {
+    public static CategoryTypeDTO get(Integer id, int ageMin, int ageMax, LocalDate dateAgeMax) {
         CategoryTypeDTO categoryTypeDTO= new CategoryTypeDTO();
         categoryTypeDTO.id = id;
-        categoryTypeDTO.name = name;
         categoryTypeDTO.ageMin = ageMin;
         categoryTypeDTO.ageMax = ageMax;
         categoryTypeDTO.dateAgeMax = dateAgeMax;
@@ -40,7 +44,6 @@ public class CategoryTypeDTO {
     public String toString() {
         return "CategoryTypeDTO{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", ageMin=" + ageMin +
                 ", ageMax=" + ageMax +
                 ", dateAgeMax=" + dateAgeMax +

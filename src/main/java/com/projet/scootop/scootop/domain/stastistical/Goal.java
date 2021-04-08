@@ -2,23 +2,39 @@ package com.projet.scootop.scootop.domain.stastistical;
 
 import javax.persistence.*;
 
+import lombok.Setter;
+
+import lombok.Getter;
+
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Goal")
 
 public class Goal {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public LocalDate date;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private LocalDate date;
+    
     @OneToOne
-    public Shoot shoot;
+    @Getter @Setter
+    private Shoot shoot;
+    
     //TODO: Event ??
-    public String tag;
+    @Getter @Setter
+    private String tag;
+    
     //TODO: Delete
-    public Integer distance;
-    public Integer rating;
+    @Getter @Setter
+    private Integer distance;
+    
+    @Getter @Setter
+    private Integer rating;
 
 
 

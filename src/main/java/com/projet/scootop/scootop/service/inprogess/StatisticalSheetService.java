@@ -62,7 +62,7 @@ public class StatisticalSheetService {
         if(statisticalSheet==null){
             return null;
         }
-        return StatisticalSheetDTO.get(statisticalSheet.id, statisticalSheet.matchSheet, statisticalSheet.players, statisticalSheet.events, statisticalSheet.ShootIn, statisticalSheet.ShootOut,statisticalSheet.ballplayed, statisticalSheet.balllost, statisticalSheet.ballSuccess, statisticalSheet.Shoots, statisticalSheet.Heads, statisticalSheet.assists, statisticalSheet.skills, statisticalSheet.goals, statisticalSheet.distancekm);
+        return StatisticalSheetDTO.get(statisticalSheet.id, statisticalSheet.matchSheet, statisticalSheet.players, statisticalSheet.events, statisticalSheet.ShootIn, statisticalSheet.ShootOut,statisticalSheet.ballplayed, statisticalSheet.balllost, statisticalSheet.ballSuccess, statisticalSheet.Shoots, statisticalSheet.Heads, statisticalSheet.passes, statisticalSheet.skills, statisticalSheet.goals, statisticalSheet.distancekm);
     }
 
     public List<StatisticalSheet> getAll(){

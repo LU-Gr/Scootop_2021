@@ -32,21 +32,21 @@ public class StadeService {
         if(stade==null){
             return null;
         }
-        return StadeDTO.get(stade.id,stade.name,stade.contact);
+        return StadeDTO.get(stade.getId(),stade.getName(),stade.getContact());
 
     }
     public Stade update(StadeDTO stadeDTO,Long id){
 
         contactRepository.save(stadeDTO.contact);
         Stade stade= new Stade(stadeDTO.name,stadeDTO.contact);
-        stade.id=id;
+        stade.setId(id);
         return stadeRepository.save(stade);
     }
 
     public List<StadeDTO> getAll(){
         List<Stade> stades = stadeRepository.findAll();
 
-        return stades.stream().map(stade -> StadeDTO.get(stade.id,stade.name,stade.contact)).collect(Collectors.toList());
+        return stades.stream().map(stade -> StadeDTO.get(stade.getId(),stade.getName(),stade.getContact())).collect(Collectors.toList());
     }
     public String delete(Long id){
         Stade stade = stadeRepository.findById(id).orElse(null);

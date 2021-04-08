@@ -46,13 +46,11 @@ public class UserResumeService {
 
         playerRepository.save(userResumeDTO.player);
         competitionTypeRepository.save(userResumeDTO.competitionType);
-        goalRepository.saveAll(userResumeDTO.goals);
-        assistRepository.saveAll(userResumeDTO.assists);
         statisticalsheetRepository.saveAll(userResumeDTO.statisticalSheets);
         teamsRepository.saveAll(userResumeDTO.teams);
         saisonRepository.saveAll(userResumeDTO.saisons);
 
-        UserResume userResume = new UserResume(userResumeDTO.player, userResumeDTO.competitionType, userResumeDTO.goals, userResumeDTO.assists,userResumeDTO.statisticalSheets, userResumeDTO.distance_traveled, userResumeDTO.teams,userResumeDTO.saisons, userResumeDTO.ballPlayed, userResumeDTO.ballLost, userResumeDTO.defensiveSkills, userResumeDTO.offensiveSkills);
+        UserResume userResume = new UserResume(userResumeDTO.player, userResumeDTO.competitionType, userResumeDTO.statisticalSheets, userResumeDTO.teams,userResumeDTO.saisons, userResumeDTO.defensiveSkills, userResumeDTO.offensiveSkills);
         userResumeRepository.save(userResume);
         return userResumeDTO;
     }
@@ -65,12 +63,12 @@ public class UserResumeService {
             return null;
         }
 
-        return UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.goals, userResume.assists,userResume.statisticalSheets, userResume.distance_traveled, userResume.teams,userResume.saisons, userResume.ballPlayed, userResume.ballLost, userResume.OffensiveSkills, userResume.defensiveSkills);
+        return UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.statisticalSheets, userResume.teams,userResume.saisons, userResume.OffensiveSkills, userResume.defensiveSkills);
     }
 
     public List<UserResumeDTO> getAll(){
 
         List<UserResume> userResumes = userResumeRepository.findAll();
-        return userResumes.stream().map(userResume -> UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.goals, userResume.assists,userResume.statisticalSheets, userResume.distance_traveled, userResume.teams,userResume.saisons, userResume.ballPlayed, userResume.ballLost, userResume.OffensiveSkills, userResume.defensiveSkills)).collect(Collectors.toList());
+        return userResumes.stream().map(userResume -> UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.statisticalSheets, userResume.teams,userResume.saisons, userResume.OffensiveSkills, userResume.defensiveSkills)).collect(Collectors.toList());
     }
 }

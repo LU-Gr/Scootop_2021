@@ -17,7 +17,7 @@ public class SkillService {
     public SkillRepository skillRepository;
     
     public SkillDTO addSkill(SkillDTO skillsDTO) {
-        Skill skills = new Skill(skillsDTO.name);
+        Skill skills = new Skill(skillsDTO.getName());
         skillRepository.save(skills);
         return skillsDTO;
     }
@@ -29,13 +29,13 @@ public class SkillService {
             return null;
         }
 
-        return SkillDTO.get(skillsFamilly.id,skillsFamilly.name);
+        return SkillDTO.get(skillsFamilly.getId(),skillsFamilly.getName());
     }
 
     public List<SkillDTO> getAll(){
 
         List<Skill> skills = skillRepository.findAll();
-        return skills.stream().map(skill -> SkillDTO.get(skill.id,skill.name)).collect(Collectors.toList());
+        return skills.stream().map(skill -> SkillDTO.get(skill.getId(),skill.getName())).collect(Collectors.toList());
     }
 
 

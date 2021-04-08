@@ -14,7 +14,7 @@ public class SkillTypeService {
     @Autowired
     public SkillTypeRepository skillTypeRepository;
     public SkillTypeDTO addSkillType(SkillTypeDTO skillTypeDTO) {
-        SkillType skillsType = new SkillType(skillTypeDTO.name);
+        SkillType skillsType = new SkillType(skillTypeDTO.getName());
         skillTypeRepository.save(skillsType);
         return skillTypeDTO;
     }
@@ -25,13 +25,13 @@ public class SkillTypeService {
             return null;
         }
 
-        return SkillTypeDTO.get(skillsType.id,skillsType.name);
+        return SkillTypeDTO.get(skillsType.getId(),skillsType.getName());
     }
 
     public List<SkillTypeDTO> getAll(){
 
         List<SkillType> skillsTypes = skillTypeRepository.findAll();
-        return skillsTypes.stream().map(skillsType -> SkillTypeDTO.get(skillsType.id,skillsType.name)).collect(Collectors.toList());
+        return skillsTypes.stream().map(skillsType -> SkillTypeDTO.get(skillsType.getId(),skillsType.getName())).collect(Collectors.toList());
     }
 
 

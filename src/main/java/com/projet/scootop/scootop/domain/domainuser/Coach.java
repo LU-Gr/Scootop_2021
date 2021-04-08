@@ -18,6 +18,7 @@ public class Coach {
     @OneToOne
     @JoinColumn(name = "USER_ID")
     public User user;
+    
     //TODO: Supprimer
     @ManyToMany(mappedBy = "coaches", fetch = FetchType.LAZY)
     public List<Team> teams;

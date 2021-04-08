@@ -2,11 +2,19 @@ package com.projet.scootop.scootop.model.domainetools;
 
 import com.projet.scootop.scootop.domain.domaintools.Skill;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class SkillTypeDTO {
 
-    public Long id;
-    public String name;
-    public Skill skillsFamilly;
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private String name;
+	
+	@Getter @Setter
+	private Skill skillsFamilly;
 
     public static SkillTypeDTO get(Long id, String name) {
         SkillTypeDTO skillsTypeDTO = new SkillTypeDTO();

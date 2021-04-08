@@ -5,7 +5,7 @@ import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Scoot;
 import com.projet.scootop.scootop.domain.services.GameSheet;
-import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.servicetools.video.Video;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -8,7 +8,8 @@ import com.projet.scootop.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.scootop.repository.domainuser.ScootRepository;
 import com.projet.scootop.scootop.repository.services.EventsRepository;
 import com.projet.scootop.scootop.repository.services.GameSheetRepository;
-import com.projet.scootop.scootop.repository.servicetools.videosservices.VideoRepository;
+import com.projet.scootop.scootop.repository.servicetools.video.VideoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -14,10 +14,13 @@ import java.util.List;
 
 @Service
 public class LeagueService {
+	
     @Autowired
     public LeagueRepository leagueRepository;
+    
     @Autowired
     public DivisionsRepository divisionsRepository;
+    
     public DivisionsService divisionsService;
 
     public LeagueDTO add(LeagueDTO leagueDTO){
@@ -26,9 +29,9 @@ public class LeagueService {
         League newLeague = new League(leagueDTO.name);
         League league=leagueRepository.save(newLeague);
         for (DivisionsDTO divisionDTO: divisionsDTOS) {
-            League league1=leagueRepository.findById(league.id).orElse(null);
+            League league1=leagueRepository.findById(league.getId()).orElse(null);
             Division newDivision = new Division(divisionDTO.name);
-            league1.divisions.add(newDivision);
+            league1.getDivisions().add(newDivision);
             divisionsRepository.save(newDivision);
             //divisionsService.add(divisionDTO,league.id);
             //Divisions newDivision = new Divisions(divisionDTO.name);
@@ -52,7 +55,7 @@ public class LeagueService {
             DivisionsDTO newDivision = DivisionsDTO.get(division.getId(),division.getName());
             divisionsDTOS.add(newDivision);
         }
-        LeagueDTO leagueDTO = LeagueDTO.get(league.id,league.name,divisionsDTOS);
+        LeagueDTO leagueDTO = LeagueDTO.get(league.getId(),league.getName(),divisionsDTOS);
         return leagueDTO;
     }
     public List<LeagueDTO> getAll(){
@@ -62,14 +65,14 @@ public class LeagueService {
         for (League league: leagues) {
             ArrayList<DivisionsDTO> divisionsDTOS=  new ArrayList<>();
 
-            List<Division> divisions = divisionsRepository.findAllByLeagueId(league.id);
+            List<Division> divisions = divisionsRepository.findAllByLeagueId(league.getId());
             for (Division division: divisions
             ) {
                 DivisionsDTO newDivision = DivisionsDTO.get(division.getId(),division.getName());
                 divisionsDTOS.add(newDivision);
             }
 
-            LeagueDTO leagueDTO = LeagueDTO.get(league.id,league.name,divisionsDTOS);
+            LeagueDTO leagueDTO = LeagueDTO.get(league.getId(),league.getName(),divisionsDTOS);
             leagueDTOS.add(leagueDTO);
 
         }

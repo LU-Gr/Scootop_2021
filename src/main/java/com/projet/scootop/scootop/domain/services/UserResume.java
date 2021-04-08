@@ -11,15 +11,15 @@ import com.projet.scootop.scootop.domain.stastistical.Action;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 // Stats d'un joueur selon le type de compétition
 @Entity
 @Table(name = "UserResume")
-
 public class UserResume {
 
-    public UserResume(Player player, Competition competitionType, List<Goal> goals, List<Pass> assists, List<StatisticalSheet> statisticalSheets, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
+    public UserResume(Player player, Competition competitionType, List<StatisticalSheet> statisticalSheets, List<Team> teams, List<Saison> saisons, int defensiveSkills, int offensiveSkills) {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,40 +27,20 @@ public class UserResume {
 
     @OneToOne
     public Player player;
-
     
     @OneToOne
     public Competition competitionType;
     
     @OneToMany
     public List<StatisticalSheet> statisticalSheets;
-    
-    
-    // dans statisticalSheets
-    @OneToMany
-    public List<Goal> goals;
-
-    // dans statisticalSheets
-    @OneToMany
-    public List<Pass> assists;
-
-    
-
-    // dans statisticalSheets
-    public float distance_traveled;
 
     //TODO: remplacer par filter player.teams.competitionType == competitonType
     @OneToMany
     public List<Team> teams;
 
-    
     @OneToMany
     public List<Saison> saisons;
 
-    // dans statisticalSheets
-    public int ballPlayed;
-    // dans statisticalSheets
-    public int ballLost;
     // dans statisticalSheets
     public int defensiveSkills;
     public int OffensiveSkills;
@@ -69,14 +49,9 @@ public class UserResume {
         this.id = id;
         this.player = player;
         this.competitionType = competitionType;
-        this.goals = goals;
-        this.assists = assists;
         this.statisticalSheets = statisticalSheet;
-        this.distance_traveled = distance_traveled;
         this.teams = teams;
         this.saisons = saisons;
-        this.ballPlayed = ballPlayed;
-        this.ballLost = ballLost;
         this.defensiveSkills = defensiveSkills;
         this.OffensiveSkills = offensiveSkills;
     }
@@ -87,14 +62,9 @@ public class UserResume {
                 "id=" + id +
                 ", player=" + player +
                 ", competitionType=" + competitionType +
-                ", goals=" + goals +
-                ", assists=" + assists +
                 ", statisticalSheets=" + statisticalSheets +
-                ", distance_traveled=" + distance_traveled +
                 ", teams=" + teams +
                 ", saisons=" + saisons +
-                ", ballPlayed=" + ballPlayed +
-                ", ballLost=" + ballLost +
                 ", defensiveSkills=" + defensiveSkills +
                 ", OffensiveSkills=" + OffensiveSkills +
                 '}';
@@ -110,7 +80,7 @@ public class UserResume {
 
             Team playerTeam = team;
 
-            LocalDate StartSaision = saisons.get(i).dateDebut;
+            LocalDate StartSaision = saisons.get(i).getDateDebut();
             List<Goal> SaisonsGoals = null;
             List<Pass> SaisonsAssists = null;
 
@@ -151,101 +121,83 @@ public class UserResume {
 
     public int CountYearsGoals(LocalDate Years, Player Player){
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
 
-        List<Goal> SaisonsGoals = null;
+        List<Goal> SaisonsGoals = new ArrayList<>();
         int GoalsCountYears = 0;
 
-        for (int j = 0; j < goals.size() ; j++) {
-
-            if( goals.get(j).date.isBefore(EndSaision) && goals.get(j).date.isAfter(StartSaision)){
-
-                SaisonsGoals.add(goals.get(j));
-
-                    GoalsCountYears = SaisonsGoals.size();
-            }
+        for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
+        	for(Goal goal: statisticalSheet.getGoals()) {
+        		LocalDate goalDate = goal.getDate();
+        		if(goalDate.isAfter(startSaison) && goalDate.isBefore(endSaison)) {
+        			SaisonsGoals.add(goal);
+        		}
+        	}
         }
-
-
+        
+        GoalsCountYears = SaisonsGoals.size();
         return GoalsCountYears;
     }
     public int CountYearsAssits(LocalDate Years, Player player){
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
+    	LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
 
-        List<Pass> SaisonsAssists = null;
+        List<Pass> SaisonsAssists = new ArrayList<>();
         int AssistsCountYears = 0;
 
-        for (int j = 0; j < assists.size() ; j++) {
-
-            if( assists.get(j).date.isBefore(EndSaision) && assists.get(j).date.isAfter(StartSaision)){
-
-                SaisonsAssists.add(assists.get(j));
-
-                AssistsCountYears = SaisonsAssists.size();
-            }
+        for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
+        	for(Pass pass: statisticalSheet.getPasses()) {
+        		LocalDate passDate = pass.getDate();
+        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison)) {
+        			SaisonsAssists.add(pass);
+        		}
+        	}
         }
-
-
+        AssistsCountYears = SaisonsAssists.size();
         return AssistsCountYears;
     }
 
     public int CountYearsSuccessAssists(LocalDate Years, Player player){
 
-        LocalDate StartSaison = Years;
-        LocalDate EndSaison = StartSaison.plusMonths(8);
+    	LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
 
-        List<Pass> SaisonsSuccessAssistsList = null;
+        List<Pass> SaisonsSuccessAssistsList = new ArrayList<>();
         int SuccessAssistsCountYears = 0;
-
-        for (int j = 0; j < assists.size() ; j++) {
-
-            if( assists.get(j).date.isBefore(EndSaison) && assists.get(j).date.isAfter(StartSaison)){
-
-                for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
-
-                    if(statisticalSheets.get(j).getPlayers().get(i).id == player.id & statisticalSheets.get(j).getAssists().get(i).isSuccess == true) {
-
-                        SaisonsSuccessAssistsList.add(statisticalSheets.get(j).getAssists().get(i));
-                        SuccessAssistsCountYears = SuccessAssistsCountYears + SaisonsSuccessAssistsList.size();
-
-                    }
-
-                }
-            }
+        
+        for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
+        	for(Pass pass: statisticalSheet.getPasses()) {
+        		LocalDate passDate = pass.getDate();
+        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && pass.isSuccess) {
+        			SaisonsSuccessAssistsList.add(pass);
+        		}
+        	}
         }
 
-
+        SuccessAssistsCountYears =  SaisonsSuccessAssistsList.size();
         return SuccessAssistsCountYears;
     }
+    
     public int CountYearsFailedAssists(LocalDate Years, Player player){
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
+    	LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
 
-        List<Pass> SaisonsFailedAssistsList = null;
+        List<Pass> SaisonsSuccessAssistsList = new ArrayList<>();
         int FailedAssistsCountYears = 0;
-
-        for (int j = 0; j < assists.size() ; j++) {
-
-            if( assists.get(j).date.isBefore(EndSaision) && assists.get(j).date.isAfter(StartSaision)){
-
-                for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
-
-                    if(statisticalSheets.get(j).getPlayers().get(i).id == player.id & statisticalSheets.get(j).getAssists().get(i).isSuccess == false) {
-
-                        SaisonsFailedAssistsList.add(statisticalSheets.get(j).getAssists().get(i));
-                        FailedAssistsCountYears = FailedAssistsCountYears + SaisonsFailedAssistsList.size();
-
-                    }
-
-                }
-            }
+        
+        for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
+        	for(Pass pass: statisticalSheet.getPasses()) {
+        		LocalDate passDate = pass.getDate();
+        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && !pass.isSuccess) {
+        			SaisonsSuccessAssistsList.add(pass);
+        		}
+        	}
         }
 
-
+        FailedAssistsCountYears =  SaisonsSuccessAssistsList.size();
         return FailedAssistsCountYears;
     }
 
@@ -516,8 +468,6 @@ public class UserResume {
     }
 
     public Integer CountGamePlayed(LocalDate Years, Player player){
-
-
         LocalDate StartSaision = Years;
         LocalDate EndSaision = StartSaision.plusMonths(8);
 
@@ -533,104 +483,6 @@ public class UserResume {
             }
 
         }
-
-
         return GamePlayedYears;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Competition getCompetitionType() {
-        return competitionType;
-    }
-
-    public void setCompetitionType(Competition competitionType) {
-        this.competitionType = competitionType;
-    }
-
-    public List<Goal> getGoals() {
-        return goals;
-    }
-
-    public void setGoals(List<Goal> goals) {
-        this.goals = goals;
-    }
-
-    public List<Pass> getAssists() {
-        return assists;
-    }
-
-    public void setAssists(List<Pass> assists) {
-        this.assists = assists;
-    }
-
-    public List<StatisticalSheet> getStatisticalSheets() {
-        return statisticalSheets;
-    }
-
-    public void setStatisticalSheets(List<StatisticalSheet> statisticalSheets) {
-        this.statisticalSheets = statisticalSheets;
-    }
-
-    public float getDistance_traveled() {
-        return distance_traveled;
-    }
-
-    public void setDistance_traveled(float distance_traveled) {
-        this.distance_traveled = distance_traveled;
-    }
-
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
-
-    public List<Saison> getSaisons() {
-        return saisons;
-    }
-
-    public void setSaisons(List<Saison> saisons) {
-        this.saisons = saisons;
-    }
-
-    public int getBallPlayed() {
-        return ballPlayed;
-    }
-
-    public void setBallPlayed(int ballPlayed) {
-        this.ballPlayed = ballPlayed;
-    }
-
-    public int getBallLost() {
-        return ballLost;
-    }
-
-    public void setBallLost(int ballLost) {
-        this.ballLost = ballLost;
-    }
-
-    public int getDefensiveSkills() {
-        return defensiveSkills;
-    }
-
-    public void setDefensiveSkills(int defensiveSkills) {
-        this.defensiveSkills = defensiveSkills;
-    }
-
-    public int getOffensiveSkills() {
-        return OffensiveSkills;
-    }
-
-    public void setOffensiveSkills(int offensiveSkills) {
-        OffensiveSkills = offensiveSkills;
     }
 }

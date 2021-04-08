@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.model.domainetools;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.scootop.domain.servicetools.videosservices.Video;
+import com.projet.scootop.scootop.domain.servicetools.video.Video;
 
 public class CompetitionDTO {
     public Long id;

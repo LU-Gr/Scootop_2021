@@ -6,7 +6,7 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
+import com.projet.scootop.scootop.domain.inprogress.StatisticalSheet;
 
 public class UserResumeDTO {
 

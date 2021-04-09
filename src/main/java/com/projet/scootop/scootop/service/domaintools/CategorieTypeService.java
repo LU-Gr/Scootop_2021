@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.service.domaintools;
 
 import com.projet.scootop.scootop.domain.domaintools.CategoryType;
-import com.projet.scootop.scootop.model.domainetools.CategoryTypeDTO;
+import com.projet.scootop.scootop.model.domaintools.CategoryTypeDTO;
 import com.projet.scootop.scootop.repository.domainetools.CategoryTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

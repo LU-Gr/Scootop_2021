@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.service.domaintools;
 
 import com.projet.scootop.scootop.domain.domaintools.Competition;
-import com.projet.scootop.scootop.model.domainetools.CompetitionDTO;
+import com.projet.scootop.scootop.model.domaintools.CompetitionDTO;
 import com.projet.scootop.scootop.repository.domainetools.CompetitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

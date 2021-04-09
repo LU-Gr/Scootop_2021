@@ -2,7 +2,7 @@ package com.projet.scootop.scootop.model.statistical;
 
 import java.time.LocalDate;
 
-import com.projet.scootop.scootop.domain.stastistical.Shoot;
+import com.projet.scootop.scootop.domain.statistical.Shoot;
 
 public class GoalDTO {
 

@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.model.statistical;
 
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 
 public class ActionDTO {
 

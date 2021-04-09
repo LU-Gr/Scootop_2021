@@ -15,14 +15,16 @@ import java.util.stream.Collectors;
 
 @Service
 public class ScootService {
+	
   @Autowired
   public ScootRepository scootRepository;
+  
   public UserService userService;
   public ClubService clubService;
+  
   public Scoot add(ScootDTO scootDTO) throws Exception {
     userService.updateEntity(scootDTO.user);
-    for (Club club: scootDTO.clubs
-         ) {
+    for (Club club: scootDTO.clubs) {
       clubService.updateEntity(club);
     }
     Scoot scoot=new Scoot(scootDTO.user,scootDTO.clubs, scootDTO.shortlist);

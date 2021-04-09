@@ -2,7 +2,7 @@ package com.projet.scootop.scootop.model.services;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Stade;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
+import com.projet.scootop.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.scootop.domain.services.Events;
 import com.projet.scootop.scootop.domain.user.User;
 

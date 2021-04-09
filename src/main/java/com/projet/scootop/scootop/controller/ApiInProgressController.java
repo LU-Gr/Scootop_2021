@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.controller;
 
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.scootop.model.inprogress.MatchSheetDTO;
 import com.projet.scootop.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.scootop.service.inprogess.MatchSheetService;

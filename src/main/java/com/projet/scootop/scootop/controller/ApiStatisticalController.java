@@ -1,10 +1,10 @@
 package com.projet.scootop.scootop.controller;
 
-import com.projet.scootop.scootop.domain.stastistical.Pass;
-import com.projet.scootop.scootop.domain.stastistical.Goal;
-import com.projet.scootop.scootop.domain.stastistical.Shoot;
-import com.projet.scootop.scootop.domain.stastistical.physical.TypeTouch;
 import com.projet.scootop.scootop.model.statistical.PassDTO;
+import com.projet.scootop.scootop.domain.statistical.Goal;
+import com.projet.scootop.scootop.domain.statistical.Pass;
+import com.projet.scootop.scootop.domain.statistical.Shoot;
+import com.projet.scootop.scootop.domain.statistical.physical.TypeTouch;
 import com.projet.scootop.scootop.model.statistical.GoalDTO;
 import com.projet.scootop.scootop.model.statistical.ShootDTO;
 import com.projet.scootop.scootop.model.statistical.TypeTouchDTO;

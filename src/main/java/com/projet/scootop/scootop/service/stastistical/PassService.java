@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.stastistical;
 
-import com.projet.scootop.scootop.domain.stastistical.Pass;
+import com.projet.scootop.scootop.domain.statistical.Pass;
 import com.projet.scootop.scootop.model.statistical.PassDTO;
 import com.projet.scootop.scootop.repository.inprogress.MatchSheetRepository;
 import com.projet.scootop.scootop.repository.statistical.PassRepository;

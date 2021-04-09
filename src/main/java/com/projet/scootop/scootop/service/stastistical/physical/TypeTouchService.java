@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.stastistical.physical;
 
-import com.projet.scootop.scootop.domain.stastistical.physical.TypeTouch;
+import com.projet.scootop.scootop.domain.statistical.physical.TypeTouch;
 import com.projet.scootop.scootop.model.statistical.TypeTouchDTO;
 import com.projet.scootop.scootop.repository.statistical.physical.TypeTouchRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,19 +3,25 @@ package com.projet.scootop.scootop.domain.domainuser;
 import com.projet.scootop.scootop.domain.user.User;
 import com.projet.scootop.scootop.domain.user.UserType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Chairman")
 
 public class Chairman {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    public User user;
+    @JoinColumn
+    @Getter @Setter
+    private User user;
 
     public Chairman() {
 

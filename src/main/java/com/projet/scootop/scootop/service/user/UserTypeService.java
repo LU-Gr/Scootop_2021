@@ -1,8 +1,9 @@
 package com.projet.scootop.scootop.service.user;
 
-import com.projet.scootop.scootop.model.UserTypeDTO;
 import com.projet.scootop.scootop.repository.user.UserTypeRepository;
 import com.projet.scootop.scootop.domain.user.UserType;
+import com.projet.scootop.scootop.model.user.UserTypeDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -69,7 +69,7 @@ public class Team {
         if(coaches.size() >= 0 || coaches.size() <= 3) {
             for (int i = 0; i < coaches.size(); i++) {
                 Coach coach=coaches.get(i);
-                if(coach.teams.size()>3){
+                if(coach.getTeams().size()>3){
                     throw new Exception("Un coach ne peut pas entrainer plus de 3 équipes");
                 }
             }

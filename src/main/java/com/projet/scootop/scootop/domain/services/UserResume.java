@@ -4,10 +4,10 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domaintools.Competition;
 import com.projet.scootop.scootop.domain.domaintools.Saison;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
-import com.projet.scootop.scootop.domain.stastistical.Pass;
-import com.projet.scootop.scootop.domain.stastistical.Goal;
-import com.projet.scootop.scootop.domain.stastistical.Action;
+import com.projet.scootop.scootop.domain.inprogress.StatisticalSheet;
+import com.projet.scootop.scootop.domain.statistical.Action;
+import com.projet.scootop.scootop.domain.statistical.Goal;
+import com.projet.scootop.scootop.domain.statistical.Pass;
 
 import javax.persistence.*;
 import java.time.LocalDate;

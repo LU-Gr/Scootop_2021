@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.stastistical;
 
-import com.projet.scootop.scootop.domain.stastistical.Shoot;
+import com.projet.scootop.scootop.domain.statistical.Shoot;
 import com.projet.scootop.scootop.model.statistical.ShootDTO;
 import com.projet.scootop.scootop.repository.inprogress.MatchSheetRepository;
 import com.projet.scootop.scootop.repository.statistical.ShootRepository;

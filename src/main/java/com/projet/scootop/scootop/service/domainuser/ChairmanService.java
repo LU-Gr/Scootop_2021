@@ -17,8 +17,8 @@ public class ChairmanService {
     public ChairmanRepository chairmanRepository;
     public UserService userService;
     public Chairman add(ChairmanDTO chairmanDTO) throws Exception{
-        userService.updateEntity(chairmanDTO.user);
-        Chairman chairman=new Chairman(chairmanDTO.user);
+        userService.updateEntity(chairmanDTO.getUser());
+        Chairman chairman=new Chairman(chairmanDTO.getUser());
 
         return chairmanRepository.save(chairman);
     }
@@ -27,9 +27,9 @@ public class ChairmanService {
 
     }
     public Chairman update(ChairmanDTO chairmanDTO,Long id) throws Exception{
-        userService.updateEntity(chairmanDTO.user);
-        Chairman chairman=new Chairman(chairmanDTO.user);
-        chairman.id=id;
+        userService.updateEntity(chairmanDTO.getUser());
+        Chairman chairman=new Chairman(chairmanDTO.getUser());
+        chairman.setId(id);
         return chairmanRepository.save(chairman);
 
     }

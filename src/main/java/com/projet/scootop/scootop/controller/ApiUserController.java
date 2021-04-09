@@ -1,8 +1,8 @@
 package com.projet.scootop.scootop.controller;
 
-import com.projet.scootop.scootop.model.ContactDTO;
-import com.projet.scootop.scootop.model.UserDTO;
-import com.projet.scootop.scootop.model.UserTypeDTO;
+import com.projet.scootop.scootop.model.user.ContactDTO;
+import com.projet.scootop.scootop.model.user.UserDTO;
+import com.projet.scootop.scootop.model.user.UserTypeDTO;
 import com.projet.scootop.scootop.service.user.ContactService;
 import com.projet.scootop.scootop.service.user.UserService;
 import com.projet.scootop.scootop.service.user.UserTypeService;

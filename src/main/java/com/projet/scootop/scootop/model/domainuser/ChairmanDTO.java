@@ -2,10 +2,16 @@ package com.projet.scootop.scootop.model.domainuser;
 
 import com.projet.scootop.scootop.domain.user.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class ChairmanDTO {
 
-    public Long id;
-    public User user;
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private User user;
 
     public static ChairmanDTO create( User user) {
         ChairmanDTO chairmanDTO = new ChairmanDTO();

@@ -1,8 +1,9 @@
 package com.projet.scootop.scootop.service.user;
 
-import com.projet.scootop.scootop.model.ContactDTO;
 import com.projet.scootop.scootop.repository.user.ContactRepository;
 import com.projet.scootop.scootop.domain.user.Contact;
+import com.projet.scootop.scootop.model.user.ContactDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

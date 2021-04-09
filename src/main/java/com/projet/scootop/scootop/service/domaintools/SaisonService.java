@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.service.domaintools;
 
 import com.projet.scootop.scootop.domain.domaintools.Saison;
-import com.projet.scootop.scootop.model.domainetools.SaisonDTO;
+import com.projet.scootop.scootop.model.domaintools.SaisonDTO;
 import com.projet.scootop.scootop.repository.domainetools.SaisonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -3,13 +3,13 @@ package com.projet.scootop.scootop.model.inprogress;
 import java.util.List;
 
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.scootop.domain.services.Events;
-import com.projet.scootop.scootop.domain.stastistical.Pass;
-import com.projet.scootop.scootop.domain.stastistical.Goal;
-import com.projet.scootop.scootop.domain.stastistical.Shoot;
-import com.projet.scootop.scootop.domain.stastistical.Action;
-import com.projet.scootop.scootop.domain.stastistical.physical.PlayerHead;
+import com.projet.scootop.scootop.domain.statistical.Action;
+import com.projet.scootop.scootop.domain.statistical.Goal;
+import com.projet.scootop.scootop.domain.statistical.Pass;
+import com.projet.scootop.scootop.domain.statistical.Shoot;
+import com.projet.scootop.scootop.domain.statistical.physical.PlayerHead;
 
 public class StatisticalSheetDTO {
     public Long id;

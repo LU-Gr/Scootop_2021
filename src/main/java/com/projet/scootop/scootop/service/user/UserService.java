@@ -1,12 +1,13 @@
 package com.projet.scootop.scootop.service.user;
 
-import com.projet.scootop.scootop.model.UserDTO;
 import com.projet.scootop.scootop.repository.user.ContactRepository;
 import com.projet.scootop.scootop.repository.user.UserRepository;
 import com.projet.scootop.scootop.repository.user.UserTypeRepository;
 import com.projet.scootop.scootop.domain.user.Contact;
 import com.projet.scootop.scootop.domain.user.User;
 import com.projet.scootop.scootop.domain.user.UserType;
+import com.projet.scootop.scootop.model.user.UserDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

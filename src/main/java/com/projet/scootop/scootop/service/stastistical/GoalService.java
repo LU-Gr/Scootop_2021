@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.stastistical;
 
-import com.projet.scootop.scootop.domain.stastistical.Goal;
+import com.projet.scootop.scootop.domain.statistical.Goal;
 import com.projet.scootop.scootop.model.statistical.GoalDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.ClubRepository;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;

@@ -3,7 +3,7 @@ package com.projet.scootop.scootop.domain.domaintools;
 import javax.persistence.*;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.League;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 
 import lombok.Getter;
 import lombok.Setter;

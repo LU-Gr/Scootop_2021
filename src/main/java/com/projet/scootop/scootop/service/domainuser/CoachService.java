@@ -1,6 +1,5 @@
 package com.projet.scootop.scootop.service.domainuser;
 
-import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Coach;
 import com.projet.scootop.scootop.model.domainuser.CoachDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;
@@ -10,6 +9,7 @@ import com.projet.scootop.scootop.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,25 +27,22 @@ public class CoachService {
     }
 
     public Coach add(CoachDTO coachDTO) throws Exception {
-        userService.updateEntity(coachDTO.user);
-        for (Team team: coachDTO.teams
-             ) {
-            teamRepository.save(team);
-        }
-        Coach coach=new Coach(coachDTO.user,coachDTO.teams);
-
+        userService.updateEntity(coachDTO.getUser());
+        Coach coach = new Coach(coachDTO.getUser(),new ArrayList<>());
         return coachRepository.save(coach);
     }
+    
     public Coach get(Long id){
         return coachRepository.findById(id).orElse(null);
     }
+    
     public Coach update(CoachDTO coachDTO,Long id) throws Exception {
-        User newUser = userService.updateEntity(coachDTO.user);
-        Coach coach =new Coach(newUser,coachDTO.teams);
-        coach.id=id;
-
+        User newUser = userService.updateEntity(coachDTO.getUser());
+        Coach coach = new Coach(newUser, coachDTO.getTeams());
+        coach.setId(id);
         return coachRepository.save(coach);
     }
+    
     public List<Coach> getAll(){
 
         return coachRepository.findAll();

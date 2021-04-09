@@ -1,9 +1,9 @@
 package com.projet.scootop.scootop.model.statistical;
 
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.domain.stastistical.Pass;
-import com.projet.scootop.scootop.domain.stastistical.physical.TypeTouch;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.scootop.domain.statistical.Pass;
+import com.projet.scootop.scootop.domain.statistical.physical.TypeTouch;
 
 public class ShootDTO {
 

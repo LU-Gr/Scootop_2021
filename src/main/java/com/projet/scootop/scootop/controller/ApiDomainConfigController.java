@@ -1,7 +1,6 @@
 package com.projet.scootop.scootop.controller;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.*;
-import com.projet.scootop.scootop.model.ClubDTO;
 import com.projet.scootop.scootop.model.domainconfiguration.*;
 import com.projet.scootop.scootop.service.domaineconfiguration.*;
 import org.springframework.web.bind.annotation.*;

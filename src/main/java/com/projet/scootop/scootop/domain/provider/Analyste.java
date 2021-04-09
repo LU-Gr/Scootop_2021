@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.domain.provider;
 
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.scootop.domain.user.User;
 import com.projet.scootop.scootop.domain.user.UserType;
 

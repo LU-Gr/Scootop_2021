@@ -4,6 +4,9 @@ import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.user.User;
 import com.projet.scootop.scootop.domain.user.UserType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,39 +14,20 @@ import java.util.List;
 @Table(name = "Coach")
 
 public class Coach {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    public User user;
+    @JoinColumn
+    @Getter @Setter
+    private User user;
     
-    //TODO: Supprimer
     @ManyToMany(mappedBy = "coaches", fetch = FetchType.LAZY)
-    public List<Team> teams;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    //TODO: Faire le setter de Coach dans Team et pas ici
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
+    @Getter
+    private List<Team> teams;
 
     public Coach() {
     }
@@ -63,9 +47,5 @@ public class Coach {
 
         this.user = user;
         this.teams = teams;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

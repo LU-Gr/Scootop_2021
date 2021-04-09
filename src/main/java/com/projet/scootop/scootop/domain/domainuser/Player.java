@@ -2,10 +2,10 @@ package com.projet.scootop.scootop.domain.domainuser;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Category;
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
-import com.projet.scootop.scootop.domain.inprogess.StatisticalSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.scootop.domain.servicetools.video.Video;
-import com.projet.scootop.scootop.domain.stastistical.physical.PlayerHead;
+import com.projet.scootop.scootop.domain.statistical.physical.PlayerHead;
 import com.projet.scootop.scootop.domain.user.User;
 
 import javax.persistence.*;

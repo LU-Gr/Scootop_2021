@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.inprogess;
 
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.scootop.domain.services.Wearable;
 import com.projet.scootop.scootop.model.inprogress.MatchSheetDTO;
 import com.projet.scootop.scootop.repository.domainconfiguration.TeamRepository;

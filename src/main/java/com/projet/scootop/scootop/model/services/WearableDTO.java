@@ -2,7 +2,7 @@ package com.projet.scootop.scootop.model.services;
 
 import com.projet.scootop.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.scootop.domain.domainuser.Player;
-import com.projet.scootop.scootop.domain.inprogess.MatchSheet;
+import com.projet.scootop.scootop.domain.inprogress.MatchSheet;
 
 public class WearableDTO {
 

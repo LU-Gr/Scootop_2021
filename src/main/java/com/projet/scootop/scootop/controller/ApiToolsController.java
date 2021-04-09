@@ -3,7 +3,7 @@ package com.projet.scootop.scootop.controller;
 
 import com.projet.scootop.scootop.domain.domaintools.CategoryType;
 import com.projet.scootop.scootop.domain.domaintools.Competition;
-import com.projet.scootop.scootop.model.domainetools.*;
+import com.projet.scootop.scootop.model.domaintools.*;
 import com.projet.scootop.scootop.service.domaintools.*;
 import org.springframework.web.bind.annotation.*;
 

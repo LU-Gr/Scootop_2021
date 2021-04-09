@@ -1,6 +1,6 @@
 package com.projet.scootop.scootop.service.stastistical;
 
-import com.projet.scootop.scootop.domain.stastistical.Action;
+import com.projet.scootop.scootop.domain.statistical.Action;
 import com.projet.scootop.scootop.model.statistical.ActionDTO;
 import com.projet.scootop.scootop.repository.statistical.ActionRepository;
 import org.springframework.beans.factory.annotation.Autowired;

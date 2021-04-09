@@ -1,7 +1,7 @@
 package com.projet.scootop.scootop.service.domaintools;
 
 import com.projet.scootop.scootop.domain.domaintools.Skill;
-import com.projet.scootop.scootop.model.domainetools.SkillDTO;
+import com.projet.scootop.scootop.model.domaintools.SkillDTO;
 import com.projet.scootop.scootop.repository.domainetools.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

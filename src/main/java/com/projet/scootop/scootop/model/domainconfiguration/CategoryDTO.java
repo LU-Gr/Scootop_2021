@@ -2,24 +2,17 @@ package com.projet.scootop.scootop.model.domainconfiguration;
 
 import com.projet.scootop.scootop.domain.domaintools.CategoryType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class CategoryDTO {
 
-    int id;
-    public String name;
+	@Getter @Setter
+    private int id;
+    
+	@Getter @Setter
+    private String name;
 
-    public CategoryType categoryType;
-
-    public static CategoryDTO create(String name, CategoryType categoryType) {
-        CategoryDTO category = new CategoryDTO();
-        category.name = name;
-        category.categoryType = categoryType;
-        return category;
-    }
-    public static CategoryDTO get(int id, String name, CategoryType categoryType) {
-        CategoryDTO category = new CategoryDTO();
-        category.id = id;
-        category.name = name;
-        category.categoryType = categoryType;
-        return category;
-    }
+	@Getter @Setter
+    private CategoryType categoryType;
 }

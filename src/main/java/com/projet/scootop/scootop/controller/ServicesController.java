@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-public class ApiServicesController {
+public class ServicesController {
 
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);
@@ -38,7 +38,7 @@ public class ApiServicesController {
     private GameSheetRepository gameSheetRepository;
 
 
-    public ApiServicesController(UserResumeService serResumeService, ShortlistService shortlistService, GameSheetService gameSheetService, EventsService eventsService, WearableService wearableService, StatisticalSheetService statisticalSheetService,PlayerService playerService, MatchSheetService matchSheetService ) {
+    public ServicesController(UserResumeService serResumeService, ShortlistService shortlistService, GameSheetService gameSheetService, EventsService eventsService, WearableService wearableService, StatisticalSheetService statisticalSheetService,PlayerService playerService, MatchSheetService matchSheetService ) {
         super();
         this.userResumeService = serResumeService;
         this.shortlistService = shortlistService;

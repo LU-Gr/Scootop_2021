@@ -3,7 +3,7 @@ package com.projet.scootop.scootop.controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ApiServiceToolsController {
+public class ServiceToolsController {
 
     @GetMapping("api/agence_types")
     String getAllAgenceType(){

@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ApiInProgressController {
+public class InProgressController {
     private StatisticalSheetService statisticalSheetService;
     private MatchSheetService matchSheetService;
 
-    public ApiInProgressController(StatisticalSheetService statisticalSheetService, MatchSheetService matchSheetService) {
+    public InProgressController(StatisticalSheetService statisticalSheetService, MatchSheetService matchSheetService) {
         this.statisticalSheetService = statisticalSheetService;
         this.matchSheetService = matchSheetService;
     }

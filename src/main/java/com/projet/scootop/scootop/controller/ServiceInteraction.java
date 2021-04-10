@@ -12,12 +12,12 @@ import java.util.List;
 
 
 @RestController
-public class ApiServiceInteraction {
+public class ServiceInteraction {
     private AlertService alertService;
     private FollowService followService;
     private InviteService inviteService;
 
-    public ApiServiceInteraction(AlertService alertService, FollowService followService,InviteService inviteService) {
+    public ServiceInteraction(AlertService alertService, FollowService followService,InviteService inviteService) {
         this.alertService = alertService;
         this.followService = followService;
         this.inviteService = inviteService;

@@ -13,7 +13,7 @@ import java.util.*;
 
 
 @RestController
-public class ApiConfigController {
+public class ConfigController {
 
     @GetMapping("")
     Team helloWorld() throws Exception {

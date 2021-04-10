@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ApiDomainUser {
+public class DomainUserController {
     private PlayerService playerService;
     private ChairmanService chairmanService;
     private ScootService scootService;
     private CoachService coachService;
 
-    public ApiDomainUser(PlayerService playerService,ChairmanService chairmanService,ScootService scootService,CoachService coachService) {
+    public DomainUserController(PlayerService playerService,ChairmanService chairmanService,ScootService scootService,CoachService coachService) {
         super();
         this.playerService = playerService;
         this.chairmanService = chairmanService;

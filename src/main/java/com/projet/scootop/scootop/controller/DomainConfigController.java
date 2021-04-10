@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ApiDomainConfigController {
+public class DomainConfigController {
     private StadeService stadeService;
     private LeagueService leagueService;
     private CategoryService categoryService;
     private ClubService clubService;
-    private DivisionsService divisionsService;
+    private DivisionService divisionsService;
     private PosteService posteService;
     private TeamService teamService;
     private CompetitionTypeService typeService;
 
 
-    public ApiDomainConfigController(StadeService stadeService, LeagueService leagueService, CategoryService categoryService, ClubService clubService, DivisionsService divisionsService, PosteService posteService, TeamService teamService, CompetitionTypeService typeService) {
+    public DomainConfigController(StadeService stadeService, LeagueService leagueService, CategoryService categoryService, ClubService clubService, DivisionService divisionsService, PosteService posteService, TeamService teamService, CompetitionTypeService typeService) {
         super();
         this.stadeService = stadeService;
         this.leagueService = leagueService;
@@ -88,7 +88,7 @@ public class ApiDomainConfigController {
 
 
     @GetMapping("api/division/{id}")
-    DivisionsDTO getDivision(@PathVariable("id") Long id){
+    DivisionDTO getDivision(@PathVariable("id") Long id){
         return divisionsService.get(id);
     }
     @PutMapping("api/division/{id}")
@@ -96,7 +96,7 @@ public class ApiDomainConfigController {
         return body;
     }
     @PostMapping("api/division")
-    DivisionsDTO uploadDivision(@RequestBody DivisionsDTO body){
+    DivisionDTO uploadDivision(@RequestBody DivisionDTO body){
         return null;//divisionsService.add(body,1);
     }
     @DeleteMapping("api/division/{id}")
@@ -104,7 +104,7 @@ public class ApiDomainConfigController {
         return divisionsService.delete(id);
     }
     @GetMapping("api/divisions")
-    List<DivisionsDTO> getAllDivisions(){
+    List<DivisionDTO> getAllDivisions(){
         return divisionsService.getAll();
     }
 

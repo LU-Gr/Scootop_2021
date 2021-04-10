@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ApiUserController {
+public class UserController {
     private ContactService contactService;
     private UserService userService;
     private UserTypeService userTypeService;
 
-    public ApiUserController(ContactService contactService, UserService userService, UserTypeService userTypeService) {
+    public UserController(ContactService contactService, UserService userService, UserTypeService userTypeService) {
         super();
         this.contactService = contactService;
         this.userService = userService;

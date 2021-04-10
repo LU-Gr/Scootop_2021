@@ -19,13 +19,13 @@ import java.util.List;
 
 
 @RestController
-public class ApiStatisticalController {
+public class StatisticalController {
     private GoalService goalService;
     private ShootService shootService;
     private TypeTouchService typeTouchService;
     private PassService assistService;
 
-    public ApiStatisticalController(GoalService goalService, ShootService shootService, TypeTouchService typeTouchService, PassService assistService) {
+    public StatisticalController(GoalService goalService, ShootService shootService, TypeTouchService typeTouchService, PassService assistService) {
 
         this.goalService = goalService;
         this.shootService = shootService;

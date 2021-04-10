@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-public class ApiToolsController {
+public class ToolsController {
     private SaisonService saisonService;
     private SkillTypeService skillsTypeService;
     private SkillService skillsFamillyService;
@@ -19,7 +19,7 @@ public class ApiToolsController {
     private CompetitionService competionTypeService;
 
 
-    public ApiToolsController(SaisonService saisonService, SkillTypeService skillsTypeService, SkillService skillsFamillyService, CategorieTypeService categorieTypeService, CompetitionService competionTypeService) {
+    public ToolsController(SaisonService saisonService, SkillTypeService skillsTypeService, SkillService skillsFamillyService, CategorieTypeService categorieTypeService, CompetitionService competionTypeService) {
         super();
         this.saisonService = saisonService;
         this.skillsTypeService = skillsTypeService;

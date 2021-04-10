@@ -56,10 +56,10 @@ public class Team {
         if(players.size() >= 3 || players.size() <= 22) {
             for (int i = 0; i < players.size(); i++) {
                 LocalDate playerBirthday = players.get(i).birthday;
-                int agePlayer = category.categoryType.CategoryCalcul(playerBirthday);
-                if(agePlayer > category.categoryType.getAgeMax()){
+                int agePlayer = category.getCategoryType().CategoryCalcul(playerBirthday);
+                if(agePlayer > category.getCategoryType().getAgeMax()){
                     throw new Exception("Joueur trop agé");
-                }else if (agePlayer < category.categoryType.getAgeMin()){
+                }else if (agePlayer < category.getCategoryType().getAgeMin()){
                     throw new Exception("Joueur trop jeune pour cette catégorie");
                 }
             }

@@ -5,9 +5,9 @@ import java.util.List;
 public class LeagueDTO {
     public Long id;
     public String name;
-    public List<DivisionsDTO> divisions;
+    public List<DivisionDTO> divisions;
 
-    public static LeagueDTO create(Long id, String name, List<DivisionsDTO> divisions) {
+    public static LeagueDTO create(Long id, String name, List<DivisionDTO> divisions) {
         LeagueDTO league = new LeagueDTO();
         league.id = id;
         league.name = name;
@@ -15,7 +15,7 @@ public class LeagueDTO {
 
         return league;
     }
-    public static LeagueDTO get(Long id, String name, List<DivisionsDTO> divisions) {
+    public static LeagueDTO get(Long id, String name, List<DivisionDTO> divisions) {
         LeagueDTO league = new LeagueDTO();
         league.id = id;
         league.name = name;

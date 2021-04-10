@@ -4,19 +4,26 @@ import javax.persistence.*;
 
 import com.projet.scootop.scootop.domain.domaintools.CategoryType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 // différente tranches d'âge. Ex: U-19, U-17
 @Entity
 @Table(name = "CATEGORY")
 public class Category {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    @Getter @Setter
+    private Integer id;
 
-    public String name;
+    @Getter @Setter
+    private String name;
 
     @OneToOne
-    public CategoryType categoryType;
+    @Getter @Setter
+    private CategoryType categoryType;
 
     public Category() {
 
@@ -27,25 +34,4 @@ public class Category {
         this.name = name;
         this.categoryType = categoryType;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public CategoryType getCategoryType() {
-        return categoryType;
-    }
-
-    public void setCategoryType(CategoryType categoryType) {
-        this.categoryType = categoryType;
-    }
-
 }

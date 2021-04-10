@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ApiProviderController {
+public class ProviderController {
 
     private AgenceService agenceService;
     private AnalysteService analysteService;
@@ -16,7 +16,7 @@ public class ApiProviderController {
     private MarketingAdvisorService marketingAdvisorService;
     private WearableSocietyService wearableSocietyService;
 
-    public ApiProviderController(AgenceService agenceService, AnalysteService analysteService, CameramanService cameramanService, ManagerService managerService, MarketingAdvisorService marketingAdvisorService, WearableSocietyService wearableSocietyService) {
+    public ProviderController(AgenceService agenceService, AnalysteService analysteService, CameramanService cameramanService, ManagerService managerService, MarketingAdvisorService marketingAdvisorService, WearableSocietyService wearableSocietyService) {
         super();
         this.agenceService = agenceService;
         this.analysteService = analysteService;

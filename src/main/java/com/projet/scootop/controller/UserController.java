@@ -78,22 +78,22 @@ public class UserController {
 
 
     @GetMapping("api/user_type")
-    List<UserType> getAllUserType(){
+    List<UserTypeDTO> getAllUserType(){
         return userTypeService.getAll();
     }
     
     @GetMapping("api/user_type/{id}")
-    UserType getUserType(@PathVariable("id") Long id){
+    UserTypeDTO getUserType(@PathVariable("id") Long id){
         return userTypeService.get(id);
     }
     
     @PutMapping("api/user_type/{id}")
-    UserType updateUserType(@RequestBody UserTypeDTO body,@PathVariable("id") Long id){
-        return userTypeService.update(body,id);
+    UserTypeDTO updateUserType(@RequestBody UserTypeDTO body){
+        return userTypeService.update(body);
     }
     
     @PostMapping("api/user_type")
-    UserType addUserType(@RequestBody UserTypeDTO body){
+    UserTypeDTO addUserType(@RequestBody UserTypeDTO body){
         return userTypeService.addUserType(body);
     }
     

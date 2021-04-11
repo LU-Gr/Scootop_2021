@@ -30,7 +30,7 @@ public class Chairman {
     public Chairman(User user) throws Exception {
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("chairman")){
+            if(userType.getType().equals("chairman")){
                 isCorrect=true;
             }
         }

@@ -4,23 +4,27 @@ import java.time.LocalDate;
 
 import com.projet.scootop.domain.statistical.Shoot;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class GoalDTO {
 
-	Long id;
-    public LocalDate date;
-    public Shoot shoot;
-    public String tag;
-    public Integer distance;
-    public Integer rating;
-
-    public static GoalDTO create(LocalDate date, Shoot shoot, String tag, Integer distance, Integer rating) {
-        GoalDTO goalDTO = new GoalDTO();
-        goalDTO.date = date;
-        goalDTO.shoot = shoot;
-        goalDTO.tag = tag;
-        goalDTO.distance = distance;
-        goalDTO.rating = rating;
-        return goalDTO;
-    }
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private LocalDate date;
+	
+	@Getter @Setter
+	private Shoot shoot;
+	
+	@Getter @Setter
+	private String tag;
+	
+	@Getter @Setter
+	private Integer distance;
+	
+	@Getter @Setter
+	private Integer rating;
 
 }

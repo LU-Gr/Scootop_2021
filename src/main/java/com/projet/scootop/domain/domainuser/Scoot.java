@@ -42,7 +42,7 @@ public class Scoot {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("scoot")){
+            if(userType.getType().equals("scoot")){
                 isCorrect=true;
             }
         }

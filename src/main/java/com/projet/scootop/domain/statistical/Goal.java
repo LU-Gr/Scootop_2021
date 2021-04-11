@@ -36,8 +36,6 @@ public class Goal {
     @Getter @Setter
     private Integer rating;
 
-
-
     public Goal(LocalDate date, Shoot shoot, String tag, Integer distance, Integer rating) {
         super();
         this.date = date;

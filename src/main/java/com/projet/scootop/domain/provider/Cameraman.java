@@ -34,7 +34,7 @@ public class Cameraman {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("cameraman")){
+            if(userType.getType().equals("cameraman")){
                 isCorrect=true;
             }
         }

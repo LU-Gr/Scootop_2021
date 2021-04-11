@@ -37,7 +37,7 @@ public class Coach {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("coach")){
+            if(userType.getType().equals("coach")){
                 isCorrect=true;
             }
         }

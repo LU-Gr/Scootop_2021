@@ -160,7 +160,7 @@ public class UserResume {
         for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
         	for(Pass pass: statisticalSheet.getPasses()) {
         		LocalDate passDate = pass.getDate();
-        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && pass.isSuccess) {
+        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && pass.getIsSuccess()) {
         			SaisonsSuccessAssistsList.add(pass);
         		}
         	}
@@ -181,7 +181,7 @@ public class UserResume {
         for (StatisticalSheet statisticalSheet: this.statisticalSheets) {
         	for(Pass pass: statisticalSheet.getPasses()) {
         		LocalDate passDate = pass.getDate();
-        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && !pass.isSuccess) {
+        		if(passDate.isAfter(startSaison) && passDate.isBefore(endSaison) && !pass.getIsSuccess()) {
         			SaisonsSuccessAssistsList.add(pass);
         		}
         	}
@@ -393,7 +393,7 @@ public class UserResume {
 
             if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
-                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getSuccessSkill() == true){
+                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getIsSuccessful() == true){
 
                 SaisonsSkillsSuccessList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
                 SaisonSkillsSuccess = SaisonSkillsSuccess + SaisonsSkillsSuccessList.size();
@@ -419,7 +419,7 @@ public class UserResume {
 
             if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
-                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getSuccessSkill() == false){
+                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getIsSuccessful() == false){
 
                 SaisonsSkillsFailedList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
                 SaisonSkillsFailed = SaisonSkillsFailed + SaisonsSkillsFailedList.size();

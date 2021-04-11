@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.user.UserType;
+import com.projet.scootop.mappers.user.UserTypeMapper;
 import com.projet.scootop.model.user.UserTypeDTO;
 import com.projet.scootop.repository.user.UserTypeRepository;
 
@@ -12,26 +13,29 @@ import java.util.List;
 @Service
 public class UserTypeService {
 	
-    @Autowired
-    private UserTypeRepository userTypeRepository;
+    @Autowired private UserTypeRepository userTypeRepository;
+    @Autowired private UserTypeMapper mapper;
     
-    public UserType addUserType(UserTypeDTO userTypeDTO) {
-        UserType userType = new UserType(userTypeDTO.type);
-        return userTypeRepository.save(userType);
+    public UserTypeDTO addUserType(UserTypeDTO userTypeDTO) {
+        UserType userType = mapper.mapTo(userTypeDTO);
+        userTypeRepository.save(userType);
+        return mapper.mapTo(userType);
     }
     
-    public UserType update(UserTypeDTO userTypeDTO, Long id) {
-        UserType userType = new UserType(userTypeDTO.type);
-        userType.id=id;
-        return userTypeRepository.save(userType);
+    public UserTypeDTO update(UserTypeDTO userTypeDTO) {
+    	UserType userType = mapper.mapTo(userTypeDTO);
+        userTypeRepository.save(userType);
+        return mapper.mapTo(userType);
     }
     
-    public UserType get(Long id){
-       return userTypeRepository.findById(id).orElse(null);
+    public UserTypeDTO get(Long id){
+    	UserType types = userTypeRepository.findById(id).orElse(null);
+    	return mapper.mapTo(types);
     }
 
-    public List<UserType> getAll(){
-        return userTypeRepository.findAll();
+    public List<UserTypeDTO> getAll(){
+    	List<UserType> types = userTypeRepository.findAll();
+        return mapper.mapTo(types);
     }
 
 

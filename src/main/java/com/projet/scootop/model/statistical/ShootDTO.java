@@ -5,29 +5,33 @@ import com.projet.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.domain.statistical.Pass;
 import com.projet.scootop.domain.statistical.physical.TypeTouch;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class ShootDTO {
 
-    public Long id;
-    public MatchSheet matchSheet;
-    public TypeTouch typeTouch;
-    public Player player;
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private MatchSheet matchSheet;
+	
+	@Getter @Setter
+	private TypeTouch typeTouch;
+	
+	@Getter @Setter
+	private Player player;
+	
+	@Getter @Setter
+	private Boolean inBox;
+	
+	@Getter @Setter
+	private Boolean isGoal;
+	
+	@Getter @Setter
+	private Boolean isLongShoot;
+	
+	@Getter @Setter
+	private Pass assist;
 
-    public Boolean inBox;
-    public Boolean isGoal;
-    public Boolean isLongShoot;
-    public Pass assist;
-
-
-    public static ShootDTO create(MatchSheet matchSheet, TypeTouch typeTouch, Player player, Boolean inBox, Boolean goal, Boolean aLong, Pass assist) {
-        ShootDTO shootDTO= new ShootDTO();
-        shootDTO.inBox = inBox;
-        shootDTO.matchSheet = matchSheet;
-        shootDTO.typeTouch = typeTouch;
-        shootDTO.player = player;
-        shootDTO.isGoal = goal;
-        shootDTO.isLongShoot = aLong;
-        shootDTO.assist = assist;
-
-        return shootDTO;
-    }
 }

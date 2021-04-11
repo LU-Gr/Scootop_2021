@@ -1,9 +1,10 @@
-package com.projet.scootop.service.stastistical;
+package com.projet.scootop.service.statistical;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.statistical.Action;
+import com.projet.scootop.mappers.statistical.ActionMapper;
 import com.projet.scootop.model.statistical.ActionDTO;
 import com.projet.scootop.repository.statistical.ActionRepository;
 
@@ -12,25 +13,27 @@ import java.util.List;
 @Service
 public class ActionService {
 	
-    @Autowired
-    public ActionRepository skillRepository;
+    @Autowired private ActionRepository actionRepository;
+    @Autowired private ActionMapper mapper;
     
     public ActionDTO add(ActionDTO actionDTO){
-        Action action = new Action(actionDTO.id,actionDTO.matchSheet,actionDTO.player,actionDTO.isDefensive,actionDTO.successSkill,actionDTO.isLong);
-        skillRepository.save(action);
-        return  actionDTO;
+        Action action = mapper.mapTo(actionDTO);
+        actionRepository.save(action);
+        return mapper.mapTo(action);
     }
     
     public ActionDTO get(Long id){
-        return null;
+        Action action = actionRepository.getOne(id);
+        return mapper.mapTo(action);
     }
     
     public List<ActionDTO> getAll(){
-        return null;
+    	List<Action> actions = actionRepository.findAll();
+        return mapper.mapTo(actions);
     }
     
     public String delete(Long id){
-        skillRepository.deleteById(id);
+    	actionRepository.deleteById(id);
         return "Deleted";
     }
 

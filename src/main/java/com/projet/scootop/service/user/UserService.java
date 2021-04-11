@@ -19,22 +19,15 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 	
-    @Autowired
-    private UserRepository userRepository;
-    
-    @Autowired
-    private ContactRepository contactRepository;
-    
-    @Autowired
-    private UserTypeRepository userTypeRepository;
-    
-    @Autowired
-    private UserMapper mapper;
+    @Autowired private UserRepository userRepository;
+    @Autowired private ContactRepository contactRepository;
+    @Autowired private UserTypeRepository userTypeRepository;
+    @Autowired private UserMapper mapper;
     
     public UserDTO addUser(UserDTO userDTO) {
         User user = mapper.mapTo(userDTO);
         //TODO: comprendre cette ligne
-        List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.id).orElse(null)).collect(Collectors.toList());
+        List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.getId()).orElse(null)).collect(Collectors.toList());
         contactRepository.save(user.getContact());
         user.getTypes().addAll(types);
         userRepository.save(user);

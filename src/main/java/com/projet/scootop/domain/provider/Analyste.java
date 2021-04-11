@@ -40,7 +40,7 @@ public class Analyste {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("analyste")){
+            if(userType.getType().equals("analyste")){
                 isCorrect=true;
             }
         }

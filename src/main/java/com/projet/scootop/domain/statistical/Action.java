@@ -7,6 +7,9 @@ import com.projet.scootop.domain.domaintools.SkillType;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.inprogress.MatchSheet;
 
+import lombok.Getter;
+import lombok.Setter;
+
 // Action : Exemple : Skill: Controle
 @Entity
 @Table(name = "Action")
@@ -15,25 +18,32 @@ public class Action {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
     
     @ManyToOne
     @JoinColumn
-    public Skill skill;
+    @Getter @Setter
+    private Skill skill;
     
     @ManyToOne
     @JoinColumn
-    public SkillType skillType;
+    @Getter @Setter
+    private SkillType skillType;
 
     @OneToOne
-    public MatchSheet matchSheet;
+    @Getter @Setter
+    private MatchSheet matchSheet;
 
     @OneToOne
-    public Player player;
+    @Getter @Setter
+    private Player player;
 
+    @Getter @Setter
+    private Boolean isDefensive;
     
-    public Boolean isDefensive;
-    public Boolean isSuccessful;
+    @Getter @Setter
+    private Boolean isSuccessful;
 
     public Action(Long id, MatchSheet matchSheet, Player player, Boolean isDefensive, Boolean succesSkill, Boolean isLong) {
         super();
@@ -45,41 +55,5 @@ public class Action {
     }
 
     public Action() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public MatchSheet getMatchSheet() {
-        return matchSheet;
-    }
-
-    public void setMatchSheet(MatchSheet matchSheet) {
-        this.matchSheet = matchSheet;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Boolean getDefensive() {
-        return isDefensive;
-    }
-
-    public void setDefensive(Boolean defensive) {
-        isDefensive = defensive;
-    }
-
-    public Boolean getSuccessSkill() {
-        return isSuccessful;
-    }
-
-    public void setSuccessSkill(Boolean successSkill) {
-        this.isSuccessful = successSkill;
     }
 }

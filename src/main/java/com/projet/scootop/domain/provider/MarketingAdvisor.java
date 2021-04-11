@@ -30,7 +30,7 @@ public class MarketingAdvisor {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {
-            if(userType.type.equals("Marketing Advisor")){
+            if(userType.getType().equals("Marketing Advisor")){
                 isCorrect=true;
             }
         }

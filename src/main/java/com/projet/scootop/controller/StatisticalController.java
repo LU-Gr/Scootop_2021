@@ -3,18 +3,14 @@ package com.projet.scootop.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.statistical.Goal;
-import com.projet.scootop.domain.statistical.Pass;
-import com.projet.scootop.domain.statistical.Shoot;
-import com.projet.scootop.domain.statistical.physical.TypeTouch;
 import com.projet.scootop.model.statistical.GoalDTO;
 import com.projet.scootop.model.statistical.PassDTO;
 import com.projet.scootop.model.statistical.ShootDTO;
-import com.projet.scootop.model.statistical.TypeTouchDTO;
-import com.projet.scootop.service.stastistical.GoalService;
-import com.projet.scootop.service.stastistical.PassService;
-import com.projet.scootop.service.stastistical.ShootService;
-import com.projet.scootop.service.stastistical.physical.TypeTouchService;
+import com.projet.scootop.model.statistical.physical.TypeTouchDTO;
+import com.projet.scootop.service.statistical.GoalService;
+import com.projet.scootop.service.statistical.PassService;
+import com.projet.scootop.service.statistical.ShootService;
+import com.projet.scootop.service.statistical.physical.TypeTouchService;
 
 import java.util.List;
 
@@ -35,15 +31,15 @@ public class StatisticalController {
     }
 
     @GetMapping("api/goal/{id}")
-    Goal getGoal(@PathVariable Long id){
+    GoalDTO getGoal(@PathVariable Long id){
         return goalService.get(id);
     }
     @PostMapping("api/goal")
-    Goal addGoal(@RequestBody GoalDTO body){
+    GoalDTO addGoal(@RequestBody GoalDTO body){
         return goalService.add(body);
     }
     @PutMapping("api/goal/{id}")
-    Goal updateGoal(@RequestBody GoalDTO body,@PathVariable Long id){
+    GoalDTO updateGoal(@RequestBody GoalDTO body,@PathVariable Long id){
         return goalService.add(body);
     }
     @DeleteMapping("api/goal/{id}")
@@ -51,7 +47,7 @@ public class StatisticalController {
         return goalService.delete(id);
     }
     @GetMapping("api/goals")
-    List<Goal> getAllGoals(){
+    List<GoalDTO> getAllGoals(){
         return goalService.getAll();
 
     }
@@ -77,63 +73,63 @@ public class StatisticalController {
 
     }
     @GetMapping("api/assist/{id}")
-    Pass getAssist(@PathVariable Long id){
+    PassDTO getAssist(@PathVariable Long id){
         return assistService.get(id);
     }
     @PostMapping("api/assist")
-    Pass addAssist(@RequestBody PassDTO body){
+    PassDTO addAssist(@RequestBody PassDTO body){
         return assistService.add(body);
     }
     @PutMapping("api/assist/{id}")
-    Pass updateAssist(@RequestBody PassDTO body, @PathVariable Long id){
-        return assistService.update(body,id);
+    PassDTO updateAssist(@RequestBody PassDTO body){
+        return assistService.update(body);
     }
     @DeleteMapping("api/assist/{id}")
     String deleteAssist(@PathVariable Long id){
         return assistService.delete(id);
     }
     @GetMapping("api/assists")
-    List<Pass> getAllAssists(){
+    List<PassDTO> getAllAssists(){
         return assistService.getAll();
     }
     @GetMapping("api/shoot/{id}")
-    Shoot getShoot(@PathVariable Long id){
+    ShootDTO getShoot(@PathVariable Long id){
         return shootService.get(id);
     }
     @PostMapping("api/shoot")
-    Shoot addShoot(@RequestBody ShootDTO body){
+    ShootDTO addShoot(@RequestBody ShootDTO body){
         return shootService.add(body);
     }
     @PutMapping("api/shoot/{id}")
-    Shoot updateShoot(@RequestBody ShootDTO body,@PathVariable Long id){
-        return shootService.update(body,id);
+    ShootDTO updateShoot(@RequestBody ShootDTO body){
+        return shootService.update(body);
     }
     @DeleteMapping("api/shoot/{id}")
     String deleteShoot(@PathVariable Long id){
         return shootService.delete(id);
     }
     @GetMapping("api/shoots")
-    List<Shoot> getAllShoots(){
+    List<ShootDTO> getAllShoots(){
         return shootService.getAll();
     }
     @GetMapping("api/type_touch/{id}")
-    TypeTouch getTypeTouch(@PathVariable Long id){
+    TypeTouchDTO getTypeTouch(@PathVariable Long id){
         return typeTouchService.get(id);
     }
     @PostMapping("api/type_touch")
-    TypeTouch addTypeTouch(@RequestBody TypeTouchDTO body){
+    TypeTouchDTO addTypeTouch(@RequestBody TypeTouchDTO body){
         return typeTouchService.add(body);
     }
     @PutMapping("api/type_touch/{id}")
-    TypeTouch updateTypeTouch(@RequestBody TypeTouchDTO body,@PathVariable Long id){
-        return typeTouchService.update(body,id);
+    TypeTouchDTO updateTypeTouch(@RequestBody TypeTouchDTO body){
+        return typeTouchService.update(body);
     }
     @DeleteMapping("api/type_touch/{id}")
     ResponseEntity<Integer> deleteTypeTouch(@PathVariable Long id){
         return typeTouchService.delete(id);
     }
     @GetMapping("api/type_touch_all")
-    List<TypeTouch> getAllTypeTouch(){
+    List<TypeTouchDTO> getAllTypeTouch(){
         return typeTouchService.getAll();
     }
 }

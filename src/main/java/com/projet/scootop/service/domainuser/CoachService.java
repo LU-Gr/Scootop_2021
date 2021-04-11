@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.domainuser.Coach;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.mappers.domainuser.CoachMapper;
 import com.projet.scootop.model.domainuser.CoachDTO;
 import com.projet.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.repository.domainuser.CoachRepository;
-import com.projet.scootop.service.user.UserService;
-
-import java.util.ArrayList;
+import com.projet.scootop.repository.user.UserRepository;
 import java.util.List;
 
 @Service
@@ -18,35 +16,40 @@ public class CoachService {
 
     @Autowired
     public CoachRepository coachRepository;
-    public UserService userService;
+    
+    @Autowired
     public TeamRepository teamRepository;
+    
+    @Autowired
+	public UserRepository userRepository;
+	
+	@Autowired
+	private CoachMapper mapper;
 
-    public CoachService(CoachRepository coachRepository, UserService userService,TeamRepository teamRepository) {
-        this.coachRepository = coachRepository;
-        this.userService = userService;
-        this.teamRepository =teamRepository;
-    }
-
-    public Coach add(CoachDTO coachDTO) throws Exception {
-        userService.updateEntity(coachDTO.getUser());
-        Coach coach = new Coach(coachDTO.getUser(),new ArrayList<>());
-        return coachRepository.save(coach);
+    public CoachDTO add(CoachDTO coachDTO) throws Exception {
+        
+        Coach coach = mapper.mapTo(coachDTO);
+        userRepository.save(coach.getUser());
+        coachRepository.save(coach);
+        return mapper.mapTo(coach);
     }
     
-    public Coach get(Long id){
-        return coachRepository.findById(id).orElse(null);
+    public CoachDTO get(Long id){
+        Coach coach = coachRepository.findById(id).orElse(null);
+        return mapper.mapTo(coach);
     }
     
-    public Coach update(CoachDTO coachDTO,Long id) throws Exception {
-        User newUser = userService.updateEntity(coachDTO.getUser());
-        Coach coach = new Coach(newUser, coachDTO.getTeams());
-        coach.setId(id);
-        return coachRepository.save(coach);
+    public CoachDTO update(CoachDTO coachDTO) throws Exception {
+        
+        Coach coach = mapper.mapTo(coachDTO);
+        userRepository.save(coach.getUser());
+        coachRepository.save(coach);
+        return mapper.mapTo(coach);
     }
     
-    public List<Coach> getAll(){
-
-        return coachRepository.findAll();
+    public List<CoachDTO> getAll(){
+        List<Coach> coaches = coachRepository.findAll();
+        return mapper.mapTo(coaches);
     }
     public String delete(Long id){
         Coach coach = coachRepository.findById(id).orElse(null);

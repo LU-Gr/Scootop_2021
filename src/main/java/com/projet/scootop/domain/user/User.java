@@ -2,88 +2,61 @@ package com.projet.scootop.domain.user;
 
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@ToString
 @Table(name = "USER")
 public class User {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
+    
     @OneToOne
     @JoinColumn(name = "CONTACT_ID")
-    public Contact contact;
-    public Double rating;
+    @Getter @Setter
+    private Contact contact;
+    
+    @Getter @Setter
+    private LocalDate birthday;
+    
+    @Getter @Setter
+    private String firstName;
 
-    public String name;
-    public String firstName;
+    @Getter @Setter
+    private String lastName;
+    
+    @Column(unique=true)
+    @Getter @Setter
+    private String email;
+    
+    //TODO: encoder
+    @Getter @Setter
+    private String password;
 
     @ManyToMany
     @JoinTable(name = "USER_TYPES")
-    public List<UserType> types;
+    @Getter @Setter
+    private List<UserType> types;
 
     public User(String name, String firstName, Contact contact) {
         super();
-        this.name = name;
+        this.lastName = name;
         this.firstName = firstName;
         this.contact = contact;
-        this.rating=0.0;
         this.types=new ArrayList<>();
     }
 
     public User() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
-
-    public List<UserType> getTypes() {
-        return types;
-    }
-
-    public void setTypes(List<UserType> types) {
-        this.types = types;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRepository{" +
-                "name='" + name + '\'' +
-                ", firstName='" + firstName + '\'' +
-                // ", contact=" + contact +
-                // ", types=" + types +
-                '}';
     }
 
 }

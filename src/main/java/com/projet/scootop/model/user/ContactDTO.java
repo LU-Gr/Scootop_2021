@@ -1,33 +1,27 @@
 package com.projet.scootop.model.user;
 
-import com.projet.scootop.domain.user.User;
+import lombok.Getter;
+import lombok.Setter;
 
 
 public class ContactDTO {
 
-    public Long id;
-    public String email;
-    public String tel;
-    public String address;
-    public String cp;
-    public User user;
-    public static ContactDTO create(String email, String tel, String address, String cp,User user){
-        ContactDTO contactDTO= new ContactDTO();
-        contactDTO.address=address;
-        contactDTO.cp=cp;
-        contactDTO.tel=tel;
-        contactDTO.user=user;
-        contactDTO.email=email;
-      return   contactDTO;
-    }
-    public static ContactDTO get(Long id,String email, String tel, String address, String cp,User user){
-        ContactDTO contactDTO= new ContactDTO();
-        contactDTO.id = id;
-        contactDTO.address=address;
-        contactDTO.cp=cp;
-        contactDTO.tel=tel;
-        contactDTO.user=user;
-        contactDTO.email=email;
-      return   contactDTO;
-    }
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private String email;
+	
+	@Getter @Setter
+	private String tel;
+	
+	@Getter @Setter
+	private String address;
+	
+	@Getter @Setter
+	private String cp;
+	
+	@Getter @Setter
+	private UserDTO user;
+
 }

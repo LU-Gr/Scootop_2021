@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.provider.Analyste;
+import com.projet.scootop.mappers.provider.AnalysteMapper;
 import com.projet.scootop.model.provider.AnalysteDTO;
 import com.projet.scootop.repository.provider.AnalysteRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,32 +16,26 @@ public class AnalysteService {
     @Autowired
     public AnalysteRepository analysteRepository;
     
+    @Autowired
+    private AnalysteMapper mapper;
+    
     public AnalysteDTO add(AnalysteDTO analysteDTO) throws Exception {
-        Analyste analyste=new Analyste(analysteDTO.user,analysteDTO.tarif,analysteDTO.experience,analysteDTO.matchSheet);
+        Analyste analyste = mapper.mapTo(analysteDTO);
         analysteRepository.save(analyste);
-        return analysteDTO;
+        return mapper.mapTo(analyste);
     }
     
     public AnalysteDTO get(Long id){
-
         Analyste analyste = analysteRepository.findById(id).orElse(null);
         if(analyste==null){
             return null;
         }
-        AnalysteDTO analysteDTO = AnalysteDTO.create(analyste.user,analyste.tarif,analyste.experience,analyste.matchSheet);
-        return analysteDTO;
+        return mapper.mapTo(analyste);
     }
     
     public List<AnalysteDTO> getAll(){
-
-        List<Analyste> chairmen = analysteRepository.findAll();
-        List<AnalysteDTO> analysteDTOS = new ArrayList<>();
-        for (Analyste analyste: chairmen) {
-            AnalysteDTO analysteDTO= AnalysteDTO.get(analyste.id,analyste.user,analyste.tarif,analyste.experience,analyste.matchSheet);
-            analysteDTOS.add(analysteDTO);
-        }
-
-        return analysteDTOS;
+        List<Analyste> analystes = analysteRepository.findAll();
+        return mapper.mapTo(analystes);
     }
     
     public String delete(Long id){

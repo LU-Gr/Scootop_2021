@@ -3,33 +3,44 @@ package com.projet.scootop.domain.provider;
 import javax.persistence.*;
 
 import com.projet.scootop.domain.user.Contact;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "WearableSociety")
-
-
 public class WearableSociety {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String name;
-    // <> name?
-    public String societe;
-    public String ceo;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private String societe;
+    
+    // user?
+    @Getter @Setter
+    private String ceo;
+    
     // ??
-    public String specialite;
+    @Getter @Setter
+    private String specialite;
+    
     // tarif de?
-    public Integer tarif;
+    @Getter @Setter
+    private Integer tarif;
+    
+    // un seul contact?
     @OneToOne
-    public Contact contact;
+    @Getter @Setter
+    private Contact contact;
 
     public WearableSociety() {
 
     }
 
-    public WearableSociety(String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
+    public WearableSociety(String societe, String ceo, String specialite, Integer tarif, Contact contact) {
         super();
-        this.name = name;
         this.societe = societe;
         this.ceo = ceo;
         this.specialite = specialite;

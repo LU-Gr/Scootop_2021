@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ScootRepository extends JpaRepository<Scoot,Long> {
 
-    //TODO: ???
+    //TODO: Renommer findAllByMatchSheetId
     List<Scoot> findAllById(Long Sheet);
 }

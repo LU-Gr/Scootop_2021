@@ -5,6 +5,9 @@ import javax.persistence.*;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "Cameraman")
 
@@ -12,28 +15,25 @@ public class Cameraman {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public Integer tarif;
-    public Integer experience;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private Double tarif;
+    
+    @Getter @Setter
+    private Integer experience;
+    
     @OneToOne
-    @JoinColumn(name = "USER_TYPE_ID")
-    public User user;
+    @JoinColumn
+    @Getter @Setter
+    private User user;
 
-    @Override
-    public String toString() {
-        return "Cameraman{" +
-                "id=" + id +
-                ", tarif=" + tarif +
-                ", experience=" + experience +
-                ", user=" + user +
-                '}';
-    }
 
-    public Cameraman(User user, Integer tarif, Integer experience) throws Exception {
+    public Cameraman(User user, Double tarif, Integer experience) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.types
-        ) {
+        for (UserType userType: user.getTypes()) {
             if(userType.type.equals("cameraman")){
                 isCorrect=true;
             }

@@ -4,26 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.provider.WearableSociety;
-import com.projet.scootop.domain.user.Contact;
+import com.projet.scootop.mappers.provider.WearableSocietyMapper;
 import com.projet.scootop.model.provider.WearableSocietyDTO;
 import com.projet.scootop.repository.provider.WearableSocietyRepository;
 import com.projet.scootop.repository.user.ContactRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class WearableSocietyService {
 
     @Autowired
-    public WearableSocietyRepository wearableSocietyRepository;
+    private WearableSocietyRepository wearableSocietyRepository;
+    
     @Autowired
-    public ContactRepository contactRepository;
+    private ContactRepository contactRepository;
+    
+    @Autowired
+    private WearableSocietyMapper mapper;
 
-    public WearableSociety add(WearableSocietyDTO wearableSocietyDTO){
-        Contact contact=contactRepository.save(wearableSocietyDTO.contact);
-        WearableSociety wearableSociety=new WearableSociety(wearableSocietyDTO.name,wearableSocietyDTO.societe,wearableSocietyDTO.ceo,wearableSocietyDTO.specialite,wearableSocietyDTO.tarif,contact);
-        return wearableSocietyRepository.save(wearableSociety);
+    public WearableSocietyDTO add(WearableSocietyDTO wearableSocietyDTO){
+    	WearableSociety wearableSociety = mapper.mapTo(wearableSocietyDTO);
+        contactRepository.save(wearableSociety.getContact());
+        wearableSocietyRepository.save(wearableSociety);
+        return mapper.mapTo(wearableSociety);
     }
 
     public WearableSocietyDTO get(Long id){
@@ -31,20 +35,19 @@ public class WearableSocietyService {
         if(wearableSociety==null){
             return null;
         }
-        return WearableSocietyDTO.get(wearableSociety.id, wearableSociety.name, wearableSociety.societe, wearableSociety.ceo, wearableSociety.specialite, wearableSociety.tarif, wearableSociety.contact);
+        return mapper.mapTo(wearableSociety);
     }
 
-    public WearableSociety update(WearableSocietyDTO wearableSocietyDTO, Long id){
-        contactRepository.save(wearableSocietyDTO.contact);
-        WearableSociety wearableSociety =new WearableSociety(wearableSocietyDTO.name, wearableSocietyDTO.societe, wearableSocietyDTO.ceo, wearableSocietyDTO.specialite, wearableSocietyDTO.tarif, wearableSocietyDTO.contact);
-        wearableSociety.id=id;
-        return wearableSocietyRepository.save(wearableSociety);
+    public WearableSocietyDTO update(WearableSocietyDTO wearableSocietyDTO, Long id){
+    	WearableSociety wearableSociety = mapper.mapTo(wearableSocietyDTO);
+        contactRepository.save(wearableSociety.getContact());
+        wearableSocietyRepository.save(wearableSociety);
+        return mapper.mapTo(wearableSociety);
     }
 
     public List<WearableSocietyDTO> getAll(){
-
         List<WearableSociety> wearableSocieties = wearableSocietyRepository.findAll();
-        return wearableSocieties.stream().map(wearableSociety -> WearableSocietyDTO.get(wearableSociety.id, wearableSociety.name, wearableSociety.societe, wearableSociety.ceo, wearableSociety.specialite, wearableSociety.tarif, wearableSociety.contact)).collect(Collectors.toList());
+        return mapper.mapTo(wearableSocieties);
     }
 
     public String delete(Long id){

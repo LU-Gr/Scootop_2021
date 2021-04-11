@@ -1,42 +1,26 @@
 package com.projet.scootop.model.provider;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.inprogress.MatchSheetDTO;
+import com.projet.scootop.model.user.UserDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class AnalysteDTO {
-    public Long id;
-    public User user;
-    public Integer tarif;
-    public Integer experience;
-    public MatchSheet matchSheet;
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private UserDTO user;
+	
+	@Getter @Setter
+	private Double tarif;
+	
+	@Getter @Setter
+	private Integer experience;
+	
+	@Getter @Setter
+	private MatchSheetDTO matchSheet;
 
-    public static AnalysteDTO create(User user, Integer tarif, Integer experience, MatchSheet matchSheet) {
-        AnalysteDTO analysteDTO= new AnalysteDTO();
-        analysteDTO.user = user;
-        analysteDTO.tarif = tarif;
-        analysteDTO.experience = experience;
-        analysteDTO.matchSheet = matchSheet;
-        return analysteDTO;
-    }
-    public static AnalysteDTO get(Long id,User user, Integer tarif, Integer experience, MatchSheet matchSheet) {
-        AnalysteDTO analysteDTO= new AnalysteDTO();
-        analysteDTO.id=id;
-        analysteDTO.user = user;
-        analysteDTO.tarif = tarif;
-        analysteDTO.experience = experience;
-        analysteDTO.matchSheet = matchSheet;
-        return analysteDTO;
-    }
-
-
-    @Override
-    public String toString() {
-        return "AnalysteDTO{" +
-                "id=" + id +
-                ", user=" + user +
-                ", tarif=" + tarif +
-                ", experience=" + experience +
-                ", matchSheet=" + matchSheet +
-                '}';
-    }
 }

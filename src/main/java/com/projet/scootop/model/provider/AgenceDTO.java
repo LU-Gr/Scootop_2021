@@ -2,38 +2,20 @@ package com.projet.scootop.model.provider;
 
 import java.util.List;
 
-import com.projet.scootop.domain.provider.Manager;
-import com.projet.scootop.domain.provider.MarketingAdvisor;
+import lombok.Getter;
+import lombok.Setter;
 
 public class AgenceDTO {
-    public Long id;
-    public String region;
-    public List<MarketingAdvisor> marketingAdvisors;
-    public List<Manager> manager;
-
-    public static AgenceDTO create(String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
-        AgenceDTO agenceDTO= new AgenceDTO();
-        agenceDTO.region = region;
-        agenceDTO.marketingAdvisors = marketingAdvisors;
-        agenceDTO.manager = manager;
-        return agenceDTO;
-    }
-    public static AgenceDTO get(Long id, String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
-        AgenceDTO agenceDTO= new AgenceDTO();
-        agenceDTO.id = id;
-        agenceDTO.region = region;
-        agenceDTO.marketingAdvisors = marketingAdvisors;
-        agenceDTO.manager = manager;
-        return agenceDTO;
-    }
-
-    @Override
-    public String toString() {
-        return "AgenceDTO{" +
-                "id=" + id +
-                ", region='" + region + '\'' +
-                ", marketingAdvisors=" + marketingAdvisors +
-                ", manager=" + manager +
-                '}';
-    }
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private String region;
+	
+	@Getter @Setter
+	private List<MarketingAdvisorDTO> marketingAdvisors;
+	
+	@Getter @Setter
+	private List<ManagerDTO> manager;
 }

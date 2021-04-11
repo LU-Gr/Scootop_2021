@@ -5,6 +5,8 @@ import javax.persistence.*;
 import com.projet.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Analyste")
@@ -13,25 +15,31 @@ public class Analyste {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
+    
     @OneToOne
-    @JoinColumn(name = "USER_TYPE_ID")
-    public User user;
-    public Integer tarif;
-    public Integer experience;
+    @JoinColumn
+    @Getter @Setter
+    private User user;
+    
+    @Getter @Setter
+    private Double tarif;
+    
+    @Getter @Setter
+    private Integer experience;
+    
     @ManyToOne
-    public MatchSheet matchSheet;
-
-
+    @Getter @Setter
+    private MatchSheet matchSheet;
 
     public Analyste() {
     }
 
-    public Analyste(User user, Integer tarif, Integer experience, MatchSheet matchSheet) throws Exception {
+    public Analyste(User user, Double tarif, Integer experience, MatchSheet matchSheet) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.types
-        ) {
+        for (UserType userType: user.getTypes()) {
             if(userType.type.equals("analyste")){
                 isCorrect=true;
             }

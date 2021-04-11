@@ -70,7 +70,7 @@ public class WearableService {
 
     }
 
-    public List<WearableDTO> getAllByMatcSheetId(Long matchSheet){
+    public List<WearableDTO> getAllByMatchSheetId(Long matchSheet){
 
         List<Wearable> wearables = wearableRepository.findAllById(matchSheet);
         return wearables.stream().map(wearable -> WearableDTO.get(wearable.id, wearable.player, wearable.team, wearable.distanceRun,wearable.distancePlay,wearable.vMax,wearable.vMaxWithBall,wearable.ballPlay,wearable.looseBall,wearable.ballRecovered,wearable.tackle,wearable.foulSuffered,wearable.failPass,wearable.assist,wearable.shortPass,wearable.head,wearable.headOffensive,wearable.headDefensive,wearable.shots,wearable.shotOnTarget,wearable.shotOffTarget,wearable.longShot,wearable.successSkill,wearable.failSkill)).collect(Collectors.toList());

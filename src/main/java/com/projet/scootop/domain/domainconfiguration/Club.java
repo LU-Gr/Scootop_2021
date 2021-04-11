@@ -46,8 +46,8 @@ public class Club {
 
         if(scoots.size() <= 10) {
             for (int i = 0; i < scoots.size(); i++) {
-                if( scoots.get(i).clubs.size() < 10){
-                 scoots.get(i).clubs.add(this);
+                if( scoots.get(i).getClubs().size() < 10){
+                 scoots.get(i).getClubs().add(this);
                 }
                 else throw new Exception("Vous ne pouvez ajouter plus de 10 clubs pour un scoot");
             }

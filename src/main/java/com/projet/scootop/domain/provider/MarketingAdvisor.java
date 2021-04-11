@@ -5,26 +5,31 @@ import javax.persistence.*;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "MarketingAdvisor")
 
 public class MarketingAdvisor {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
+    
     @OneToOne
-    public User user;
+    @Getter @Setter
+    private User user;
+    
     @ManyToOne
-    public Agence agence;
-
-
-
+    @Getter @Setter
+    private Agence agence;
 
     public MarketingAdvisor(User user, Agence agence) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.types
-        ) {
+        for (UserType userType: user.getTypes()) {
             if(userType.type.equals("Marketing Advisor")){
                 isCorrect=true;
             }
@@ -36,6 +41,7 @@ public class MarketingAdvisor {
         this.user = user;
         this.agence = agence;
     }
+    
     public MarketingAdvisor() {
     }
 }

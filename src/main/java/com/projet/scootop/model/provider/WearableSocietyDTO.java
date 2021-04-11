@@ -1,47 +1,27 @@
 package com.projet.scootop.model.provider;
 
-import com.projet.scootop.domain.user.Contact;
+import com.projet.scootop.model.user.ContactDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class WearableSocietyDTO {
-    public Long id;
-    public String name;
-    public String societe;
-    public String ceo;
-    public String specialite;
-    public Integer tarif;
-    public Contact contact;
-
-
-    public static WearableSocietyDTO create(String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
-        WearableSocietyDTO wearableSocietyDTO=new WearableSocietyDTO();
-        wearableSocietyDTO.name = name;
-        wearableSocietyDTO.societe = societe;
-        wearableSocietyDTO.ceo = ceo;
-        wearableSocietyDTO.specialite = specialite;
-        wearableSocietyDTO.tarif = tarif;
-        wearableSocietyDTO.contact = contact;
-        return wearableSocietyDTO;
-    }
-    public static WearableSocietyDTO get(Long id, String name, String societe, String ceo, String specialite, Integer tarif, Contact contact) {
-        WearableSocietyDTO wearableSocietyDTO=new WearableSocietyDTO();
-
-        wearableSocietyDTO.id = id;
-        wearableSocietyDTO.name = name;
-        wearableSocietyDTO.societe = societe;
-        wearableSocietyDTO.ceo = ceo;
-        wearableSocietyDTO.specialite = specialite;
-        wearableSocietyDTO.tarif = tarif;
-        wearableSocietyDTO.contact = contact;
-
-        return wearableSocietyDTO;
-    }
-
-
-    @Override
-    public String toString() {
-        return "WearableSocietyDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private String societe;
+	
+	@Getter @Setter
+	private String ceo;
+	
+	@Getter @Setter
+	private String specialite;
+	
+	@Getter @Setter
+	private Integer tarif;
+	
+	@Getter @Setter
+	private ContactDTO contact;
 }

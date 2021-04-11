@@ -1,23 +1,34 @@
 package com.projet.scootop.domain.provider;
 
 import javax.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 @Entity
 @Table(name = "Agence")
 //SERT A GERER L'IMAGE D'UN JOUEUR
 public class Agence {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String region;
+    @Getter @Setter
+    private Long id;
+    
+    @Getter @Setter
+    private String region;
+    
     @OneToMany
     @JoinColumn(name = "MaketingAdvisor_id")
-    public List<MarketingAdvisor> marketingAdvisors;
+    @Getter @Setter
+    private List<MarketingAdvisor> marketingAdvisors;
+    
     @OneToMany
     @JoinColumn(name = "manager_id")
-    public List<Manager> manager;
-
+    @Getter @Setter
+    private List<Manager> manager;
 
     public Agence( String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
         super();

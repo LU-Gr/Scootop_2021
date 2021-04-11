@@ -1,106 +1,64 @@
 package com.projet.scootop.model.domainuser;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import com.projet.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.domain.servicetools.video.Video;
-import com.projet.scootop.domain.statistical.physical.PlayerHead;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.domainconfiguration.CategoryDTO;
+import com.projet.scootop.model.domainconfiguration.TeamDTO;
+import com.projet.scootop.model.inprogress.MatchSheetDTO;
+import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+import com.projet.scootop.model.servicetools.video.VideoDTO;
+import com.projet.scootop.model.user.UserDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class PlayerDTO {
 
-    public Long id;
-    public List<Team> teams;
-    public Category category;
-    public int evaluation;
-    public LocalDate birthday;
-    public int taille;
-    public int poids;
-    public int vma;
-    public String nationalite;
-    public String origin;
-    public int interaction;
-    public String strongFoot;
-    public String weekFoot;
-    public PlayerHead playerHead;
-    public List<StatisticalSheet> statisticalSheets;
-    public List<MatchSheet> matshSheets;
-    public List<Video> videos;
-    public User user;
-
-
-    public static PlayerDTO create(List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead,List<StatisticalSheet> statisticalSheets, List<MatchSheet> matchSheets, List<Video> videos, String origin, String nationalite, User user) {
-        PlayerDTO player = new PlayerDTO();
-
-        player.teams = teams;
-        player.category = category;
-        player.evaluation = evaluation;
-        player.birthday = birthday;
-        player.taille = taille;
-        player.poids = poids;
-        player.vma = vma;
-        player.nationalite = nationalite;
-        player.origin = origin;
-        player.interaction = interaction;
-        player.strongFoot = strongFoot;
-        player.weekFoot = weekFoot;
-        player.playerHead = playerHead;
-        player.statisticalSheets = statisticalSheets;
-        player.matshSheets = matchSheets;
-        player.videos = videos;
-        player.user=user;
-
-        return player;
-    }
-
-    public static PlayerDTO get(Long id, List<Team> teams, Category category, int evaluation, LocalDate birthday, int taille, int poids, int vma, String nationalite,String origin, int interaction, String strongFoot, String weekFoot,PlayerHead playerHead, List<StatisticalSheet> statisticalSheets,List<MatchSheet> matchSheets, List<Video> videos, User user) {
-        PlayerDTO player = new PlayerDTO();
-
-        player.id = id;
-        player.teams = teams;
-        player.category = category;
-        player.evaluation = evaluation;
-        player.birthday = birthday;
-        player.taille = taille;
-        player.poids = poids;
-        player.vma = vma;
-        player.nationalite = nationalite;
-        player.origin = origin;
-        player.interaction = interaction;
-        player.strongFoot = strongFoot;
-        player.weekFoot = weekFoot;
-        player.playerHead = playerHead;
-        player.statisticalSheets = statisticalSheets;
-        player.matshSheets = matchSheets;
-        player.videos = videos;
-        player.user=user;
-
-        return player;
-    }
-
-    @Override
-    public String toString() {
-        return "PlayerDTO{" +
-                ", team=" + teams +
-                ", category=" + category +
-                ", Evaluation=" + evaluation +
-                ", Birthday=" + birthday +
-                ", taille=" + taille +
-                ", poids=" + poids +
-                ", vma=" + vma +
-                ", nationalite='" + nationalite + '\'' +
-                ", origin='" + origin + '\'' +
-                ", Interaction=" + interaction +
-                ", strongFoot=" + strongFoot +
-                ", weekFoot=" + weekFoot +
-                ", playerHead=" + playerHead +
-                //", Feet=" + Arrays.toString(feet) +
-                ", statisticalSheets=" + statisticalSheets +
-                ", videos=" + videos +
-                '}';
-    }
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private CategoryDTO category;
+	
+	@Getter @Setter
+    private int rating;
+	
+	@Getter @Setter
+    private int taille;
+	
+	@Getter @Setter
+    private int poids;
+	
+	@Getter @Setter
+    private int vma;
+	
+	@Getter @Setter
+    private String nationalite;
+	
+	@Getter @Setter
+    private String origin;
+	
+	@Getter @Setter
+    private int interaction;
+	
+	@Getter @Setter
+    private String strongFoot;
+	
+	@Getter @Setter
+    private String weekFoot;
+	
+	@Getter @Setter
+    private UserDTO user;
+	
+	@Getter @Setter
+    private List<TeamDTO> teams;
+	
+	@Getter @Setter
+    private List<StatisticalSheetDTO> statisticalSheets;
+	
+	@Getter @Setter
+    private List<MatchSheetDTO> matshSheets;
+	
+	@Getter @Setter
+    private List<VideoDTO> videos;
 }

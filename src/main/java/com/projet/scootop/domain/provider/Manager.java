@@ -2,45 +2,36 @@ package com.projet.scootop.domain.provider;
 
 import javax.persistence.*;
 
+import com.projet.scootop.domain.user.User;
+
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "Manager")
-// AGENT DE JOUEUR != d'un scoot qui travaille pour un club, l'agent sert interet d'un joueur -> c'est unn apporteur d'affaires 
+// AGENT DE JOUEUR != d'un scoot qui travaille pour un club, l'agent sert interet d'un joueur -> c'est un apporteur d'affaires 
 
 public class Manager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    // USER?
-    public String name;
+    @Getter @Setter
+    private Long id;
+    
+    @OneToOne
+    @Getter @Setter
+    private User user;
+    
     @ManyToOne
-    public Agence agence;
+    @Getter @Setter
+    private Agence agence;
 
-    public Manager( String name, Agence agence) {
-        this.name = name;
+    public Manager(User user, Agence agence) {
+        this.user = user;
         this.agence = agence;
     }
 
     public Manager() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Agence getAgence() {
-        return agence;
-    }
-
-    public void setAgence(Agence agence) {
-        this.agence = agence;
-    }
 }

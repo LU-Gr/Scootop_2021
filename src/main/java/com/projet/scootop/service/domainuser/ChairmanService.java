@@ -4,38 +4,50 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.domainuser.Chairman;
+import com.projet.scootop.mappers.domainuser.ChairmanMapper;
 import com.projet.scootop.model.domainuser.ChairmanDTO;
 import com.projet.scootop.repository.domainuser.ChairmanRepository;
-import com.projet.scootop.service.user.UserService;
+import com.projet.scootop.repository.user.UserRepository;
 
 import java.util.List;
 
 @Service
 public class ChairmanService {
 
-   @Autowired
+	@Autowired
     public ChairmanRepository chairmanRepository;
-    public UserService userService;
-    public Chairman add(ChairmanDTO chairmanDTO) throws Exception{
-        userService.updateEntity(chairmanDTO.getUser());
-        Chairman chairman=new Chairman(chairmanDTO.getUser());
+	
+	@Autowired
+	public UserRepository userRepository;
+	
+	@Autowired
+	private ChairmanMapper mapper;
+	
+    public ChairmanDTO add(ChairmanDTO chairmanDTO) throws Exception{
+    	Chairman chairman = mapper.mapTo(chairmanDTO);
+    	userRepository.save(chairman.getUser());
+    	chairmanRepository.save(chairman);
+    	return mapper.mapTo(chairman);
+    }
+    
+    public ChairmanDTO get(Long id) throws Exception{
+        Chairman chairman = chairmanRepository.findById(id).orElse(null);
+        return mapper.mapTo(chairman);
+    }
+    
+    public ChairmanDTO update(ChairmanDTO chairmanDTO) throws Exception{
+    	
+        Chairman chairman = mapper.mapTo(chairmanDTO);
+        userRepository.save(chairman.getUser());
+        chairmanRepository.save(chairman);
+        return mapper.mapTo(chairman);
 
-        return chairmanRepository.save(chairman);
     }
-    public Chairman get(Long id) throws Exception{
-        return chairmanRepository.findById(id).orElse(null);
-
+    public List<ChairmanDTO> getAll(){
+        List<Chairman> chairmans = chairmanRepository.findAll();
+        return mapper.mapTo(chairmans);
     }
-    public Chairman update(ChairmanDTO chairmanDTO,Long id) throws Exception{
-        userService.updateEntity(chairmanDTO.getUser());
-        Chairman chairman=new Chairman(chairmanDTO.getUser());
-        chairman.setId(id);
-        return chairmanRepository.save(chairman);
-
-    }
-    public List<Chairman> getAll(){
-        return chairmanRepository.findAll();
-    }
+    
     public String delete(Long id){
         Chairman chairman = chairmanRepository.findById(id).orElse(null);
         if(chairman==null){

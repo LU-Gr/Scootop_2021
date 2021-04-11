@@ -3,65 +3,55 @@ package com.projet.scootop.service.domainuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.projet.scootop.domain.domainconfiguration.Club;
 import com.projet.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.mappers.domainuser.ScootMapper;
 import com.projet.scootop.model.domainuser.ScootDTO;
 import com.projet.scootop.repository.domainuser.ScootRepository;
-import com.projet.scootop.service.domaineconfiguration.ClubService;
-import com.projet.scootop.service.user.UserService;
-
+import com.projet.scootop.repository.user.UserRepository;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ScootService {
 	
   @Autowired
-  public ScootRepository scootRepository;
+  private ScootRepository scootRepository;
   
-  public UserService userService;
-  public ClubService clubService;
+  @Autowired
+  private UserRepository userRepository;
   
-  public Scoot add(ScootDTO scootDTO) throws Exception {
-    userService.updateEntity(scootDTO.user);
-    for (Club club: scootDTO.clubs) {
-      clubService.updateEntity(club);
-    }
-    Scoot scoot=new Scoot(scootDTO.user,scootDTO.clubs, scootDTO.shortlist);
-   
-    return  scootRepository.save(scoot);
+  @Autowired
+  private ScootMapper mapper;
+  
+  public ScootDTO add(ScootDTO scootDTO) throws Exception {
+	  Scoot scoot = mapper.mapTo(scootDTO);
+	  userRepository.save(scoot.getUser());
+	  scootRepository.save(scoot);
+	  return mapper.mapTo(scoot);
   }
+  
   public ScootDTO get(Long id){
-
     Scoot scoot = scootRepository.findById(id).orElse(null);
-
     if(scoot==null){
       return null;
     }
-
-    return ScootDTO.get(scoot.id,scoot.user, scoot.clubs, scoot.shortlist);
-
+    return mapper.mapTo(scoot);
   }
-  public List<Scoot> getAll(){
-    return scootRepository.findAll();
-
-  }
-
-  public List<ScootDTO> getAllByMatcSheetId(Long matchSheet){
-
-    List<Scoot> scoots = scootRepository.findAllById(matchSheet);
-    return scoots.stream().map(scoot -> ScootDTO.get(scoot.id,scoot.user, scoot.clubs, scoot.shortlist)).collect(Collectors.toList());
-
+  
+  public List<ScootDTO> getAll(){
+	  List<Scoot> scoots = scootRepository.findAll();
+	  return mapper.mapTo(scoots);
   }
 
-  public Scoot update(ScootDTO scootDTO,Long id) throws Exception {
-    User newUser = userService.updateEntity(scootDTO.user);
-    Scoot scoot=new Scoot(newUser,scootDTO.clubs, scootDTO.shortlist);
-    scoot.id=id;
+  
+  public List<ScootDTO> getAllByMatchSheetId(Long matchSheetId){
+    List<Scoot> scoots = scootRepository.findAllById(matchSheetId);
+    return mapper.mapTo(scoots);
+  }
 
-    return scootRepository.save(scoot);
-
+  public ScootDTO update(ScootDTO scootDTO,Long id) throws Exception {
+	  Scoot scoot = mapper.mapTo(scootDTO);
+	  scootRepository.save(scoot);
+	  return mapper.mapTo(scoot);
   }
 
   public String delete(Long id){

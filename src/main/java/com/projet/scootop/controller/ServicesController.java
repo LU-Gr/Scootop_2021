@@ -9,8 +9,6 @@ import com.projet.scootop.model.domainuser.PlayerDTO;
 import com.projet.scootop.model.domainuser.ScootDTO;
 import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.model.services.*;
-import com.projet.scootop.repository.services.GameSheetRepository;
-import com.projet.scootop.repository.services.WearableRepository;
 import com.projet.scootop.service.domainuser.PlayerService;
 import com.projet.scootop.service.domainuser.ScootService;
 import com.projet.scootop.service.inprogess.MatchSheetService;
@@ -34,11 +32,7 @@ public class ServicesController {
     private StatisticalSheetService statisticalSheetService;
     private PlayerService playerService;
     private ScootService scootService;
-    private MatchSheetService matchSheetService;
-    private WearableRepository wearableRepository;
-    private GameSheetRepository gameSheetRepository;
-
-
+    
     public ServicesController(UserResumeService serResumeService, ShortlistService shortlistService, GameSheetService gameSheetService, EventsService eventsService, WearableService wearableService, StatisticalSheetService statisticalSheetService,PlayerService playerService, MatchSheetService matchSheetService ) {
         super();
         this.userResumeService = serResumeService;
@@ -48,7 +42,6 @@ public class ServicesController {
         this.wearableService = wearableService;
         this.statisticalSheetService = statisticalSheetService;
         this.playerService = playerService;
-        this.matchSheetService = matchSheetService;
 
     }
 
@@ -92,7 +85,7 @@ public class ServicesController {
     @GetMapping("/api/matchsheet/{matchsheetsId}/scoots")
     @ResponseBody
     List<ScootDTO> getAllByScootByMatchSheetId(@PathVariable("matchsheetsId") Long matchId){
-        return scootService.getAllByMatcSheetId(matchId);}
+        return scootService.getAllByMatchSheetId(matchId);}
 
     // **** MatchSheet Data return One Scoot ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/scoot/{id}")
@@ -102,7 +95,7 @@ public class ServicesController {
     @GetMapping("/api/matchsheet/{matchsheetsId}/wearables")
     @ResponseBody
     List<WearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId){
-    return wearableService.getAllByMatcSheetId(matchId);}
+    return wearableService.getAllByMatchSheetId(matchId);}
 
     // **** Data return All Wearables ****
     @GetMapping("api/wearables")

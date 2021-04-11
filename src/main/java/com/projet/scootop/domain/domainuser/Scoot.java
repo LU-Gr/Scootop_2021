@@ -7,32 +7,41 @@ import com.projet.scootop.domain.services.Shortlist;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.util.List;
 
 @Entity
+@ToString
 @Table(name = "Scoot")
 
 public class Scoot {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
 
     @OneToOne
-    @JoinColumn(name = "USER_ID")
-    public User user;
+    @JoinColumn
+    @Getter @Setter
+    private User user;
 
     @ManyToMany (mappedBy = "scoots")
-    public List<Club> clubs;
+    @Getter @Setter
+    private List<Club> clubs;
 
     @OneToOne
     @JoinColumn(name = "Shortlist_id")
-    public Shortlist shortlist;
+    @Getter @Setter
+    private Shortlist shortlist;
 
     public Scoot(User user, List<Club> clubs, Shortlist shortlist) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.types
-             ) {
+        for (UserType userType: user.getTypes()) {
             if(userType.type.equals("scoot")){
                 isCorrect=true;
             }
@@ -46,33 +55,5 @@ public class Scoot {
     }
 
     public Scoot() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Club> getClubs() {
-        return clubs;
-    }
-
-    public void setClubs(List<Club> clubs) {
-        this.clubs = clubs;
-    }
-
-    public Shortlist getShortlist() {
-        return shortlist;
-    }
-
-    public void setShortlist(Shortlist shortlist) {
-        this.shortlist = shortlist;
     }
 }

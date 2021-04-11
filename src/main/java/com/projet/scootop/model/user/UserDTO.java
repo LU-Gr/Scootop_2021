@@ -2,45 +2,30 @@ package com.projet.scootop.model.user;
 
 import java.util.List;
 
-import com.projet.scootop.domain.user.Contact;
-import com.projet.scootop.domain.user.UserType;
+import lombok.Getter;
+import lombok.Setter;
 
 public class UserDTO {
-    public Long id;
-    public String name;
-    public String firstName;
-    public Contact contact;
-    public List<UserType> types;
-    public Double rating;
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private String firstName;
+	
+	@Getter @Setter
+    private String lastName;
+    
+    @Getter @Setter
+    private String email;
+    
+    @Getter @Setter
+    private String password;
+    
+    @Getter @Setter
+    private ContactDTO contact;
+    
+    @Getter @Setter
+    private List<UserTypeDTO> types;
 
-    public static UserDTO create(String name, String firstName, Contact contact, List<UserType> types, Double rating) {
-        UserDTO user= new UserDTO();
-        user.contact=contact;
-        user.firstName=firstName;
-        user.name=name;
-        user.types=types;
-        user.rating=rating;
-        return user;
-    }
-    public static UserDTO get(Long id,String name, String firstName, Contact contact,List<UserType> types,Double rating) {
-        UserDTO user= new UserDTO();
-        user.id=id;
-        user.contact=contact;
-        user.firstName=firstName;
-        user.name=name;
-        user.types=types;
-        user.rating=rating;
-        return user;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "name='" + name + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", contact=" + contact +
-                ", types=" + types +
-                ", rating=" + rating +
-                '}';
-    }
 }

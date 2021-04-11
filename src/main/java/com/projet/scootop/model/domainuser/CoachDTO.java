@@ -5,8 +5,8 @@ import lombok.Setter;
 
 import java.util.List;
 
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.domainconfiguration.TeamDTO;
+import com.projet.scootop.model.user.UserDTO;
 
 public class CoachDTO {
 
@@ -14,17 +14,8 @@ public class CoachDTO {
     private Long id;
 	
 	@Getter @Setter
-    private User user;
+    private UserDTO user;
 
-	@Getter
-    private List<Team> teams;
-
-    @Override
-    public String toString() {
-        return "CoachDTO{" +
-                "id=" + id +
-                ", user=" + user +
-                ", teams=" + teams +
-                '}';
-    }
+	@Getter @Setter
+    private List<TeamDTO> teams;
 }

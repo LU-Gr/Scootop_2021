@@ -4,48 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.provider.Cameraman;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.mappers.provider.CameramanMapper;
 import com.projet.scootop.model.provider.CameramanDTO;
 import com.projet.scootop.repository.provider.CameramanRepository;
-import com.projet.scootop.repository.user.ContactRepository;
-import com.projet.scootop.repository.user.UserRepository;
-import com.projet.scootop.repository.user.UserTypeRepository;
-import com.projet.scootop.service.user.UserService;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CameramanService {
 	
-    public UserService userService;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private ContactRepository contactRepository;
-    @Autowired
-    private UserTypeRepository userTypeRepository;
-
     @Autowired
     public CameramanRepository cameramanRepository;
     
-    public CameramanService(CameramanRepository cameramanRepository,UserService userService) {
-        this.cameramanRepository = cameramanRepository;
-        this.userService =userService;
-    }
+    @Autowired
+    private CameramanMapper mapper;
 
-    public Cameraman add(CameramanDTO cameramanDTO) throws Exception {
-        User newUser=userService.updateEntity(cameramanDTO.user);
-        Cameraman cameraman=new Cameraman(newUser,cameramanDTO.tarif,cameramanDTO.experience);
-        return cameramanRepository.save(cameraman);
+    public CameramanDTO add(CameramanDTO cameramanDTO) throws Exception {
+        Cameraman cameraman = mapper.mapTo(cameramanDTO);
+        cameramanRepository.save(cameraman);
+        return mapper.mapTo(cameraman);
     }
     
-    public Cameraman update(CameramanDTO cameramanDTO, Long id) throws Exception {
-        User newUser = userService.updateEntity(cameramanDTO.user);
-        Cameraman cameraman=new Cameraman(newUser,cameramanDTO.tarif,cameramanDTO.experience);
-        cameraman.id=id;
-
-        return cameramanRepository.save(cameraman);
+    public CameramanDTO update(CameramanDTO cameramanDTO) throws Exception {
+        Cameraman cameraman= mapper.mapTo(cameramanDTO);
+        cameramanRepository.save(cameraman);
+        return mapper.mapTo(cameraman);
     }
     
     public CameramanDTO get(Long id){
@@ -54,12 +36,12 @@ public class CameramanService {
             return null;
         }
         
-        return CameramanDTO.get(cameraman.id, cameraman.tarif, cameraman.experience, cameraman.user);
+        return mapper.mapTo(cameraman);
     }
     public List<CameramanDTO> getAll(){
 
         List<Cameraman> cameramans = cameramanRepository.findAll();
-        return cameramans.stream().map(cameraman -> CameramanDTO.get(cameraman.id, cameraman.tarif, cameraman.experience, cameraman.user)).collect(Collectors.toList());
+        return mapper.mapTo(cameramans);
     }
     
     public String delete(Long id){

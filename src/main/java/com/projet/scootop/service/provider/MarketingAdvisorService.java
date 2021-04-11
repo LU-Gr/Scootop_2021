@@ -4,23 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.provider.MarketingAdvisor;
+import com.projet.scootop.mappers.provider.MarketingAdvisorMapper;
 import com.projet.scootop.model.provider.MarketingAdvisorDTO;
 import com.projet.scootop.repository.provider.MarketingAdvisorRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MarketingAdvisorService {
 	
     @Autowired
-    public MarketingAdvisorRepository marketingAdvisorRepository;
+    private MarketingAdvisorRepository marketingAdvisorRepository;
     
+    @Autowired
+    private MarketingAdvisorMapper mapper;
     
     public MarketingAdvisorDTO add(MarketingAdvisorDTO marketingAdvisorDTO) throws Exception {
-        MarketingAdvisor scoot=new MarketingAdvisor(marketingAdvisorDTO.user,marketingAdvisorDTO.agence);
-        marketingAdvisorRepository.save(scoot);
-        return marketingAdvisorDTO;
+        MarketingAdvisor marketingAdvisor = mapper.mapTo(marketingAdvisorDTO);
+        marketingAdvisorRepository.save(marketingAdvisor);
+        return mapper.mapTo(marketingAdvisor);
     }
     
     public MarketingAdvisorDTO get(Long id){
@@ -29,19 +31,13 @@ public class MarketingAdvisorService {
         if(marketingAdvisor==null){
             return null;
         }
-        return MarketingAdvisorDTO.create(marketingAdvisor.user,marketingAdvisor.agence);
+        return mapper.mapTo(marketingAdvisor);
     }
     
     public List<MarketingAdvisorDTO> getAll(){
 
         List<MarketingAdvisor> marketingAdvisors = marketingAdvisorRepository.findAll();
-        List<MarketingAdvisorDTO> marketingAdvisorDTOS = new ArrayList<>();
-        for (MarketingAdvisor marketingAdvisor: marketingAdvisors) {
-            MarketingAdvisorDTO marketingAdvisorDTO= MarketingAdvisorDTO.get(marketingAdvisor.id,marketingAdvisor.user,marketingAdvisor.agence);
-            marketingAdvisorDTOS.add(marketingAdvisorDTO);
-        }
-
-        return marketingAdvisorDTOS;
+        return mapper.mapTo(marketingAdvisors);
     }
     public String delete(Long id){
         MarketingAdvisor scoot = marketingAdvisorRepository.findById(id).orElse(null);

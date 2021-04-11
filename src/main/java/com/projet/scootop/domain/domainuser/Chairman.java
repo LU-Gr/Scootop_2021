@@ -29,8 +29,7 @@ public class Chairman {
 
     public Chairman(User user) throws Exception {
         boolean isCorrect=false;
-        for (UserType userType: user.types
-        ) {
+        for (UserType userType: user.getTypes()) {
             if(userType.type.equals("chairman")){
                 isCorrect=true;
             }

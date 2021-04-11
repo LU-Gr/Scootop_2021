@@ -1,26 +1,19 @@
 package com.projet.scootop.model.provider;
 
-import com.projet.scootop.domain.provider.Agence;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.user.UserDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class MarketingAdvisorDTO {
-
-	Long id;
-    public User user;
-    public Agence agence;
-
-    public static MarketingAdvisorDTO create(User user, Agence agence) {
-        MarketingAdvisorDTO marketingAdvisorDTO=new MarketingAdvisorDTO();
-        marketingAdvisorDTO.user = user;
-        marketingAdvisorDTO.agence = agence;
-        return marketingAdvisorDTO;
-    }
-    public static MarketingAdvisorDTO get(Long id,User user, Agence agence) {
-        MarketingAdvisorDTO marketingAdvisorDTO=new MarketingAdvisorDTO();
-        marketingAdvisorDTO.user = user;
-        marketingAdvisorDTO.id = id;
-        marketingAdvisorDTO.agence = agence;
-        return marketingAdvisorDTO;
-    }
+	
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private UserDTO user;
+	
+	@Getter @Setter
+	private AgenceDTO agence;
 
 }

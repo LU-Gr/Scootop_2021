@@ -5,9 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.projet.scootop.domain.user.Contact;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
+import com.projet.scootop.mappers.user.UserMapper;
 import com.projet.scootop.model.user.UserDTO;
 import com.projet.scootop.repository.user.ContactRepository;
 import com.projet.scootop.repository.user.UserRepository;
@@ -21,38 +21,41 @@ public class UserService {
 	
     @Autowired
     private UserRepository userRepository;
+    
     @Autowired
     private ContactRepository contactRepository;
+    
     @Autowired
     private UserTypeRepository userTypeRepository;
     
-    public User addUser(UserDTO userDTO) {
-        Contact contact=contactRepository.save(userDTO.contact);
-        List<UserType> types=userDTO.types.stream().map(userType -> userTypeRepository.findById(userType.id).orElse(null)).collect(Collectors.toList());
-        User user = new User(userDTO.name,userDTO.firstName,contact);
-        //types.stream().map(userType -> userType.users.add(user));
-        user.types.addAll(types);
-        return userRepository.save(user);
+    @Autowired
+    private UserMapper mapper;
+    
+    public UserDTO addUser(UserDTO userDTO) {
+        User user = mapper.mapTo(userDTO);
+        //TODO: comprendre cette ligne
+        List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.id).orElse(null)).collect(Collectors.toList());
+        contactRepository.save(user.getContact());
+        user.getTypes().addAll(types);
+        userRepository.save(user);
+        return mapper.mapTo(user);
     }
     
-    public User update(UserDTO userDTO,Long id) {
-        Contact contact=contactRepository.save(userDTO.contact);
-        User user = new User(userDTO.name,userDTO.firstName,contact);
-        user.id=id;
-        return userRepository.save(user);
+    public UserDTO update(UserDTO userDTO) {
+    	User user = mapper.mapTo(userDTO);
+        contactRepository.save(user.getContact());
+        userRepository.save(user);
+        return mapper.mapTo(user);
     }
     
-    public User updateEntity(User user) {
-        contactRepository.save(user.contact);
-        return userRepository.save(user);
-    }
-    
-    public User get(Long id){
-        return userRepository.findById(id).orElse(null);
+    public UserDTO get(Long id){
+        User user = userRepository.findById(id).orElse(null);
+        return mapper.mapTo(user);
     }
 
-    public List<User> getAll(){
-        return userRepository.findAll();
+    public List<UserDTO> getAll(){
+        List<User> users = userRepository.findAll();
+        return mapper.mapTo(users);
     }
 
 

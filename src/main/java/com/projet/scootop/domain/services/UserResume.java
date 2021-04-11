@@ -267,7 +267,7 @@ public class UserResume {
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
-                    if(statisticalSheets.get(j).getPlayers().get(i).id == player.id) {
+                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
 
                         SaisonsShoots.add(SaisonsMatchPlayed.get(j).getShoots().size());
                         SaisonShoots = SaisonShoots + SaisonsShoots.get(j);
@@ -298,7 +298,7 @@ public class UserResume {
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
-                    if(statisticalSheets.get(j).getPlayers().get(i).id == player.id) {
+                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
 
                         SaisonsShootsSuccessList.add(SaisonsMatchPlayed.get(j).getShootIn());
                         SaisonShootsSuccess = SaisonShootsSuccess + SaisonsShootsSuccessList.get(j);
@@ -328,7 +328,7 @@ public class UserResume {
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
-                    if(statisticalSheets.get(j).getPlayers().get(i).id == player.id) {
+                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
 
                         SaisonsShootsFailedList.add(SaisonsMatchPlayed.get(j).getShootOut());
                         SaisonShootsFailed = SaisonShootsFailed + SaisonsShootsFailedList.get(j);

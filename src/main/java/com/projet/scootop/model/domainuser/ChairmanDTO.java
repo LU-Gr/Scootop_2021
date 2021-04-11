@@ -1,6 +1,6 @@
 package com.projet.scootop.model.domainuser;
 
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,25 +11,5 @@ public class ChairmanDTO {
     private Long id;
 	
 	@Getter @Setter
-    private User user;
-
-    public static ChairmanDTO create( User user) {
-        ChairmanDTO chairmanDTO = new ChairmanDTO();
-        chairmanDTO.user = user;
-        return chairmanDTO;
-    }
-    public static ChairmanDTO get(Long id, User user) {
-        ChairmanDTO chairmanDTO = new ChairmanDTO();
-        chairmanDTO.id = id;
-        chairmanDTO.user = user;
-        return chairmanDTO;
-    }
-
-    @Override
-    public String toString() {
-        return "ChairmanDTO{" +
-                "id=" + id +
-                ", user=" + user +
-                '}';
-    }
+    private UserDTO user;
 }

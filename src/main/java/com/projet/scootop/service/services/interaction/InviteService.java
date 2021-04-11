@@ -4,44 +4,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.interaction.Invite;
+import com.projet.scootop.mappers.services.interaction.InviteMapper;
 import com.projet.scootop.model.services.interaction.InviteDTO;
 import com.projet.scootop.repository.services.interaction.InviteRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 
 public class InviteService {
 	
-    @Autowired
-    public InviteRepository inviteRepository;
+    @Autowired private InviteRepository inviteRepository;
+    @Autowired private InviteMapper mapper;
     
     public InviteDTO add(InviteDTO inviteDTO){
-        Invite invite= new Invite(inviteDTO.saison,inviteDTO.events,inviteDTO.user,inviteDTO.player,inviteDTO.createAt,inviteDTO.response);
-        inviteRepository.save(invite);
-        return inviteDTO;
+        Invite invite = mapper.mapTo(inviteDTO);
+        inviteRepository.equals(invite);
+        return mapper.mapTo(invite);
     }
+    
     public InviteDTO get(Long id){
-
         Invite invite = inviteRepository.findById(id).orElse(null);
         if(invite==null){
             return null;
         }
-        InviteDTO inviteDTO = InviteDTO.get(invite.id,invite.saison,invite.events,invite.user,invite.player,invite.createAt,invite.response);
-        return inviteDTO;
+        return mapper.mapTo(invite);
     }
+    
     public List<InviteDTO> getAll(){
-
         List<Invite> invites = inviteRepository.findAll();
-        ArrayList<InviteDTO> inviteDTOArrayList = new ArrayList<>();
-        for (Invite invite: invites) {
-            InviteDTO inviteDTO = InviteDTO.create(invite.saison,invite.events,invite.user,invite.player,invite.createAt,invite.response);
-            inviteDTOArrayList.add(inviteDTO);
-
-        }
-        return inviteDTOArrayList;
+        return mapper.mapTo(invites);
     }
+    
     public String delete(Long id){
         Invite invite = inviteRepository.findById(id).orElse(null);
         if(invite==null){
@@ -49,7 +43,6 @@ public class InviteService {
         }
 
         inviteRepository.deleteById(id);
-
         return "Deleted";
     }
 

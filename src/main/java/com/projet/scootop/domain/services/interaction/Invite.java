@@ -7,26 +7,42 @@ import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.services.Events;
 import com.projet.scootop.domain.user.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Invite")
 
 public class Invite {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
+    
     @ManyToOne
-    public Saison saison;
+    @Getter @Setter
+    private Saison saison;
 
     @ManyToOne
-    public Events events;
+    @Getter @Setter
+    private Events events;
+    
     @ManyToOne
-    public User user;
+    @Getter @Setter
+    private User user;
+    
     @ManyToOne
-    public Player player;
-    public LocalDate createAt;
-    public boolean response;
+    @Getter @Setter
+    private Player player;
+    
+    @Getter @Setter
+    private LocalDate createAt;
+    
+    @Getter @Setter
+    private boolean response;
 
 
     public Invite(Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
@@ -42,55 +58,4 @@ public class Invite {
 
     }
 
-    public Saison getSaison() {
-        return saison;
-    }
-
-    public void setSaison(Saison saison) {
-        this.saison = saison;
-    }
-
-    public Events getEvents() {
-        return events;
-    }
-
-    public void setEvents(Events events) {
-        this.events = events;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public LocalDate getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(LocalDate createAt) {
-        this.createAt = createAt;
-    }
-
-    public boolean isResponse() {
-        return response;
-    }
-
-    public void setResponse(boolean response) {
-        this.response = response;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

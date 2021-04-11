@@ -11,40 +11,45 @@ import com.projet.scootop.domain.statistical.Action;
 import com.projet.scootop.domain.statistical.Goal;
 import com.projet.scootop.domain.statistical.Pass;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 // Stats d'un joueur selon le type de compétition
 @Entity
+@ToString
 @Table(name = "UserResume")
 public class UserResume {
-
-    public UserResume(Player player, Competition competitionType, List<StatisticalSheet> statisticalSheets, List<Team> teams, List<Saison> saisons, int defensiveSkills, int offensiveSkills) {
-    }
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
 
     @OneToOne
-    public Player player;
+    @Getter @Setter
+    private Player player;
     
     @OneToOne
-    public Competition competitionType;
+    @Getter @Setter
+    private Competition competitionType;
     
     @OneToMany
-    public List<StatisticalSheet> statisticalSheets;
+    @Getter @Setter
+    private List<StatisticalSheet> statisticalSheets;
 
     //TODO: remplacer par filter player.teams.competitionType == competitonType
     @OneToMany
-    public List<Team> teams;
+    @Getter @Setter
+    private List<Team> teams;
 
     @OneToMany
-    public List<Saison> saisons;
-
-    // dans statisticalSheets
-    public int defensiveSkills;
-    public int OffensiveSkills;
+    @Getter @Setter
+    private List<Saison> saisons;
 
     public UserResume(Long id, Player player, Competition competitionType, List<Goal> goals, List<Pass> assists,List <StatisticalSheet> statisticalSheet, float distance_traveled, List<Team> teams, List<Saison> saisons, int ballPlayed, int ballLost, int defensiveSkills, int offensiveSkills) {
         this.id = id;
@@ -53,22 +58,6 @@ public class UserResume {
         this.statisticalSheets = statisticalSheet;
         this.teams = teams;
         this.saisons = saisons;
-        this.defensiveSkills = defensiveSkills;
-        this.OffensiveSkills = offensiveSkills;
-    }
-
-    @Override
-    public String toString() {
-        return "UserResume{" +
-                "id=" + id +
-                ", player=" + player +
-                ", competitionType=" + competitionType +
-                ", statisticalSheets=" + statisticalSheets +
-                ", teams=" + teams +
-                ", saisons=" + saisons +
-                ", defensiveSkills=" + defensiveSkills +
-                ", OffensiveSkills=" + OffensiveSkills +
-                '}';
     }
 
     public UserResume() {
@@ -214,7 +203,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 SaisonsDistancesTraveled.add(SaisonsMatchPlayed.get(j).getDistancekm());
                 TraveledDistanceYears = TraveledDistanceYears + SaisonsDistancesTraveled.get(j);
@@ -238,7 +227,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 SaisonsBallPlayed.add(SaisonsMatchPlayed.get(j).getNbBallplayed());
                 SaisonBallSuccess = SaisonBallSuccess + SaisonsBallPlayed.get(j);
@@ -263,7 +252,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
@@ -294,7 +283,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
@@ -324,7 +313,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
 
@@ -355,7 +344,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 SaisonsBallLosts.add(SaisonsMatchPlayed.get(j).getNbBalllost());
                 SaisonBallLost = SaisonBallLost + SaisonsBallLosts.get(j);
@@ -378,7 +367,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 SaisonsBallSuccessList.add(SaisonsMatchPlayed.get(j).getNbBallSuccess());
                 SaisonBallSuccess = SaisonBallSuccess + SaisonsBallSuccessList.get(j);
@@ -402,7 +391,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 if(SaisonsMatchPlayed.get(j).getSkills().get(j).getSuccessSkill() == true){
 
@@ -428,7 +417,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 if(SaisonsMatchPlayed.get(j).getSkills().get(j).getSuccessSkill() == false){
 
@@ -454,7 +443,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
 
                 SaisonsSkillsList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
@@ -477,7 +466,7 @@ public class UserResume {
 
         for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
 
-            if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
+            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
 
                 SaisonsMatchPlayed.add(SaisonsMatchPlayed.get(j));
                 GamePlayedYears = SaisonsMatchPlayed.size();

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.mappers.services.EventsMapper;
 import com.projet.scootop.model.services.EventsDTO;
 import com.projet.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.repository.domainetools.CompetitionRepository;
@@ -14,64 +15,53 @@ import com.projet.scootop.repository.services.GameSheetRepository;
 import com.projet.scootop.repository.servicetools.video.VideoRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EventsService {
 
-    @Autowired
-    public EventsRepository eventsRepository;
-    @Autowired
-    public SaisonRepository saisonRepository;
-    @Autowired
-    public VideoRepository videoRepository;
-    @Autowired
-    public TeamRepository teamRepository;
-    @Autowired
-    public ScootRepository scootRepository;
-    @Autowired
-    public CompetitionRepository competitiontypeRepository;
-    @Autowired
-    public GameSheetRepository gameSheetRepository;
+    @Autowired private EventsRepository eventsRepository;
+    @Autowired private SaisonRepository saisonRepository;
+    @Autowired private VideoRepository videoRepository;
+    @Autowired private TeamRepository teamRepository;
+    @Autowired private ScootRepository scootRepository;
+    @Autowired private CompetitionRepository competitiontypeRepository;
+    @Autowired private GameSheetRepository gameSheetRepository;
+    @Autowired private EventsMapper mapper;
 
 
     public EventsDTO addEvent(EventsDTO eventsDTO){
-
-        saisonRepository.save(eventsDTO.saison);
-        competitiontypeRepository.save(eventsDTO.competitiontype);
-        videoRepository.saveAll(eventsDTO.videos);
-        gameSheetRepository.saveAll(eventsDTO.gameSheets);
-        scootRepository.saveAll(eventsDTO.scoots);
-        teamRepository.saveAll(eventsDTO.teams);
-
-        Events events = new Events(eventsDTO.id,eventsDTO.date, eventsDTO.competitiontype,eventsDTO.teams, eventsDTO.scoots, eventsDTO.gameSheets, eventsDTO.status,eventsDTO.prestaAnalyst,eventsDTO.prestaCameraman,eventsDTO.prestaWearable,eventsDTO.prestaScoot,eventsDTO.prestaZoom,eventsDTO.saison,eventsDTO.videos);
+    	Events events = mapper.mapTo(eventsDTO);
+        saisonRepository.save(events.getSaison());
+        competitiontypeRepository.save(events.getCompetition());
+        videoRepository.saveAll(events.getVideos());
+        gameSheetRepository.saveAll(events.getGameSheets());
+        scootRepository.saveAll(events.getScoots());
+        teamRepository.saveAll(events.getTeams());
         eventsRepository.save(events);
-
-        return eventsDTO;
-
+        return mapper.mapTo(events);
     }
+    
     public EventsDTO get(Long id){
-
         Events events = eventsRepository.findById(id).orElse(null);
 
         if(events==null){
             return null;
         }
 
-        return EventsDTO.get(events.id,events.date, events.competitiontype,events.teams, events.scoots, events.gameSheets, events.status,events.prestaAnalyst,events.prestaCameraman,events.prestaWearable,events.prestaScoot,events.prestaZoom,events.saison,events.videos);
+        return mapper.mapTo(events);
 
     }
 
     public Events update(EventsDTO eventsDTO, Long id){
-        Events events = new Events(eventsDTO.id, eventsDTO.date, eventsDTO.competitiontype,eventsDTO.teams, eventsDTO.scoots, eventsDTO.gameSheets, eventsDTO.status,eventsDTO.prestaAnalyst,eventsDTO.prestaCameraman,eventsDTO.prestaWearable,eventsDTO.prestaScoot,eventsDTO.prestaZoom,eventsDTO.saison,eventsDTO.videos);
-        events.id=id;
-        return eventsRepository.save(events);
+        Events events = mapper.mapTo(eventsDTO);
+        eventsRepository.save(events);
+        return mapper.mapTo(eventsDTO);
     }
 
     public List<EventsDTO> getAll(){
 
         List <Events> events = eventsRepository.findAll();
-        return events.stream().map(event -> EventsDTO.get(event.id,event.date, event.competitiontype,event.teams, event.scoots, event.gameSheets, event.status,event.prestaAnalyst,event.prestaCameraman,event.prestaWearable,event.prestaScoot,event.prestaZoom,event.saison,event.videos)).collect(Collectors.toList());
+        return mapper.mapTo(events);
 
     }
 

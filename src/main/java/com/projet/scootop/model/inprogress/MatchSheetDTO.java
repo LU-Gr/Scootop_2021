@@ -2,14 +2,13 @@ package com.projet.scootop.model.inprogress;
 
 import java.util.List;
 
-import com.projet.scootop.domain.domainconfiguration.Stade;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domaintools.Competition;
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.domain.services.Events;
-import com.projet.scootop.domain.services.Wearable;
+import com.projet.scootop.model.domainconfiguration.StadeDTO;
+import com.projet.scootop.model.domainconfiguration.TeamDTO;
+import com.projet.scootop.model.domaintools.CompetitionDTO;
+import com.projet.scootop.model.domaintools.SaisonDTO;
+import com.projet.scootop.model.domainuser.ScootDTO;
+import com.projet.scootop.model.services.EventsDTO;
+import com.projet.scootop.model.services.WearableDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,26 +19,26 @@ public class MatchSheetDTO {
     private Long id;
 	
 	@Getter @Setter
-	private Events event;
+	private EventsDTO event;
 	
 	@Getter @Setter
-	private List<Team> team;
+	private List<TeamDTO> team;
 	
 	@Getter @Setter
-	private List<StatisticalSheet> statisticalSheets;
+	private List<StatisticalSheetDTO> statisticalSheets;
 	
 	@Getter @Setter
-	private Stade stade;
+	private StadeDTO stade;
 	
 	@Getter @Setter
-	private List <Scoot> matchScoots;
+	private List <ScootDTO> matchScoots;
 	
 	@Getter @Setter
-	private List<Wearable> wearables;
+	private List<WearableDTO> wearables;
 	
 	@Getter @Setter
-	private Saison saison;
+	private SaisonDTO saison;
 	
 	@Getter @Setter
-	private Competition competitionType;
+	private CompetitionDTO competitionType;
 }

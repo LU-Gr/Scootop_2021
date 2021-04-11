@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.model.inprogress.MatchSheetDTO;
 import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.service.inprogess.MatchSheetService;

@@ -2,49 +2,33 @@ package com.projet.scootop.model.services;
 
 import java.util.List;
 
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domaintools.Competition;
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
+import com.projet.scootop.model.domainconfiguration.TeamDTO;
+import com.projet.scootop.model.domaintools.CompetitionDTO;
+import com.projet.scootop.model.domaintools.SaisonDTO;
+import com.projet.scootop.model.domainuser.PlayerDTO;
+import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class UserResumeDTO {
 
-    public Long id;
-    public Player player;
-    public Competition competitionType;
-    public List<StatisticalSheet> statisticalSheets;
-    public List<Saison> saisons;
-    public List<Team> teams;
-    public int defensiveSkills;
-    public int offensiveSkills;
-
-
-    public static UserResumeDTO create(Player player, Competition competitionType,List <StatisticalSheet> statisticalSheet, List<Team> teams,List<Saison> saisons,  int defensiveSkills, int offensiveSkills) {
-        UserResumeDTO userResumeDTO = new UserResumeDTO();
-        userResumeDTO.player = player;
-        userResumeDTO.competitionType = competitionType;
-        userResumeDTO.statisticalSheets = statisticalSheet;
-        userResumeDTO.teams = teams;
-        userResumeDTO.saisons = saisons;
-        userResumeDTO.defensiveSkills = defensiveSkills;
-        userResumeDTO.offensiveSkills = offensiveSkills;
-
-        return userResumeDTO;
-    }
-
-    public static UserResumeDTO get(Long id,Player player, Competition competitionType, List <StatisticalSheet> statisticalSheet, List<Team> teams,List<Saison> saisons, int defensiveSkills, int offensiveSkills) {
-        UserResumeDTO userResumeDTO = new UserResumeDTO();
-        userResumeDTO.id = id;
-        userResumeDTO.player = player;
-        userResumeDTO.competitionType = competitionType;
-        userResumeDTO.statisticalSheets = statisticalSheet;
-        userResumeDTO.teams = teams;
-        userResumeDTO.saisons = saisons;
-        userResumeDTO.defensiveSkills = defensiveSkills;
-        userResumeDTO.offensiveSkills = offensiveSkills;
-
-        return userResumeDTO;
-    }
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private PlayerDTO player;
+    
+    @Getter @Setter
+    private CompetitionDTO competitionType;
+    
+    @Getter @Setter
+    private List<StatisticalSheetDTO> statisticalSheets;
+    
+    @Getter @Setter
+    private List<SaisonDTO> saisons;
+    
+    @Getter @Setter
+    private List<TeamDTO> teams;
 
 }

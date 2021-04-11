@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.UserResume;
+import com.projet.scootop.mappers.services.UserResumeMapper;
 import com.projet.scootop.model.services.UserResumeDTO;
 import com.projet.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.repository.domainetools.CompetitionRepository;
@@ -11,65 +12,40 @@ import com.projet.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.repository.domainuser.PlayerRepository;
 import com.projet.scootop.repository.inprogress.StatisticalSheetRepository;
 import com.projet.scootop.repository.services.UserResumeRepository;
-import com.projet.scootop.repository.statistical.GoalRepository;
-import com.projet.scootop.repository.statistical.PassRepository;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserResumeService {
-    @Autowired
-    public UserResumeRepository userResumeRepository;
-
-    @Autowired
-    public PlayerRepository playerRepository;
-
-    @Autowired
-    public CompetitionRepository competitionTypeRepository;
-
-    @Autowired
-    public GoalRepository goalRepository;
-
-    @Autowired
-    public PassRepository assistRepository;
-
-    @Autowired
-    public StatisticalSheetRepository statisticalsheetRepository;
-
-    @Autowired
-    public TeamRepository teamsRepository;
-
-    @Autowired
-    public SaisonRepository saisonRepository;
+	
+    @Autowired private UserResumeRepository userResumeRepository;
+    @Autowired private PlayerRepository playerRepository;
+    @Autowired private CompetitionRepository competitionTypeRepository;
+    @Autowired private StatisticalSheetRepository statisticalsheetRepository;
+    @Autowired private TeamRepository teamsRepository;
+    @Autowired private SaisonRepository saisonRepository;
+    @Autowired private UserResumeMapper mapper;
 
     public UserResumeDTO addUserResume(UserResumeDTO userResumeDTO) {
-
-        playerRepository.save(userResumeDTO.player);
-        competitionTypeRepository.save(userResumeDTO.competitionType);
-        statisticalsheetRepository.saveAll(userResumeDTO.statisticalSheets);
-        teamsRepository.saveAll(userResumeDTO.teams);
-        saisonRepository.saveAll(userResumeDTO.saisons);
-
-        UserResume userResume = new UserResume(userResumeDTO.player, userResumeDTO.competitionType, userResumeDTO.statisticalSheets, userResumeDTO.teams,userResumeDTO.saisons, userResumeDTO.defensiveSkills, userResumeDTO.offensiveSkills);
+    	UserResume userResume = mapper.mapTo(userResumeDTO);
+        playerRepository.save(userResume.getPlayer());
+        competitionTypeRepository.save(userResume.getCompetitionType());
+        statisticalsheetRepository.saveAll(userResume.getStatisticalSheets());
+        teamsRepository.saveAll(userResume.getTeams());
+        saisonRepository.saveAll(userResume.getSaisons());
         userResumeRepository.save(userResume);
-        return userResumeDTO;
+        return mapper.mapTo(userResume);
     }
 
     public UserResumeDTO get(Long id){
-
         UserResume userResume = userResumeRepository.findById(id).orElse(null);
-
         if(userResume==null){
             return null;
         }
-
-        return UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.statisticalSheets, userResume.teams,userResume.saisons, userResume.OffensiveSkills, userResume.defensiveSkills);
+        return mapper.mapTo(userResume);
     }
 
     public List<UserResumeDTO> getAll(){
-
         List<UserResume> userResumes = userResumeRepository.findAll();
-        return userResumes.stream().map(userResume -> UserResumeDTO.get(userResume.id, userResume.player, userResume.competitionType, userResume.statisticalSheets, userResume.teams,userResume.saisons, userResume.OffensiveSkills, userResume.defensiveSkills)).collect(Collectors.toList());
+        return mapper.mapTo(userResumes);
     }
 }

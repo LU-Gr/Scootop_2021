@@ -2,40 +2,36 @@ package com.projet.scootop.model.services.interaction;
 
 import java.time.LocalDate;
 
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.Events;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.domaintools.SaisonDTO;
+import com.projet.scootop.model.domainuser.PlayerDTO;
+import com.projet.scootop.model.services.EventsDTO;
+import com.projet.scootop.model.user.UserDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class InviteDTO {
 
-    public Long id;
-    public Saison saison;
-    public Events events;
-    public User user;
-    public Player player;
-    public LocalDate createAt;
-    public boolean response;
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private SaisonDTO saison;
+    
+    @Getter @Setter
+    private EventsDTO events;
+    
+    @Getter @Setter
+    private UserDTO user;
+    
+    @Getter @Setter
+    private PlayerDTO player;
+    
+    @Getter @Setter
+    private LocalDate createAt;
+    
+    @Getter @Setter
+    private boolean response;
 
-    public  static InviteDTO create(Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
-        InviteDTO invite = new InviteDTO();
-        invite.saison = saison;
-        invite.events = events;
-        invite.user = user;
-        invite.player = player;
-        invite.createAt = createAt;
-        invite.response = response;
-        return invite;
-    }
-    public  static InviteDTO get(Long id, Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
-        InviteDTO invite = new InviteDTO();
-        invite.id = id;
-        invite.saison = saison;
-        invite.events = events;
-        invite.user = user;
-        invite.player = player;
-        invite.createAt = createAt;
-        invite.response = response;
-        return invite;
-    }
+   
 }

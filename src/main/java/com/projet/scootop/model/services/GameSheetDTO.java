@@ -3,46 +3,35 @@ package com.projet.scootop.model.services;
 import java.util.Date;
 import java.util.List;
 
-import com.projet.scootop.domain.domainconfiguration.Stade;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.domain.services.Events;
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.domainconfiguration.StadeDTO;
+import com.projet.scootop.model.domainconfiguration.TeamDTO;
+import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+import com.projet.scootop.model.user.UserDTO;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class GameSheetDTO {
-	Long id;
-    public User user;
-    public List<Team> teams;
-    public List<StatisticalSheet> stactisticalSheets;
-    public Stade stade;
-    public Events events;
-    public Date date;
+	
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private UserDTO user;
+	
+	@Getter @Setter
+	private List<TeamDTO> teams;
+    
+    @Getter @Setter
+    private List<StatisticalSheetDTO> stactisticalSheets;
+    
+    @Getter @Setter
+    private StadeDTO stade;
+    
+    @Getter @Setter
+    private EventsDTO events;
+    
+    @Getter @Setter
+    private Date date;
 
-    public static GameSheetDTO create(Long id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stade stade, Events events, Date date) {
-        GameSheetDTO gamesheet = new GameSheetDTO();
-
-        gamesheet.id = id;
-        gamesheet.user = user;
-        gamesheet.teams = teams;
-        gamesheet.stactisticalSheets = stactisticalSheets;
-        gamesheet.stade = stade;
-        gamesheet.events = events;
-        gamesheet.date = date;
-
-        return gamesheet;
-    }
-
-    public static GameSheetDTO get(Long id, User user, List<Team> teams, List<StatisticalSheet> stactisticalSheets, Stade stade, Events events, Date date) {
-        GameSheetDTO gamesheet = new GameSheetDTO();
-
-        gamesheet.id = id;
-        gamesheet.user = user;
-        gamesheet.teams = teams;
-        gamesheet.stactisticalSheets = stactisticalSheets;
-        gamesheet.stade = stade;
-        gamesheet.events = events;
-        gamesheet.date = date;
-
-        return gamesheet;
-    }
 }

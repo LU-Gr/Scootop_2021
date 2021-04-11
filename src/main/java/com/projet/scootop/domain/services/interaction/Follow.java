@@ -6,24 +6,35 @@ import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.user.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Follow")
 
 public class Follow {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
 
-    public LocalDate dateCreated;
+    @Getter @Setter
+    private LocalDate dateCreated;
 
     @ManyToOne
-    public User user;
+    @Getter @Setter
+    private User user;
+    
     @ManyToOne
-    public Player player;
+    @Getter @Setter
+    private Player player;
+    
     @ManyToOne
-    public Saison saison;
+    @Getter @Setter
+    private Saison saison;
 
 
     public Follow() {

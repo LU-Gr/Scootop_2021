@@ -7,6 +7,9 @@ import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.domain.user.User;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 import java.util.List;
 
@@ -15,21 +18,34 @@ import java.util.List;
 @Table(name = "GameSheet")
 
 public class GameSheet {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    @Getter @Setter
+    private Long id;
+    
     @OneToOne
-    public User user;
+    @Getter @Setter
+    private User user;
+    
     @ManyToMany
-    public List<Team> teams;
+    @Getter @Setter
+    private List<Team> teams;
+    
     @ManyToMany
-    public List<StatisticalSheet> stactisticalSheets;
+    @Getter @Setter
+    private List<StatisticalSheet> stactisticalSheets;
+    
     @OneToOne
-    public Stade stade;
+    @Getter @Setter
+    private Stade stade;
+    
     @OneToOne
-    public Events events;
+    @Getter @Setter
+    private Events events;
 
-    public Date date;
+    @Getter @Setter
+    private Date date;
 
 
     public GameSheet() {
@@ -44,59 +60,4 @@ public class GameSheet {
         this.date = date;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
-
-    public List<StatisticalSheet> getStactisticalSheets() {
-        return stactisticalSheets;
-    }
-
-    public void setStactisticalSheets(List<StatisticalSheet> stactisticalSheets) {
-        this.stactisticalSheets = stactisticalSheets;
-    }
-
-    public Stade getStade() {
-        return stade;
-    }
-
-    public void setStade(Stade stade) {
-        this.stade = stade;
-    }
-
-    public Events getEvents() {
-        return events;
-    }
-
-    public void setEvents(Events events) {
-        this.events = events;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

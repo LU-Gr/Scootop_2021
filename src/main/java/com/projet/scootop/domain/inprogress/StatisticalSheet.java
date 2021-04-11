@@ -49,6 +49,12 @@ public class StatisticalSheet {
     
     @Getter @Setter
     private int nbBallSuccess;
+    
+    @Getter @Setter
+    private int nbDefensiveSkills;
+    
+    @Getter @Setter
+    private int nbOffensiveSkills;
 
     @OneToMany
     @Getter @Setter

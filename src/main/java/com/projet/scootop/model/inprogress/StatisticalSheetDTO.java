@@ -11,61 +11,54 @@ import com.projet.scootop.domain.statistical.Pass;
 import com.projet.scootop.domain.statistical.Shoot;
 import com.projet.scootop.domain.statistical.physical.PlayerHead;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class StatisticalSheetDTO {
-    public Long id;
-    public MatchSheet matchSheet;
-    public List<Player> players;
-    public Events events;
-    public int ShootIn;
-    public int ShootOut;
-    public int ballplayed;
-    public int balllost;
-    public int ballSuccess;
-    public List<Shoot> Shoots;
-    public List<PlayerHead> Heads;
-    public List<Pass> assists;
-    public List<Action> skills;
-    public List<Goal> goals;
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private MatchSheet matchSheet;
+	
+	@Getter @Setter
+    private List<Player> players;
+	
+	@Getter @Setter
+    private Events events;
+	
+	@Getter @Setter
+    private int nbShootIn;
+	
+	@Getter @Setter
+    private int nbShootOut;
+	
+	@Getter @Setter
+    private int nbBballplayed;
+	
+	@Getter @Setter
+    private int nbBalllost;
+    
+    @Getter @Setter
+    private int nbBallSuccess;
+    
+    @Getter @Setter
+    private List<Shoot> Shoots;
+    
+    @Getter @Setter
+    private List<PlayerHead> Heads;
+    
+    @Getter @Setter
+    private List<Pass> assists;
+    
+    @Getter @Setter
+    private List<Action> skills;
+    
+    @Getter @Setter
+    private List<Goal> goals;
+    
+    @Getter @Setter
+    private float distancekm;
 
-    public float distancekm;
-
-
-    public static StatisticalSheetDTO create(MatchSheet matchSheet, List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
-        StatisticalSheetDTO statisticalSheetDTO= new StatisticalSheetDTO();
-        statisticalSheetDTO.matchSheet = matchSheet;
-        statisticalSheetDTO.players =players;
-        statisticalSheetDTO.events = events;
-        statisticalSheetDTO.ShootIn = shootIn;
-        statisticalSheetDTO.ShootOut = shootOut;
-        statisticalSheetDTO.ballplayed = ballplayed;
-        statisticalSheetDTO.balllost = balllost;
-        statisticalSheetDTO.ballSuccess = ballSuccess;
-        statisticalSheetDTO.Shoots = shoots;
-        statisticalSheetDTO.Heads = heads;
-        statisticalSheetDTO.assists = assists;
-        statisticalSheetDTO.skills = skills;
-        statisticalSheetDTO.goals = goals;
-        statisticalSheetDTO.distancekm = distancekm;
-        return statisticalSheetDTO;
-    }
-
-    public static StatisticalSheetDTO get(Long id, MatchSheet matchSheet, List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
-        StatisticalSheetDTO statisticalSheetDTO= new StatisticalSheetDTO();
-        statisticalSheetDTO.id =id;
-        statisticalSheetDTO.matchSheet = matchSheet;
-        statisticalSheetDTO.players = players;
-        statisticalSheetDTO.events = events;
-        statisticalSheetDTO.ShootIn = shootIn;
-        statisticalSheetDTO.ShootOut = shootOut;
-        statisticalSheetDTO.ballplayed = ballplayed;
-        statisticalSheetDTO.balllost = balllost;
-        statisticalSheetDTO.ballSuccess = ballSuccess;
-        statisticalSheetDTO.Shoots = shoots;
-        statisticalSheetDTO.Heads = heads;
-        statisticalSheetDTO.assists = assists;
-        statisticalSheetDTO.skills = skills;
-        statisticalSheetDTO.goals = goals;
-        statisticalSheetDTO.distancekm = distancekm;
-        return statisticalSheetDTO;
-    }
 }

@@ -240,7 +240,7 @@ public class UserResume {
 
             if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
 
-                SaisonsBallPlayed.add(SaisonsMatchPlayed.get(j).getBallplayed());
+                SaisonsBallPlayed.add(SaisonsMatchPlayed.get(j).getNbBallplayed());
                 SaisonBallSuccess = SaisonBallSuccess + SaisonsBallPlayed.get(j);
             }
 
@@ -300,7 +300,7 @@ public class UserResume {
 
                     if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
 
-                        SaisonsShootsSuccessList.add(SaisonsMatchPlayed.get(j).getShootIn());
+                        SaisonsShootsSuccessList.add(SaisonsMatchPlayed.get(j).getNbShootIn());
                         SaisonShootsSuccess = SaisonShootsSuccess + SaisonsShootsSuccessList.get(j);
 
                     }
@@ -330,7 +330,7 @@ public class UserResume {
 
                     if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
 
-                        SaisonsShootsFailedList.add(SaisonsMatchPlayed.get(j).getShootOut());
+                        SaisonsShootsFailedList.add(SaisonsMatchPlayed.get(j).getNbShootOut());
                         SaisonShootsFailed = SaisonShootsFailed + SaisonsShootsFailedList.get(j);
 
                     }
@@ -357,7 +357,7 @@ public class UserResume {
 
             if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
 
-                SaisonsBallLosts.add(SaisonsMatchPlayed.get(j).getBalllost());
+                SaisonsBallLosts.add(SaisonsMatchPlayed.get(j).getNbBalllost());
                 SaisonBallLost = SaisonBallLost + SaisonsBallLosts.get(j);
             }
 
@@ -380,7 +380,7 @@ public class UserResume {
 
             if(statisticalSheets.get(j).getEvents().date.isBefore(EndSaision) && statisticalSheets.get(j).getEvents().date.isAfter(StartSaision)){
 
-                SaisonsBallSuccessList.add(SaisonsMatchPlayed.get(j).getBallSuccess());
+                SaisonsBallSuccessList.add(SaisonsMatchPlayed.get(j).getNbBallSuccess());
                 SaisonBallSuccess = SaisonBallSuccess + SaisonsBallSuccessList.get(j);
             }
 

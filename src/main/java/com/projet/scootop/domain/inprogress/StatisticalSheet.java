@@ -25,70 +25,70 @@ public class StatisticalSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    public Long id;
+    private Long id;
 
     @OneToOne
     @Getter @Setter
-    public MatchSheet matchSheet;
+    private MatchSheet matchSheet;
 
     @OneToOne
     @Getter @Setter
-    public Events events;
+    private Events events;
 
     @Getter @Setter
-    public int ShootIn;
+    private int nbShootIn;
     
     @Getter @Setter
-    public int ShootOut;
+    private int nbShootOut;
 
     @Getter @Setter
-    public int ballplayed;
+    private int nbBallplayed;
     
     @Getter @Setter
-    public int balllost;
+    private int nbBalllost;
     
     @Getter @Setter
-    public int ballSuccess;
+    private int nbBallSuccess;
 
     @OneToMany
     @Getter @Setter
-    public List<Shoot> Shoots;
+    private List<Shoot> Shoots;
 
     @OneToMany
     @Getter @Setter
-    public List<PlayerHead> Heads;
+    private List<PlayerHead> Heads;
 
     @OneToMany
     @Getter @Setter
-    public List<Pass> passes;
+    private List<Pass> passes;
 
     @OneToMany
     @Getter @Setter
-    public List<Action> skills;
+    private List<Action> skills;
 
     @OneToMany
     @Getter @Setter
-    public List<Goal> goals;
+    private List<Goal> goals;
     
     // équipe
     @OneToMany
     @Getter @Setter
-    public List<Player> players;
+    private List<Player> players;
 
     // joueur
     @Getter @Setter
-    public float distancekm;
+    private float distancekm;
 
 
     public StatisticalSheet(MatchSheet matchSheet, List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
         this.matchSheet = matchSheet;
         this.players = players;
         this.events = events;
-        this.ShootIn = shootIn;
-        this.ShootOut = shootOut;
-        this.ballplayed = ballplayed;
-        this.balllost = balllost;
-        this.ballSuccess = ballSuccess;
+        this.nbShootIn = shootIn;
+        this.nbShootOut = shootOut;
+        this.nbBallplayed = ballplayed;
+        this.nbBalllost = balllost;
+        this.nbBallSuccess = ballSuccess;
         this.Shoots = shoots;
         this.Heads = heads;
         this.passes = assists;

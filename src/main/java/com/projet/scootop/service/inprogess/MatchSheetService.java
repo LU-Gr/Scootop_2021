@@ -6,62 +6,53 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.services.Wearable;
+import com.projet.scootop.mappers.inprogress.MatchSheetMapper;
 import com.projet.scootop.model.inprogress.MatchSheetDTO;
 import com.projet.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.repository.domainuser.ScootRepository;
 import com.projet.scootop.repository.inprogress.MatchSheetRepository;
 import com.projet.scootop.repository.inprogress.StatisticalSheetRepository;
-import com.projet.scootop.repository.services.WearableRepository;
-
 import java.util.List;
 
 @Service
 public class MatchSheetService {
 	
-    @Autowired
-    public MatchSheetRepository matchSheetRepository;
-    @Autowired
-    public ScootRepository scootRepository;
-    @Autowired
-    public StatisticalSheetRepository statisticalSheetRepository;
-    @Autowired
-    public TeamRepository teamRepository;
-    @Autowired
-    public SaisonRepository saisonRepository;
-    @Autowired
-    public WearableRepository wearableRepository;
+    @Autowired private MatchSheetRepository matchSheetRepository;
+    @Autowired private ScootRepository scootRepository;
+    @Autowired private StatisticalSheetRepository statisticalSheetRepository;
+    @Autowired private TeamRepository teamRepository;
+    @Autowired private SaisonRepository saisonRepository;
+    @Autowired private MatchSheetMapper mapper;
 
-    public MatchSheet add(MatchSheetDTO matchSheetDTO) throws Exception {
-        scootRepository.saveAll(matchSheetDTO.matchScoots);
-        statisticalSheetRepository.saveAll(matchSheetDTO.statisticalSheets);
-        teamRepository.saveAll(matchSheetDTO.team);
-        saisonRepository.save(matchSheetDTO.saison);
-        MatchSheet matchSheet=new MatchSheet(matchSheetDTO.event,matchSheetDTO.team,matchSheetDTO.statisticalSheets,matchSheetDTO.stade,matchSheetDTO.matchScoots, matchSheetDTO.wearables,matchSheetDTO.saison,matchSheetDTO.competitionType);
-        return matchSheetRepository.save(matchSheet);
+    public MatchSheetDTO add(MatchSheetDTO matchSheetDTO) throws Exception {
+    	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
+        scootRepository.saveAll(matchSheet.getMatchScoots());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
+        teamRepository.saveAll(matchSheet.getTeam());
+        saisonRepository.save(matchSheet.getSaison());
+        matchSheetRepository.save(matchSheet);
+        return mapper.mapTo(matchSheet);
     }
     
-    public MatchSheet update(MatchSheetDTO matchSheetDTO, Long id) throws Exception {
-        scootRepository.saveAll(matchSheetDTO.matchScoots);
-        statisticalSheetRepository.saveAll(matchSheetDTO.statisticalSheets);
-        teamRepository.saveAll(matchSheetDTO.team);
-        saisonRepository.save(matchSheetDTO.saison);
-        MatchSheet matchSheet=new MatchSheet(matchSheetDTO.event,matchSheetDTO.team,matchSheetDTO.statisticalSheets,matchSheetDTO.stade,matchSheetDTO.matchScoots,matchSheetDTO.wearables,matchSheetDTO.saison,matchSheetDTO.competitionType);
-        matchSheet.id=id;
-        return matchSheetRepository.save(matchSheet);
+    public MatchSheetDTO update(MatchSheetDTO matchSheetDTO) throws Exception {
+    	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
+        scootRepository.saveAll(matchSheet.getMatchScoots());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
+        teamRepository.saveAll(matchSheet.getTeam());
+        saisonRepository.save(matchSheet.getSaison());
+        matchSheetRepository.save(matchSheet);
+        return mapper.mapTo(matchSheet);
     }
     
-    public MatchSheet get(Long id){
-        return matchSheetRepository.findById(id).orElse(null);
+    public MatchSheetDTO get(Long id){
+    	MatchSheet matchSheet = matchSheetRepository.findById(id).orElse(null);
+        return mapper.mapTo(matchSheet);
     }
     
-    public List<MatchSheet> getAll(){
-        return matchSheetRepository.findAll();
-    }
-    
-    public List<Wearable> getAllWearable(Integer id){
-        return wearableRepository.findAll();
+    public List<MatchSheetDTO> getAll(){
+    	List<MatchSheet> matchSheets = matchSheetRepository.findAll();
+    	return mapper.mapTo(matchSheets);
     }
     
     public ResponseEntity<Integer> delete(Long id){

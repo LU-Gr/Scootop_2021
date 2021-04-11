@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.inprogress.StatisticalSheet;
+import com.projet.scootop.mappers.inprogress.StatisticalSheetMapper;
 import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.repository.inprogress.StatisticalSheetRepository;
 import com.projet.scootop.repository.statistical.ActionRepository;
@@ -19,42 +20,39 @@ import java.util.List;
 @Service
 public class StatisticalSheetService {
 	
-	@Autowired
-    public StatisticalSheetRepository statisticalSheetRepository;
-	@Autowired
-    public ShootRepository shootRepository;
-	@Autowired
-    public PlayerHeadRepository playerHeadRepository;
-	@Autowired
-    public PassRepository assistRepository;
-	@Autowired
-    public ActionRepository skillRepository;
-	@Autowired
-    public GoalRepository goalRepository;
+	@Autowired private StatisticalSheetRepository statisticalSheetRepository;
+	@Autowired private ShootRepository shootRepository;
+	@Autowired private PlayerHeadRepository playerHeadRepository;
+	@Autowired private PassRepository passRepository;
+	@Autowired private ActionRepository skillRepository;
+	@Autowired private GoalRepository goalRepository;
+	@Autowired private StatisticalSheetMapper mapper;
 	
-    public StatisticalSheet add(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
-        shootRepository.saveAll(statisticalSheetDTO.Shoots);
-        playerHeadRepository.saveAll(statisticalSheetDTO.Heads);
-        assistRepository.saveAll(statisticalSheetDTO.assists);
-        skillRepository.saveAll(statisticalSheetDTO.skills);
-        goalRepository.saveAll(statisticalSheetDTO.goals);
-        StatisticalSheet statisticalSheet=new StatisticalSheet(statisticalSheetDTO.matchSheet,statisticalSheetDTO.players,statisticalSheetDTO.events,statisticalSheetDTO.ShootIn,statisticalSheetDTO.ShootOut,statisticalSheetDTO.ballplayed,statisticalSheetDTO.balllost,statisticalSheetDTO.ballSuccess,statisticalSheetDTO.Shoots,statisticalSheetDTO.Heads,statisticalSheetDTO.assists,statisticalSheetDTO.skills,statisticalSheetDTO.goals,statisticalSheetDTO.distancekm);
-        return statisticalSheetRepository.save(statisticalSheet);
+    public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
+    	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
+        shootRepository.saveAll(statisticalSheet.getShoots());
+        playerHeadRepository.saveAll(statisticalSheet.getHeads());
+        passRepository.saveAll(statisticalSheet.getPasses());
+        skillRepository.saveAll(statisticalSheet.getSkills());
+        goalRepository.saveAll(statisticalSheet.getGoals());
+        statisticalSheetRepository.save(statisticalSheet);
+        return mapper.mapTo(statisticalSheet);
     }
     
-    public StatisticalSheet update(StatisticalSheetDTO statisticalSheetDTO, Long id) throws Exception {
-        shootRepository.saveAll(statisticalSheetDTO.Shoots);
-        playerHeadRepository.saveAll(statisticalSheetDTO.Heads);
-        assistRepository.saveAll(statisticalSheetDTO.assists);
-        skillRepository.saveAll(statisticalSheetDTO.skills);
-        goalRepository.saveAll(statisticalSheetDTO.goals);
-        StatisticalSheet statisticalSheet=new StatisticalSheet(statisticalSheetDTO.matchSheet,statisticalSheetDTO.players,statisticalSheetDTO.events,statisticalSheetDTO.ShootIn,statisticalSheetDTO.ShootOut,statisticalSheetDTO.ballplayed,statisticalSheetDTO.balllost,statisticalSheetDTO.ballSuccess,statisticalSheetDTO.Shoots,statisticalSheetDTO.Heads,statisticalSheetDTO.assists,statisticalSheetDTO.skills,statisticalSheetDTO.goals,statisticalSheetDTO.distancekm);
-        statisticalSheet.id=id;
-        return statisticalSheetRepository.save(statisticalSheet);
+    public StatisticalSheetDTO update(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
+    	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
+        shootRepository.saveAll(statisticalSheet.getShoots());
+        playerHeadRepository.saveAll(statisticalSheet.getHeads());
+        passRepository.saveAll(statisticalSheet.getPasses());
+        skillRepository.saveAll(statisticalSheet.getSkills());
+        goalRepository.saveAll(statisticalSheet.getGoals());
+        statisticalSheetRepository.save(statisticalSheet);
+        return mapper.mapTo(statisticalSheet);
     }
     
-    public StatisticalSheet get(Long id){
-        return statisticalSheetRepository.findById(id).orElse(null);
+    public StatisticalSheetDTO get(Long id){
+    	StatisticalSheet statisticalSheet = statisticalSheetRepository.findById(id).orElse(null);
+    	return mapper.mapTo(statisticalSheet);
     }
 
 
@@ -63,11 +61,12 @@ public class StatisticalSheetService {
         if(statisticalSheet==null){
             return null;
         }
-        return StatisticalSheetDTO.get(statisticalSheet.id, statisticalSheet.matchSheet, statisticalSheet.players, statisticalSheet.events, statisticalSheet.ShootIn, statisticalSheet.ShootOut,statisticalSheet.ballplayed, statisticalSheet.balllost, statisticalSheet.ballSuccess, statisticalSheet.Shoots, statisticalSheet.Heads, statisticalSheet.passes, statisticalSheet.skills, statisticalSheet.goals, statisticalSheet.distancekm);
+        return mapper.mapTo(statisticalSheet);
     }
 
-    public List<StatisticalSheet> getAll(){
-        return statisticalSheetRepository.findAll();
+    public List<StatisticalSheetDTO> getAll(){
+    	List<StatisticalSheet> statisticalSheets = statisticalSheetRepository.findAll();
+    	return mapper.mapTo(statisticalSheets);
     }
     
     public ResponseEntity<Integer> delete(Long id){

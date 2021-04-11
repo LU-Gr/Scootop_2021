@@ -11,38 +11,35 @@ import com.projet.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.domain.services.Events;
 import com.projet.scootop.domain.services.Wearable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class MatchSheetDTO {
-    public int id;
-    public Events event;
-    public List<Team> team;
-    public List<StatisticalSheet> statisticalSheets;
-    public Stade stade;
-    public List <Scoot> matchScoots;
-    public List<Wearable> wearables;
-    public Saison saison;
-    public Competition competitionType;
-
-    public static MatchSheetDTO create(Events event, List<Team> team, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots,List<Wearable> wearables, Saison saison, Competition competitionType) {
-        MatchSheetDTO matchSheetDTO= new MatchSheetDTO();
-
-        matchSheetDTO.event = event;
-
-        //** Api Teams**//
-        matchSheetDTO.team = team;
-
-        //** Api StatisticalSheets**//
-        matchSheetDTO.statisticalSheets = statisticalSheets;
-
-        matchSheetDTO.stade = stade;
-
-        //** Api Scoots**//
-        matchSheetDTO.matchScoots = matchScoots;
-
-        //** Api Wearables**//
-        matchSheetDTO.wearables = wearables;
-        matchSheetDTO.saison = saison;
-        matchSheetDTO.competitionType = competitionType;
-        return matchSheetDTO;
-    }
-
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private Events event;
+	
+	@Getter @Setter
+	private List<Team> team;
+	
+	@Getter @Setter
+	private List<StatisticalSheet> statisticalSheets;
+	
+	@Getter @Setter
+	private Stade stade;
+	
+	@Getter @Setter
+	private List <Scoot> matchScoots;
+	
+	@Getter @Setter
+	private List<Wearable> wearables;
+	
+	@Getter @Setter
+	private Saison saison;
+	
+	@Getter @Setter
+	private Competition competitionType;
 }

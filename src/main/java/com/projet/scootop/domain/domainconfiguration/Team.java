@@ -45,7 +45,7 @@ public class Team {
     @Getter @Setter
     private List<Player> players;
 
-    @OneToMany
+    @ManyToOne
     @Getter @Setter
     private Category category;
 

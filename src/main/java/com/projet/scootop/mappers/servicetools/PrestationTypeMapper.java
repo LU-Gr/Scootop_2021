@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.servicetools;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.servicetools.PrestationType;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.servicetools.PrestationTypeDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class PrestationTypeMapper {
 	
 	public PrestationType mapTo(PrestationTypeDTO dto) {

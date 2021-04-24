@@ -26,6 +26,7 @@ public class Competition {
     private String name;
     
     @Getter @Setter
+    @ManyToOne
     private CompetitionType competitionType; 
 
     @Getter @Setter

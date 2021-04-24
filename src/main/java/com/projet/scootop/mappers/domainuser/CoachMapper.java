@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.domainuser;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.domainuser.Coach;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.domainuser.CoachDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class CoachMapper {
 	
 	public Coach mapTo(CoachDTO dto) {

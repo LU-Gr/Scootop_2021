@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.user;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.user.User;
@@ -9,6 +10,7 @@ import com.projet.scootop.model.user.UserDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class UserMapper {
 	
 	public User mapTo(UserDTO dto) {

@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.domainuser;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.domainuser.Chairman;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.domainuser.ChairmanDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class ChairmanMapper {
 	
 	public Chairman mapTo(ChairmanDTO dto) {

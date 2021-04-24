@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.projet.scootop.domain.domainconfiguration.*;
 import com.projet.scootop.model.domainconfiguration.*;
-import com.projet.scootop.service.domaineconfiguration.*;
+import com.projet.scootop.service.domainconfiguration.*;
 
 import java.util.List;
 
@@ -164,13 +164,13 @@ public class DomainConfigController {
     }
 
     @PostMapping("api/stade")
-    Stade addStade(@RequestBody StadeDTO body){
+    StadeDTO addStade(@RequestBody StadeDTO body){
        return stadeService.add(body);
     }
 
     @PutMapping("api/stade/{id}")
-    Stade updateStade(@RequestBody StadeDTO body,@PathVariable Long id){
-        return stadeService.update(body,id);
+    StadeDTO updateStade(@RequestBody StadeDTO body){
+        return stadeService.update(body);
     }
 
     @DeleteMapping("api/stade/{id}")

@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.servicetools.video;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.servicetools.video.VideoView;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.servicetools.video.VideoViewDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class VideoViewMapper {
 	
 	public VideoView mapTo(VideoViewDTO dto) {

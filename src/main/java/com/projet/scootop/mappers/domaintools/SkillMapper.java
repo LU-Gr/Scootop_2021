@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.domaintools;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.domaintools.Skill;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.domaintools.SkillDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class SkillMapper {
 	
 	public Skill mapTo(SkillDTO dto) {

@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.statistical.physical.TypeTouch;
 import com.projet.scootop.model.statistical.physical.TypeTouchDTO;
 
+
+@Component
 public class TypeTouchMapper {
 	
 	public TypeTouch mapTo(TypeTouchDTO dto) {

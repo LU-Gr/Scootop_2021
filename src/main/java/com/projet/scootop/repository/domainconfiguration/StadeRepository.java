@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.projet.scootop.domain.domainconfiguration.Stade;
 
 @Repository
-
-public interface StadeRepository extends JpaRepository<Stade,Long> {
+public interface StadeRepository extends JpaRepository<Stade, Long> {
 
 }

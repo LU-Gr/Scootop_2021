@@ -28,7 +28,7 @@ public class Saison {
     @Getter @Setter
     private LocalDate dateFin;
     
-    @OneToMany
+    @ManyToOne
     @JoinColumn
     @Getter @Setter
     private League league;

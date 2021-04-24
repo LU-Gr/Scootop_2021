@@ -23,9 +23,11 @@ public class VideoView {
     private LocalDate date;
 
     @Getter @Setter
+    @OneToOne
     private Video video;
     
     @Getter @Setter
+    @OneToOne
     private User user;
     
     

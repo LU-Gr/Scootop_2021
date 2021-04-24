@@ -14,7 +14,6 @@ import com.projet.scootop.domain.user.Contact;
  */
 @Entity
 @Table(name = "stade")
-
 public class Stade {
 	
     @Id
@@ -30,7 +29,7 @@ public class Stade {
     @Getter @Setter
     private Contact contact;
 
-    public Stade( String name,Contact contact) {
+    public Stade(String name,Contact contact) {
         super();
         this.name = name;
         this.contact = contact;

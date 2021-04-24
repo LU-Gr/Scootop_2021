@@ -1,6 +1,8 @@
 package com.projet.scootop.mappers.domainconfiguration;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.domainconfiguration.Club;
@@ -9,6 +11,8 @@ import com.projet.scootop.model.domainconfiguration.ClubDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class ClubMapper {
 	
 	public Club mapTo(ClubDTO dto) {

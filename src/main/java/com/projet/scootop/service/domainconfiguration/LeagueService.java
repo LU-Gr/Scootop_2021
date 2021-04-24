@@ -1,4 +1,4 @@
-package com.projet.scootop.service.domaineconfiguration;
+package com.projet.scootop.service.domainconfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

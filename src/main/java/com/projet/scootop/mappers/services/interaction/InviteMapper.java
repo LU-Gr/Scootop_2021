@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.services.interaction;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.services.interaction.Invite;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.services.interaction.InviteDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class InviteMapper {
 	
 	public Invite mapTo(InviteDTO dto) {

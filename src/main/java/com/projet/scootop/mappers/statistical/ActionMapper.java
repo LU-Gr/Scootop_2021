@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.statistical;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.statistical.Action;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.statistical.ActionDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class ActionMapper {
 	
 	public Action mapTo(ActionDTO dto) {

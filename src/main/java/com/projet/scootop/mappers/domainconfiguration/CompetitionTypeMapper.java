@@ -1,6 +1,7 @@
 package com.projet.scootop.mappers.domainconfiguration;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.domainconfiguration.CompetitionType;
@@ -9,6 +10,8 @@ import com.projet.scootop.model.domainconfiguration.CompetitionTypeDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@Component
 public class CompetitionTypeMapper {
 	
 	public CompetitionType mapTo(CompetitionTypeDTO dto) {

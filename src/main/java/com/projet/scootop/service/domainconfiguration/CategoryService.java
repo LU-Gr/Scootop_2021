@@ -1,4 +1,4 @@
-package com.projet.scootop.service.domaineconfiguration;
+package com.projet.scootop.service.domainconfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +22,11 @@ public class CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
-    public Category add(CategoryDTO categoryDTO){
+    public CategoryDTO add(CategoryDTO categoryDTO){
         categoryTypeRepository.save(categoryDTO.getCategoryType());
         Category category = categoryMapper.mapTo(categoryDTO);
-        return categoryRepository.save(category);
-
+        categoryRepository.save(category);
+        return categoryMapper.mapTo(category);
     }
     
     public CategoryDTO get(Long id){
@@ -37,16 +37,17 @@ public class CategoryService {
         return categoryMapper.mapTo(category);
     }
 
-    public Category update(CategoryDTO categoryDTO,Integer id){
+    public CategoryDTO update(CategoryDTO categoryDTO,Integer id){
         categoryTypeRepository.save(categoryDTO.getCategoryType());
         Category category = categoryMapper.mapTo(categoryDTO);
         category.setId(id);
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
+        return categoryMapper.mapTo(category);   
     }
-
-    public Category updateEntity(Category category){
+    public CategoryDTO updateEntity(Category category){
         categoryTypeRepository.save(category.getCategoryType());
-        return categoryRepository.save(category);
+        categoryRepository.save(category);
+        return categoryMapper.mapTo(category);
     }
 
     public List<CategoryDTO> getAll(){

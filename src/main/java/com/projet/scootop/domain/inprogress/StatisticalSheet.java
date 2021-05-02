@@ -3,7 +3,7 @@ package com.projet.scootop.domain.inprogress;
 import javax.persistence.*;
 
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.statistical.Action;
 import com.projet.scootop.domain.statistical.Goal;
 import com.projet.scootop.domain.statistical.Pass;
@@ -33,7 +33,7 @@ public class StatisticalSheet {
 
     @OneToOne
     @Getter @Setter
-    private Events events;
+    private Event event;
 
     @Getter @Setter
     private int nbShootIn;
@@ -70,26 +70,24 @@ public class StatisticalSheet {
 
     @OneToMany
     @Getter @Setter
-    private List<Action> skills;
+    private List<Action> actions;
 
     @OneToMany
     @Getter @Setter
     private List<Goal> goals;
     
-    // équipe
     @OneToMany
     @Getter @Setter
-    private List<Player> players;
+    private Player player;
 
-    // joueur
     @Getter @Setter
     private float distancekm;
 
 
-    public StatisticalSheet(MatchSheet matchSheet, List<Player> players, Events events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
+    public StatisticalSheet(MatchSheet matchSheet, Player player, Event events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
         this.matchSheet = matchSheet;
-        this.players = players;
-        this.events = events;
+        this.player = player;
+        this.event = events;
         this.nbShootIn = shootIn;
         this.nbShootOut = shootOut;
         this.nbBallplayed = ballplayed;
@@ -98,9 +96,8 @@ public class StatisticalSheet {
         this.Shoots = shoots;
         this.Heads = heads;
         this.passes = assists;
-        this.skills = skills;
+        this.actions = skills;
         this.goals = goals;
-        this.players = players;
         this.distancekm = distancekm;
     }
 

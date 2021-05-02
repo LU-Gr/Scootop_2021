@@ -8,7 +8,7 @@ import com.projet.scootop.domain.domaintools.Competition;
 import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.services.Wearable;
 
 import lombok.Getter;
@@ -30,13 +30,21 @@ public class MatchSheet {
 
     @OneToOne
     @Getter @Setter
-    private Events event;
+    private Event event;
     
-    //TODO: Remplacer en mettant 2 Team
-    @OneToMany
-    @JoinColumn(name="Match_Sheet_teams",referencedColumnName = "id")
+    @ManyToOne
     @Getter @Setter
-    private List<Team> team;
+    private Team team1;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Team team2;
+    
+    private StatisticalSheet statisticalSheetMatch;
+    
+    private List<StatisticalSheet> statisticalSheetsTeam1;
+    
+    private List<StatisticalSheet> statisticalSheetsTeam2;
 
     @OneToMany
     @JoinColumn(name="Match_Sheet_statistical",referencedColumnName = "id")
@@ -66,7 +74,7 @@ public class MatchSheet {
     @Getter @Setter
     private Competition competitionType;
 
-    public MatchSheet(Events event, List<Team> team, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competitionType) throws Exception {
+    public MatchSheet(Event event, Team team1, Team team2, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competitionType) throws Exception {
         this.event = event;
         this.competitionType = competitionType;
         this.statisticalSheets = statisticalSheets;
@@ -74,32 +82,26 @@ public class MatchSheet {
         this.matchScoots = matchScoots;
         this.saison = saison;
         this.wearables = wearables;
-        if (team.size() == 2) {
+        this.team1 = team1;
+        this.team2 = team2;
 
-            this.team = team;
+        List<Player>  playersTeamA = this.team1.getPlayers();
+        List<Player>  playersTeamB = this.team1.getPlayers();
+        StatisticalSheet statisticalSheetsTeamA = new StatisticalSheet();
+        StatisticalSheet statisticalSheetsTeamB = new StatisticalSheet();
+        StatisticalSheet statisticalSheetsGame =  new StatisticalSheet();
 
-            List<Player>  playersTeamA = this.team.get(1).getPlayers();
-            List<Player>  playersTeamB = this.team.get(2).getPlayers();
-            StatisticalSheet statisticalSheetsTeamA = new StatisticalSheet();
-            StatisticalSheet statisticalSheetsTeamB = new StatisticalSheet();
-            StatisticalSheet statisticalSheetsGame =  new StatisticalSheet();
-
-            for (int i = 0; i < playersTeamA.size(); i++) {
-                Wearable InCurseWerableA = new Wearable();
-                InCurseWerableA.setPlayer(playersTeamA.get(i));
-                wearables.add(InCurseWerableA);
-            }
-
-            for (int i = 0; i < playersTeamB.size(); i++) {
-                Wearable InCurseWerableB = new Wearable();
-                InCurseWerableB.setPlayer(playersTeamB.get(i));
-                wearables.add(InCurseWerableB);
-            }
-        }
-        else{
-            throw new Exception("Vous ne devez ajoutez que 2 equipes sur la feuille de match");
+        for (int i = 0; i < playersTeamA.size(); i++) {
+            Wearable InCurseWerableA = new Wearable();
+            InCurseWerableA.setPlayer(playersTeamA.get(i));
+            wearables.add(InCurseWerableA);
         }
 
+        for (int i = 0; i < playersTeamB.size(); i++) {
+            Wearable InCurseWerableB = new Wearable();
+            InCurseWerableB.setPlayer(playersTeamB.get(i));
+            wearables.add(InCurseWerableB);
+        }
     }
 
     public MatchSheet(){

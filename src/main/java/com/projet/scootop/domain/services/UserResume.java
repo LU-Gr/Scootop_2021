@@ -7,9 +7,9 @@ import com.projet.scootop.domain.domaintools.Competition;
 import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.domain.statistical.Action;
 import com.projet.scootop.domain.statistical.Goal;
 import com.projet.scootop.domain.statistical.Pass;
+import com.projet.scootop.domain.statistical.Shoot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +18,7 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Stats d'un joueur selon le type de compétition
 @Entity
@@ -42,11 +43,6 @@ public class UserResume {
     @Getter @Setter
     private List<StatisticalSheet> statisticalSheets;
 
-    //TODO: remplacer par filter player.teams.competitionType == competitonType
-    @OneToMany
-    @Getter @Setter
-    private List<Team> teams;
-
     @OneToMany
     @Getter @Setter
     private List<Saison> saisons;
@@ -56,7 +52,6 @@ public class UserResume {
         this.player = player;
         this.competitionType = competitionType;
         this.statisticalSheets = statisticalSheet;
-        this.teams = teams;
         this.saisons = saisons;
     }
 
@@ -70,41 +65,41 @@ public class UserResume {
 
             Team playerTeam = team;
 
-            LocalDate StartSaision = saisons.get(i).getDateDebut();
+            LocalDate startSaison = saisons.get(i).getDateDebut();
             List<Goal> SaisonsGoals = null;
             List<Pass> SaisonsAssists = null;
 
-            CountYearsGoals(StartSaision, this.player);
-            CountYearsAssits(StartSaision, this.player);
-            CountYearsTraveledDistance(StartSaision,this.player);
-            CountGamePlayed(StartSaision,this.player);
-            CountBallPlayed(StartSaision,this.player);
-            CountBallLost(StartSaision,this.player);
-            CountBallSuccess(StartSaision,this.player);
-            CountSkillsYears(StartSaision,this.player);
-            CountSkillsSuccess(StartSaision,this.player);
-            CountSkillsFailed(StartSaision,this.player);
-            CountShootsYears(StartSaision,this.player);
-            CountShootsSuccessYears(StartSaision,this.player);
-            CountShootsFailedYears(StartSaision,this.player);
-            CountYearsSuccessAssists(StartSaision,this.player);
-            CountYearsFailedAssists(StartSaision,this.player);
+            CountYearsGoals(startSaison, this.player);
+            CountYearsAssits(startSaison, this.player);
+            CountYearsTraveledDistance(startSaison,this.player);
+            CountGamePlayed(startSaison,this.player);
+            CountBallPlayed(startSaison,this.player);
+            CountBallLost(startSaison,this.player);
+            CountBallSuccess(startSaison,this.player);
+            CountSkillsYears(startSaison,this.player);
+            CountSkillsSuccess(startSaison,this.player);
+            CountSkillsFailed(startSaison,this.player);
+            CountShootsYears(startSaison,this.player);
+            CountShootsSuccessYears(startSaison,this.player);
+            CountShootsFailedYears(startSaison,this.player);
+            CountYearsSuccessAssists(startSaison,this.player);
+            CountYearsFailedAssists(startSaison,this.player);
 
-            int yearsGoals = CountYearsGoals(StartSaision, this.player);
-            int yearsAssists = CountYearsAssits(StartSaision, this.player);
-            Float distance_traveled = CountYearsTraveledDistance(StartSaision,this.player);
-            int game_played_years = CountGamePlayed(StartSaision,this.player);
-            int ball_played_years = CountBallPlayed(StartSaision,this.player);
-            int ball_Success_years = CountBallSuccess(StartSaision,this.player);
-            int ball_lost_years = CountBallLost(StartSaision,this.player);
-            int Skills_years = CountSkillsYears(StartSaision,this.player);
-            int Skills_Success_years = CountSkillsSuccess(StartSaision,this.player);
-            int Skills_Failed_years = CountSkillsFailed(StartSaision,this.player);
-            int Count_Shoot_years = CountSkillsSuccess(StartSaision,this.player);
-            int Count_Shoot_Success = CountShootsSuccessYears(StartSaision,this.player);
-            int Count_Shoot_Failed = CountShootsFailedYears(StartSaision,this.player);
-            int Count_Assists_Success = CountYearsSuccessAssists(StartSaision,this.player);
-            int Count_Assists_Failed = CountYearsFailedAssists(StartSaision,this.player);
+            int yearsGoals = CountYearsGoals(startSaison, this.player);
+            int yearsAssists = CountYearsAssits(startSaison, this.player);
+            Float distance_traveled = CountYearsTraveledDistance(startSaison,this.player);
+            int game_played_years = CountGamePlayed(startSaison,this.player);
+            int ball_played_years = CountBallPlayed(startSaison,this.player);
+            int ball_Success_years = CountBallSuccess(startSaison,this.player);
+            int ball_lost_years = CountBallLost(startSaison,this.player);
+            int Skills_years = CountSkillsYears(startSaison,this.player);
+            int Skills_Success_years = CountSkillsSuccess(startSaison,this.player);
+            int Skills_Failed_years = CountSkillsFailed(startSaison,this.player);
+            int Count_Shoot_years = CountSkillsSuccess(startSaison,this.player);
+            int Count_Shoot_Success = CountShootsSuccessYears(startSaison,this.player);
+            int Count_Shoot_Failed = CountShootsFailedYears(startSaison,this.player);
+            int Count_Assists_Success = CountYearsSuccessAssists(startSaison,this.player);
+            int Count_Assists_Failed = CountYearsFailedAssists(startSaison,this.player);
 
         }
     }
@@ -193,188 +188,116 @@ public class UserResume {
 
     public Float CountYearsTraveledDistance(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Float> SaisonsDistancesTraveled = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
-        Float TraveledDistanceYears = null;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                SaisonsDistancesTraveled.add(SaisonsMatchPlayed.get(j).getDistancekm());
-                TraveledDistanceYears = TraveledDistanceYears + SaisonsDistancesTraveled.get(j);
-            }
-
-            //SaisonsMatchPlayed.get(j).getDistancekm();
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
+        Float traveledDistanceYears = 0f;
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		traveledDistanceYears = traveledDistanceYears + sheet.getDistancekm();
+        	}
         }
 
-
-        return TraveledDistanceYears;
+        return traveledDistanceYears;
     }
     public Integer CountBallPlayed(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsBallPlayed = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonBallSuccess = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                SaisonsBallPlayed.add(SaisonsMatchPlayed.get(j).getNbBallplayed());
-                SaisonBallSuccess = SaisonBallSuccess + SaisonsBallPlayed.get(j);
-            }
-
-            //SaisonsMatchPlayed.get(j).getDistancekm();
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonBallSuccess = SaisonBallSuccess + sheet.getNbBallplayed();
+        	}
         }
-
 
         return SaisonBallSuccess;
     }
 
     public Integer CountShootsYears(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsShoots = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonShoots = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
-
-                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
-
-                        SaisonsShoots.add(SaisonsMatchPlayed.get(j).getShoots().size());
-                        SaisonShoots = SaisonShoots + SaisonsShoots.get(j);
-
-                    }
-
-                }
-            }
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+                SaisonShoots = SaisonShoots + sheet.getShoots().size();
+        	}
         }
-
-
         return SaisonShoots;
     }
 
     public Integer CountShootsSuccessYears(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsShootsSuccessList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
-        int SaisonShootsSuccess = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
-
-                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
-
-                        SaisonsShootsSuccessList.add(SaisonsMatchPlayed.get(j).getNbShootIn());
-                        SaisonShootsSuccess = SaisonShootsSuccess + SaisonsShootsSuccessList.get(j);
-
-                    }
-
-                }
-            }
+    	LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
+        int goals = 0;
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		for(Shoot shoot: sheet.getShoots()) {
+        			if(shoot.getIsGoal()) {
+        				goals++;
+        			}
+        		}
+        	}
         }
-
-
-        return SaisonShootsSuccess;
+        return goals;
     }
+    
     public Integer CountShootsFailedYears(LocalDate Years, Player player){
-
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsShootsFailedList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
-        int SaisonShootsFailed = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                for (int i = 0; i < statisticalSheets.get(j).getPlayers().size(); i++) {
-
-                    if(statisticalSheets.get(j).getPlayers().get(i).getId() == player.getId()) {
-
-                        SaisonsShootsFailedList.add(SaisonsMatchPlayed.get(j).getNbShootOut());
-                        SaisonShootsFailed = SaisonShootsFailed + SaisonsShootsFailedList.get(j);
-
-                    }
-
-                }
-            }
+    	
+    	LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
+        int goals = 0;
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		for(Shoot shoot: sheet.getShoots()) {
+        			if(!shoot.getIsGoal()) {
+        				goals++;
+        			}
+        		}
+        	}
         }
-
-
-        return SaisonShootsFailed;
+        return goals;
     }
 
     public Integer CountBallLost(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsBallLosts = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonBallLost = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                SaisonsBallLosts.add(SaisonsMatchPlayed.get(j).getNbBalllost());
-                SaisonBallLost = SaisonBallLost + SaisonsBallLosts.get(j);
-            }
-
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonBallLost = SaisonBallLost + sheet.getNbBalllost();
+        	}
         }
-
 
         return SaisonBallLost;
     }
+    
     public Integer CountBallSuccess(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Integer> SaisonsBallSuccessList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonBallSuccess = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                SaisonsBallSuccessList.add(SaisonsMatchPlayed.get(j).getNbBallSuccess());
-                SaisonBallSuccess = SaisonBallSuccess + SaisonsBallSuccessList.get(j);
-            }
-
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonBallSuccess = SaisonBallSuccess + sheet.getNbBallSuccess();
+        	}
         }
-
 
         return SaisonBallSuccess;
     }
@@ -382,97 +305,56 @@ public class UserResume {
     public Integer CountSkillsSuccess(LocalDate Years, Player player){
 
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Action> SaisonsSkillsSuccessList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonSkillsSuccess = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getIsSuccessful() == true){
-
-                SaisonsSkillsSuccessList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
-                SaisonSkillsSuccess = SaisonSkillsSuccess + SaisonsSkillsSuccessList.size();
-                }
-            }
-
+        
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonSkillsSuccess = SaisonSkillsSuccess + (int) (sheet.getActions().stream().filter(a -> a.getIsSuccessful() == true).count());
+        	}
         }
-
 
         return SaisonSkillsSuccess;
     }
+    
     public Integer CountSkillsFailed(LocalDate Years, Player player){
 
-
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Action> SaisonsSkillsFailedList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonSkillsFailed = 0;
 
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                if(SaisonsMatchPlayed.get(j).getSkills().get(j).getIsSuccessful() == false){
-
-                SaisonsSkillsFailedList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
-                SaisonSkillsFailed = SaisonSkillsFailed + SaisonsSkillsFailedList.size();
-                }
-            }
-
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonSkillsFailed = SaisonSkillsFailed + (int) (sheet.getActions().stream().filter(a -> a.getIsSuccessful() == false).count());
+        	}
         }
-
 
         return SaisonSkillsFailed;
     }
     public Integer CountSkillsYears(LocalDate Years, Player player){
 
 
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<Action> SaisonsSkillsList = null;
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
         int SaisonSkills = 0;
 
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-
-                SaisonsSkillsList.add(SaisonsMatchPlayed.get(j).getSkills().get(j));
-                SaisonSkills = SaisonSkills + SaisonsSkillsList.size();
-
-            }
-
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+        	LocalDate eventDate = sheet.getEvent().getDate();
+        	if(eventDate.isAfter(startSaison) && eventDate.isBefore(endSaison)){
+        		SaisonSkills = SaisonSkills + sheet.getActions().size();
+        	}
         }
-
-
+        
         return SaisonSkills;
     }
 
     public Integer CountGamePlayed(LocalDate Years, Player player){
-        LocalDate StartSaision = Years;
-        LocalDate EndSaision = StartSaision.plusMonths(8);
-
-        List<StatisticalSheet> SaisonsMatchPlayed = null;
-        int GamePlayedYears = 0;
-
-        for (int j = 0; j < SaisonsMatchPlayed.size() ; j++) {
-
-            if(statisticalSheets.get(j).getEvents().getDate().isBefore(EndSaision) && statisticalSheets.get(j).getEvents().getDate().isAfter(StartSaision)){
-
-                SaisonsMatchPlayed.add(SaisonsMatchPlayed.get(j));
-                GamePlayedYears = SaisonsMatchPlayed.size();
-            }
-
-        }
-        return GamePlayedYears;
+    	
+        LocalDate startSaison = Years;
+        LocalDate endSaison = startSaison.plusMonths(8);
+        return this.statisticalSheets.stream().filter(s -> s.getEvent().getDate().isAfter(startSaison)).filter(s -> s.getEvent().getDate().isBefore(endSaison)).collect(Collectors.toList()).size();
     }
 }

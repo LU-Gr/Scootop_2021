@@ -39,10 +39,9 @@ public class User {
     @Getter @Setter
     private String email;
     
-    //TODO: encoder
     @Getter @Setter
     private String password;
-
+    
     @ManyToMany
     @JoinTable(name = "USER_TYPES")
     @Getter @Setter

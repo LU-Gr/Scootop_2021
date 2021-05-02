@@ -8,7 +8,7 @@ import java.util.List;
 
 import com.projet.scootop.domain.domainconfiguration.CompetitionType;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.servicetools.video.SearchKeyWord;
 
 public class VideoDTO {
@@ -23,7 +23,7 @@ public class VideoDTO {
     private String url;
 
     @Getter @Setter
-    private Events events;
+    private Event events;
 
     @Getter @Setter
     private Date posted;

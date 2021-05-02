@@ -29,7 +29,8 @@ public class MatchSheetService {
     	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getMatchScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
-        teamRepository.saveAll(matchSheet.getTeam());
+        teamRepository.save(matchSheet.getTeam1());
+        teamRepository.save(matchSheet.getTeam2());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
         return mapper.mapTo(matchSheet);
@@ -39,7 +40,8 @@ public class MatchSheetService {
     	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getMatchScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
-        teamRepository.saveAll(matchSheet.getTeam());
+        teamRepository.save(matchSheet.getTeam1());
+        teamRepository.save(matchSheet.getTeam2());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
         return mapper.mapTo(matchSheet);

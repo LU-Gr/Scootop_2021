@@ -8,5 +8,6 @@ import com.projet.scootop.domain.inprogress.StatisticalSheet;
 @Repository
 public interface StatisticalSheetRepository extends JpaRepository<StatisticalSheet, Long> {
 
+	StatisticalSheet findByPlayerId(Long playerId);
     StatisticalSheet findByMatchSheet(Long gameSheet);
 }

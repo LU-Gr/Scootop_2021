@@ -28,12 +28,18 @@ public class StatisticalSheetService {
 	@Autowired private GoalRepository goalRepository;
 	@Autowired private StatisticalSheetMapper mapper;
 	
+	public StatisticalSheetDTO getSheetByPlayerId(Long playerId) {
+		
+		return null;
+		
+	}
+	
     public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
         shootRepository.saveAll(statisticalSheet.getShoots());
         playerHeadRepository.saveAll(statisticalSheet.getHeads());
         passRepository.saveAll(statisticalSheet.getPasses());
-        skillRepository.saveAll(statisticalSheet.getSkills());
+        skillRepository.saveAll(statisticalSheet.getActions());
         goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
         return mapper.mapTo(statisticalSheet);
@@ -44,7 +50,7 @@ public class StatisticalSheetService {
         shootRepository.saveAll(statisticalSheet.getShoots());
         playerHeadRepository.saveAll(statisticalSheet.getHeads());
         passRepository.saveAll(statisticalSheet.getPasses());
-        skillRepository.saveAll(statisticalSheet.getSkills());
+        skillRepository.saveAll(statisticalSheet.getActions());
         goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
         return mapper.mapTo(statisticalSheet);

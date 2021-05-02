@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.domainconfiguration.CompetitionType;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +31,7 @@ public class Video {
     @ManyToOne
     @JoinColumn(name="event_videos",referencedColumnName = "id")
     @Getter @Setter
-    private Events events;
+    private Event events;
 
     @Getter @Setter
     private Date posted;

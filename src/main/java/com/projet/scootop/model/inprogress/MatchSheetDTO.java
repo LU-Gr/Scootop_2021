@@ -21,8 +21,11 @@ public class MatchSheetDTO {
 	@Getter @Setter
 	private EventsDTO event;
 	
-	@Getter @Setter
-	private List<TeamDTO> team;
+    @Getter @Setter
+    private TeamDTO team1;
+    
+    @Getter @Setter
+    private TeamDTO team2;
 	
 	@Getter @Setter
 	private List<StatisticalSheetDTO> statisticalSheets;

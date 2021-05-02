@@ -21,7 +21,6 @@ public class UserResumeService {
     @Autowired private PlayerRepository playerRepository;
     @Autowired private CompetitionRepository competitionTypeRepository;
     @Autowired private StatisticalSheetRepository statisticalsheetRepository;
-    @Autowired private TeamRepository teamsRepository;
     @Autowired private SaisonRepository saisonRepository;
     @Autowired private UserResumeMapper mapper;
 
@@ -30,7 +29,6 @@ public class UserResumeService {
         playerRepository.save(userResume.getPlayer());
         competitionTypeRepository.save(userResume.getCompetitionType());
         statisticalsheetRepository.saveAll(userResume.getStatisticalSheets());
-        teamsRepository.saveAll(userResume.getTeams());
         saisonRepository.saveAll(userResume.getSaisons());
         userResumeRepository.save(userResume);
         return mapper.mapTo(userResume);

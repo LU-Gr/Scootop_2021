@@ -79,6 +79,10 @@ public class Player{
     private List<MatchSheet> matchSheets;
     
     @OneToMany
+    @Getter @Setter
+	private List<Photo> photos;
+    
+    @OneToMany
     @JoinColumn(name="player_videos",referencedColumnName = "id")
     @Getter @Setter
     private List<Video> videos;

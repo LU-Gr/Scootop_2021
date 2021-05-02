@@ -16,9 +16,9 @@ import java.util.List;
 
 @Entity
 
-@Table(name = "Events")
+@Table(name = "Event")
 
-public class Events {
+public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,11 +39,6 @@ public class Events {
     @OneToMany
     @Getter @Setter
     private List <Scoot> scoots;
-
-    //TODO: supprimer gameSheets
-    @OneToMany
-    @Getter @Setter
-    private List <GameSheet> gameSheets;
     
     @Getter @Setter
     private boolean status;
@@ -75,11 +70,11 @@ public class Events {
     @Getter @Setter
     private List<Video> videos;
 
-    public Events() {
+    public Event() {
 
     }
 
-    public Events(Long id, LocalDate date, Competition competitiontype, List<Team> teams, List<Scoot> scoots, List<GameSheet> gameSheets, boolean status, boolean prestaAnalyst, boolean prestaCameraman, boolean prestaWearable, boolean prestaScoot, boolean prestaZoom, Saison saison, List<Video> videos) {
+    public Event(Long id, LocalDate date, Competition competitiontype, List<Team> teams, List<Scoot> scoots, boolean status, boolean prestaAnalyst, boolean prestaCameraman, boolean prestaWearable, boolean prestaScoot, boolean prestaZoom, Saison saison, List<Video> videos) {
     }
 
 }

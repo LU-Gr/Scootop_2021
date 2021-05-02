@@ -14,26 +14,25 @@ public class Contact {
     private Long id;
 
     @Getter @Setter
-    private String email;
-    
-    @Getter @Setter
     private String tel;
     
     @Getter @Setter
     private String address;
     
     @Getter @Setter
-    private String cp;
+    private String codePostal;
     
     @OneToOne
     @Getter @Setter
     private User user;
+    
+    @Getter @Setter
+    private String pays;
 
-    public Contact(String email, String tel, String address, String cp) {
-        this.email = email;
+    public Contact(String tel, String address, String cp) {
         this.tel = tel;
         this.address = address;
-        this.cp = cp;
+        this.codePostal = cp;
     }
 
     public Contact() {

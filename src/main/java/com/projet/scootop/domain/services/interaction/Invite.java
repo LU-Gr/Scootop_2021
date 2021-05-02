@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;
@@ -28,7 +28,7 @@ public class Invite {
 
     @ManyToOne
     @Getter @Setter
-    private Events events;
+    private Event events;
     
     @ManyToOne
     @Getter @Setter
@@ -45,7 +45,7 @@ public class Invite {
     private boolean response;
 
 
-    public Invite(Saison saison, Events events, User user, Player player, LocalDate createAt, boolean response) {
+    public Invite(Saison saison, Event events, User user, Player player, LocalDate createAt, boolean response) {
         this.saison = saison;
         this.events = events;
         this.user = user;

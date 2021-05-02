@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.services.Events;
+import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.statistical.Action;
 import com.projet.scootop.domain.statistical.Goal;
 import com.projet.scootop.domain.statistical.Pass;

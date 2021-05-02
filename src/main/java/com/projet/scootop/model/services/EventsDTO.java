@@ -30,9 +30,6 @@ public class EventsDTO {
 	private List <ScootDTO> scoots;
 	
 	@Getter @Setter
-	private List <GameSheetDTO> gameSheets;
-	
-	@Getter @Setter
 	private boolean status;
 	
 	@Getter @Setter

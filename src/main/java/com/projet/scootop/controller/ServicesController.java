@@ -1,9 +1,8 @@
 package com.projet.scootop.controller;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.ApiApplication;
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.model.domainuser.PlayerDTO;
 import com.projet.scootop.model.domainuser.ScootDTO;
@@ -11,7 +10,6 @@ import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.model.services.*;
 import com.projet.scootop.service.domainuser.PlayerService;
 import com.projet.scootop.service.domainuser.ScootService;
-import com.projet.scootop.service.inprogess.MatchSheetService;
 import com.projet.scootop.service.inprogess.StatisticalSheetService;
 import com.projet.scootop.service.services.*;
 
@@ -20,31 +18,14 @@ import java.util.*;
 @RestController
 public class ServicesController {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ApiApplication.class, args);
-    }
-
-    private UserResumeService userResumeService;
-    private ShortlistService  shortlistService;
-    private GameSheetService  gameSheetService;
-    private EventsService     eventsService;
-    private WearableService   wearableService;
-    private StatisticalSheetService statisticalSheetService;
-    private PlayerService playerService;
-    private ScootService scootService;
+    @Autowired private UserResumeService userResumeService;
+    @Autowired private ShortlistService  shortlistService;
+    @Autowired private EventsService     eventsService;
+    @Autowired private WearableService   wearableService;
+    @Autowired private StatisticalSheetService statisticalSheetService;
+    @Autowired private PlayerService playerService;
+    @Autowired private ScootService scootService;
     
-    public ServicesController(UserResumeService serResumeService, ShortlistService shortlistService, GameSheetService gameSheetService, EventsService eventsService, WearableService wearableService, StatisticalSheetService statisticalSheetService,PlayerService playerService, MatchSheetService matchSheetService ) {
-        super();
-        this.userResumeService = serResumeService;
-        this.shortlistService = shortlistService;
-        this.gameSheetService = gameSheetService;
-        this.eventsService = eventsService;
-        this.wearableService = wearableService;
-        this.statisticalSheetService = statisticalSheetService;
-        this.playerService = playerService;
-
-    }
-
     // **** MatchSheet Data ****
 
 
@@ -52,14 +33,16 @@ public class ServicesController {
     @GetMapping("/api/matchsheet/{matchsheetsId}/{TeamId}/wearables")
     @ResponseBody
     List<WearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId, @PathVariable("TeamId") Long teamId ){
-    return wearableService.getAllByMatchSheetAndTeam(matchId,teamId);}
+    	return wearableService.getAllByMatchSheetAndTeam(matchId,teamId);
+    }
 
 
     // **** MatchSheet Data return player by team ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/{TeamId}/players")
     @ResponseBody
     List<PlayerDTO> getAllPlayerByMatchSheetAndTeam(@PathVariable("matchsheetsId") Long matchId, @PathVariable("TeamId") List<Team> teams ){
-        return playerService.getAllPlayerByMatchSheetAndTeams(matchId,teams);}
+        return playerService.getAllPlayerByMatchSheetAndTeams(matchId,teams);
+    }
 
     // **** MatchSheet Data return StatisticalSheet ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/stats")
@@ -85,26 +68,34 @@ public class ServicesController {
     @GetMapping("/api/matchsheet/{matchsheetsId}/scoots")
     @ResponseBody
     List<ScootDTO> getAllByScootByMatchSheetId(@PathVariable("matchsheetsId") Long matchId){
-        return scootService.getAllByMatchSheetId(matchId);}
+        return scootService.getAllByMatchSheetId(matchId);
+    }
 
     // **** MatchSheet Data return One Scoot ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/scoot/{id}")
-    ScootDTO getScoot(@PathVariable("id") Long id){return scootService.get(id);}
+    	ScootDTO getScoot(@PathVariable("id") Long id){
+    	return scootService.get(id);
+    }
 
     // **** MatchSheet Data return All Wearables ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/wearables")
     @ResponseBody
     List<WearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId){
-    return wearableService.getAllByMatchSheetId(matchId);}
+    	return wearableService.getAllByMatchSheetId(matchId);
+    }
 
     // **** Data return All Wearables ****
     @GetMapping("api/wearables")
     @ResponseBody
-    List<WearableDTO> getAllWearable(){return wearableService.getAll();}
+    List<WearableDTO> getAllWearable(){
+    	return wearableService.getAll();
+    }
 
     // **** Data return One Wearable By Id Wearables ****
     @GetMapping("api/wearable/{id}")
-    WearableDTO getWearable(@PathVariable("id") Long id){return wearableService.get(id);}
+    WearableDTO getWearable(@PathVariable("id") Long id){
+    	return wearableService.get(id);
+    }
 
 
     // **** Data update One Wearable By Id Wearables ****
@@ -126,20 +117,23 @@ public class ServicesController {
     // **** Data delete One Wearable By Id Wearables ****
     @DeleteMapping("api/wearable/{id}")
     String deleteWearable(@PathVariable("id") Long id){
-
-        return "delete";
+        return "deleted";
     }
 
 
     // **** Data get list of Player Resumes ****
     @GetMapping("api/userresumes")
     @ResponseBody
-    List<UserResumeDTO> getAllUserResume(){ return userResumeService.getAll();}
+    List<UserResumeDTO> getAllUserResume(){
+    	return userResumeService.getAll();
+    }
 
 
     // **** Data get one Player Resume by Id ****
     @GetMapping("api/userresume/{id}")
-    UserResumeDTO getUserResume(@PathVariable("id") Long id){ return userResumeService.get(id); }
+    UserResumeDTO getUserResume(@PathVariable("id") Long id){
+    	return userResumeService.get(id);
+    }
 
 
     // **** Data update one Player Resume by Id ****
@@ -154,9 +148,9 @@ public class ServicesController {
     UserResumeDTO addUserResume(@RequestBody UserResumeDTO body){
         return userResumeService.addUserResume(body);
     }
+    
     @DeleteMapping("api/userresume/{id}")
     String deleteUserResume(@PathVariable("id") Long id){
-
         return "delete";
     }
 
@@ -165,12 +159,16 @@ public class ServicesController {
     // **** Data list  of Shortlist ****
     @GetMapping("api/shortlists")
     @ResponseBody
-    List<ShortlistDTO> getAllShortlist(){return shortlistService.getAll();}
+    List<ShortlistDTO> getAllShortlist(){
+    	return shortlistService.getAll();
+    }
 
 
     // **** Data get one Shortlist by Id ****
     @GetMapping("api/shortlist/{id}")
-    ShortlistDTO getUserShortlist(@PathVariable("id") Long id){return shortlistService.get(id);}
+    ShortlistDTO getUserShortlist(@PathVariable("id") Long id){
+    	return shortlistService.get(id);
+    }
 
 
     // **** Data update one Shortlist by Id ****
@@ -183,44 +181,21 @@ public class ServicesController {
 
     // **** Data post one Shortlist by Id ****
     @PostMapping("api/shortlist")
-    ShortlistDTO addUserShortlist(@RequestBody ShortlistDTO body){ return shortlistService.addShortlist(body);}
+    ShortlistDTO addUserShortlist(@RequestBody ShortlistDTO body){
+    	return shortlistService.addShortlist(body);
+    }
 
 
     // **** Data delete one Shortlist by Id ****
     @DeleteMapping("api/shortlist/{id}")
     String deleteShortlist(@PathVariable("id") Long id){
-
         return "delete";
     }
-
-
-    // **** Data get List Of Matchsheet ****
-    @GetMapping("api/gamesheets")
-    @ResponseBody
-    List<GameSheetDTO> getAllGameSheet(){return gameSheetService.getAll();}
-
-
-    // **** Data get One Matchsheet by Id ****
-    @GetMapping("api/gamesheet/{id}")
-    GameSheetDTO getGameSheet(@PathVariable("id") Long id){return gameSheetService.get(id);}
-
-
-    // **** Data update One Matchsheet by Id ****
-    @PutMapping("api/gamesheet/{id}")
-    String updateGameSheet(@RequestBody String body, @PathVariable("id") Long id){
-        String gamesheet = body;
-        return gamesheet;
-    }
-
-    // **** Data post One Matchsheet by Id ****
-    @PostMapping("api/gamesheet")
-    GameSheetDTO addGameSheet(@RequestBody GameSheetDTO body){ return gameSheetService.addGameSheet(body);}
 
 
     // **** Data delete One Matchsheet by Id ****
     @DeleteMapping("api/gamesheet/{id}")
     String deleteGameSheet(@PathVariable("id") Long id){
-
         return "delete";
     }
 
@@ -228,12 +203,16 @@ public class ServicesController {
     // **** Data get List of Events by Id ****
     @GetMapping("api/events")
     @ResponseBody
-    List<EventsDTO> getAllEvents(){return eventsService.getAll();}
+    List<EventsDTO> getAllEvents(){
+    	return eventsService.getAll();
+    }
 
 
     // **** Data get One Event by Id ****
     @GetMapping("api/event/{id}")
-    EventsDTO getEvent(@PathVariable("id") Long id){return eventsService.get(id);}
+    EventsDTO getEvent(@PathVariable("id") Long id){
+    	return eventsService.get(id);
+    }
 
 
     // **** Data update One Event by Id ****
@@ -251,7 +230,6 @@ public class ServicesController {
     // **** Data delete One Event by Id ****
     @DeleteMapping("api/event/{id}")
     String deleteEvents(@PathVariable("id") Long id){
-
         return "delete";
     }
 

@@ -76,7 +76,7 @@ public class StatisticalSheet {
     @Getter @Setter
     private List<Goal> goals;
     
-    @OneToMany
+    @ManyToOne
     @Getter @Setter
     private Player player;
 

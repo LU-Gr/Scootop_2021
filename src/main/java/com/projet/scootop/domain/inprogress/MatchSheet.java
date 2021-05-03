@@ -40,14 +40,13 @@ public class MatchSheet {
     @Getter @Setter
     private Team team2;
     
-    private StatisticalSheet statisticalSheetMatch;
+    //private StatisticalSheet statisticalSheetMatch;
     
-    private List<StatisticalSheet> statisticalSheetsTeam1;
+    //private List<StatisticalSheet> statisticalSheetsTeam1;
     
-    private List<StatisticalSheet> statisticalSheetsTeam2;
+    //private List<StatisticalSheet> statisticalSheetsTeam2;
 
     @OneToMany
-    @JoinColumn(name="Match_Sheet_statistical",referencedColumnName = "id")
     @Getter @Setter
     private List<StatisticalSheet> statisticalSheets;
     

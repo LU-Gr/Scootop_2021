@@ -1,13 +1,13 @@
 package com.projet.scootop.domain.domainuser;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import com.projet.scootop.domain.domainconfiguration.Team;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 public class Photo {
 	
 	@Getter @Setter

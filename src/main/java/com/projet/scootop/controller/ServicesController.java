@@ -18,7 +18,6 @@ import java.util.*;
 @RestController
 public class ServicesController {
 
-    @Autowired private UserResumeService userResumeService;
     @Autowired private ShortlistService  shortlistService;
     @Autowired private EventsService     eventsService;
     @Autowired private WearableService   wearableService;
@@ -119,41 +118,6 @@ public class ServicesController {
     String deleteWearable(@PathVariable("id") Long id){
         return "deleted";
     }
-
-
-    // **** Data get list of Player Resumes ****
-    @GetMapping("api/userresumes")
-    @ResponseBody
-    List<UserResumeDTO> getAllUserResume(){
-    	return userResumeService.getAll();
-    }
-
-
-    // **** Data get one Player Resume by Id ****
-    @GetMapping("api/userresume/{id}")
-    UserResumeDTO getUserResume(@PathVariable("id") Long id){
-    	return userResumeService.get(id);
-    }
-
-
-    // **** Data update one Player Resume by Id ****
-    @PutMapping("api/userresume/{id}")
-    String updateUserResume(@RequestBody String body, @PathVariable("id") Long id){
-        String userresume = body;
-        return userresume;
-    }
-
-    // **** Data post one Player Resume ****
-    @PostMapping("api/userresume")
-    UserResumeDTO addUserResume(@RequestBody UserResumeDTO body){
-        return userResumeService.addUserResume(body);
-    }
-    
-    @DeleteMapping("api/userresume/{id}")
-    String deleteUserResume(@PathVariable("id") Long id){
-        return "delete";
-    }
-
 
 
     // **** Data list  of Shortlist ****

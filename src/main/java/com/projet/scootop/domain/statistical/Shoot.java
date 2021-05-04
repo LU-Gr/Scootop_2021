@@ -46,6 +46,9 @@ public class Shoot {
     @Getter @Setter
     private Boolean isLongShoot;
     
+    @Getter @Setter
+    private Boolean isInBox;
+    
     @OneToOne
     @Getter @Setter
     private Pass passer;

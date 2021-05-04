@@ -51,4 +51,8 @@ public class Saison {
     public String getName() {
         return dateDebut.toString() + " - " + dateFin.toString();
     }
+    
+    public String getNameByYears() {
+        return dateDebut.getYear() + " - " + dateFin.getYear();
+    }
 }

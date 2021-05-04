@@ -2,6 +2,7 @@ package com.projet.scootop.domain.inprogress;
 
 import javax.persistence.*;
 
+import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.statistical.Action;
@@ -34,12 +35,6 @@ public class StatisticalSheet {
     @OneToOne
     @Getter @Setter
     private Event event;
-
-    @Getter @Setter
-    private int nbShootIn;
-    
-    @Getter @Setter
-    private int nbShootOut;
 
     @Getter @Setter
     private int nbBallplayed;
@@ -79,17 +74,19 @@ public class StatisticalSheet {
     @ManyToOne
     @Getter @Setter
     private Player player;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Team team;
 
     @Getter @Setter
     private float distancekm;
 
 
-    public StatisticalSheet(MatchSheet matchSheet, Player player, Event events, int shootIn, int shootOut, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
+    public StatisticalSheet(MatchSheet matchSheet, Player player, Event events, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<PlayerHead> heads, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
         this.matchSheet = matchSheet;
         this.player = player;
         this.event = events;
-        this.nbShootIn = shootIn;
-        this.nbShootOut = shootOut;
         this.nbBallplayed = ballplayed;
         this.nbBalllost = balllost;
         this.nbBallSuccess = ballSuccess;

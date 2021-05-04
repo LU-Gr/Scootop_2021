@@ -69,6 +69,9 @@ public class Player{
 
     @Getter @Setter
     private String weekFoot;
+    
+    @Getter @Setter
+    private String photoUrl;
 
     @OneToMany
     @Getter @Setter

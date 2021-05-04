@@ -71,11 +71,11 @@ public class MatchSheet {
 
     @OneToOne
     @Getter @Setter
-    private Competition competitionType;
+    private Competition competition;
 
-    public MatchSheet(Event event, Team team1, Team team2, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competitionType) throws Exception {
+    public MatchSheet(Event event, Team team1, Team team2, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
         this.event = event;
-        this.competitionType = competitionType;
+        this.competition = competition;
         this.statisticalSheets = statisticalSheets;
         this.stade = stade;
         this.matchScoots = matchScoots;
@@ -112,7 +112,7 @@ public class MatchSheet {
         List<Player> selectedPlayer = new ArrayList<>();
         List<Player> substitutePlayer = new ArrayList<>();
 
-        if (playerList.size() <= competitionType.getNbPlayerMax() && playerList.size() >= competitionType.getNbPlayerMin()) {
+        if (playerList.size() <= competition.getNbPlayerMax() && playerList.size() >= competition.getNbPlayerMin()) {
             for (int i = 0;  i<playerList.size(); i++) {
                boolean isSelected = playerList.get(i).isSelected();
                boolean isSubstitute = playerList.get(i).isSelected();
@@ -130,14 +130,14 @@ public class MatchSheet {
     }
 
     public void selectedPlayer(List<Player> playerList, Player player){
-        for (int i = 0; i <=competitionType.getNbPlayerMax() ; i++) {
+        for (int i = 0; i <=competition.getNbPlayerMax() ; i++) {
             playerList.get(i).setSelected(true);
         }
 
     }
 
     public void substitutePlayer(List<Player> playerList, Player player){
-        for (int i = 0; i <=competitionType.getNbPlayerMax() ; i++) {
+        for (int i = 0; i <=competition.getNbPlayerMax() ; i++) {
             playerList.get(i).setSelected(true);
             playerList.get(i).setSubstitute(true);
 

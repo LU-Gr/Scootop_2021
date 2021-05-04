@@ -33,21 +33,19 @@ public class MatchSheet {
     
     @ManyToOne
     @Getter @Setter
-    private Team team1;
+    private Team teamA;
     
     @ManyToOne
     @Getter @Setter
-    private Team team2;
+    private Team teamB;
     
-    //private StatisticalSheet statisticalSheetMatch;
-    
-    //private List<StatisticalSheet> statisticalSheetsTeam1;
-    
-    //private List<StatisticalSheet> statisticalSheetsTeam2;
-
     @OneToMany
     @Getter @Setter
-    private List<StatisticalSheet> statisticalSheets;
+    private List<StatisticalSheet> statisticalSheetsTeamA;
+    
+    @OneToMany
+    @Getter @Setter
+    private List<StatisticalSheet> statisticalSheetsTeamB;
     
     @OneToOne
     @Getter @Setter
@@ -72,21 +70,20 @@ public class MatchSheet {
     @Getter @Setter
     private Competition competition;
 
-    public MatchSheet(Event event, Team team1, Team team2, List<StatisticalSheet> statisticalSheets, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
+    public MatchSheet(Event event, Team teamA, Team teamB, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
         this.event = event;
         this.competition = competition;
-        this.statisticalSheets = statisticalSheets;
         this.stade = stade;
         this.matchScoots = matchScoots;
         this.saison = saison;
         this.wearables = wearables;
-        this.team1 = team1;
-        this.team2 = team2;
+        this.teamA = teamA;
+        this.teamB = teamB;
 
-        List<Player>  playersTeamA = this.team1.getPlayers();
-        List<Player>  playersTeamB = this.team1.getPlayers();
-        StatisticalSheet statisticalSheetsTeamA = new StatisticalSheet();
-        StatisticalSheet statisticalSheetsTeamB = new StatisticalSheet();
+        List<Player>  playersTeamA = this.teamA.getPlayers();
+        List<Player>  playersTeamB = this.teamA.getPlayers();
+        statisticalSheetsTeamA = new ArrayList<>();
+        statisticalSheetsTeamB = new ArrayList<>();
         StatisticalSheet statisticalSheetsGame =  new StatisticalSheet();
 
         for (int i = 0; i < playersTeamA.size(); i++) {

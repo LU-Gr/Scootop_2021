@@ -29,9 +29,10 @@ public class MatchSheetService {
     public MatchSheetDTO add(MatchSheetDTO matchSheetDTO) throws Exception {
     	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getMatchScoots());
-        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
-        teamRepository.save(matchSheet.getTeam1());
-        teamRepository.save(matchSheet.getTeam2());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamB());
+        teamRepository.save(matchSheet.getTeamA());
+        teamRepository.save(matchSheet.getTeamB());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
         return mapper.mapTo(matchSheet);
@@ -40,9 +41,10 @@ public class MatchSheetService {
     public MatchSheetDTO update(MatchSheetDTO matchSheetDTO) throws Exception {
     	MatchSheet matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getMatchScoots());
-        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheets());
-        teamRepository.save(matchSheet.getTeam1());
-        teamRepository.save(matchSheet.getTeam2());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());
+        statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamB());
+        teamRepository.save(matchSheet.getTeamA());
+        teamRepository.save(matchSheet.getTeamB());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
         return mapper.mapTo(matchSheet);

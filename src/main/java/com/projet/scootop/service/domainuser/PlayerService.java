@@ -94,6 +94,6 @@ public class PlayerService {
 		ficheJoueur.setNbBallonsRecuperes(ur.getBallsPlayed());
 		
 		
-		return null;
+		return ficheJoueur;
 	}
 }

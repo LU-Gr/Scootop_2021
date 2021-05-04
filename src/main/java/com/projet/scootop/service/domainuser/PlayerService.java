@@ -91,7 +91,7 @@ public class PlayerService {
 		ficheJoueur.setNbSuccededPasses(ur.getAssistsSuccess());
 		ficheJoueur.setNbShootsInBox(ur.getShootsInBox());
 		ficheJoueur.setNbSuccededDribbles(ur.getDribblesSuccess());
-		ficheJoueur.setNbBallonsRecuperes(0);
+		ficheJoueur.setNbBallonsRecuperes(ur.getBallsPlayed());
 		
 		
 		return null;

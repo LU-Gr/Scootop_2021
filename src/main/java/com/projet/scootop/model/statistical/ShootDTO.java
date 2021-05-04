@@ -1,7 +1,7 @@
 package com.projet.scootop.model.statistical;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.domain.statistical.Pass;
 import com.projet.scootop.domain.statistical.physical.TypeTouch;
 

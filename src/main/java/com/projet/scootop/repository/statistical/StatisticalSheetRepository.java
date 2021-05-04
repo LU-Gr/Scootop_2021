@@ -1,9 +1,9 @@
-package com.projet.scootop.repository.inprogress;
+package com.projet.scootop.repository.statistical;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
 
 @Repository
 public interface StatisticalSheetRepository extends JpaRepository<StatisticalSheet, Long> {

@@ -1,14 +1,13 @@
-package com.projet.scootop.model.inprogress;
+package com.projet.scootop.model.domainconfiguration;
 
 import java.util.List;
 
-import com.projet.scootop.model.domainconfiguration.StadeDTO;
-import com.projet.scootop.model.domainconfiguration.TeamDTO;
 import com.projet.scootop.model.domaintools.CompetitionDTO;
 import com.projet.scootop.model.domaintools.SaisonDTO;
 import com.projet.scootop.model.domainuser.ScootDTO;
 import com.projet.scootop.model.services.EventsDTO;
 import com.projet.scootop.model.services.WearableDTO;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 
 import lombok.Getter;
 import lombok.Setter;

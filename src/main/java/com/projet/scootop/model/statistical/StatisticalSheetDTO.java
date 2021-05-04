@@ -1,21 +1,18 @@
-package com.projet.scootop.model.inprogress;
+package com.projet.scootop.model.statistical;
 
 import java.util.List;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.MatchSheet;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.statistical.Action;
 import com.projet.scootop.domain.statistical.Goal;
 import com.projet.scootop.domain.statistical.Pass;
 import com.projet.scootop.domain.statistical.Shoot;
 import com.projet.scootop.domain.statistical.physical.PlayerHead;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 import com.projet.scootop.model.domainuser.PlayerDTO;
 import com.projet.scootop.model.services.EventsDTO;
-import com.projet.scootop.model.statistical.ActionDTO;
-import com.projet.scootop.model.statistical.GoalDTO;
-import com.projet.scootop.model.statistical.PassDTO;
-import com.projet.scootop.model.statistical.ShootDTO;
 import com.projet.scootop.model.statistical.physical.PlayerHeadDTO;
 
 import lombok.Getter;

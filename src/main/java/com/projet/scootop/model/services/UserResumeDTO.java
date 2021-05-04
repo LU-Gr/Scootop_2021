@@ -6,7 +6,7 @@ import com.projet.scootop.model.domainconfiguration.TeamDTO;
 import com.projet.scootop.model.domaintools.CompetitionDTO;
 import com.projet.scootop.model.domaintools.SaisonDTO;
 import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,9 +1,9 @@
 package com.projet.scootop.model.statistical;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
 
 import lombok.Getter;
 import lombok.Setter;

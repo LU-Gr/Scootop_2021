@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 
 public class SaisonDTO {
 

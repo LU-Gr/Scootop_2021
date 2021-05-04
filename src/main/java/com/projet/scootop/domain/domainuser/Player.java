@@ -3,11 +3,11 @@ package com.projet.scootop.domain.domainuser;
 import javax.persistence.*;
 
 import com.projet.scootop.domain.domainconfiguration.Category;
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainconfiguration.Poste;
 import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
 import com.projet.scootop.domain.servicetools.video.Video;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
 import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;

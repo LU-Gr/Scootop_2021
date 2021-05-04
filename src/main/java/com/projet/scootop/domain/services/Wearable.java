@@ -2,9 +2,9 @@ package com.projet.scootop.domain.services;
 
 import javax.persistence.*;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.MatchSheet;
 
 import lombok.Getter;
 import lombok.Setter;

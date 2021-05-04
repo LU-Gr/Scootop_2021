@@ -1,18 +1,18 @@
-package com.projet.scootop.service.inprogess;
+package com.projet.scootop.service.statistical;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.mappers.inprogress.StatisticalSheetMapper;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
-import com.projet.scootop.repository.inprogress.StatisticalSheetRepository;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
+import com.projet.scootop.mappers.statistical.StatisticalSheetMapper;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 import com.projet.scootop.repository.statistical.ActionRepository;
 import com.projet.scootop.repository.statistical.GoalRepository;
 import com.projet.scootop.repository.statistical.PassRepository;
 import com.projet.scootop.repository.statistical.ShootRepository;
+import com.projet.scootop.repository.statistical.StatisticalSheetRepository;
 import com.projet.scootop.repository.statistical.physical.PlayerHeadRepository;
 
 import java.util.List;

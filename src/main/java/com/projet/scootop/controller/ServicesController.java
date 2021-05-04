@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.*;
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.model.domainuser.PlayerDTO;
 import com.projet.scootop.model.domainuser.ScootDTO;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.model.services.*;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 import com.projet.scootop.service.domainuser.PlayerService;
 import com.projet.scootop.service.domainuser.ScootService;
-import com.projet.scootop.service.inprogess.StatisticalSheetService;
 import com.projet.scootop.service.services.*;
+import com.projet.scootop.service.statistical.StatisticalSheetService;
 
 import java.util.*;
 

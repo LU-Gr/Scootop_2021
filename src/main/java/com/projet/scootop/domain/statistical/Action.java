@@ -2,10 +2,10 @@ package com.projet.scootop.domain.statistical;
 
 import javax.persistence.*;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domaintools.Skill;
 import com.projet.scootop.domain.domaintools.SkillType;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.MatchSheet;
 
 import lombok.Getter;
 import lombok.Setter;

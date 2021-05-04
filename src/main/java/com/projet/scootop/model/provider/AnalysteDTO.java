@@ -1,6 +1,6 @@
 package com.projet.scootop.model.provider;
 
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;

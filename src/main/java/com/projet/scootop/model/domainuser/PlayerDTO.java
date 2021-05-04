@@ -3,10 +3,10 @@ package com.projet.scootop.model.domainuser;
 import java.util.List;
 
 import com.projet.scootop.model.domainconfiguration.CategoryDTO;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 import com.projet.scootop.model.domainconfiguration.TeamDTO;
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
 import com.projet.scootop.model.servicetools.video.VideoDTO;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;

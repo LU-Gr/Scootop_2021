@@ -1,18 +1,19 @@
-package com.projet.scootop.service.inprogess;
+package com.projet.scootop.service.domainconfiguration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.mappers.inprogress.MatchSheetMapper;
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
+import com.projet.scootop.mappers.domainconfiguration.MatchSheetMapper;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
+import com.projet.scootop.repository.domainconfiguration.MatchSheetRepository;
 import com.projet.scootop.repository.domainconfiguration.TeamRepository;
 import com.projet.scootop.repository.domainetools.SaisonRepository;
 import com.projet.scootop.repository.domainuser.ScootRepository;
-import com.projet.scootop.repository.inprogress.MatchSheetRepository;
-import com.projet.scootop.repository.inprogress.StatisticalSheetRepository;
+import com.projet.scootop.repository.statistical.StatisticalSheetRepository;
+
 import java.util.List;
 
 @Service

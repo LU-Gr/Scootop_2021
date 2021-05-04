@@ -1,8 +1,8 @@
 package com.projet.scootop.model.services;
 
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 import com.projet.scootop.model.domainconfiguration.TeamDTO;
 import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
 
 import lombok.Getter;
 import lombok.Setter;

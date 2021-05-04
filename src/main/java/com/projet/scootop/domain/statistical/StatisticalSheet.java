@@ -1,14 +1,11 @@
-package com.projet.scootop.domain.inprogress;
+package com.projet.scootop.domain.statistical;
 
 import javax.persistence.*;
 
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.services.Event;
-import com.projet.scootop.domain.statistical.Action;
-import com.projet.scootop.domain.statistical.Goal;
-import com.projet.scootop.domain.statistical.Pass;
-import com.projet.scootop.domain.statistical.Shoot;
 import com.projet.scootop.domain.statistical.physical.PlayerHead;
 
 import lombok.Getter;

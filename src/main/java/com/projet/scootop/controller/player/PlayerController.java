@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projet.scootop.model.domainuser.FicheJoueurDTO;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 import com.projet.scootop.service.domainuser.PlayerService;
-import com.projet.scootop.service.inprogess.StatisticalSheetService;
+import com.projet.scootop.service.statistical.StatisticalSheetService;
 
 
 @RestController

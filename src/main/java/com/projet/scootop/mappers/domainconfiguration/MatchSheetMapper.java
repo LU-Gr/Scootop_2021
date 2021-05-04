@@ -1,11 +1,11 @@
-package com.projet.scootop.mappers.inprogress;
+package com.projet.scootop.mappers.domainconfiguration;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
-import com.projet.scootop.model.inprogress.MatchSheetDTO;
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
+import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

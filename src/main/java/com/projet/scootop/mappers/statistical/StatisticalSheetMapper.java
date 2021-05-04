@@ -1,11 +1,11 @@
-package com.projet.scootop.mappers.inprogress;
+package com.projet.scootop.mappers.statistical;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
-import com.projet.scootop.model.inprogress.StatisticalSheetDTO;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
+import com.projet.scootop.model.statistical.StatisticalSheetDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

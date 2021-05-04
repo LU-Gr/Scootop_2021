@@ -1,10 +1,11 @@
-package com.projet.scootop.domain.services;
+package com.projet.scootop.functions;
 
 import com.projet.scootop.domain.domainconfiguration.CompetitionType;
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.inprogress.StatisticalSheet;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
+
 import lombok.Getter;
 import java.time.LocalDate;
 import java.util.List;

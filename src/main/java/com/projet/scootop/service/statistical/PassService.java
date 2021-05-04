@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.projet.scootop.domain.statistical.Pass;
 import com.projet.scootop.mappers.statistical.PassMapper;
 import com.projet.scootop.model.statistical.PassDTO;
-import com.projet.scootop.repository.inprogress.MatchSheetRepository;
+import com.projet.scootop.repository.domainconfiguration.MatchSheetRepository;
 import com.projet.scootop.repository.statistical.PassRepository;
 
 import java.util.List;

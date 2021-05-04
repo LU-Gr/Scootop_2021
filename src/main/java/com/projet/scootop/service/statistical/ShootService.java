@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.projet.scootop.domain.statistical.Shoot;
 import com.projet.scootop.mappers.statistical.ShootMapper;
 import com.projet.scootop.model.statistical.ShootDTO;
-import com.projet.scootop.repository.inprogress.MatchSheetRepository;
+import com.projet.scootop.repository.domainconfiguration.MatchSheetRepository;
 import com.projet.scootop.repository.statistical.ShootRepository;
 
 import java.util.List;

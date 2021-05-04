@@ -2,7 +2,7 @@ package com.projet.scootop.domain.provider;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.inprogress.MatchSheet;
+import com.projet.scootop.domain.domainconfiguration.MatchSheet;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 import lombok.Getter;

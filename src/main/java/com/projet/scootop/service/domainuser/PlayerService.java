@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.services.UserResume;
+import com.projet.scootop.functions.UserResume;
 import com.projet.scootop.mappers.domainconfiguration.CompetitionTypeMapper;
 import com.projet.scootop.mappers.domainconfiguration.TeamMapper;
 import com.projet.scootop.mappers.domaintools.SaisonMapper;

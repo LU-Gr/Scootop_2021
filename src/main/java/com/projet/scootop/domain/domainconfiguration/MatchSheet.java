@@ -1,15 +1,14 @@
-package com.projet.scootop.domain.inprogress;
+package com.projet.scootop.domain.domainconfiguration;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.domainconfiguration.Stade;
-import com.projet.scootop.domain.domainconfiguration.Team;
 import com.projet.scootop.domain.domaintools.Competition;
 import com.projet.scootop.domain.domaintools.Saison;
 import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.domainuser.Scoot;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.services.Wearable;
+import com.projet.scootop.domain.statistical.StatisticalSheet;
 
 import lombok.Getter;
 import lombok.Setter;

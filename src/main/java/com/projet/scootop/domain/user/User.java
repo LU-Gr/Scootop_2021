@@ -6,6 +6,8 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.List;
 @ToString
 @Table(name = "USER")
 public class User {
+    
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

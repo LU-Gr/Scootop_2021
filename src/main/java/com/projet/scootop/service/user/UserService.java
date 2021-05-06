@@ -3,6 +3,8 @@ package com.projet.scootop.service.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.user.User;
@@ -13,12 +15,15 @@ import com.projet.scootop.repository.user.ContactRepository;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.UserTypeRepository;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-	
+
+    @Autowired private PasswordEncoder bCryptPasswordEncoder;
     @Autowired private UserRepository userRepository;
     @Autowired private ContactRepository contactRepository;
     @Autowired private UserTypeRepository userTypeRepository;
@@ -59,6 +64,15 @@ public class UserService {
         }
         userRepository.deleteById(id);
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
+    }
+
+    public String register(User user, HttpServletResponse response){
+        String password = user.getPassword().toString();
+        String newPassword = bCryptPasswordEncoder.encode(password);
+        user.setPassword(newPassword);
+        userRepository.save(user);
+        return "{\"id\":" + user.getId() +"}"; // retourner le user
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.projet.scootop.controller;
 
+import com.projet.scootop.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import com.projet.scootop.service.user.ContactService;
 import com.projet.scootop.service.user.UserService;
 import com.projet.scootop.service.user.UserTypeService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,12 @@ public class UserController {
 	@Autowired private UserService userService;
 	
 	@Autowired private UserTypeService userTypeService;
+	
+	@PostMapping("/api/register")
+    public String register(@RequestBody User user, HttpServletResponse response){
+	    return userService.register(user, response);
+    }
+    
 
     @GetMapping("api/contacts")
     List<ContactDTO> getAllContacts(){

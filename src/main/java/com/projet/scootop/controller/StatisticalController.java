@@ -3,14 +3,14 @@ package com.projet.scootop.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.model.statistical.GoalDTO;
-import com.projet.scootop.model.statistical.PassDTO;
-import com.projet.scootop.model.statistical.ShootDTO;
-import com.projet.scootop.model.statistical.physical.TypeTouchDTO;
-import com.projet.scootop.service.statistical.GoalService;
-import com.projet.scootop.service.statistical.PassService;
-import com.projet.scootop.service.statistical.ShootService;
-import com.projet.scootop.service.statistical.physical.TypeTouchService;
+import com.projet.scootop.model.configuration.TouchTypeDTO;
+import com.projet.scootop.model.statistics.GoalDTO;
+import com.projet.scootop.model.statistics.PassDTO;
+import com.projet.scootop.model.statistics.ShootDTO;
+import com.projet.scootop.service.configuration.TouchTypeService;
+import com.projet.scootop.service.statistics.GoalService;
+import com.projet.scootop.service.statistics.PassService;
+import com.projet.scootop.service.statistics.ShootService;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ import java.util.List;
 public class StatisticalController {
     private GoalService goalService;
     private ShootService shootService;
-    private TypeTouchService typeTouchService;
+    private TouchTypeService typeTouchService;
     private PassService assistService;
 
-    public StatisticalController(GoalService goalService, ShootService shootService, TypeTouchService typeTouchService, PassService assistService) {
+    public StatisticalController(GoalService goalService, ShootService shootService, TouchTypeService typeTouchService, PassService assistService) {
 
         this.goalService = goalService;
         this.shootService = shootService;
@@ -113,15 +113,15 @@ public class StatisticalController {
         return shootService.getAll();
     }
     @GetMapping("api/type_touch/{id}")
-    TypeTouchDTO getTypeTouch(@PathVariable Long id){
+    TouchTypeDTO getTypeTouch(@PathVariable Long id){
         return typeTouchService.get(id);
     }
     @PostMapping("api/type_touch")
-    TypeTouchDTO addTypeTouch(@RequestBody TypeTouchDTO body){
+    TouchTypeDTO addTypeTouch(@RequestBody TouchTypeDTO body){
         return typeTouchService.add(body);
     }
     @PutMapping("api/type_touch/{id}")
-    TypeTouchDTO updateTypeTouch(@RequestBody TypeTouchDTO body){
+    TouchTypeDTO updateTypeTouch(@RequestBody TouchTypeDTO body){
         return typeTouchService.update(body);
     }
     @DeleteMapping("api/type_touch/{id}")
@@ -129,7 +129,7 @@ public class StatisticalController {
         return typeTouchService.delete(id);
     }
     @GetMapping("api/type_touch_all")
-    List<TypeTouchDTO> getAllTypeTouch(){
+    List<TouchTypeDTO> getAllTypeTouch(){
         return typeTouchService.getAll();
     }
 }

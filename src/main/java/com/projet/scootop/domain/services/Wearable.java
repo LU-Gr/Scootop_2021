@@ -2,9 +2,9 @@ package com.projet.scootop.domain.services;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.domainconfiguration.MatchSheet;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domainuser.Player;
+import com.projet.scootop.domain.tools.Match;
+import com.projet.scootop.domain.tools.Team;
+import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +32,7 @@ public class Wearable {
     @ManyToOne
     @JoinColumn(name = "Game_id")
     @Getter @Setter
-    private MatchSheet matchSheet;
+    private Match matchSheet;
     
     @Getter @Setter
     private Integer distanceRun;
@@ -101,7 +101,7 @@ public class Wearable {
 
     }
 
-    public Wearable(Player player, Team team, MatchSheet matchSheet, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
+    public Wearable(Player player, Team team, Match matchSheet, Integer distanceRun, Integer distancePlay, Integer vMax, Integer vMaxWithBall, Integer ballPlay, Integer looseBall, Integer ballRecovered, Integer tackle, Integer foulSuffered, Integer failPass, Integer assist, Integer shortPass, Integer head, Integer headOffensive, Integer headDefensive, Integer shots, Integer shotOnTarget, Integer shotOffTarget, Integer longShot, Integer successSkill, Integer failSkill) {
     }
 
 }

@@ -1,10 +1,10 @@
 package com.projet.scootop.functions;
 
-import com.projet.scootop.domain.domainconfiguration.CompetitionType;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.statistical.StatisticalSheet;
+import com.projet.scootop.domain.configuration.CompetitionType;
+import com.projet.scootop.domain.tools.Saison;
+import com.projet.scootop.domain.tools.StatisticalSheet;
+import com.projet.scootop.domain.tools.Team;
+import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import java.time.LocalDate;
@@ -182,7 +182,7 @@ public class UserResume {
     	for (StatisticalSheet sheet: this.statisticalSheets) {
         	this.dribblesSuccess = this.dribblesSuccess + (int) (sheet.getActions()
         			.stream()
-        			.filter(a -> a.getSkill().getName() == "Dribble")
+        			.filter(a -> a.getActionType().getName() == "Dribble")
         			.filter(a -> a.getIsSuccessful() == true)
         			.count());
         }

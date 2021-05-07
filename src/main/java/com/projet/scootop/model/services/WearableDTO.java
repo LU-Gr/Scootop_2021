@@ -1,8 +1,8 @@
 package com.projet.scootop.model.services;
 
-import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
-import com.projet.scootop.model.domainconfiguration.TeamDTO;
-import com.projet.scootop.model.domainuser.PlayerDTO;
+import com.projet.scootop.model.tools.MatchDTO;
+import com.projet.scootop.model.tools.TeamDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +19,7 @@ public class WearableDTO {
 	private TeamDTO team;
 	
 	@Getter @Setter
-	private MatchSheetDTO matchSheet;
+	private MatchDTO matchSheet;
 	
 	@Getter @Setter
 	private Integer distanceRun;

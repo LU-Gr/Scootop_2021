@@ -3,12 +3,12 @@ package com.projet.scootop.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.domain.domainconfiguration.Club;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domainuser.Coach;
-import com.projet.scootop.domain.domainuser.Player;
+import com.projet.scootop.domain.configuration.Category;
+import com.projet.scootop.domain.tools.Club;
+import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
+import com.projet.scootop.domain.user.domainuser.Coach;
+import com.projet.scootop.domain.user.domainuser.Player;
 
 import java.util.*;
 

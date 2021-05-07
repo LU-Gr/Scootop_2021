@@ -3,9 +3,15 @@ package com.projet.scootop.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.domaintools.CategoryType;
-import com.projet.scootop.model.domaintools.*;
-import com.projet.scootop.service.domaintools.*;
+import com.projet.scootop.domain.configuration.CategoryType;
+import com.projet.scootop.model.configuration.ActionTypeDTO;
+import com.projet.scootop.model.configuration.CategoryTypeDTO;
+import com.projet.scootop.model.tools.CompetitionDTO;
+import com.projet.scootop.model.tools.SaisonDTO;
+import com.projet.scootop.service.configuration.ActionTypeService;
+import com.projet.scootop.service.configuration.CategorieTypeService;
+import com.projet.scootop.service.tools.CompetitionService;
+import com.projet.scootop.service.tools.SaisonService;
 
 import java.util.List;
 
@@ -13,17 +19,15 @@ import java.util.List;
 @RestController
 public class ToolsController {
     private SaisonService saisonService;
-    private SkillTypeService skillsTypeService;
-    private SkillService skillsFamillyService;
+    private ActionTypeService actionTypeService;
     private CategorieTypeService categorieTypeService;
     private CompetitionService competionTypeService;
 
 
-    public ToolsController(SaisonService saisonService, SkillTypeService skillsTypeService, SkillService skillsFamillyService, CategorieTypeService categorieTypeService, CompetitionService competionTypeService) {
+    public ToolsController(SaisonService saisonService, ActionTypeService skillsFamillyService, CategorieTypeService categorieTypeService, CompetitionService competionTypeService) {
         super();
         this.saisonService = saisonService;
-        this.skillsTypeService = skillsTypeService;
-        this.skillsFamillyService = skillsFamillyService;
+        this.actionTypeService = skillsFamillyService;
         this.categorieTypeService = categorieTypeService;
         this.competionTypeService = competionTypeService;
     }
@@ -104,13 +108,13 @@ public class ToolsController {
     }
     
     @GetMapping("api/skillsfamily/{id}")
-    SkillDTO getSkillsFamily(@PathVariable Long id){
-        return skillsFamillyService.get(id);
+    ActionTypeDTO getSkillsFamily(@PathVariable Long id){
+        return actionTypeService.get(id);
     }
     
     @PostMapping("api/skillsfamily")
-    SkillDTO addSkillsFamily(@RequestBody SkillDTO body){
-        return skillsFamillyService.addSkill(body);
+    ActionTypeDTO addSkillsFamily(@RequestBody ActionTypeDTO body){
+        return actionTypeService.addSkill(body);
     }
     
     @PutMapping("api/skillsfamily/{id}")
@@ -120,37 +124,12 @@ public class ToolsController {
     
     @DeleteMapping("api/skillsfamily/{id}")
     String deleteSkillsFamily(@PathVariable Long id){
-        return skillsFamillyService.delete(id);
+        return actionTypeService.delete(id);
     }
     
     @GetMapping("api/skillsfamily")
-    List<SkillDTO> getAllSkillsFamily(){
-        return skillsFamillyService.getAll();
-    }
-    
-    @GetMapping("api/skillstype/{id}")
-    SkillTypeDTO getSkillsType(@PathVariable Long id){
-        return skillsTypeService.get(id);
-    }
-    
-    @PostMapping("api/skillstype")
-    SkillTypeDTO addSkillsType(@RequestBody SkillTypeDTO body){
-        return skillsTypeService.addSkillType(body);
-    }
-    
-    @PutMapping("api/skillstype/{id}")
-    String updateSkillsType(@RequestBody String body,@PathVariable Long id){
-        return body;
-    }
-    
-    @DeleteMapping("api/skillstype/{id}")
-    String deleteSkillsType(@PathVariable Long id){
-        return skillsTypeService.delete(id);
-    }
-    
-    @GetMapping("api/skillstype")
-    List<SkillTypeDTO> getAllSkillsType(){
-        return skillsTypeService.getAll();
+    List<ActionTypeDTO> getAllSkillsFamily(){
+        return actionTypeService.getAll();
     }
 
 }

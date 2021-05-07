@@ -2,11 +2,11 @@ package com.projet.scootop.model.services;
 
 import java.util.List;
 
-import com.projet.scootop.model.domainconfiguration.TeamDTO;
-import com.projet.scootop.model.domaintools.CompetitionDTO;
-import com.projet.scootop.model.domaintools.SaisonDTO;
-import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.statistical.StatisticalSheetDTO;
+import com.projet.scootop.model.tools.CompetitionDTO;
+import com.projet.scootop.model.tools.SaisonDTO;
+import com.projet.scootop.model.tools.StatisticalSheetDTO;
+import com.projet.scootop.model.tools.TeamDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
 
 import lombok.Getter;
 import lombok.Setter;

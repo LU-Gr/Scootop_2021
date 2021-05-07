@@ -2,11 +2,11 @@ package com.projet.scootop.domain.services;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domaintools.Competition;
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.domain.servicetools.video.Video;
+import com.projet.scootop.domain.services.tools.video.Video;
+import com.projet.scootop.domain.tools.Competition;
+import com.projet.scootop.domain.tools.Saison;
+import com.projet.scootop.domain.tools.Team;
+import com.projet.scootop.domain.user.domainuser.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;

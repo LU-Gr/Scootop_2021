@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.projet.scootop.domain.services.Wearable;
 import com.projet.scootop.mappers.services.WearableMapper;
 import com.projet.scootop.model.services.WearableDTO;
-import com.projet.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.repository.domainuser.PlayerRepository;
 import com.projet.scootop.repository.services.WearableRepository;
+import com.projet.scootop.repository.tools.TeamRepository;
+import com.projet.scootop.repository.user.domainuser.PlayerRepository;
 
 import java.util.*;
 

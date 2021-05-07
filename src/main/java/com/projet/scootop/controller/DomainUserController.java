@@ -4,18 +4,18 @@ package com.projet.scootop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.domainuser.Chairman;
-import com.projet.scootop.domain.domainuser.Coach;
-import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.domainuser.Scoot;
-import com.projet.scootop.model.domainuser.ChairmanDTO;
-import com.projet.scootop.model.domainuser.CoachDTO;
-import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.domainuser.ScootDTO;
-import com.projet.scootop.service.domainuser.ChairmanService;
-import com.projet.scootop.service.domainuser.CoachService;
-import com.projet.scootop.service.domainuser.PlayerService;
-import com.projet.scootop.service.domainuser.ScootService;
+import com.projet.scootop.domain.user.domainuser.Chairman;
+import com.projet.scootop.domain.user.domainuser.Coach;
+import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.model.user.domainuser.ChairmanDTO;
+import com.projet.scootop.model.user.domainuser.CoachDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.service.user.domainuser.ChairmanService;
+import com.projet.scootop.service.user.domainuser.CoachService;
+import com.projet.scootop.service.user.domainuser.PlayerService;
+import com.projet.scootop.service.user.domainuser.ScootService;
 
 import java.util.List;
 

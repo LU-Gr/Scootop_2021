@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projet.scootop.model.domainuser.FicheJoueurDTO;
-import com.projet.scootop.model.statistical.StatisticalSheetDTO;
-import com.projet.scootop.service.domainuser.PlayerService;
-import com.projet.scootop.service.statistical.StatisticalSheetService;
+import com.projet.scootop.model.tools.StatisticalSheetDTO;
+import com.projet.scootop.model.user.domainuser.FicheJoueurDTO;
+import com.projet.scootop.service.tools.StatisticalSheetService;
+import com.projet.scootop.service.user.domainuser.PlayerService;
 
 
 @RestController

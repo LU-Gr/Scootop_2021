@@ -2,15 +2,15 @@ package com.projet.scootop.controller;
 
 import java.util.*;
 
-import com.projet.scootop.domain.domainconfiguration.Category;
-import com.projet.scootop.domain.domainconfiguration.Club;
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.domain.domainuser.Coach;
-import com.projet.scootop.domain.domainuser.Player;
-import com.projet.scootop.domain.domainuser.Scoot;
+import com.projet.scootop.domain.configuration.Category;
+import com.projet.scootop.domain.tools.Club;
+import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.Contact;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
+import com.projet.scootop.domain.user.domainuser.Coach;
+import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domainuser.Scoot;
 
 public class ScootopTest {
 

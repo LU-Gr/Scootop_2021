@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 import com.projet.scootop.domain.services.Shortlist;
 import com.projet.scootop.mappers.services.ShortlistMapper;
 import com.projet.scootop.model.services.ShortlistDTO;
-import com.projet.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.repository.domainuser.PlayerRepository;
-import com.projet.scootop.repository.domainuser.ScootRepository;
 import com.projet.scootop.repository.services.ShortlistRepository;
+import com.projet.scootop.repository.tools.TeamRepository;
 import com.projet.scootop.repository.user.UserRepository;
+import com.projet.scootop.repository.user.domainuser.PlayerRepository;
+import com.projet.scootop.repository.user.domainuser.ScootRepository;
 
 import java.util.List;
 

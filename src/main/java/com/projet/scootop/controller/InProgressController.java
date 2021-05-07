@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.model.domainconfiguration.MatchSheetDTO;
-import com.projet.scootop.model.statistical.StatisticalSheetDTO;
-import com.projet.scootop.service.domainconfiguration.MatchSheetService;
-import com.projet.scootop.service.statistical.StatisticalSheetService;
+import com.projet.scootop.model.tools.MatchDTO;
+import com.projet.scootop.model.tools.StatisticalSheetDTO;
+import com.projet.scootop.service.tools.MatchService;
+import com.projet.scootop.service.tools.StatisticalSheetService;
 
 import java.util.List;
 
@@ -15,20 +15,20 @@ import java.util.List;
 public class InProgressController {
 	
     @Autowired private StatisticalSheetService statisticalSheetService;
-    @Autowired private MatchSheetService matchSheetService;
+    @Autowired private MatchService matchSheetService;
 
     @GetMapping("api/matchsheet/{id}")
-    MatchSheetDTO getMatchSheet(@PathVariable Long id){
+    MatchDTO getMatchSheet(@PathVariable Long id){
         return matchSheetService.get(id);
     }
 
     @PostMapping("api/matchsheet")
-    MatchSheetDTO addMatchSheet(@RequestBody MatchSheetDTO body) throws Exception {
+    MatchDTO addMatchSheet(@RequestBody MatchDTO body) throws Exception {
         return matchSheetService.add(body);
     }
     
     @PutMapping("api/matchsheet/{id}")
-    MatchSheetDTO updateMatchSheet(@RequestBody MatchSheetDTO body) throws Exception {
+    MatchDTO updateMatchSheet(@RequestBody MatchDTO body) throws Exception {
         return matchSheetService.update(body);
     }
     
@@ -38,7 +38,7 @@ public class InProgressController {
     }
     
     @GetMapping("api/matchsheets")
-    List<MatchSheetDTO> getAllMatchSheets(){
+    List<MatchDTO> getAllMatchSheets(){
         return matchSheetService.getAll();
     }
     

@@ -2,10 +2,10 @@ package com.projet.scootop.domain.services.interaction;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.domaintools.Saison;
-import com.projet.scootop.domain.domainuser.Player;
 import com.projet.scootop.domain.services.Event;
+import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.user.User;
+import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import lombok.Setter;

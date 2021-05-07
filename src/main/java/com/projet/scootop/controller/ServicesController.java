@@ -3,15 +3,15 @@ package com.projet.scootop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.domainconfiguration.Team;
-import com.projet.scootop.model.domainuser.PlayerDTO;
-import com.projet.scootop.model.domainuser.ScootDTO;
+import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.model.services.*;
-import com.projet.scootop.model.statistical.StatisticalSheetDTO;
-import com.projet.scootop.service.domainuser.PlayerService;
-import com.projet.scootop.service.domainuser.ScootService;
+import com.projet.scootop.model.tools.StatisticalSheetDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domainuser.ScootDTO;
 import com.projet.scootop.service.services.*;
-import com.projet.scootop.service.statistical.StatisticalSheetService;
+import com.projet.scootop.service.tools.StatisticalSheetService;
+import com.projet.scootop.service.user.domainuser.PlayerService;
+import com.projet.scootop.service.user.domainuser.ScootService;
 
 import java.util.*;
 
@@ -167,14 +167,14 @@ public class ServicesController {
     // **** Data get List of Events by Id ****
     @GetMapping("api/events")
     @ResponseBody
-    List<EventsDTO> getAllEvents(){
+    List<EventDTO> getAllEvents(){
     	return eventsService.getAll();
     }
 
 
     // **** Data get One Event by Id ****
     @GetMapping("api/event/{id}")
-    EventsDTO getEvent(@PathVariable("id") Long id){
+    EventDTO getEvent(@PathVariable("id") Long id){
     	return eventsService.get(id);
     }
 
@@ -188,7 +188,7 @@ public class ServicesController {
 
     // **** Data post One Event by Id ****
     @PostMapping("api/event")
-    EventsDTO addEvent(@RequestBody EventsDTO body){ return eventsService.addEvent(body);}
+    EventDTO addEvent(@RequestBody EventDTO body){ return eventsService.addEvent(body);}
 
 
     // **** Data delete One Event by Id ****

@@ -2,8 +2,10 @@ package com.projet.scootop.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.model.provider.*;
-import com.projet.scootop.service.provider.*;
+import com.projet.scootop.model.services.WearableCompanyDTO;
+import com.projet.scootop.model.user.provider.*;
+import com.projet.scootop.service.services.WearableCompanyService;
+import com.projet.scootop.service.user.provider.*;
 
 import java.util.List;
 
@@ -15,9 +17,9 @@ public class ProviderController {
     private CameramanService cameramanService;
     private ManagerService managerService;
     private MarketingAdvisorService marketingAdvisorService;
-    private WearableSocietyService wearableSocietyService;
+    private WearableCompanyService wearableSocietyService;
 
-    public ProviderController(AgenceService agenceService, AnalysteService analysteService, CameramanService cameramanService, ManagerService managerService, MarketingAdvisorService marketingAdvisorService, WearableSocietyService wearableSocietyService) {
+    public ProviderController(AgenceService agenceService, AnalysteService analysteService, CameramanService cameramanService, ManagerService managerService, MarketingAdvisorService marketingAdvisorService, WearableCompanyService wearableSocietyService) {
         super();
         this.agenceService = agenceService;
         this.analysteService = analysteService;
@@ -148,13 +150,13 @@ public class ProviderController {
     }
 
     @GetMapping("api/wearable_society/{id}")
-    WearableSocietyDTO getWearableSociety(@PathVariable Long id){
+    WearableCompanyDTO getWearableSociety(@PathVariable Long id){
         return wearableSocietyService.get(id);
     }
 
     @PostMapping("api/wearable_society/{id}")
-    WearableSocietyDTO addWearableSociety(@RequestBody WearableSocietyDTO body, @PathVariable Long id){
-        WearableSocietyDTO wearableSociety = body;
+    WearableCompanyDTO addWearableSociety(@RequestBody WearableCompanyDTO body, @PathVariable Long id){
+        WearableCompanyDTO wearableSociety = body;
         return wearableSociety;    }
 
     @PutMapping("api/wearable_society/{id}")
@@ -169,7 +171,7 @@ public class ProviderController {
     }
 
     @GetMapping("api/wearable_societies")
-    List<WearableSocietyDTO> getAllWearableSocieties(){
+    List<WearableCompanyDTO> getAllWearableSocieties(){
         return wearableSocietyService.getAll();
     }
 

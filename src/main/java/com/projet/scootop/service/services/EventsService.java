@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.mappers.services.EventsMapper;
-import com.projet.scootop.model.services.EventsDTO;
-import com.projet.scootop.repository.domainconfiguration.TeamRepository;
-import com.projet.scootop.repository.domainetools.CompetitionRepository;
-import com.projet.scootop.repository.domainetools.SaisonRepository;
-import com.projet.scootop.repository.domainuser.ScootRepository;
+import com.projet.scootop.model.services.EventDTO;
 import com.projet.scootop.repository.services.EventsRepository;
-import com.projet.scootop.repository.servicetools.video.VideoRepository;
+import com.projet.scootop.repository.services.tools.video.VideoRepository;
+import com.projet.scootop.repository.tools.CompetitionRepository;
+import com.projet.scootop.repository.tools.SaisonRepository;
+import com.projet.scootop.repository.tools.TeamRepository;
+import com.projet.scootop.repository.user.domainuser.ScootRepository;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class EventsService {
     @Autowired private EventsMapper mapper;
 
 
-    public EventsDTO addEvent(EventsDTO eventsDTO){
+    public EventDTO addEvent(EventDTO eventsDTO){
     	Event events = mapper.mapTo(eventsDTO);
         saisonRepository.save(events.getSaison());
         competitiontypeRepository.save(events.getCompetition());
@@ -38,7 +38,7 @@ public class EventsService {
         return mapper.mapTo(events);
     }
     
-    public EventsDTO get(Long id){
+    public EventDTO get(Long id){
         Event events = eventsRepository.findById(id).orElse(null);
 
         if(events==null){
@@ -49,13 +49,13 @@ public class EventsService {
 
     }
 
-    public Event update(EventsDTO eventsDTO, Long id){
+    public Event update(EventDTO eventsDTO, Long id){
         Event events = mapper.mapTo(eventsDTO);
         eventsRepository.save(events);
         return mapper.mapTo(eventsDTO);
     }
 
-    public List<EventsDTO> getAll(){
+    public List<EventDTO> getAll(){
 
         List <Event> events = eventsRepository.findAll();
         return mapper.mapTo(events);

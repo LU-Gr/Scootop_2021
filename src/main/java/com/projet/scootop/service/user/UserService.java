@@ -18,6 +18,7 @@ import com.projet.scootop.repository.user.UserTypeRepository;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,13 +67,34 @@ public class UserService {
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
-    public String register(User user, HttpServletResponse response){
-        String password = user.getPassword().toString();
+    public String register(UserDTO userDTO, HttpServletResponse response){
+        String password = userDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
-        user.setPassword(newPassword);
+        userDTO.setPassword(newPassword);
+        User user = mapper.mapTo(userDTO);
         userRepository.save(user);
         return "{\"id\":" + user.getId() +"}"; // retourner le user
 
+    }
+    
+    public ResponseEntity<UserDTO> login(UserDTO userDTO, HttpServletResponse response) throws Exception {
+        String password = userDTO.getPassword().toString();
+        String email = userDTO.getEmail().toString();
+        String firstname = userDTO.getFirstName().toString();
+        String lastname = userDTO.getLastName().toString();
+        
+        Optional<User> user = userRepository.findByEmail(email);
+        
+        if(bCryptPasswordEncoder.matches(password, user.get().getPassword())){
+            UserDTO dto = new UserDTO();
+            dto.setEmail(email);
+            dto.setFirstName(firstname);
+            dto.setLastName(lastname);
+            return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
+        }
+        else{
+            throw new Exception("email and password does not match");
+        }
     }
 
 }

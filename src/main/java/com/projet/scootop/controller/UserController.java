@@ -27,10 +27,14 @@ public class UserController {
 	@Autowired private UserTypeService userTypeService;
 	
 	@PostMapping("/api/register")
-    public String register(@RequestBody User user, HttpServletResponse response){
-	    return userService.register(user, response);
+    public String register(@RequestBody UserDTO userDTO, HttpServletResponse response){
+	    return userService.register(userDTO, response);
     }
     
+    @PostMapping("/api/login")
+    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception {
+	    return userService.login(userDTO, response);
+    }
 
     @GetMapping("api/contacts")
     List<ContactDTO> getAllContacts(){

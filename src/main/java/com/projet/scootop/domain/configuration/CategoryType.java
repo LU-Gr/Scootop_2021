@@ -11,7 +11,6 @@ import java.time.Period;
 // définit l'âge min/max de la catégorie
 @Entity
 @Table(name = "CategoryType")
-
 public class CategoryType {
 	
     @Id
@@ -21,8 +20,10 @@ public class CategoryType {
     
     @Getter @Setter
     private int ageMin;
+    
     @Getter @Setter
     private int ageMax;
+    
     @Getter @Setter
     private LocalDate dateAgeMax;
 
@@ -40,14 +41,5 @@ public class CategoryType {
             //validate inputs ...
             LocalDate currentDate= LocalDate.now();
             return Period.between(ageMax, currentDate).getYears();
-    }
-
-    @Override
-    public String toString() {
-        return "CategorieType{" +
-                "id=" + id +
-                ", ageMin=" + ageMin +
-                ", ageMax=" + dateAgeMax +
-                '}';
     }
 }

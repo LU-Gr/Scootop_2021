@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "TYPE_SHOOT")
+@Table(name = "TouchType")
 public class TouchType {
 	
     @Id

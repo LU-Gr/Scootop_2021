@@ -9,8 +9,6 @@ import com.projet.scootop.domain.user.domainuser.Player;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "Pass")
 
@@ -20,21 +18,9 @@ public class Pass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
-
-    @ManyToOne
-    @Getter @Setter
-    private Match matchSheet;
     
     @Getter @Setter
-    private LocalDate date;
-
-    @OneToOne
-    @Getter @Setter
-    private Player player;
-    
-    @OneToOne
-    @Getter @Setter
-    private TouchType typeTouch;
+    private int minute;
 
     @Getter @Setter
     private Boolean decisive;
@@ -44,15 +30,27 @@ public class Pass {
     
     @Getter @Setter
     private Boolean longPass;
+    
+    @ManyToOne
+    @Getter @Setter
+    private TouchType typeTouch;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Match match;
+
+    @ManyToOne
+    @Getter @Setter
+    private Player player;
 
 
     public Pass() {
     }
 
-    public Pass(Match matchSheet, Player player,LocalDate date, TouchType typeTouch, Boolean decisive, Boolean isSuccess, Boolean longPass) {
+    public Pass(Match matchSheet, Player player, int minute, TouchType typeTouch, Boolean decisive, Boolean isSuccess, Boolean longPass) {
         super();
-        this.matchSheet = matchSheet;
-        this.date = date;
+        this.match = matchSheet;
+        this.minute = minute;
         this.player = player;
         this.typeTouch = typeTouch;
         this.decisive = decisive;

@@ -37,6 +37,13 @@ public class Scoot {
     @JoinColumn(name = "Shortlist_id")
     @Getter @Setter
     private Shortlist shortlist;
+    
+    @ManyToMany
+    @JoinTable(name = "shortlist_scoot", 
+	joinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"))
+    @Getter @Setter
+    private List<Shortlist> FollowedShortlists;
 
     public Scoot(User user, List<Club> clubs, Shortlist shortlist) throws Exception {
         super();

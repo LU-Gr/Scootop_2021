@@ -20,6 +20,9 @@ public class UserType {
     private String type;
     
     @ManyToMany
+    @JoinTable(name = "user_user_type", 
+   	joinColumns = @JoinColumn(name = "user_type_id", referencedColumnName = "id"),
+   	inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<User> users;
 

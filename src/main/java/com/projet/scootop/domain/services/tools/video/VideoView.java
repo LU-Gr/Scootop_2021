@@ -11,7 +11,7 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "Vues")
+@Table(name = "video_view")
 public class VideoView {
 
     @Id

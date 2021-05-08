@@ -32,11 +32,6 @@ public class PlayerService {
 	@Autowired private CompetitionTypeMapper ctMapper;
 	@Autowired private TeamMapper tMapper;
 
-    public List<PlayerDTO> getAllPlayerByMatchSheetAndTeams(Long matchSheet, List<Team> teams){
-        List<Player> players = playerRepository.findAllPlayerByMatchSheetsAndTeamsIn(matchSheet,teams);
-        return mapper.mapTo(players);
-    }
-
 
     public PlayerDTO add(PlayerDTO playerDTO){
     	Player newPlayer = mapper.mapTo(playerDTO);

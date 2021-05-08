@@ -26,11 +26,6 @@ public class StatisticalSheetService {
 	@Autowired private GoalRepository goalRepository;
 	@Autowired private StatisticalSheetMapper mapper;
 	
-	public StatisticalSheetDTO getSheetByPlayerId(Long playerId) {
-		
-		return null;
-		
-	}
 	
     public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
@@ -59,7 +54,7 @@ public class StatisticalSheetService {
 
 
     public StatisticalSheetDTO getOneStatSheetByMatchSheet(Long matchsheetId){
-        StatisticalSheet statisticalSheet = statisticalSheetRepository.findByMatchSheet(matchsheetId);
+        StatisticalSheet statisticalSheet = statisticalSheetRepository.findByMatch(matchsheetId);
         if(statisticalSheet==null){
             return null;
         }

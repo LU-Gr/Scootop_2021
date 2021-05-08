@@ -4,41 +4,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.tools.Saison;
+import com.projet.scootop.mappers.tools.SaisonMapper;
 import com.projet.scootop.model.tools.SaisonDTO;
 import com.projet.scootop.repository.tools.SaisonRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SaisonService {
-    @Autowired
-    public SaisonRepository saisonRepository;
+	
+    @Autowired private SaisonRepository saisonRepository;
+    @Autowired private SaisonMapper mapper;
+    
     public SaisonDTO addSaison(SaisonDTO saisonDTO) {
-        Saison saison = new Saison(saisonDTO.getDateDebut(),saisonDTO.getDateFin(),saisonDTO.getMatchSheets());
+        Saison saison = mapper.mapTo(saisonDTO);
         saisonRepository.save(saison);
-        return saisonDTO;
+        return mapper.mapTo(saison);
     }
     public SaisonDTO get(Long id){
 
         Saison saison = saisonRepository.findById(id).orElse(null);
-        if(saison==null){
+        if(saison == null){
             return null;
         }
 
-        return SaisonDTO.get(saison.getId(),saison.getDateDebut(),saison.getDateFin(),saison.getMatchSheets());
+        return mapper.mapTo(saison);
     }
 
     public List<SaisonDTO> getAll(){
 
         List<Saison> saisons = saisonRepository.findAll();
-        return saisons.stream().map(saison -> SaisonDTO.get(saison.getId(),saison.getDateDebut(),saison.getDateFin(),saison.getMatchSheets())).collect(Collectors.toList());
+        return mapper.mapTo(saisons);
+        
     }
 
 
     public String delete(Long id){
-        Saison scoot = saisonRepository.findById(id).orElse(null);
-        if(scoot==null){
+        Saison saison = saisonRepository.findById(id).orElse(null);
+        if(saison == null){
             return null;
         }
         saisonRepository.deleteById(id);

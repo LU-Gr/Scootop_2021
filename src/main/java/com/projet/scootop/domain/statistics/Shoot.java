@@ -19,15 +19,18 @@ public class Shoot {
     @Getter @Setter
     private Long id;
     
+    @Getter @Setter
+    private int minute;
+    
     @ManyToOne
     @Getter @Setter
     private Match matchSheet;
     
-    @OneToOne
+    @ManyToOne
     @Getter @Setter
     private TouchType typeTouch;
     
-    @OneToOne
+    @ManyToOne
     @Getter @Setter
     private Player player;
     
@@ -59,8 +62,8 @@ public class Shoot {
         this.typeTouch = typeTouch;
         this.player = player;
         this.isPenaltyBox = inBox;
-        isGoal = goal;
-        isLongShoot = aLong;
+        this.isGoal = goal;
+        this.isLongShoot = aLong;
         this.passer = assist;
     }
 

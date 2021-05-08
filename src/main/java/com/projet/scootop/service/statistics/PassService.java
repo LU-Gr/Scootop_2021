@@ -20,7 +20,7 @@ public class PassService {
 
     public PassDTO add(PassDTO passDTO){
         Pass pass = mapper.mapTo(passDTO);
-        matchSheetRepository.save(pass.getMatchSheet());
+        matchSheetRepository.save(pass.getMatch());
         assistRepository.save(pass);
         return mapper.mapTo(pass);
     }
@@ -32,7 +32,7 @@ public class PassService {
     
     public PassDTO update(PassDTO passDTO){
         Pass pass = mapper.mapTo(passDTO);
-        matchSheetRepository.save(pass.getMatchSheet());
+        matchSheetRepository.save(pass.getMatch());
         assistRepository.save(pass);
         return mapper.mapTo(pass);
     }

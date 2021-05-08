@@ -52,7 +52,7 @@ public class UserResume {
         if(competitionType != null) {
         	this.statisticalSheets = this.statisticalSheets
         			.stream()
-        			.filter(s -> s.getMatchSheet().getCompetition().getCompetitionType() == competitionType)
+        			.filter(s -> s.getMatch().getCompetition().getCompetitionType() == competitionType)
         			.collect(Collectors.toList());
         }
 

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 // différents skills: Exemple: Controle
 @Entity
-@Table(name = "Skill")
+@Table(name = "actionType")
 
 public class ActionType {
 	
@@ -19,7 +19,7 @@ public class ActionType {
     @Getter @Setter
     private String name;
 
-    public ActionType( String name) {
+    public ActionType(String name) {
         super();
         this.name = name;
     }

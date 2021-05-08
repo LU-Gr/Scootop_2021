@@ -14,5 +14,5 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
     //@Query("UPDATE Player  SET evaluation = :evaluation,birthday = :birthday,taille = :taille, poids = :poids,vma = :vma,nationalite = :nationalite,origin = :origin,interaction = :interaction WHERE id = :id")
     //int updatePlayer(@Param("evaluation") int evaluation, @Param("birthday") LocalDate birthday, @Param("taille") int taille, @Param("poids") int poids, @Param("vma") int vma, @Param("nationalite") String nationalite, @Param("origin") String origin, @Param("interaction") int interaction, @Param("id") Integer id);
 
-    List<Player> findAllPlayerByMatchSheetsAndTeamsIn(Long gameSheet, List<Team> teams);
+    //List<Player> findAllPlayerByMatchSheetsAndTeamsIn(Long gameSheet, List<Team> teams);
 }

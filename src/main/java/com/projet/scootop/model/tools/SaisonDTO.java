@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.projet.scootop.domain.tools.Match;
+import com.projet.scootop.model.configuration.LeagueDTO;
 
 public class SaisonDTO {
 
@@ -20,35 +20,9 @@ public class SaisonDTO {
     private LocalDate dateFin;
 	
 	@Getter @Setter
-    private List<Match> matchSheets;
+    private LeagueDTO league;
+	
+	@Getter @Setter
+    private List<MatchDTO> matchs;
 
-    public static SaisonDTO create(Integer id, LocalDate dateDebut, LocalDate dateFin, List<Match> matchSheets) {
-
-        SaisonDTO saisonDTO =new SaisonDTO();
-        saisonDTO.id = id;
-        saisonDTO.dateDebut = dateDebut;
-        saisonDTO.dateFin = dateFin;
-        saisonDTO.matchSheets = matchSheets;
-        return saisonDTO;
-    }
-    public static SaisonDTO get(Integer id, LocalDate dateDebut, LocalDate dateFin, List<Match> matchSheets) {
-
-        SaisonDTO saisonDTO =new SaisonDTO();
-        saisonDTO.id = id;
-        saisonDTO.dateDebut = dateDebut;
-        saisonDTO.dateFin = dateFin;
-        saisonDTO.matchSheets = matchSheets;
-        return saisonDTO;
-    }
-    
-    public String getName() {
-        return this.dateDebut.toString() + " - " + this.dateFin.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "SaisonDTO{" +
-                "id=" + id +
-                '}';
-    }
 }

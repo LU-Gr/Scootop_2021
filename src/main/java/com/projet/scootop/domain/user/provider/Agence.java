@@ -21,12 +21,12 @@ public class Agence {
     private String region;
     
     @OneToMany
-    @JoinColumn(name = "MaketingAdvisor_id")
+    @JoinColumn(name = "agence_id", referencedColumnName = "id")
     @Getter @Setter
     private List<MarketingAdvisor> marketingAdvisors;
     
     @OneToMany
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "agence_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Manager> manager;
 

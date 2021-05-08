@@ -20,30 +20,33 @@ public class Action {
     @Getter @Setter
     private Long id;
     
-    // ex : tacle
-    @ManyToOne
-    @JoinColumn
     @Getter @Setter
-    private ActionType actionType;
-
-    @OneToOne
-    @Getter @Setter
-    private Match matchSheet;
-
-    @OneToOne
-    @Getter @Setter
-    private Player player;
+    private int minute;
 
     @Getter @Setter
     private Boolean isDefensive;
     
     @Getter @Setter
     private Boolean isSuccessful;
+    
+    // ex : tacle
+    @ManyToOne
+    @JoinColumn
+    @Getter @Setter
+    private ActionType actionType;
+
+    @ManyToOne
+    @Getter @Setter
+    private Match match;
+
+    @ManyToOne
+    @Getter @Setter
+    private Player player;
 
     public Action(Long id, Match matchSheet, Player player, Boolean isDefensive, Boolean succesSkill, Boolean isLong) {
         super();
         this.id = id;
-        this.matchSheet = matchSheet;
+        this.match = matchSheet;
         this.player = player;
         this.isDefensive = isDefensive;
         this.isSuccessful = succesSkill;

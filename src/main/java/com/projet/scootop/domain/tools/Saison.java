@@ -11,9 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-
 @Table(name = "Saison")
-
 public class Saison {
 	
     @Id
@@ -28,20 +26,19 @@ public class Saison {
     private LocalDate dateFin;
     
     @ManyToOne
-    @JoinColumn
     @Getter @Setter
     private League league;
     
     @OneToMany
-    @JoinColumn(name = "SAISON_ID")
+    @JoinColumn(name="saison_id", referencedColumnName="id")
     @Getter @Setter
-    private List<Match> matchSheets;
+    private List<Match> matchs;
 
     public Saison(LocalDate dateDebut, LocalDate dateFin, List<Match> matchSheets) {
         super();
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
-        this.matchSheets = matchSheets;
+        this.matchs = matchSheets;
     }
 
     public Saison() {

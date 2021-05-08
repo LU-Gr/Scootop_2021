@@ -28,11 +28,17 @@ public class Player{
     @Getter @Setter
     private User user;
 
-    @ManyToMany(mappedBy = "players")
+    @ManyToMany
+    @JoinTable(name = "player_team", 
+			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Team> teams;
     
     @ManyToMany
+    @JoinTable(name = "player_poste", 
+	joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Poste> postes;
 
@@ -75,23 +81,15 @@ public class Player{
 
     @OneToMany
     @Getter @Setter
+    @JoinColumn(name="player_id",referencedColumnName = "id")
     private List<StatisticalSheet> statisticalSheets;
-
-    //TODO : dégager
-    @OneToMany
-    @Getter @Setter
-    private List<Match> matchSheets;
-    
-    //@OneToMany
-    //@Getter @Setter
-	//private List<Photo> photos;
     
     @OneToMany
     @JoinColumn(name="player_videos",referencedColumnName = "id")
     @Getter @Setter
     private List<Video> videos;
 
-   public Player(List<Team> teams, Category category, Double rating, int taille, int poids, int vma, String nationalite, String origin, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, List<Match> matchSheets, List<Video> videos, boolean selected, User user) {
+   public Player(List<Team> teams, Category category, Double rating, int taille, int poids, int vma, String nationalite, String origin, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, List<Video> videos, boolean selected, User user) {
         super();
         this.teams = teams;
         this.category = category;
@@ -104,7 +102,6 @@ public class Player{
         this.strongFoot = strongFoot;
         this.weekFoot = weekFoot;
         this.statisticalSheets = statisticalSheets;
-        this.matchSheets = matchSheets;
         this.videos = videos;
         this.isSelected = selected;
         this.user = user;

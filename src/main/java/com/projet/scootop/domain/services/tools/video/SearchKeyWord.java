@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "search_keywords")
 
@@ -11,11 +14,15 @@ public class SearchKeyWord {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-    String name;
+    @Getter @Setter
+    private Integer id;
+    
+    @Getter @Setter
+    private String name;
 
     @ManyToMany
-    public List<Video> videos;
+    @Getter @Setter
+    private List<Video> videos;
 
 
     public SearchKeyWord(String name) {

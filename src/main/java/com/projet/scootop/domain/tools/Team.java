@@ -36,14 +36,16 @@ public class Team {
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "team_coach", joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "coach_id", referencedColumnName = "id"))
+    @JoinTable(name = "team_coach", 
+    			joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
+    			inverseJoinColumns = @JoinColumn(name = "coach_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Coach> coaches;
 
     @ManyToMany
-    @JoinTable(name = "team_player", joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
+    @JoinTable(name = "player_team", 
+    			joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
+    			inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Player> players;
 

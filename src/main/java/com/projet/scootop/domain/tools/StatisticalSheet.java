@@ -14,10 +14,9 @@ import lombok.Setter;
 
 import java.util.List;
 
-//Feuille de stats pour un joueur/ pour une team/ pour un event
+//Feuille de stats pour un joueur
 @Entity
-//TODO: Renommer PlayerStatsSheet
-@Table(name = "statistical_sheet")
+@Table(name = "statisticalSheet")
 public class StatisticalSheet {
 	
 	//global
@@ -28,7 +27,7 @@ public class StatisticalSheet {
 
     @OneToOne
     @Getter @Setter
-    private Match matchSheet;
+    private Match match;
 
     @OneToOne
     @Getter @Setter
@@ -44,18 +43,22 @@ public class StatisticalSheet {
     private int nbBallSuccess;
   
     @OneToMany
+    @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Shoot> Shoots;
 
     @OneToMany
+    @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Pass> passes;
 
     @OneToMany
+    @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Action> actions;
 
     @OneToMany
+    @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Goal> goals;
     
@@ -72,7 +75,7 @@ public class StatisticalSheet {
 
 
     public StatisticalSheet(Match matchSheet, Player player, Event events, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
-        this.matchSheet = matchSheet;
+        this.match = matchSheet;
         this.player = player;
         this.event = events;
         this.nbBallplayed = ballplayed;

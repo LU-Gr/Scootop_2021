@@ -28,7 +28,7 @@ public class MatchService {
 
     public MatchDTO add(MatchDTO matchSheetDTO) throws Exception {
     	Match matchSheet = mapper.mapTo(matchSheetDTO);
-        scootRepository.saveAll(matchSheet.getMatchScoots());
+        scootRepository.saveAll(matchSheet.getScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamB());
         teamRepository.save(matchSheet.getTeamA());
@@ -40,7 +40,7 @@ public class MatchService {
     
     public MatchDTO update(MatchDTO matchSheetDTO) throws Exception {
     	Match matchSheet = mapper.mapTo(matchSheetDTO);
-        scootRepository.saveAll(matchSheet.getMatchScoots());
+        scootRepository.saveAll(matchSheet.getScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamB());
         teamRepository.save(matchSheet.getTeamA());

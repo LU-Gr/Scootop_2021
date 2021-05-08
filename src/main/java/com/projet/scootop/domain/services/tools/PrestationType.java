@@ -2,16 +2,20 @@ package com.projet.scootop.domain.services.tools;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="Prestation_TYPE")
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Table(name="PrestationType")
 public class PrestationType {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String Name;
-    /*@OneToMany
-    public Prestation prestation;*/
+    @Getter @Setter
+    private int id;
+    
+    @Getter @Setter
+    private String Name;
 
     public PrestationType(int id, String name) {
         this.id = id;
@@ -20,17 +24,5 @@ public class PrestationType {
 
     public PrestationType() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
     }
 }

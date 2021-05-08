@@ -17,7 +17,6 @@ import java.util.List;
 // Feuille de match
 @Entity
 @Table(name = "MatchSheet")
-//TODO: Renommer en match
 public class Match {
 	
     @Id
@@ -39,28 +38,27 @@ public class Match {
     
     @OneToMany
     @Getter @Setter
+    @JoinColumn(name="match_sheet_id", referencedColumnName="id")
     private List<StatisticalSheet> statisticalSheetsTeamA;
     
     @OneToMany
     @Getter @Setter
+    @JoinColumn(name="match_sheet_id", referencedColumnName="id")
     private List<StatisticalSheet> statisticalSheetsTeamB;
     
-    @OneToOne
+    @ManyToOne
     @Getter @Setter
     private Stade stade;
     
     @ManyToMany
-    @JoinColumn(name="Match_Sheet_scoot",referencedColumnName = "id")
     @Getter @Setter
-    private List <Scoot> matchScoots;
+    private List <Scoot> scoots;
 
-    @OneToMany
-    @JoinColumn(name="Match_Sheet_wearable",referencedColumnName = "id")
+    @ManyToMany
     @Getter @Setter
     private List<Wearable> wearables;
 
     @ManyToOne
-    @JoinColumn(name = "SAISON_ID")
     @Getter @Setter
     private Saison saison;
 
@@ -68,11 +66,11 @@ public class Match {
     @Getter @Setter
     private Competition competition;
 
-    public Match(Event event, Team teamA, Team teamB, Stade stade, List<Scoot> matchScoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
+    public Match(Event event, Team teamA, Team teamB, Stade stade, List<Scoot> scoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
         this.event = event;
         this.competition = competition;
         this.stade = stade;
-        this.matchScoots = matchScoots;
+        this.scoots = scoots;
         this.saison = saison;
         this.wearables = wearables;
         this.teamA = teamA;

@@ -36,13 +36,6 @@ public class ServicesController {
     }
 
 
-    // **** MatchSheet Data return player by team ****
-    @GetMapping("/api/matchsheet/{matchsheetsId}/{TeamId}/players")
-    @ResponseBody
-    List<PlayerDTO> getAllPlayerByMatchSheetAndTeam(@PathVariable("matchsheetsId") Long matchId, @PathVariable("TeamId") List<Team> teams ){
-        return playerService.getAllPlayerByMatchSheetAndTeams(matchId,teams);
-    }
-
     // **** MatchSheet Data return StatisticalSheet ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/stats")
     StatisticalSheetDTO getStatSheetByMatchSheet(@PathVariable("matchsheetsId") Long matchsheetId){

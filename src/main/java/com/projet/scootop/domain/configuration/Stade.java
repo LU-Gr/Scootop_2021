@@ -13,7 +13,7 @@ import com.projet.scootop.domain.user.Contact;
  * - Lattitude/longitude
  */
 @Entity
-@Table(name = "stade")
+@Table(name = "Stade")
 public class Stade {
 	
     @Id

@@ -5,6 +5,9 @@ import javax.persistence.*;
 import com.projet.scootop.domain.user.Contact;
 import com.projet.scootop.domain.user.domainuser.Scoot;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
 @Entity
@@ -13,23 +16,32 @@ public class Club {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter
     private Integer id;
+    
+    @Getter @Setter
     private String colorInside;
+    
+    @Getter @Setter
     private String colorOutSide;
 
     @OneToOne
-    @JoinColumn(name = "Contact_id")
+    //@JoinColumn(name = "Contact_id")
+    @Getter @Setter
     private Contact contact;
 
+    @Getter @Setter
     private String name;
 
     @ManyToMany
-    @JoinTable(name="club_scoot", joinColumns = @JoinColumn(name ="club_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "scoot_id",referencedColumnName = "id"))
+    /*@JoinTable(name="club_scoot", joinColumns = @JoinColumn(name ="club_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "scoot_id",referencedColumnName = "id"))*/
+    @Getter @Setter
     private List<Scoot> scoots;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="team_id")
+    //@JoinColumn(name="team_id")
+    @Getter @Setter
     private List<Team> teams;
 
     public Club() {
@@ -58,64 +70,4 @@ public class Club {
 
     }
 
-
-    public Integer getId() {
-        return id;
-    }
-    
-    public void setId(int id) {
-    	this.id = id;
-    }
-
-    public String getColorInside() {
-        return colorInside;
-    }
-
-    public void setColorInside(String colorInside) {
-        this.colorInside = colorInside;
-    }
-
-    public String getColorOutSide() {
-        return colorOutSide;
-    }
-
-    public void setColorOutSide(String colorOutSide) {
-        this.colorOutSide = colorOutSide;
-    }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Scoot> getScoots() {
-        return scoots;
-    }
-
-    public void setScoots(List<Scoot> scoots) {
-        this.scoots = scoots;
-    }
-
-    public List<Team> getTeams(){
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams){
-        this.teams = teams;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

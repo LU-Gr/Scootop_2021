@@ -9,5 +9,5 @@ import com.projet.scootop.domain.tools.StatisticalSheet;
 public interface StatisticalSheetRepository extends JpaRepository<StatisticalSheet, Long> {
 
 	StatisticalSheet findByPlayerId(Long playerId);
-    StatisticalSheet findByMatchSheet(Long gameSheet);
+    StatisticalSheet findByMatch(Long gameSheet);
 }

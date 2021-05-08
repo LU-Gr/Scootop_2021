@@ -11,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "Analyste")
 //Role restrictif qui sert juste a faire analyse des joueurs lors des matchs
-public class Analyste {
+public class Analyst {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +33,10 @@ public class Analyste {
     @Getter @Setter
     private Match matchSheet;
 
-    public Analyste() {
+    public Analyst() {
     }
 
-    public Analyste(User user, Double tarif, Integer experience, Match matchSheet) throws Exception {
+    public Analyst(User user, Double tarif, Integer experience, Match matchSheet) throws Exception {
         super();
         boolean isCorrect=false;
         for (UserType userType: user.getTypes()) {

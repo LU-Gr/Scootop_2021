@@ -6,9 +6,6 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +43,9 @@ public class User {
     private String password;
     
     @ManyToMany
-    @JoinTable(name = "USER_TYPES")
+    @JoinTable(name = "user_user_type", 
+   	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+   	inverseJoinColumns = @JoinColumn(name = "user_type_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<UserType> types;
 

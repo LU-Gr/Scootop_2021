@@ -7,6 +7,8 @@ import com.projet.scootop.domain.tools.Competition;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.domain.user.provider.Analyst;
+import com.projet.scootop.domain.user.provider.Cameraman;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-
 @Table(name = "Event")
-
 public class Event {
 
     @Id
@@ -34,39 +34,36 @@ public class Event {
     
     @OneToMany
     @Getter @Setter
-    private List <Team> teams;
+    private List<Team> teams;
     
     @OneToMany
     @Getter @Setter
-    private List <Scoot> scoots;
+    private List<Scoot> scoots;
     
     @Getter @Setter
     private boolean status;
     
+    @ManyToMany
     @Getter @Setter
-    private boolean prestaAnalyst;
+    private List<Analyst> analysts;
     
+    @ManyToMany
     @Getter @Setter
-    private boolean prestaCameraman;
+    private List<Cameraman> cameramans;
     
     @Getter @Setter
     private boolean prestaWearable;
-    
-    @Getter @Setter
-    private boolean prestaScoot;
-    
+
     @Getter @Setter
     private boolean prestaZoom;
-    
-    //TODO: Ajouter liste pour lers presta bool
 
     @ManyToOne
-    @JoinColumn(name = "saison_id")
+    @JoinColumn
     @Getter @Setter
     private Saison saison;
 
     @OneToMany
-    @JoinColumn(name="events_video",referencedColumnName = "id")
+    @JoinColumn
     @Getter @Setter
     private List<Video> videos;
 

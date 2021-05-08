@@ -2,13 +2,20 @@ package com.projet.scootop.domain.services.tools;
 
 import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
-@Table(name="Agence_TYPE")
+@Table(name="AgenceType")
 public class AgenceType {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String Name;
+    @Getter @Setter
+    private int id;
+    
+    @Getter @Setter
+    private String Name;
 
     public AgenceType(int id, String name) {
         this.id = id;
@@ -16,17 +23,5 @@ public class AgenceType {
     }
 
     public AgenceType() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
     }
 }

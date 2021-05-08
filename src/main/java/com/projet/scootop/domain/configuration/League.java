@@ -27,7 +27,8 @@ public class League {
     @Getter @Setter
     private String name;
     
-    @OneToMany(orphanRemoval=true, fetch=FetchType.EAGER)
+    @OneToMany
+    @JoinColumn(name = "league_id", referencedColumnName = "id")
     @Getter @Setter
     private List<Division> divisions;
     

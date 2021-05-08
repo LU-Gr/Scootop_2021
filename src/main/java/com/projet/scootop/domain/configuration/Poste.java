@@ -23,6 +23,9 @@ public class Poste {
     private String name;
     
     @ManyToMany
+    @JoinTable(name = "player_poste", 
+	joinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Player> players;
 

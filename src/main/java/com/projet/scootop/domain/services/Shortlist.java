@@ -26,15 +26,24 @@ public class Shortlist {
     @Getter @Setter
     private User user;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "shortlist_player", 
+	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
     private List <Player> Players;
     
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "shortlist_scoot", 
+	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"))
     @Getter @Setter
     private List <Scoot> Scoots;
     
-    @OneToMany
+    @ManyToMany
+    @JoinTable(name = "shortlist_team", 
+	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
     private List <Team> Teams;
 

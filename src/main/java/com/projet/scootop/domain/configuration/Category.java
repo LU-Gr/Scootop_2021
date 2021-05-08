@@ -8,7 +8,7 @@ import lombok.Setter;
 
 // différente tranches d'âge. Ex: U-19, U-17
 @Entity
-@Table(name = "CATEGORY")
+@Table(name = "Category")
 public class Category {
 	
     @Id

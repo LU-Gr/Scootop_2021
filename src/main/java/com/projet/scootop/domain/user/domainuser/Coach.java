@@ -26,8 +26,11 @@ public class Coach {
     @Getter @Setter
     private User user;
     
-    @ManyToMany(mappedBy = "coaches", fetch = FetchType.LAZY)
-    @Getter
+    @ManyToMany
+    @JoinTable(name = "team_coach", 
+			joinColumns = @JoinColumn(name = "coach_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
+    @Getter @Setter
     private List<Team> teams;
 
     public Coach() {

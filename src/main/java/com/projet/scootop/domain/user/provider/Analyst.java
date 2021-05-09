@@ -18,16 +18,16 @@ public class Analyst {
     @Getter @Setter
     private Long id;
     
-    @OneToOne
-    @JoinColumn
-    @Getter @Setter
-    private User user;
-    
     @Getter @Setter
     private Double tarif;
     
     @Getter @Setter
     private Integer experience;
+    
+    @OneToOne
+    @JoinColumn
+    @Getter @Setter
+    private User user;
     
     @ManyToOne
     @Getter @Setter

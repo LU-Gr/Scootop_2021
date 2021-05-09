@@ -22,6 +22,10 @@ public class Shortlist {
     @Getter @Setter
     private Long id;
 
+    // ??
+    @Getter @Setter
+    private int rank;
+    
     @OneToOne
     @Getter @Setter
     private User user;
@@ -47,9 +51,7 @@ public class Shortlist {
     @Getter @Setter
     private List <Team> Teams;
 
-    // ??
-    @Getter @Setter
-    private int rank;
+    
 
     public Shortlist() {
 

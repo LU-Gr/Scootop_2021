@@ -3,10 +3,8 @@ package com.projet.scootop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.model.services.*;
 import com.projet.scootop.model.tools.StatisticalSheetDTO;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
 import com.projet.scootop.model.user.domainuser.ScootDTO;
 import com.projet.scootop.service.services.*;
 import com.projet.scootop.service.tools.StatisticalSheetService;
@@ -20,7 +18,7 @@ public class ServicesController {
 
     @Autowired private ShortlistService  shortlistService;
     @Autowired private EventsService     eventsService;
-    @Autowired private WearableService   wearableService;
+    @Autowired private LocationWearableService   locationWearableService;
     @Autowired private StatisticalSheetService statisticalSheetService;
     @Autowired private PlayerService playerService;
     @Autowired private ScootService scootService;
@@ -31,8 +29,8 @@ public class ServicesController {
     // **** MatchSheet Data return wearables by team ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/{TeamId}/wearables")
     @ResponseBody
-    List<WearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId, @PathVariable("TeamId") Long teamId ){
-    	return wearableService.getAllByMatchSheetAndTeam(matchId,teamId);
+    List<LocationWearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId, @PathVariable("TeamId") Long teamId ){
+    	return locationWearableService.getAllByMatchSheetAndTeam(matchId,teamId);
     }
 
 
@@ -44,15 +42,15 @@ public class ServicesController {
 
     // **** MatchSheet Data return One wearable in matchSheet Team wearables list by Team ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/{TeamId}/wearables/{playeurId}")
-    WearableDTO getOneByMatchSheetAndTeamAndPlayer(@PathVariable("matchsheetsId") Long matchsheetId,@PathVariable("TeamId") Long teamId,@PathVariable("playeurId") Long playersId ){
-        return wearableService.getOneByMatchSheetAndTeamAndPlayer(matchsheetId,teamId,playersId);
+    LocationWearableDTO getOneByMatchSheetAndTeamAndPlayer(@PathVariable("matchsheetsId") Long matchsheetId,@PathVariable("TeamId") Long teamId,@PathVariable("playeurId") Long playersId ){
+        return locationWearableService.getOneByMatchSheetAndTeamAndPlayer(matchsheetId,teamId,playersId);
     }
 
 
     // **** MatchSheet Data return One wearable in game wearable list by id ****
     @GetMapping("/api/matchsheet/{matchsheetsId}/wearables/{wearableId}")
-    WearableDTO getGameWearable(@PathVariable("matchsheetsId") Long matchsheetId,@PathVariable("wearableId") Long id ){
-        return wearableService.get(matchsheetId);
+    LocationWearableDTO getGameWearable(@PathVariable("matchsheetsId") Long matchsheetId,@PathVariable("wearableId") Long id ){
+        return locationWearableService.get(matchsheetId);
     }
 
 
@@ -69,24 +67,17 @@ public class ServicesController {
     	return scootService.get(id);
     }
 
-    // **** MatchSheet Data return All Wearables ****
-    @GetMapping("/api/matchsheet/{matchsheetsId}/wearables")
-    @ResponseBody
-    List<WearableDTO> getAllByWearablesByMatchSheetId(@PathVariable("matchsheetsId") Long matchId){
-    	return wearableService.getAllByMatchSheetId(matchId);
-    }
-
     // **** Data return All Wearables ****
     @GetMapping("api/wearables")
     @ResponseBody
-    List<WearableDTO> getAllWearable(){
-    	return wearableService.getAll();
+    List<LocationWearableDTO> getAllWearable(){
+    	return locationWearableService.getAll();
     }
 
     // **** Data return One Wearable By Id Wearables ****
     @GetMapping("api/wearable/{id}")
-    WearableDTO getWearable(@PathVariable("id") Long id){
-    	return wearableService.get(id);
+    LocationWearableDTO getWearable(@PathVariable("id") Long id){
+    	return locationWearableService.get(id);
     }
 
 

@@ -30,8 +30,6 @@ public class VideoView {
     @OneToOne
     private User user;
     
-    
-
     public VideoView(Video video, User user) {
         this.video = video;
         this.user = user;

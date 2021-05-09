@@ -22,12 +22,12 @@ public class Contact {
     @Getter @Setter
     private String codePostal;
     
+    @Getter @Setter
+    private String pays;
+    
     @OneToOne
     @Getter @Setter
     private User user;
-    
-    @Getter @Setter
-    private String pays;
 
     public Contact(String tel, String address, String cp) {
         this.tel = tel;

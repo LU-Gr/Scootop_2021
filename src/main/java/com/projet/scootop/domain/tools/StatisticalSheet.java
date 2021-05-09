@@ -24,6 +24,18 @@ public class StatisticalSheet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
+    
+    @Getter @Setter
+    private int nbBallplayed;
+    
+    @Getter @Setter
+    private int nbBalllost;
+    
+    @Getter @Setter
+    private int nbBallSuccess;
+    
+    @Getter @Setter
+    private float distancekm;
 
     @OneToOne
     @Getter @Setter
@@ -33,14 +45,13 @@ public class StatisticalSheet {
     @Getter @Setter
     private Event event;
 
+    @ManyToOne
     @Getter @Setter
-    private int nbBallplayed;
+    private Player player;
     
+    @ManyToOne
     @Getter @Setter
-    private int nbBalllost;
-    
-    @Getter @Setter
-    private int nbBallSuccess;
+    private Team team;
   
     @OneToMany
     @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
@@ -62,17 +73,6 @@ public class StatisticalSheet {
     @Getter @Setter
     private List<Goal> goals;
     
-    @ManyToOne
-    @Getter @Setter
-    private Player player;
-    
-    @ManyToOne
-    @Getter @Setter
-    private Team team;
-
-    @Getter @Setter
-    private float distancekm;
-
 
     public StatisticalSheet(Match matchSheet, Player player, Event events, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
         this.match = matchSheet;

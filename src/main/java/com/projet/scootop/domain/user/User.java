@@ -20,12 +20,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
-    
-    @OneToOne
-    @JoinColumn(name = "CONTACT_ID")
-    @Getter @Setter
-    private Contact contact;
-    
+
     @Getter @Setter
     private LocalDate birthday;
     
@@ -41,6 +36,11 @@ public class User {
     
     @Getter @Setter
     private String password;
+    
+    @OneToOne
+    @JoinColumn(name = "CONTACT_ID")
+    @Getter @Setter
+    private Contact contact;
     
     @ManyToMany
     @JoinTable(name = "user_user_type", 

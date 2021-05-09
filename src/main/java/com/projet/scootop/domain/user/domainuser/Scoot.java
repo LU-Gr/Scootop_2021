@@ -28,16 +28,19 @@ public class Scoot {
     @JoinColumn
     @Getter @Setter
     private User user;
-
-    @ManyToMany (mappedBy = "scoots")
-    @Getter @Setter
-    private List<Club> clubs;
-
+    
     @OneToOne
     @JoinColumn(name = "Shortlist_id")
     @Getter @Setter
     private Shortlist shortlist;
-    
+
+    @ManyToMany
+    @JoinTable(name = "club_scoots", 
+    		joinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"),
+    		inverseJoinColumns = @JoinColumn(name = "club_id", referencedColumnName = "id"))
+    @Getter @Setter
+    private List<Club> clubs;
+
     @ManyToMany
     @JoinTable(name = "shortlist_scoot", 
 	joinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"),

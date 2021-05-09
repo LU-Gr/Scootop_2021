@@ -28,20 +28,36 @@ public class Event {
     @Getter @Setter
     private LocalDate date;
     
-    @OneToOne
+    @Getter @Setter
+    private boolean status;
+    
+    @Getter @Setter
+    private boolean prestaWearable;
+
+    @Getter @Setter
+    private boolean prestaZoom;
+    
+    @OneToMany
+    @JoinColumn(name = "event_id", referencedColumnName = "id")
+    @Getter @Setter
+    private List<Video> videos;
+    
+    @ManyToOne
     @Getter @Setter
     private Competition competition;
     
-    @OneToMany
+    @ManyToOne
+    @JoinColumn
+    @Getter @Setter
+    private Saison saison;
+    
+    @ManyToMany
     @Getter @Setter
     private List<Team> teams;
     
-    @OneToMany
+    @ManyToMany
     @Getter @Setter
     private List<Scoot> scoots;
-    
-    @Getter @Setter
-    private boolean status;
     
     @ManyToMany
     @Getter @Setter
@@ -51,27 +67,9 @@ public class Event {
     @Getter @Setter
     private List<Cameraman> cameramans;
     
-    @Getter @Setter
-    private boolean prestaWearable;
-
-    @Getter @Setter
-    private boolean prestaZoom;
-
-    @ManyToOne
-    @JoinColumn
-    @Getter @Setter
-    private Saison saison;
-
-    @OneToMany
-    @JoinColumn
-    @Getter @Setter
-    private List<Video> videos;
 
     public Event() {
 
-    }
-
-    public Event(Long id, LocalDate date, Competition competitiontype, List<Team> teams, List<Scoot> scoots, boolean status, boolean prestaAnalyst, boolean prestaCameraman, boolean prestaWearable, boolean prestaScoot, boolean prestaZoom, Saison saison, List<Video> videos) {
     }
 
 }

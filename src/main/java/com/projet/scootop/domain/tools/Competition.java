@@ -25,10 +25,6 @@ public class Competition {
     @Getter @Setter
     private String name;
     
-    @ManyToOne
-    @Getter @Setter
-    private CompetitionType competitionType; 
-
     @Getter @Setter
     private int nbPlayerMax;
     
@@ -46,6 +42,10 @@ public class Competition {
 
     @Getter @Setter
     public int dureeMiTemps;
+    
+    @ManyToOne
+    @Getter @Setter
+    private CompetitionType competitionType; 
 
     public Competition(String name, Video video, int playerMax, int playerMin, int titulaire, int remplacant, int substition, int time, Category category) {
         super();

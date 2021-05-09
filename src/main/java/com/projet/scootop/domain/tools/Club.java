@@ -25,24 +25,25 @@ public class Club {
     @Getter @Setter
     private String colorOutSide;
 
-    @OneToOne
-    //@JoinColumn(name = "Contact_id")
-    @Getter @Setter
-    private Contact contact;
-
     @Getter @Setter
     private String name;
+    
+    @OneToOne
+    @Getter @Setter
+    private Contact contact;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "club_id", referencedColumnName = "id")
+    @Getter @Setter
+    private List<Team> teams;
 
     @ManyToMany
-    /*@JoinTable(name="club_scoot", joinColumns = @JoinColumn(name ="club_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "scoot_id",referencedColumnName = "id"))*/
+    @JoinTable(name="club_scoots", 
+    		joinColumns = @JoinColumn(name ="club_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "scoot_id",referencedColumnName = "id"))
     @Getter @Setter
     private List<Scoot> scoots;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    //@JoinColumn(name="team_id")
-    @Getter @Setter
-    private List<Team> teams;
 
     public Club() {
     }

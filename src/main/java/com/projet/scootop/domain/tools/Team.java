@@ -22,6 +22,9 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
+    
+    @Getter @Setter
+    private String name;
 
     @ManyToOne
     @JoinColumn
@@ -32,8 +35,9 @@ public class Team {
     @Getter @Setter
     private CompetitionType competitionType;
     
+    @ManyToOne
     @Getter @Setter
-    private String name;
+    private Category category;
 
     @ManyToMany
     @JoinTable(name = "team_coach", 
@@ -49,10 +53,7 @@ public class Team {
     @Getter @Setter
     private List<Player> players;
 
-    @ManyToOne
-    @Getter @Setter
-    private Category category;
-
+   
 
     public Team(Club club, Category category,List<Player> players, List<Coach> coaches) throws Exception {
         this.club = club;

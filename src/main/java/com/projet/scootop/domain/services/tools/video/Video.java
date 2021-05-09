@@ -21,7 +21,6 @@ public class Video {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="videos_player",referencedColumnName = "id")
     @Getter @Setter
     private Player player;
 
@@ -29,7 +28,6 @@ public class Video {
     private String url;
 
     @ManyToOne
-    @JoinColumn(name="event_videos",referencedColumnName = "id")
     @Getter @Setter
     private Event events;
 
@@ -46,7 +44,7 @@ public class Video {
 
     @OneToMany
     @Getter @Setter
-    @JoinColumn(name="video_view",referencedColumnName = "id")
+    @JoinColumn(name="video_id",referencedColumnName = "id")
     private List<VideoView> view;
 
 

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.configuration.Stade;
 import com.projet.scootop.domain.services.Event;
-import com.projet.scootop.domain.services.Wearable;
+import com.projet.scootop.domain.services.LocationWearable;
 import com.projet.scootop.domain.user.domainuser.Player;
 import com.projet.scootop.domain.user.domainuser.Scoot;
 
@@ -28,6 +28,10 @@ public class Match {
     @Getter @Setter
     private Event event;
     
+    @OneToOne
+    @Getter @Setter
+    private Competition competition;
+    
     @ManyToOne
     @Getter @Setter
     private Team teamA;
@@ -35,6 +39,14 @@ public class Match {
     @ManyToOne
     @Getter @Setter
     private Team teamB;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Stade stade;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Saison saison;
     
     @OneToMany
     @Getter @Setter
@@ -46,27 +58,20 @@ public class Match {
     @JoinColumn(name="match_sheet_id", referencedColumnName="id")
     private List<StatisticalSheet> statisticalSheetsTeamB;
     
-    @ManyToOne
+    @OneToMany
+    @JoinColumn(name = "match_id", referencedColumnName = "id")
     @Getter @Setter
-    private Stade stade;
+    private List<LocationWearable> wearables;
     
     @ManyToMany
+    @JoinTable(name="match_sheet_club", 
+	joinColumns = @JoinColumn(name ="match_sheet_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "scoot_id",referencedColumnName = "id"))
     @Getter @Setter
     private List <Scoot> scoots;
 
-    @ManyToMany
-    @Getter @Setter
-    private List<Wearable> wearables;
-
-    @ManyToOne
-    @Getter @Setter
-    private Saison saison;
-
-    @OneToOne
-    @Getter @Setter
-    private Competition competition;
-
-    public Match(Event event, Team teamA, Team teamB, Stade stade, List<Scoot> scoots, List<Wearable> wearables, Saison saison, Competition competition) throws Exception {
+    
+    public Match(Event event, Team teamA, Team teamB, Stade stade, List<Scoot> scoots, List<LocationWearable> wearables, Saison saison, Competition competition) throws Exception {
         this.event = event;
         this.competition = competition;
         this.stade = stade;
@@ -83,13 +88,13 @@ public class Match {
         StatisticalSheet statisticalSheetsGame =  new StatisticalSheet();
 
         for (int i = 0; i < playersTeamA.size(); i++) {
-            Wearable InCurseWerableA = new Wearable();
+        	LocationWearable InCurseWerableA = new LocationWearable();
             InCurseWerableA.setPlayer(playersTeamA.get(i));
             wearables.add(InCurseWerableA);
         }
 
         for (int i = 0; i < playersTeamB.size(); i++) {
-            Wearable InCurseWerableB = new Wearable();
+        	LocationWearable InCurseWerableB = new LocationWearable();
             InCurseWerableB.setPlayer(playersTeamB.get(i));
             wearables.add(InCurseWerableB);
         }

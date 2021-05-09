@@ -5,7 +5,6 @@ import javax.persistence.*;
 import com.projet.scootop.domain.configuration.Category;
 import com.projet.scootop.domain.configuration.Poste;
 import com.projet.scootop.domain.services.tools.video.Video;
-import com.projet.scootop.domain.tools.Match;
 import com.projet.scootop.domain.tools.StatisticalSheet;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
@@ -16,36 +15,13 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "PLAYER")
 public class Player{
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
-
-    @OneToOne
-    @Getter @Setter
-    private User user;
-
-    @ManyToMany
-    @JoinTable(name = "player_team", 
-			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
-    @Getter @Setter
-    private List<Team> teams;
     
-    @ManyToMany
-    @JoinTable(name = "player_poste", 
-	joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
-    @Getter @Setter
-    private List<Poste> postes;
-
-    @OneToOne
-    @Getter @Setter
-    private Category category;
-
     @Getter @Setter
     private Double rating;
     
@@ -79,6 +55,14 @@ public class Player{
     @Getter @Setter
     private String photoUrl;
 
+    @OneToOne
+    @Getter @Setter
+    private User user;
+    
+    @OneToOne
+    @Getter @Setter
+    private Category category;
+    
     @OneToMany
     @Getter @Setter
     @JoinColumn(name="player_id",referencedColumnName = "id")
@@ -89,7 +73,21 @@ public class Player{
     @Getter @Setter
     private List<Video> videos;
 
-   public Player(List<Team> teams, Category category, Double rating, int taille, int poids, int vma, String nationalite, String origin, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, List<Video> videos, boolean selected, User user) {
+    @ManyToMany
+    @JoinTable(name = "player_team", 
+			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
+    @Getter @Setter
+    private List<Team> teams;
+    
+    @ManyToMany
+    @JoinTable(name = "player_poste", 
+	joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
+    @Getter @Setter
+    private List<Poste> postes;
+
+    public Player(List<Team> teams, Category category, Double rating, int taille, int poids, int vma, String nationalite, String origin, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, List<Video> videos, boolean selected, User user) {
         super();
         this.teams = teams;
         this.category = category;

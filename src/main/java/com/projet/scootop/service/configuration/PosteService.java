@@ -4,47 +4,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.configuration.Poste;
+import com.projet.scootop.mappers.configuration.PosteMapper;
 import com.projet.scootop.model.configuration.PosteDTO;
 import com.projet.scootop.repository.configuration.PosteRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class PosteService {
-    @Autowired
-    private PosteRepository posteRepository;
+    
+	@Autowired private PosteRepository posteRepository;
+	@Autowired private PosteMapper mapper;
 
-    public Poste addPoste(PosteDTO posteDTO) {
+    public PosteDTO addPoste(PosteDTO posteDTO) {
 
-        Poste poste = new Poste(posteDTO.name,posteDTO.playerList);
-        return posteRepository.save(poste);
+        Poste poste = mapper.mapTo(posteDTO);
+        posteRepository.save(poste);
+        return mapper.mapToDTO(poste);
 
     }
+    
     public PosteDTO get(Long id) {
 
         Poste poste = posteRepository.findById(id).orElse(null);
         if(poste==null){
             return null;
         }
-        return PosteDTO.get(poste.getId(), poste.getName(),poste.getPlayers());
+        return mapper.mapToDTO(poste);
+    }
+    
+    public PosteDTO update(PosteDTO posteDTO, Long id) {
+        Poste poste = mapper.mapTo(posteDTO);
+        posteRepository.save(poste);
+        return mapper.mapToDTO(poste);
 
     }
-    public Poste update(PosteDTO posteDTO, Long id) {
-
-        Poste poste=new Poste(posteDTO.name,posteDTO.playerList);
-        poste.setId(id);
-        return posteRepository.save(poste);
-
-    }
+    
     public List<PosteDTO> getAll(){
 
         List<Poste> postes = posteRepository.findAll();
-
-        return postes.stream().map(poste -> PosteDTO.get(poste.getId(), poste.getName(), poste.getPlayers())).collect(Collectors.toList());
+        return mapper.mapToDTO(postes);
 
     }
-
 
     public String delete(Long id){
         Poste poste = posteRepository.findById(id).orElse(null);

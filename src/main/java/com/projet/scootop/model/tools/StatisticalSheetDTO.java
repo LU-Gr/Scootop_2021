@@ -11,20 +11,13 @@ import com.projet.scootop.model.user.domainuser.PlayerDTO;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class StatisticalSheetDTO {
 	
 	@Getter @Setter
-    private Long id;
-	
-	@Getter @Setter
-    private MatchDTO matchSheet;
-	
-	@Getter @Setter
-    private PlayerDTO player;
-	
-	@Getter @Setter
-    private EventDTO events;
+    private Long id;	
 
 	@Getter @Setter
     private int nbBballplayed;
@@ -36,18 +29,32 @@ public class StatisticalSheetDTO {
     private int nbBallSuccess;
     
     @Getter @Setter
+    private float distancekm;
+    
+    @Getter @Setter
+    private MatchDTO match;
+    
+    @Getter @Setter
+    private EventDTO event;
+	
+	@Getter @Setter
+    private PlayerDTO player;
+	
+	@Getter @Setter
+    private TeamDTO team;
+    
+    @Getter @Setter
     private List<ShootDTO> Shoots;
     
     @Getter @Setter
-    private List<PassDTO> assists;
+    private List<PassDTO> passes;
     
     @Getter @Setter
-    private List<ActionDTO> skills;
+    private List<ActionDTO> actions;
     
     @Getter @Setter
     private List<GoalDTO> goals;
     
-    @Getter @Setter
-    private float distancekm;
+   
 
 }

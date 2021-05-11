@@ -8,10 +8,14 @@ import com.projet.scootop.model.tools.CompetitionDTO;
 import com.projet.scootop.model.tools.SaisonDTO;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.model.user.provider.AnalysteDTO;
+import com.projet.scootop.model.user.provider.CameramanDTO;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class EventDTO {
 
 	@Getter @Setter
@@ -21,7 +25,22 @@ public class EventDTO {
 	private LocalDate date;
 	
 	@Getter @Setter
-	private CompetitionDTO competitiontype;
+	private boolean status;
+	
+	@Getter @Setter
+    private boolean prestaWearable;
+	
+    @Getter @Setter
+    private boolean prestaZoom;
+    
+    @Getter @Setter
+    private List<VideoDTO> videos;
+	
+	@Getter @Setter
+	private CompetitionDTO competition;
+	
+	@Getter @Setter
+	private SaisonDTO saison;
 	
 	@Getter @Setter
 	private List <TeamDTO> teams;
@@ -30,27 +49,8 @@ public class EventDTO {
 	private List <ScootDTO> scoots;
 	
 	@Getter @Setter
-	private boolean status;
-	
-	@Getter @Setter
-	private boolean prestaAnalyst;
-	
-	@Getter @Setter
-	private boolean prestaCameraman;
-	
-	@Getter @Setter
-    private boolean prestaWearable;
-	
-	@Getter @Setter
-    private boolean prestaScoot;
+    private List<AnalysteDTO> analysts;
     
     @Getter @Setter
-    private boolean prestaZoom;
-    
-    @Getter @Setter
-    private SaisonDTO saison;
-    
-    @Getter @Setter
-    private List<VideoDTO> videos;
-
+    private List<CameramanDTO> cameramans;
 }

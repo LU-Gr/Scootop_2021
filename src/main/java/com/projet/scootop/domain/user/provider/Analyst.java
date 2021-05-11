@@ -7,9 +7,10 @@ import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity
-@Table(name = "Analyste")
 //Role restrictif qui sert juste a faire analyse des joueurs lors des matchs
 public class Analyst {
 
@@ -31,7 +32,7 @@ public class Analyst {
     
     @ManyToOne
     @Getter @Setter
-    private Match matchSheet;
+    private Match match;
 
     public Analyst() {
     }
@@ -39,7 +40,7 @@ public class Analyst {
     public Analyst(User user, Double tarif, Integer experience, Match matchSheet) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.getTypes()) {
+        for (UserType userType: user.getUserTypes()) {
             if(userType.getType().equals("analyste")){
                 isCorrect=true;
             }
@@ -51,7 +52,7 @@ public class Analyst {
         this.user = user;
         this.tarif = tarif;
         this.experience = experience;
-        this.matchSheet = matchSheet;
+        this.match = matchSheet;
     }
 
 }

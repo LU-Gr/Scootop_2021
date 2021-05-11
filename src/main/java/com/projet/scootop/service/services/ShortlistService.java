@@ -32,7 +32,7 @@ public class ShortlistService {
         scootRepository.saveAll(shortlist.getScoots());
         teamRepository.saveAll(shortlist.getTeams());
         shortlistRepository.save(shortlist);
-        return mapper.mapTo(shortlist);
+        return mapper.mapToDTO(shortlist);
     }
     
     public ShortlistDTO get(Long id){
@@ -42,13 +42,13 @@ public class ShortlistService {
             return null;
         }
 
-        return mapper.mapTo(shortlist);
+        return mapper.mapToDTO(shortlist);
     }
 
     public List<ShortlistDTO> getAll(){
 
         List<Shortlist> shortlists = shortlistRepository.findAll();
-        return mapper.mapTo(shortlists);
+        return mapper.mapToDTO(shortlists);
     }
 
 

@@ -22,7 +22,7 @@ public class AgenceService {
     public AgenceDTO add(AgenceDTO agenceDTO){
         Agence agence = mapper.mapTo(agenceDTO);
         agenceRepository.save(agence);
-        return mapper.mapTo(agence);
+        return mapper.mapToDTO(agence);
     }
     
     public AgenceDTO get(Long id){
@@ -30,12 +30,12 @@ public class AgenceService {
         if(agence==null){
             return null;
         }
-        return mapper.mapTo(agence);
+        return mapper.mapToDTO(agence);
     }
     
     public List<AgenceDTO> getAll(){
         List<Agence> agences = agenceRepository.findAll();
-        return mapper.mapTo(agences);
+        return mapper.mapToDTO(agences);
     }
     
     public String delete(Long id){

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.projet.scootop.model.configuration.StadeDTO;
 import com.projet.scootop.model.services.EventDTO;
-import com.projet.scootop.model.services.WearableDTO;
+import com.projet.scootop.model.services.LocationWearableDTO;
 import com.projet.scootop.model.user.domainuser.ScootDTO;
 
 import lombok.Getter;
@@ -18,27 +18,33 @@ public class MatchDTO {
 	@Getter @Setter
 	private EventDTO event;
 	
+	@Getter @Setter
+	private CompetitionDTO competition;
+	
     @Getter @Setter
-    private TeamDTO team1;
+    private TeamDTO teamA;
     
     @Getter @Setter
-    private TeamDTO team2;
-	
-	@Getter @Setter
-	private List<StatisticalSheetDTO> statisticalSheets;
+    private TeamDTO teamB;
 	
 	@Getter @Setter
 	private StadeDTO stade;
 	
 	@Getter @Setter
-	private List <ScootDTO> matchScoots;
-	
-	@Getter @Setter
-	private List<WearableDTO> wearables;
-	
-	@Getter @Setter
 	private SaisonDTO saison;
 	
 	@Getter @Setter
-	private CompetitionDTO competitionType;
+	private List<StatisticalSheetDTO> statisticalSheetsTeamB;
+	
+    @Getter @Setter
+    private List<StatisticalSheetDTO> statisticalSheetsTeamA;
+	
+	@Getter @Setter
+	private List <ScootDTO> scoots;
+	
+	@Getter @Setter
+	private List<LocationWearableDTO> wearables;
+	
+	
+	
 }

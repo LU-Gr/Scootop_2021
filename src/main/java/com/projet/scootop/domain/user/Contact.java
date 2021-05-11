@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Entity
 public class Contact {
 	
@@ -23,11 +25,10 @@ public class Contact {
     private String codePostal;
     
     @Getter @Setter
-    private String pays;
+    private String ville;
     
-    @OneToOne
     @Getter @Setter
-    private User user;
+    private String pays;
 
     public Contact(String tel, String address, String cp) {
         this.tel = tel;

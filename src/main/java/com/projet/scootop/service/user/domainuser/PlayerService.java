@@ -34,31 +34,28 @@ public class PlayerService {
 
 
     public PlayerDTO add(PlayerDTO playerDTO){
+    	System.out.println(playerDTO.toString());
     	Player newPlayer = mapper.mapTo(playerDTO);
-    	categoryRepository.save(newPlayer.getCategory());
-    	
-    	userRepository.save(newPlayer.getUser());
+    	System.out.println(newPlayer.toString());
     	playerRepository.save(newPlayer);
-        return mapper.mapTo(newPlayer);
+        return mapper.mapToDTO(newPlayer);
         
     }
     
     public PlayerDTO update(PlayerDTO playerDTO){
     	Player player = mapper.mapTo(playerDTO);
-    	categoryRepository.save(player.getCategory());
-        userRepository.save(player.getUser());
         playerRepository.save(player);
-        return mapper.mapTo(player);
+        return mapper.mapToDTO(player);
     }
     
     public PlayerDTO get(Long id) {
     	Player player = playerRepository.findById(id).orElse(null);
-    	return mapper.mapTo(player);
+    	return mapper.mapToDTO(player);
     }
     
     public List<PlayerDTO> getAll() {
     	List<Player> players = playerRepository.findAll();
-    	return mapper.mapTo(players);
+    	return mapper.mapToDTO(players);
     }
     
     public String delete(Long id){

@@ -4,39 +4,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.configuration.ActionType;
+import com.projet.scootop.mappers.configuration.ActionTypeMapper;
 import com.projet.scootop.model.configuration.ActionTypeDTO;
 import com.projet.scootop.repository.configuration.ActionTypeRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
 public class ActionTypeService {
 	
-    @Autowired
-    public ActionTypeRepository skillRepository;
+    @Autowired private ActionTypeRepository skillRepository;
+    
+    @Autowired private ActionTypeMapper mapper;
     
     public ActionTypeDTO addSkill(ActionTypeDTO skillsDTO) {
-        ActionType skills = new ActionType(skillsDTO.getName());
-        skillRepository.save(skills);
-        return skillsDTO;
+        ActionType actionType = mapper.mapTo(skillsDTO);
+        skillRepository.save(actionType);
+        return mapper.mapToDTO(actionType);
     }
     
     public ActionTypeDTO get(Long id){
 
-        ActionType skillsFamilly = skillRepository.findById(id).orElse(null);
-        if(skillsFamilly==null){
+        ActionType actionType = skillRepository.findById(id).orElse(null);
+        if(actionType==null){
             return null;
         }
 
-        return ActionTypeDTO.get(skillsFamilly.getId(),skillsFamilly.getName());
+        return mapper.mapToDTO(actionType);
     }
 
     public List<ActionTypeDTO> getAll(){
 
         List<ActionType> skills = skillRepository.findAll();
-        return skills.stream().map(skill -> ActionTypeDTO.get(skill.getId(),skill.getName())).collect(Collectors.toList());
+        return mapper.mapToDTO(skills);
     }
 
 

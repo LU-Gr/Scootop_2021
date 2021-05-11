@@ -22,23 +22,23 @@ public class CompetitionService {
     public CompetitionDTO add(CompetitionDTO competionTypeDTO){
         Competition competionType = competitionMapper.mapTo(competionTypeDTO);
         competionTypeRepository.save(competionType);
-        return competitionMapper.mapTo(competionType);
+        return competitionMapper.mapToDTO(competionType);
 
     }
     
     public CompetitionDTO get(Long id){
-        return competitionMapper.mapTo(competionTypeRepository.findById(id).orElse(null));
+        return competitionMapper.mapToDTO(competionTypeRepository.findById(id).orElse(null));
     }
     
     public CompetitionDTO update(CompetitionDTO competitionDTO){
     	Competition competition = competitionMapper.mapTo(competitionDTO);
     	competionTypeRepository.save(competition);
-        return competitionMapper.mapTo(competition);
+        return competitionMapper.mapToDTO(competition);
     }
     
     public List<CompetitionDTO> getAll(){
         List<Competition> competitions = competionTypeRepository.findAll();
-        return competitionMapper.mapTo(competitions);
+        return competitionMapper.mapToDTO(competitions);
     }
     	
     

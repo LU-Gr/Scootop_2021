@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.Event;
-import com.projet.scootop.mappers.services.EventsMapper;
+import com.projet.scootop.mappers.services.EventMapper;
 import com.projet.scootop.model.services.EventDTO;
 import com.projet.scootop.repository.services.EventsRepository;
 import com.projet.scootop.repository.services.tools.video.VideoRepository;
@@ -24,7 +24,7 @@ public class EventsService {
     @Autowired private TeamRepository teamRepository;
     @Autowired private ScootRepository scootRepository;
     @Autowired private CompetitionRepository competitiontypeRepository;
-    @Autowired private EventsMapper mapper;
+    @Autowired private EventMapper mapper;
 
 
     public EventDTO addEvent(EventDTO eventsDTO){
@@ -35,7 +35,7 @@ public class EventsService {
         scootRepository.saveAll(events.getScoots());
         teamRepository.saveAll(events.getTeams());
         eventsRepository.save(events);
-        return mapper.mapTo(events);
+        return mapper.mapToDTO(events);
     }
     
     public EventDTO get(Long id){
@@ -45,20 +45,20 @@ public class EventsService {
             return null;
         }
 
-        return mapper.mapTo(events);
+        return mapper.mapToDTO(events);
 
     }
 
-    public Event update(EventDTO eventsDTO, Long id){
+    public EventDTO update(EventDTO eventsDTO, Long id){
         Event events = mapper.mapTo(eventsDTO);
         eventsRepository.save(events);
-        return mapper.mapTo(eventsDTO);
+        return mapper.mapToDTO(events);
     }
 
     public List<EventDTO> getAll(){
 
         List <Event> events = eventsRepository.findAll();
-        return mapper.mapTo(events);
+        return mapper.mapToDTO(events);
 
     }
 

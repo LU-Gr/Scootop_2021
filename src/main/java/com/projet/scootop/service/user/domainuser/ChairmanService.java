@@ -27,12 +27,12 @@ public class ChairmanService {
     	Chairman chairman = mapper.mapTo(chairmanDTO);
     	userRepository.save(chairman.getUser());
     	chairmanRepository.save(chairman);
-    	return mapper.mapTo(chairman);
+    	return mapper.mapToDTO(chairman);
     }
     
     public ChairmanDTO get(Long id) throws Exception{
         Chairman chairman = chairmanRepository.findById(id).orElse(null);
-        return mapper.mapTo(chairman);
+        return mapper.mapToDTO(chairman);
     }
     
     public ChairmanDTO update(ChairmanDTO chairmanDTO) throws Exception{
@@ -40,12 +40,12 @@ public class ChairmanService {
         Chairman chairman = mapper.mapTo(chairmanDTO);
         userRepository.save(chairman.getUser());
         chairmanRepository.save(chairman);
-        return mapper.mapTo(chairman);
+        return mapper.mapToDTO(chairman);
 
     }
     public List<ChairmanDTO> getAll(){
         List<Chairman> chairmans = chairmanRepository.findAll();
-        return mapper.mapTo(chairmans);
+        return mapper.mapToDTO(chairmans);
     }
     
     public String delete(Long id){

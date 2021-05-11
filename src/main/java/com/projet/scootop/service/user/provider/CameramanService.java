@@ -22,13 +22,13 @@ public class CameramanService {
     public CameramanDTO add(CameramanDTO cameramanDTO) throws Exception {
         Cameraman cameraman = mapper.mapTo(cameramanDTO);
         cameramanRepository.save(cameraman);
-        return mapper.mapTo(cameraman);
+        return mapper.mapToDTO(cameraman);
     }
     
     public CameramanDTO update(CameramanDTO cameramanDTO) throws Exception {
         Cameraman cameraman= mapper.mapTo(cameramanDTO);
         cameramanRepository.save(cameraman);
-        return mapper.mapTo(cameraman);
+        return mapper.mapToDTO(cameraman);
     }
     
     public CameramanDTO get(Long id){
@@ -37,12 +37,12 @@ public class CameramanService {
             return null;
         }
         
-        return mapper.mapTo(cameraman);
+        return mapper.mapToDTO(cameraman);
     }
     public List<CameramanDTO> getAll(){
 
         List<Cameraman> cameramans = cameramanRepository.findAll();
-        return mapper.mapTo(cameramans);
+        return mapper.mapToDTO(cameramans);
     }
     
     public String delete(Long id){

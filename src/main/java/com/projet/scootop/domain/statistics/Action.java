@@ -8,11 +8,12 @@ import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 // Action : Exemple : Skill: Controle
+@ToString
 @Entity
 @Table(name = "Action")
-
 public class Action {
 	
     @Id

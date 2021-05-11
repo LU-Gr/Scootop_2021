@@ -18,7 +18,7 @@ public class WearableService {
     public WearableDTO add(WearableDTO wearableDTO){
     	Wearable wearable = mapper.mapTo(wearableDTO);
         wearableRepository.save(wearable);
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
     public WearableDTO get(Long id){
@@ -26,18 +26,18 @@ public class WearableService {
         if(wearable==null){
             return null;
         }
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
-    public Wearable update(WearableDTO wearableDTO, Long id){
+    public WearableDTO update(WearableDTO wearableDTO, Long id){
     	Wearable wearable = mapper.mapTo(wearableDTO);
         wearableRepository.save(wearable);
-        return mapper.mapTo(wearableDTO);
+        return mapper.mapToDTO(wearable);
     }
 
     public List<WearableDTO> getAll(){
         List<Wearable> wearables = wearableRepository.findAll();
-        return mapper.mapTo(wearables);
+        return mapper.mapToDTO(wearables);
     }
 
 

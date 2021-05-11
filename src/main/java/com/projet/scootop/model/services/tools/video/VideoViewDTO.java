@@ -2,7 +2,7 @@ package com.projet.scootop.model.services.tools.video;
 
 import java.time.LocalDate;
 
-import com.projet.scootop.domain.user.User;
+import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +19,5 @@ public class VideoViewDTO {
     private VideoDTO video;
     
     @Getter @Setter
-    private User user;
+    private UserDTO user;
 }

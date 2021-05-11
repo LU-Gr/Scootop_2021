@@ -30,12 +30,12 @@ public class ContactService {
         if(contact==null){
             return null;
         }
-        return mapper.mapTo(contact);
+        return mapper.mapToDTO(contact);
     }
 
     public List<ContactDTO> getAll(){
         List<Contact> contacts = contactRepository.findAll();
-        return mapper.mapTo(contacts);
+        return mapper.mapToDTO(contacts);
     }
 
 

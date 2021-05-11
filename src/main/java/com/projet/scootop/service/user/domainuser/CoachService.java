@@ -32,12 +32,12 @@ public class CoachService {
         Coach coach = mapper.mapTo(coachDTO);
         userRepository.save(coach.getUser());
         coachRepository.save(coach);
-        return mapper.mapTo(coach);
+        return mapper.mapToDTO(coach);
     }
     
     public CoachDTO get(Long id){
         Coach coach = coachRepository.findById(id).orElse(null);
-        return mapper.mapTo(coach);
+        return mapper.mapToDTO(coach);
     }
     
     public CoachDTO update(CoachDTO coachDTO) throws Exception {
@@ -45,12 +45,12 @@ public class CoachService {
         Coach coach = mapper.mapTo(coachDTO);
         userRepository.save(coach.getUser());
         coachRepository.save(coach);
-        return mapper.mapTo(coach);
+        return mapper.mapToDTO(coach);
     }
     
     public List<CoachDTO> getAll(){
         List<Coach> coaches = coachRepository.findAll();
-        return mapper.mapTo(coaches);
+        return mapper.mapToDTO(coaches);
     }
     public String delete(Long id){
         Coach coach = coachRepository.findById(id).orElse(null);

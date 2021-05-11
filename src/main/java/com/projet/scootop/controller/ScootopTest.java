@@ -27,7 +27,7 @@ public class ScootopTest {
         ScootBots.setLastName("Scoot");
         ScootBots.setFirstName("Bots");
         Contact BotsContacts = new Contact();
-        BotsContacts.setUser(ScootBots);
+        ScootBots.setContact(BotsContacts);
 
         Scoot ScootMU = new Scoot();
         ScootMU.setUser(ScootBots);
@@ -47,7 +47,7 @@ public class ScootopTest {
 
 
         CoachElite.setLastName("Raphael Benitez");
-        CoachElite.setTypes(types);
+        CoachElite.setUserTypes(types);
         coach.setUser(CoachElite);
         CoachesTeams.add(coach);
         team.setCoaches(CoachesTeams);

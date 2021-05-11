@@ -3,6 +3,7 @@ package com.projet.scootop.domain.statistics;
 import javax.persistence.*;
 
 import com.projet.scootop.domain.tools.Match;
+import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Setter;
 
@@ -23,6 +24,9 @@ public class Goal {
     @Getter @Setter
     private LocalDate date;
     
+    @Getter @Setter
+    private Integer rating;
+    
     @OneToOne
     @Getter @Setter
     private Shoot shoot;
@@ -31,8 +35,10 @@ public class Goal {
     @Getter @Setter
     private Match match;
     
+    @ManyToOne
     @Getter @Setter
-    private Integer rating;
+    private Player player;
+    
 
     public Goal(LocalDate date, Shoot shoot, Integer rating) {
         super();

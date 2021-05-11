@@ -3,7 +3,9 @@ package com.projet.scootop.mappers.services;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -12,23 +14,24 @@ import com.projet.scootop.model.services.LocationWearableDTO;
 
 @Component
 public class LocationWearableMapper {
+	
+	@Autowired private ModelMapper modelMapper;
 
 	public LocationWearable mapTo(LocationWearableDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		LocationWearable entity = new LocationWearable();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, LocationWearable.class);
     }
 	
-    public LocationWearableDTO mapTo(LocationWearable entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        LocationWearableDTO dto = new LocationWearableDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public LocationWearableDTO mapToDTO(LocationWearable entity) {
+            	return modelMapper.map(entity, LocationWearableDTO.class);
     }
 
-    public List<LocationWearableDTO> mapTo(List<LocationWearable> entities) {
+    public List<LocationWearableDTO> mapToDTO(List<LocationWearable> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<LocationWearable> mapTo(List<LocationWearableDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

@@ -20,17 +20,17 @@ public class GoalService {
     public GoalDTO add(GoalDTO goalDTO){
         Goal goal = mapper.mapTo(goalDTO);
         goalRepository.save(goal);
-        return mapper.mapTo(goal);
+        return mapper.mapToDTO(goal);
     }
     
     public GoalDTO get(Long id){
     	Goal goal = goalRepository.findById(id).orElse(null);
-        return mapper.mapTo(goal);
+        return mapper.mapToDTO(goal);
     }
     
     public List<GoalDTO> getAll(){
     	List<Goal> goals = goalRepository.findAll();
-        return mapper.mapTo(goals);
+        return mapper.mapToDTO(goals);
     }
     
     public String delete(Long id){

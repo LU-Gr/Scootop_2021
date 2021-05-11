@@ -3,22 +3,21 @@ package com.projet.scootop.model.user.domainuser;
 import java.util.List;
 
 import com.projet.scootop.model.configuration.CategoryDTO;
+import com.projet.scootop.model.configuration.PosteDTO;
 import com.projet.scootop.model.services.tools.video.VideoDTO;
-import com.projet.scootop.model.tools.MatchDTO;
 import com.projet.scootop.model.tools.StatisticalSheetDTO;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class PlayerDTO {
 
 	@Getter @Setter
     private Long id;
-	
-	@Getter @Setter
-    private CategoryDTO category;
 	
 	@Getter @Setter
     private int rating;
@@ -51,14 +50,18 @@ public class PlayerDTO {
     private UserDTO user;
 	
 	@Getter @Setter
-    private List<TeamDTO> teams;
+    private CategoryDTO category;
 	
 	@Getter @Setter
     private List<StatisticalSheetDTO> statisticalSheets;
 	
 	@Getter @Setter
-    private List<MatchDTO> matshSheets;
+    private List<VideoDTO> videos;
 	
 	@Getter @Setter
-    private List<VideoDTO> videos;
+    private List<TeamDTO> teams;
+	
+	@Getter @Setter
+    private List<PosteDTO> postes;
+	
 }

@@ -1,35 +1,38 @@
 package com.projet.scootop.mappers.tools;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.model.tools.SaisonDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 public class SaisonMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public Saison mapTo(SaisonDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		Saison entity = new Saison();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, Saison.class);
     }
 	
-    public SaisonDTO mapTo(Saison entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        SaisonDTO dto = new SaisonDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public SaisonDTO mapToDTO(Saison entity) {
+            	return modelMapper.map(entity, SaisonDTO.class);
     }
 
-    public List<SaisonDTO> mapTo(List<Saison> entities) {
+    public List<SaisonDTO> mapToDTO(List<Saison> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<Saison> mapTo(List<SaisonDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

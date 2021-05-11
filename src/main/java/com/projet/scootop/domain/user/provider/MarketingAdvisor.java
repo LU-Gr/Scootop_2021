@@ -29,7 +29,7 @@ public class MarketingAdvisor {
     public MarketingAdvisor(User user, Agence agence) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.getTypes()) {
+        for (UserType userType: user.getUserTypes()) {
             if(userType.getType().equals("Marketing Advisor")){
                 isCorrect=true;
             }

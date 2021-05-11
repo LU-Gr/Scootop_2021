@@ -4,11 +4,12 @@ import javax.persistence.*;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@ToString
 @Entity
-@Table(name = "Agence")
 //SERT A GERER L'IMAGE D'UN JOUEUR
 public class Agence {
 	

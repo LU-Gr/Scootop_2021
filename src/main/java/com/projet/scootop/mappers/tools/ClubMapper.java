@@ -1,36 +1,38 @@
 package com.projet.scootop.mappers.tools;
 
-import org.springframework.beans.BeanUtils;
-import org.springframework.stereotype.Component;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.tools.Club;
 import com.projet.scootop.model.tools.ClubDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 public class ClubMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public Club mapTo(ClubDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		Club entity = new Club();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, Club.class);
     }
 	
-    public ClubDTO mapTo(Club entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        ClubDTO dto = new ClubDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public ClubDTO mapToDTO(Club entity) {
+            	return modelMapper.map(entity, ClubDTO.class);
     }
 
-    public List<ClubDTO> mapTo(List<Club> entities) {
+    public List<ClubDTO> mapToDTO(List<Club> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<Club> mapTo(List<ClubDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

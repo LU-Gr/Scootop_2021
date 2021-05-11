@@ -14,7 +14,6 @@ import com.projet.scootop.domain.services.tools.video.Video;
 @Entity
 @ToString
 @Table(name = "Competition")
-
 public class Competition {
 	
     @Id
@@ -41,7 +40,7 @@ public class Competition {
     private int nbSubstition;
 
     @Getter @Setter
-    public int dureeMiTemps;
+    private int dureeMiTemps;
     
     @ManyToOne
     @Getter @Setter

@@ -8,6 +8,7 @@ import com.projet.scootop.domain.user.domainuser.Scoot;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class Club {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private Integer id;
+    private Long id;
     
     @Getter @Setter
     private String colorInside;
@@ -46,6 +47,8 @@ public class Club {
 
 
     public Club() {
+    	//this.scoots = new ArrayList<>();
+    	//this.teams = new ArrayList<>();
     }
 
     public Club(String name, Contact contact, String colorInside, String colorOutSide, List<Team> teams, List<Scoot> scoots) throws Exception {

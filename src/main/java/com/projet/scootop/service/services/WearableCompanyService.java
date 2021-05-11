@@ -27,7 +27,7 @@ public class WearableCompanyService {
     	WearableCompany wearableSociety = mapper.mapTo(wearableSocietyDTO);
         contactRepository.save(wearableSociety.getContact());
         wearableSocietyRepository.save(wearableSociety);
-        return mapper.mapTo(wearableSociety);
+        return mapper.mapToDTO(wearableSociety);
     }
 
     public WearableCompanyDTO get(Long id){
@@ -35,19 +35,19 @@ public class WearableCompanyService {
         if(wearableSociety==null){
             return null;
         }
-        return mapper.mapTo(wearableSociety);
+        return mapper.mapToDTO(wearableSociety);
     }
 
     public WearableCompanyDTO update(WearableCompanyDTO wearableSocietyDTO, Long id){
     	WearableCompany wearableSociety = mapper.mapTo(wearableSocietyDTO);
         contactRepository.save(wearableSociety.getContact());
         wearableSocietyRepository.save(wearableSociety);
-        return mapper.mapTo(wearableSociety);
+        return mapper.mapToDTO(wearableSociety);
     }
 
     public List<WearableCompanyDTO> getAll(){
         List<WearableCompany> wearableSocieties = wearableSocietyRepository.findAll();
-        return mapper.mapTo(wearableSocieties);
+        return mapper.mapToDTO(wearableSocieties);
     }
 
     public String delete(Long id){

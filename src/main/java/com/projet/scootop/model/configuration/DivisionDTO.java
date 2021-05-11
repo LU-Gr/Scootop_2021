@@ -10,12 +10,11 @@ public class DivisionDTO {
 	
 	@Getter @Setter
     private String name;
+	   
+    @Getter @Setter
+    private LeagueDTO league;
+     
+    @Getter @Setter
+    private CategoryDTO category;
 
-    @Override
-    public String toString() {
-        return "DivisionsRepository{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

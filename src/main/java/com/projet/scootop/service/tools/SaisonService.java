@@ -19,7 +19,7 @@ public class SaisonService {
     public SaisonDTO addSaison(SaisonDTO saisonDTO) {
         Saison saison = mapper.mapTo(saisonDTO);
         saisonRepository.save(saison);
-        return mapper.mapTo(saison);
+        return mapper.mapToDTO(saison);
     }
     public SaisonDTO get(Long id){
 
@@ -28,13 +28,13 @@ public class SaisonService {
             return null;
         }
 
-        return mapper.mapTo(saison);
+        return mapper.mapToDTO(saison);
     }
 
     public List<SaisonDTO> getAll(){
 
         List<Saison> saisons = saisonRepository.findAll();
-        return mapper.mapTo(saisons);
+        return mapper.mapToDTO(saisons);
         
     }
 

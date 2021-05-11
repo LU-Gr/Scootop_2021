@@ -2,10 +2,10 @@ package com.projet.scootop.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.projet.scootop.domain.configuration.*;
 import com.projet.scootop.model.configuration.*;
 import com.projet.scootop.model.tools.ClubDTO;
 import com.projet.scootop.model.tools.TeamDTO;
+import com.projet.scootop.repository.tools.ClubRepository;
 import com.projet.scootop.service.configuration.*;
 import com.projet.scootop.service.tools.ClubService;
 import com.projet.scootop.service.tools.TeamService;
@@ -75,9 +75,8 @@ public class DomainConfigController {
     }
 
     @PostMapping("api/club")
-    ClubDTO addClub(@RequestBody ClubDTO body) {
-        ClubDTO club = body;
-        return club;
+    ClubDTO addClub(@RequestBody ClubDTO club) {
+        return clubService.add(club);
     }
 
     @PutMapping("api/club/{id}")
@@ -142,12 +141,12 @@ public class DomainConfigController {
     }
 
     @PostMapping("api/poste")
-    Poste addPoste(@RequestBody PosteDTO body){
+    PosteDTO addPoste(@RequestBody PosteDTO body){
         return posteService.addPoste(body);
     }
 
     @PutMapping("api/poste/{id}")
-    Poste updatePoste(@RequestBody PosteDTO body,@PathVariable Long id){
+    PosteDTO updatePoste(@RequestBody PosteDTO body,@PathVariable Long id){
         return posteService.update(body,id);
     }
 

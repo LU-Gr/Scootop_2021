@@ -1,35 +1,38 @@
 package com.projet.scootop.mappers.user.domainuser;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.user.domainuser.Chairman;
 import com.projet.scootop.model.user.domainuser.ChairmanDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 public class ChairmanMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public Chairman mapTo(ChairmanDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		Chairman entity = new Chairman();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, Chairman.class);
     }
 	
-    public ChairmanDTO mapTo(Chairman entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        ChairmanDTO dto = new ChairmanDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public ChairmanDTO mapToDTO(Chairman entity) {
+            	return modelMapper.map(entity, ChairmanDTO.class);
     }
 
-    public List<ChairmanDTO> mapTo(List<Chairman> entities) {
+    public List<ChairmanDTO> mapToDTO(List<Chairman> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<Chairman> mapTo(List<ChairmanDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

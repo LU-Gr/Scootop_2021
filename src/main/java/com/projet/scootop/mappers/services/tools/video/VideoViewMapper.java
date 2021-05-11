@@ -1,35 +1,38 @@
 package com.projet.scootop.mappers.services.tools.video;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.services.tools.video.VideoView;
 import com.projet.scootop.model.services.tools.video.VideoViewDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 public class VideoViewMapper {
 	
+	@Autowired private ModelMapper modelMapper;	
+	
 	public VideoView mapTo(VideoViewDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		VideoView entity = new VideoView();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, VideoView.class);
     }
 	
-    public VideoViewDTO mapTo(VideoView entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        VideoViewDTO dto = new VideoViewDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public VideoViewDTO mapToDTO(VideoView entity) {
+            	return modelMapper.map(entity, VideoViewDTO.class);
     }
 
-    public List<VideoViewDTO> mapTo(List<VideoView> entities) {
+    public List<VideoViewDTO> mapToDTO(List<VideoView> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<VideoView> mapTo(List<VideoViewDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

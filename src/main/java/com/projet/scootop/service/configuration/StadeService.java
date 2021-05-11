@@ -22,7 +22,7 @@ public class StadeService {
         Stade newStadium = mapper.mapTo(stadeDTO);
         contactRepository.save(newStadium.getContact());
         stadeRepository.save(newStadium);
-        return mapper.mapTo(newStadium);
+        return mapper.mapToDTO(newStadium);
     }
 
     public StadeDTO get(Long id){
@@ -30,19 +30,19 @@ public class StadeService {
         if(stade==null){
             return null;
         }
-        return mapper.mapTo(stade);
+        return mapper.mapToDTO(stade);
     }
     
     public StadeDTO update(StadeDTO stadeDTO){
         Stade stade = mapper.mapTo(stadeDTO);
         contactRepository.save(stade.getContact());
         stadeRepository.save(stade);
-        return mapper.mapTo(stade);
+        return mapper.mapToDTO(stade);
     }
 
     public List<StadeDTO> getAll(){
         List<Stade> stades = stadeRepository.findAll();
-        return mapper.mapTo(stades);
+        return mapper.mapToDTO(stades);
     }
     
     public String delete(Long id){

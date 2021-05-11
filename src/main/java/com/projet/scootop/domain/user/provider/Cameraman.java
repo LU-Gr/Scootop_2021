@@ -33,7 +33,7 @@ public class Cameraman {
     public Cameraman(User user, Double tarif, Integer experience) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.getTypes()) {
+        for (UserType userType: user.getUserTypes()) {
             if(userType.getType().equals("cameraman")){
                 isCorrect=true;
             }

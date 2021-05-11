@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.configuration.Division;
 import com.projet.scootop.domain.configuration.League;
-import com.projet.scootop.mappers.configuration.DivisionMapper;
+import com.projet.scootop.mappers.configuration.LeagueMapper;
 import com.projet.scootop.model.configuration.DivisionDTO;
 import com.projet.scootop.model.configuration.LeagueDTO;
 import com.projet.scootop.repository.configuration.DivisionRepository;
@@ -17,21 +17,16 @@ import java.util.List;
 @Service
 public class LeagueService {
 	
-    @Autowired
-    public LeagueRepository leagueRepository;
+    @Autowired private LeagueRepository leagueRepository;
     
-    @Autowired
-    public DivisionRepository divisionsRepository;
+    @Autowired private DivisionRepository divisionsRepository;
     
-    public DivisionService divisionsService;
-    
-    @Autowired
-    private DivisionMapper divisionMapper;
+    @Autowired private LeagueMapper lMapper;
 
     public LeagueDTO add(LeagueDTO leagueDTO){
-        List<DivisionDTO> divisionsDTOS = leagueDTO.divisions;
+        List<DivisionDTO> divisionsDTOS = leagueDTO.getDivisions();
         ArrayList<Division> divisions =  new ArrayList<>();
-        League newLeague = new League(leagueDTO.name);
+        League newLeague = new League(leagueDTO.getName());
         League league=leagueRepository.save(newLeague);
         for (DivisionDTO divisionDTO: divisionsDTOS) {
             League league1=leagueRepository.findById(league.getId()).orElse(null);
@@ -47,41 +42,23 @@ public class LeagueService {
         }
         return leagueDTO;
     }
+    
     public LeagueDTO get(Long id){
 
         League league = leagueRepository.findById(id).orElse(null);
         if(league==null){
             return null;
         }
-        ArrayList<DivisionDTO> divisionDTOS=  new ArrayList<>();
-        List<Division> divisions = divisionsRepository.findAllByLeagueId(id);
-        for (Division division: divisions) {
-            DivisionDTO newDivision = divisionMapper.mapTo(division);
-            divisionDTOS.add(newDivision);
-        }
-        LeagueDTO leagueDTO = LeagueDTO.get(league.getId(),league.getName(),divisionDTOS);
-        return leagueDTO;
+        return lMapper.mapToDTO(league);
+        
     }
+    
     public List<LeagueDTO> getAll(){
-
         List<League> leagues = leagueRepository.findAll();
-        ArrayList<LeagueDTO> leagueDTOS=  new ArrayList<>();
-        for (League league: leagues) {
-            ArrayList<DivisionDTO> divisionsDTOS=  new ArrayList<>();
-
-            List<Division> divisions = divisionsRepository.findAllByLeagueId(league.getId());
-            for (Division division: divisions
-            ) {
-                DivisionDTO newDivision = divisionMapper.mapTo(division);
-                divisionsDTOS.add(newDivision);
-            }
-
-            LeagueDTO leagueDTO = LeagueDTO.get(league.getId(),league.getName(),divisionsDTOS);
-            leagueDTOS.add(leagueDTO);
-
-        }
-        return leagueDTOS;
+        return lMapper.mapToDTO(leagues); 
     }
+    
+    
     public String delete(Long id){
         League league = leagueRepository.findById(id).orElse(null);
         if(league==null){

@@ -23,6 +23,7 @@ public class ScootDTO {
 	@Getter @Setter
     private List<ClubDTO> clubs;
 	
-	
+	@Getter @Setter
+    private List<ShortlistDTO> followedShortlists;
 
 }

@@ -19,17 +19,17 @@ public class ActionService {
     public ActionDTO add(ActionDTO actionDTO){
         Action action = mapper.mapTo(actionDTO);
         actionRepository.save(action);
-        return mapper.mapTo(action);
+        return mapper.mapToDTO(action);
     }
     
     public ActionDTO get(Long id){
         Action action = actionRepository.getOne(id);
-        return mapper.mapTo(action);
+        return mapper.mapToDTO(action);
     }
     
     public List<ActionDTO> getAll(){
     	List<Action> actions = actionRepository.findAll();
-        return mapper.mapTo(actions);
+        return mapper.mapToDTO(actions);
     }
     
     public String delete(Long id){

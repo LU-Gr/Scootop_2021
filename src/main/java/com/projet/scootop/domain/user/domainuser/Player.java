@@ -11,9 +11,11 @@ import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@ToString
 @Entity
 public class Player{
 	
@@ -86,24 +88,6 @@ public class Player{
 	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
     @Getter @Setter
     private List<Poste> postes;
-
-    public Player(List<Team> teams, Category category, Double rating, int taille, int poids, int vma, String nationalite, String origin, String strongFoot, String weekFoot, List<StatisticalSheet> statisticalSheets, List<Video> videos, boolean selected, User user) {
-        super();
-        this.teams = teams;
-        this.category = category;
-        this.rating = rating;
-        this.taille = taille;
-        this.poids = poids;
-        this.vma = vma;
-        this.nationalite = nationalite;
-        this.origin = origin;
-        this.strongFoot = strongFoot;
-        this.weekFoot = weekFoot;
-        this.statisticalSheets = statisticalSheets;
-        this.videos = videos;
-        this.isSelected = selected;
-        this.user = user;
-    }
 
     public Player() {
     }

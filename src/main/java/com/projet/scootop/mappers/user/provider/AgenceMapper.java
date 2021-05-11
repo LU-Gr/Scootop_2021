@@ -1,35 +1,38 @@
 package com.projet.scootop.mappers.user.provider;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.user.provider.Agence;
 import com.projet.scootop.model.user.provider.AgenceDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 public class AgenceMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public Agence mapTo(AgenceDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		Agence entity = new Agence();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, Agence.class);
     }
 	
-    public AgenceDTO mapTo(Agence entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        AgenceDTO dto = new AgenceDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public AgenceDTO mapToDTO(Agence entity) {
+            	return modelMapper.map(entity, AgenceDTO.class);
     }
 
-    public List<AgenceDTO> mapTo(List<Agence> entities) {
+    public List<AgenceDTO> mapToDTO(List<Agence> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<Agence> mapTo(List<AgenceDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

@@ -2,73 +2,38 @@ package com.projet.scootop.model.tools;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
-import com.projet.scootop.domain.configuration.Category;
-import com.projet.scootop.domain.tools.Club;
-import com.projet.scootop.domain.user.domainuser.Coach;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.configuration.CompetitionType;
+import com.projet.scootop.model.configuration.CategoryDTO;
+import com.projet.scootop.model.configuration.CompetitionTypeDTO;
+import com.projet.scootop.model.user.domainuser.CoachDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
 
+@ToString
 public class TeamDTO {
 
 	@Getter @Setter
     private Long id;
-	@Getter @Setter
-	private Club club;
+	
 	@Getter @Setter
 	private String name;
-	@Getter @Setter
-	private List<Coach> coaches;
-	@Getter @Setter
-	private List<Player> players;
-	@Getter @Setter
-	private Category category;
 	
-	public TeamDTO() {
-		
-	}
+	@Getter @Setter
+	private ClubDTO club;
 	
-	public TeamDTO(Long id, Club club, String name, List<Coach> coaches, List<Player> players, Category category) {
-		this.id = id;
-		this.club = club;
-		this.name = name;
-		this.coaches = coaches;
-		this.players = players;
-		this.category = category;
-	}
+	@Getter @Setter
+    private CompetitionTypeDTO competitionType;
+	
+	@Getter @Setter
+	private CategoryDTO category;
+	
+	@Getter @Setter
+	private List<CoachDTO> coaches;
+	
+	@Getter @Setter
+	private List<PlayerDTO> players;
 
-    public static TeamDTO create(Club club, String name, List<Coach> coaches, List<Player> players, Category category) {
-        TeamDTO teamDTO= new TeamDTO();
-        teamDTO.club = club;
-        teamDTO.name = name;
-        teamDTO.coaches = coaches;
-        teamDTO.players = players;
-        teamDTO.category = category;
-
-        return teamDTO;
-    }
-    public  static TeamDTO get(Long id, Club club, String name, List<Coach> coaches, List<Player> players, Category category) {
-        TeamDTO teamDTO= new TeamDTO();
-        teamDTO.id = id;
-        teamDTO.club = club;
-        teamDTO.name = name;
-        teamDTO.coaches = coaches;
-        teamDTO.players = players;
-        teamDTO.category = category;
-
-        return teamDTO;
-    }
-
-    @Override
-    public String toString() {
-        return "TeamDTO{" +
-                "id=" + id +
-                ", club=" + club +
-                ", name='" + name + '\'' +
-                ", coaches=" + coaches +
-                ", players=" + players +
-                ", category=" + category +
-                '}';
-    }
 }

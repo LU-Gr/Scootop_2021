@@ -22,7 +22,7 @@ public class AnalysteService {
     public AnalysteDTO add(AnalysteDTO analysteDTO) throws Exception {
         Analyst analyste = mapper.mapTo(analysteDTO);
         analysteRepository.save(analyste);
-        return mapper.mapTo(analyste);
+        return mapper.mapToDTO(analyste);
     }
     
     public AnalysteDTO get(Long id){
@@ -30,12 +30,12 @@ public class AnalysteService {
         if(analyste==null){
             return null;
         }
-        return mapper.mapTo(analyste);
+        return mapper.mapToDTO(analyste);
     }
     
     public List<AnalysteDTO> getAll(){
         List<Analyst> analystes = analysteRepository.findAll();
-        return mapper.mapTo(analystes);
+        return mapper.mapToDTO(analystes);
     }
     
     public String delete(Long id){

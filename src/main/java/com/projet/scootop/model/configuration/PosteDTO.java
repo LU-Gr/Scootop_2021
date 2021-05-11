@@ -3,35 +3,22 @@ package com.projet.scootop.model.configuration;
 import java.util.List;
 
 import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
 public class PosteDTO {
-    public Long id;
-    public String name;
-    public List<Player> playerList;
+	
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+	private String name;
+	
+	@Getter @Setter
+	private List<PlayerDTO> players;
 
-    public static PosteDTO create(Long id, String name, List<Player> playerList) {
-        PosteDTO posteDTO=new PosteDTO();
-        posteDTO.id = id;
-        posteDTO.name = name;
-        posteDTO.playerList = playerList;
-        return posteDTO;
-
-    }
-    public static PosteDTO get(Long id, String name, List<Player> playerList) {
-        PosteDTO posteDTO=new PosteDTO();
-        posteDTO.id = id;
-        posteDTO.name = name;
-        posteDTO.playerList = playerList;
-        return posteDTO;
-
-    }
-
-    @Override
-    public String toString() {
-        return "PosteRepository{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-
-    }
 }

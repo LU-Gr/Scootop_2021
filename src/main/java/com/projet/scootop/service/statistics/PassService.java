@@ -22,24 +22,24 @@ public class PassService {
         Pass pass = mapper.mapTo(passDTO);
         matchSheetRepository.save(pass.getMatch());
         assistRepository.save(pass);
-        return mapper.mapTo(pass);
+        return mapper.mapToDTO(pass);
     }
     
     public PassDTO get(Long id){
     	Pass pass = assistRepository.findById(id).orElse(null);
-        return mapper.mapTo(pass);
+        return mapper.mapToDTO(pass);
     }
     
     public PassDTO update(PassDTO passDTO){
         Pass pass = mapper.mapTo(passDTO);
         matchSheetRepository.save(pass.getMatch());
         assistRepository.save(pass);
-        return mapper.mapTo(pass);
+        return mapper.mapToDTO(pass);
     }
     
     public List<PassDTO> getAll(){
     	List<Pass> passes = assistRepository.findAll();
-        return mapper.mapTo(passes);
+        return mapper.mapToDTO(passes);
     }
     
     public String delete(Long id){

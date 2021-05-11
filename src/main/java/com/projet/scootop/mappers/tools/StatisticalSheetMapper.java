@@ -1,35 +1,37 @@
 package com.projet.scootop.mappers.tools;
 
-import org.springframework.beans.BeanUtils;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import com.projet.scootop.domain.tools.StatisticalSheet;
 import com.projet.scootop.model.tools.StatisticalSheetDTO;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-
 @Component
 public class StatisticalSheetMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public StatisticalSheet mapTo(StatisticalSheetDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		StatisticalSheet entity = new StatisticalSheet();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, StatisticalSheet.class);
     }
 	
-    public StatisticalSheetDTO mapTo(StatisticalSheet entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        StatisticalSheetDTO dto = new StatisticalSheetDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public StatisticalSheetDTO mapToDTO(StatisticalSheet entity) {
+            	return modelMapper.map(entity, StatisticalSheetDTO.class);
     }
 
-    public List<StatisticalSheetDTO> mapTo(List<StatisticalSheet> entities) {
+    public List<StatisticalSheetDTO> mapToDTO(List<StatisticalSheet> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<StatisticalSheet> mapTo(List<StatisticalSheetDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

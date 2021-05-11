@@ -1,22 +1,15 @@
 package com.projet.scootop.model.tools;
 
-import com.projet.scootop.model.configuration.CategoryDTO;
 import com.projet.scootop.model.configuration.CompetitionTypeDTO;
-import com.projet.scootop.model.services.tools.video.VideoDTO;
-
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class CompetitionDTO {
 	
 	@Getter @Setter
-	private Long id;
-	
-	@Getter @Setter
-	private VideoDTO video;
-	
-	@Getter @Setter
-	private CompetitionTypeDTO competitionType;
+	private Long id;	
 	
 	@Getter @Setter
 	private String name;
@@ -37,9 +30,9 @@ public class CompetitionDTO {
 	private int substition;
 	
 	@Getter @Setter
-	private CategoryDTO category;
+	private int dureeMiTemps;
 	
 	@Getter @Setter
-	private int time;
+	private CompetitionTypeDTO competitionType;
 
 }

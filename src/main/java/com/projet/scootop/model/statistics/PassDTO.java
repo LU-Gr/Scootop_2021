@@ -1,7 +1,5 @@
 package com.projet.scootop.model.statistics;
 
-import java.time.LocalDate;
-
 import com.projet.scootop.model.configuration.TouchTypeDTO;
 import com.projet.scootop.model.tools.MatchDTO;
 import com.projet.scootop.model.user.domainuser.PlayerDTO;
@@ -15,24 +13,24 @@ public class PassDTO {
 	private Long id;
 	
 	@Getter @Setter
-    private MatchDTO matchSheet;
+	private int minute;
+	
+	@Getter @Setter
+    private Boolean decisive;
+    
+    @Getter @Setter
+    private Boolean isSuccess;
+    
+    @Getter @Setter
+    private Boolean isLongPass;
+	
+	@Getter @Setter
+    private MatchDTO match;
 	
 	@Getter @Setter
     private PlayerDTO player;
     
     @Getter @Setter
-    private TouchTypeDTO typeTouch;
-    
-    @Getter @Setter
-    private LocalDate date;
-    
-    @Getter @Setter
-    private Boolean decisive;
-    
-    @Getter @Setter
-    private Boolean successAssist;
-    
-    @Getter @Setter
-    private Boolean longPass;
+    private TouchTypeDTO touchType;
 
 }

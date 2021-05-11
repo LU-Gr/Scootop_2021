@@ -19,23 +19,23 @@ public class UserTypeService {
     public UserTypeDTO addUserType(UserTypeDTO userTypeDTO) {
         UserType userType = mapper.mapTo(userTypeDTO);
         userTypeRepository.save(userType);
-        return mapper.mapTo(userType);
+        return mapper.mapToDTO(userType);
     }
     
     public UserTypeDTO update(UserTypeDTO userTypeDTO) {
     	UserType userType = mapper.mapTo(userTypeDTO);
         userTypeRepository.save(userType);
-        return mapper.mapTo(userType);
+        return mapper.mapToDTO(userType);
     }
     
     public UserTypeDTO get(Long id){
     	UserType types = userTypeRepository.findById(id).orElse(null);
-    	return mapper.mapTo(types);
+    	return mapper.mapToDTO(types);
     }
 
     public List<UserTypeDTO> getAll(){
     	List<UserType> types = userTypeRepository.findAll();
-        return mapper.mapTo(types);
+        return mapper.mapToDTO(types);
     }
 
 

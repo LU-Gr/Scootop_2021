@@ -1,6 +1,8 @@
 package com.projet.scootop.mappers.user.domainuser;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -14,22 +16,23 @@ import java.util.stream.Collectors;
 @Component
 public class PlayerMapper {
 	
+	@Autowired private ModelMapper modelMapper;
+	
 	public Player mapTo(PlayerDTO dto) {
-		Assert.notNull(dto, "The entity must not be null");
-		Player entity = new Player();
-        BeanUtils.copyProperties(dto, entity);
-        return entity;
+		    	return modelMapper.map(dto, Player.class);
     }
 	
-    public PlayerDTO mapTo(Player entity) {
-        Assert.notNull(entity, "The entity must not be null");
-        PlayerDTO dto = new PlayerDTO();
-        BeanUtils.copyProperties(entity, dto);
-        return dto;
+    public PlayerDTO mapToDTO(Player entity) {
+    	    	return modelMapper.map(entity, PlayerDTO.class);
     }
 
-    public List<PlayerDTO> mapTo(List<Player> entities) {
+    public List<PlayerDTO> mapToDTO(List<Player> entities) {
         Assert.notNull(entities, "entities must not be null");
-        return entities.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
+        return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
+    }
+    
+    public List<Player> mapTo(List<PlayerDTO> dtos) {
+        Assert.notNull(dtos, "entities must not be null");
+        return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
 }

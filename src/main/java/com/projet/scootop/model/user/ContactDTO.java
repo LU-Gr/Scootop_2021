@@ -2,8 +2,9 @@ package com.projet.scootop.model.user;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-
+@ToString
 public class ContactDTO {
 
 	@Getter @Setter
@@ -19,9 +20,9 @@ public class ContactDTO {
 	private String address;
 	
 	@Getter @Setter
-	private String cp;
+    private String ville;
 	
 	@Getter @Setter
-	private UserDTO user;
+    private String codePostal;
 
 }

@@ -12,12 +12,13 @@ import com.projet.scootop.domain.user.provider.Cameraman;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@ToString
 @Entity
-@Table(name = "Event")
 public class Event {
 
     @Id

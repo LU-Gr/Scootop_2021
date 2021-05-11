@@ -29,12 +29,12 @@ public class AlertService {
         if(alert==null){
             return null;
         }
-        return mapper.mapTo(alert);
+        return mapper.mapToDTO(alert);
     }
     
     public List<AlertDTO> getAll(){
     	List<Alert> alerts = alertRepository.findAll();
-    	return mapper.mapTo(alerts);
+    	return mapper.mapToDTO(alerts);
     }
     public String delete(Long id){
         Alert alert = alertRepository.findById(id).orElse(null);

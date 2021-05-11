@@ -16,6 +16,12 @@ public class InviteDTO {
     private Long id;
 	
 	@Getter @Setter
+    private LocalDate createAt;
+    
+    @Getter @Setter
+    private boolean response;
+	
+	@Getter @Setter
 	private SaisonDTO saison;
     
     @Getter @Setter
@@ -27,11 +33,7 @@ public class InviteDTO {
     @Getter @Setter
     private PlayerDTO player;
     
-    @Getter @Setter
-    private LocalDate createAt;
     
-    @Getter @Setter
-    private boolean response;
 
    
 }

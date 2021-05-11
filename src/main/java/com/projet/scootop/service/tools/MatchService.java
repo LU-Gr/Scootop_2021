@@ -35,7 +35,7 @@ public class MatchService {
         teamRepository.save(matchSheet.getTeamB());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
-        return mapper.mapTo(matchSheet);
+        return mapper.mapToDTO(matchSheet);
     }
     
     public MatchDTO update(MatchDTO matchSheetDTO) throws Exception {
@@ -47,17 +47,17 @@ public class MatchService {
         teamRepository.save(matchSheet.getTeamB());
         saisonRepository.save(matchSheet.getSaison());
         matchSheetRepository.save(matchSheet);
-        return mapper.mapTo(matchSheet);
+        return mapper.mapToDTO(matchSheet);
     }
     
     public MatchDTO get(Long id){
     	Match matchSheet = matchSheetRepository.findById(id).orElse(null);
-        return mapper.mapTo(matchSheet);
+        return mapper.mapToDTO(matchSheet);
     }
     
     public List<MatchDTO> getAll(){
     	List<Match> matchSheets = matchSheetRepository.findAll();
-    	return mapper.mapTo(matchSheets);
+    	return mapper.mapToDTO(matchSheets);
     }
     
     public ResponseEntity<Integer> delete(Long id){

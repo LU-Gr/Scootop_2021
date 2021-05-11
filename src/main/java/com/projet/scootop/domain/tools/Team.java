@@ -2,6 +2,7 @@ package com.projet.scootop.domain.tools;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -13,10 +14,9 @@ import com.projet.scootop.domain.user.domainuser.Player;
 import java.time.LocalDate;
 import java.util.List;
 
+@ToString
 @Entity
-@Table(name = "Team")
 public class Team {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

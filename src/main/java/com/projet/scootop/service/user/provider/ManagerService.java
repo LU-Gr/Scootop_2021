@@ -23,7 +23,7 @@ public class ManagerService {
     public ManagerDTO add(ManagerDTO managerDTO){
         Manager manager = mapper.mapTo(managerDTO);
         managerRepository.save(manager);
-        return mapper.mapTo(manager);
+        return mapper.mapToDTO(manager);
     }
     
     public ManagerDTO get(Long id){
@@ -31,13 +31,13 @@ public class ManagerService {
         if(manager==null){
             return null;
         }
-        return mapper.mapTo(manager);
+        return mapper.mapToDTO(manager);
     }
     
     public List<ManagerDTO> getAll(){
 
         List<Manager> managers = managerRepository.findAll();
-        return mapper.mapTo(managers);
+        return mapper.mapToDTO(managers);
     }
     
     public String delete(Long id){

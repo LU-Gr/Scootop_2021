@@ -6,10 +6,10 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
-import com.projet.scootop.domain.configuration.CompetitionType;
-import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.services.tools.video.SearchKeyWord;
 import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.model.configuration.CompetitionTypeDTO;
+import com.projet.scootop.model.services.EventDTO;
 
 public class VideoDTO {
 
@@ -23,18 +23,18 @@ public class VideoDTO {
     private String url;
 
     @Getter @Setter
-    private Event events;
-
-    @Getter @Setter
     private Date posted;
+    
+    @Getter @Setter
+    private EventDTO event;
 
     @Getter @Setter
-    private CompetitionType competition;
+    private CompetitionTypeDTO competitionType;
 
     @Getter @Setter
-    private List<SearchKeyWord> keyword;
-
+    private List<VideoViewDTO> views;
+    
     @Getter @Setter
-    private List<VideoViewDTO> view;
+    private List<SearchKeyWordDTO> keywords;
 
 }

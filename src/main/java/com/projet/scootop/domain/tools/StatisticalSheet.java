@@ -11,10 +11,12 @@ import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 //Feuille de stats pour un joueur
+@ToString
 @Entity
 @Table(name = "statisticalSheet")
 public class StatisticalSheet {

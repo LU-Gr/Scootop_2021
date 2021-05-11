@@ -46,12 +46,12 @@ public class Scoot {
 	joinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"))
     @Getter @Setter
-    private List<Shortlist> FollowedShortlists;
+    private List<Shortlist> followedShortlists;
 
     public Scoot(User user, List<Club> clubs, Shortlist shortlist) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.getTypes()) {
+        for (UserType userType: user.getUserTypes()) {
             if(userType.getType().equals("scoot")){
                 isCorrect=true;
             }

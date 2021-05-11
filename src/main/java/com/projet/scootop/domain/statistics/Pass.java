@@ -29,20 +29,20 @@ public class Pass {
     private Boolean isSuccess;
     
     @Getter @Setter
-    private Boolean longPass;
+    private Boolean isLongPass;
     
     @ManyToOne
     @Getter @Setter
-    private TouchType typeTouch;
+    private Player player;
     
     @ManyToOne
     @Getter @Setter
     private Match match;
-
+    
     @ManyToOne
     @Getter @Setter
-    private Player player;
-
+    private TouchType touchType;
+    
 
     public Pass() {
     }
@@ -52,9 +52,9 @@ public class Pass {
         this.match = matchSheet;
         this.minute = minute;
         this.player = player;
-        this.typeTouch = typeTouch;
+        this.touchType = typeTouch;
         this.decisive = decisive;
         this.isSuccess = isSuccess;
-        this.longPass = longPass;
+        this.isLongPass = longPass;
     }
 }

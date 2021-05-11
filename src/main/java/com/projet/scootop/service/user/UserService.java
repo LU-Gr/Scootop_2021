@@ -31,30 +31,32 @@ public class UserService {
     @Autowired private UserMapper mapper;
     
     public UserDTO addUser(UserDTO userDTO) {
+    	System.out.println(userDTO.toString());
         User user = mapper.mapTo(userDTO);
+        System.out.println(user.toString());
         //TODO: comprendre cette ligne
-        List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.getId()).orElse(null)).collect(Collectors.toList());
+        //List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.getId()).orElse(null)).collect(Collectors.toList());
         contactRepository.save(user.getContact());
-        user.getTypes().addAll(types);
+        //user.getTypes().addAll(types);
         userRepository.save(user);
-        return mapper.mapTo(user);
+        return mapper.mapToDTO(user);
     }
     
     public UserDTO update(UserDTO userDTO) {
     	User user = mapper.mapTo(userDTO);
         contactRepository.save(user.getContact());
         userRepository.save(user);
-        return mapper.mapTo(user);
+        return mapper.mapToDTO(user);
     }
     
     public UserDTO get(Long id){
         User user = userRepository.findById(id).orElse(null);
-        return mapper.mapTo(user);
+        return mapper.mapToDTO(user);
     }
 
     public List<UserDTO> getAll(){
         List<User> users = userRepository.findAll();
-        return mapper.mapTo(users);
+        return mapper.mapToDTO(users);
     }
 
 

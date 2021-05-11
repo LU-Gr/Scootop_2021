@@ -4,7 +4,9 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class UserDTO {
 	
 	@Getter @Setter
@@ -26,6 +28,6 @@ public class UserDTO {
     private ContactDTO contact;
     
     @Getter @Setter
-    private List<UserTypeDTO> types;
+    private List<UserTypeDTO> userTypes;
 
 }

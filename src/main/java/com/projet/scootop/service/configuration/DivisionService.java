@@ -38,12 +38,12 @@ public class DivisionService {
         if(division==null){
             return null;
         }
-        return divisionMapper.mapTo(division);
+        return divisionMapper.mapToDTO(division);
     }
     
     public List<DivisionDTO> getAll(){
         List<Division> divisions = divisionRepository.findAll();
-        return divisionMapper.mapTo(divisions);
+        return divisionMapper.mapToDTO(divisions);
     }
     
     public String delete(Long id){

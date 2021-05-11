@@ -20,26 +20,26 @@ public class ShootService {
     
     public ShootDTO add(ShootDTO shootDTO){
         Shoot shoot = mapper.mapTo(shootDTO);
-        matchSheetRepository.save(shoot.getMatchSheet());
+        matchSheetRepository.save(shoot.getMatch());
         shootRepository.save(shoot);
-        return mapper.mapTo(shoot);
+        return mapper.mapToDTO(shoot);
     }
     
     public ShootDTO get(Long id){
     	Shoot shoot = shootRepository.findById(id).orElse(null);
-        return mapper.mapTo(shoot);
+        return mapper.mapToDTO(shoot);
     }
     
     public ShootDTO update(ShootDTO shootDTO){ 
     	Shoot shoot = mapper.mapTo(shootDTO);
-        matchSheetRepository.save(shoot.getMatchSheet());
+        matchSheetRepository.save(shoot.getMatch());
         shootRepository.save(shoot);
-        return mapper.mapTo(shoot);
+        return mapper.mapToDTO(shoot);
     }
     
     public List<ShootDTO> getAll(){
     	List<Shoot> shoots = shootRepository.findAll();
-        return mapper.mapTo(shoots);
+        return mapper.mapToDTO(shoots);
     }
     
     public String delete(Long id){

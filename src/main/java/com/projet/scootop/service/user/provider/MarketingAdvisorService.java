@@ -22,7 +22,7 @@ public class MarketingAdvisorService {
     public MarketingAdvisorDTO add(MarketingAdvisorDTO marketingAdvisorDTO) throws Exception {
         MarketingAdvisor marketingAdvisor = mapper.mapTo(marketingAdvisorDTO);
         marketingAdvisorRepository.save(marketingAdvisor);
-        return mapper.mapTo(marketingAdvisor);
+        return mapper.mapToDTO(marketingAdvisor);
     }
     
     public MarketingAdvisorDTO get(Long id){
@@ -31,13 +31,13 @@ public class MarketingAdvisorService {
         if(marketingAdvisor==null){
             return null;
         }
-        return mapper.mapTo(marketingAdvisor);
+        return mapper.mapToDTO(marketingAdvisor);
     }
     
     public List<MarketingAdvisorDTO> getAll(){
 
         List<MarketingAdvisor> marketingAdvisors = marketingAdvisorRepository.findAll();
-        return mapper.mapTo(marketingAdvisors);
+        return mapper.mapToDTO(marketingAdvisors);
     }
     public String delete(Long id){
         MarketingAdvisor scoot = marketingAdvisorRepository.findById(id).orElse(null);

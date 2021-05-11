@@ -26,27 +26,26 @@ public class Video {
 
     @Getter @Setter
     private String url;
+    
+    @Getter @Setter
+    private Date posted;
+    
+    @ManyToOne
+    @Getter @Setter
+    private CompetitionType competitionType;
 
     @ManyToOne
     @Getter @Setter
-    private Event events;
-
-    @Getter @Setter
-    private Date posted;
-
-    @OneToOne
-    @Getter @Setter
-    private CompetitionType competition;
-
-    @ManyToMany
-    @Getter @Setter
-    private List<SearchKeyWord> keyword;
+    private Event event;
 
     @OneToMany
     @Getter @Setter
     @JoinColumn(name="video_id",referencedColumnName = "id")
-    private List<VideoView> view;
-
+    private List<VideoView> views;
+    
+    @ManyToMany
+    @Getter @Setter
+    private List<SearchKeyWord> keywords;
 
     public Video() {
     }

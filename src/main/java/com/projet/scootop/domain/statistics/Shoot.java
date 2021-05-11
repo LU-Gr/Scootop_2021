@@ -8,10 +8,10 @@ import com.projet.scootop.domain.user.domainuser.Player;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-
+@ToString
 @Entity
-@Table(name = "SHOOT")
 public class Shoot {
 
     @Id
@@ -21,21 +21,6 @@ public class Shoot {
     
     @Getter @Setter
     private int minute;
-    
-    @ManyToOne
-    @Getter @Setter
-    private Match matchSheet;
-    
-    @ManyToOne
-    @Getter @Setter
-    private TouchType typeTouch;
-    
-    @ManyToOne
-    @Getter @Setter
-    private Player player;
-    
-    @Getter @Setter
-    private int time;
     
     @Getter @Setter
     private Boolean isFreeKick;
@@ -54,17 +39,30 @@ public class Shoot {
     
     @OneToOne
     @Getter @Setter
-    private Pass passer;
+    private Pass pass;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Match match;
+    
+    @ManyToOne
+    @Getter @Setter
+    private TouchType touchType;
+    
+    @ManyToOne
+    @Getter @Setter
+    private Player player;
 
-    public Shoot(Match matchSheet, TouchType typeTouch, Player player, Boolean inBox, Boolean goal, Boolean aLong,Pass assist) {
+
+    public Shoot(Match matchSheet, TouchType typeTouch, Player player, Boolean inBox, Boolean goal, Boolean aLong,Pass pass) {
         super();
-        this.matchSheet = matchSheet;
-        this.typeTouch = typeTouch;
+        this.match = matchSheet;
+        this.touchType = typeTouch;
         this.player = player;
         this.isPenaltyBox = inBox;
         this.isGoal = goal;
         this.isLongShoot = aLong;
-        this.passer = assist;
+        this.pass = pass;
     }
 
     public Shoot() {

@@ -47,14 +47,14 @@ public class User {
    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
    	inverseJoinColumns = @JoinColumn(name = "user_type_id", referencedColumnName = "id"))
     @Getter @Setter
-    private List<UserType> types;
+    private List<UserType> userTypes;
 
     public User(String name, String firstName, Contact contact) {
         super();
         this.lastName = name;
         this.firstName = firstName;
         this.contact = contact;
-        this.types=new ArrayList<>();
+        this.userTypes=new ArrayList<>();
     }
 
     public User() {

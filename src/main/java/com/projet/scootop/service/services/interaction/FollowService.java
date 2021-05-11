@@ -20,7 +20,7 @@ public class FollowService {
     public FollowDTO add(FollowDTO followDTO){
         Follow follow = mapper.mapTo(followDTO);
         followRepository.save(follow);
-        return followDTO;
+        return mapper.mapToDTO(follow);
     }
     
     public FollowDTO get(Long id){
@@ -28,13 +28,13 @@ public class FollowService {
         if(follow==null){
             return null;
         }
-        return mapper.mapTo(follow);
+        return mapper.mapToDTO(follow);
     }
     
     public List<FollowDTO> getAll(){
 
         List<Follow> follows = followRepository.findAll();
-        return mapper.mapTo(follows);
+        return mapper.mapToDTO(follows);
     }
     
     public String delete(Long id){

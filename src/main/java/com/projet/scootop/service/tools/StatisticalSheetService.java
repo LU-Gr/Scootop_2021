@@ -34,7 +34,7 @@ public class StatisticalSheetService {
         skillRepository.saveAll(statisticalSheet.getActions());
         goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
-        return mapper.mapTo(statisticalSheet);
+        return mapper.mapToDTO(statisticalSheet);
     }
     
     public StatisticalSheetDTO update(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
@@ -44,12 +44,12 @@ public class StatisticalSheetService {
         skillRepository.saveAll(statisticalSheet.getActions());
         goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
-        return mapper.mapTo(statisticalSheet);
+        return mapper.mapToDTO(statisticalSheet);
     }
     
     public StatisticalSheetDTO get(Long id){
     	StatisticalSheet statisticalSheet = statisticalSheetRepository.findById(id).orElse(null);
-    	return mapper.mapTo(statisticalSheet);
+    	return mapper.mapToDTO(statisticalSheet);
     }
 
 
@@ -58,12 +58,12 @@ public class StatisticalSheetService {
         if(statisticalSheet==null){
             return null;
         }
-        return mapper.mapTo(statisticalSheet);
+        return mapper.mapToDTO(statisticalSheet);
     }
 
     public List<StatisticalSheetDTO> getAll(){
     	List<StatisticalSheet> statisticalSheets = statisticalSheetRepository.findAll();
-    	return mapper.mapTo(statisticalSheets);
+    	return mapper.mapToDTO(statisticalSheets);
     }
     
     public ResponseEntity<Integer> delete(Long id){

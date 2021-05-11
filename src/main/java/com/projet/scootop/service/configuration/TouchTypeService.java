@@ -21,24 +21,24 @@ public class TouchTypeService {
     public TouchTypeDTO add(TouchTypeDTO typeTouchDTO) {
         TouchType typeTouch = mapper.mapTo(typeTouchDTO);
         typeTouchRepository.save(typeTouch);
-        return mapper.mapTo(typeTouch);
+        return mapper.mapToDTO(typeTouch);
 
     }
     
     public TouchTypeDTO update(TouchTypeDTO typeTouchDTO) {
         TouchType typeTouch = mapper.mapTo(typeTouchDTO);
         typeTouchRepository.save(typeTouch);
-        return mapper.mapTo(typeTouch);
+        return mapper.mapToDTO(typeTouch);
     }
     
     public TouchTypeDTO get(Long id){
     	TouchType typeTouch = typeTouchRepository.findById(id).orElse(null);
-        return mapper.mapTo(typeTouch);
+        return mapper.mapToDTO(typeTouch);
     }
     
     public List<TouchTypeDTO> getAll(){
     	List<TouchType> typeTouches = typeTouchRepository.findAll();
-        return mapper.mapTo(typeTouches);
+        return mapper.mapToDTO(typeTouches);
     }
     
     public ResponseEntity<Integer> delete(Long id){

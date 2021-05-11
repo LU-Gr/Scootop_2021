@@ -27,7 +27,7 @@ public class ScootService {
 	  Scoot scoot = mapper.mapTo(scootDTO);
 	  userRepository.save(scoot.getUser());
 	  scootRepository.save(scoot);
-	  return mapper.mapTo(scoot);
+	  return mapper.mapToDTO(scoot);
   }
   
   public ScootDTO get(Long id){
@@ -35,24 +35,24 @@ public class ScootService {
     if(scoot==null){
       return null;
     }
-    return mapper.mapTo(scoot);
+    return mapper.mapToDTO(scoot);
   }
   
   public List<ScootDTO> getAll(){
 	  List<Scoot> scoots = scootRepository.findAll();
-	  return mapper.mapTo(scoots);
+	  return mapper.mapToDTO(scoots);
   }
 
   
   public List<ScootDTO> getAllByMatchSheetId(Long matchSheetId){
     List<Scoot> scoots = scootRepository.findAllById(matchSheetId);
-    return mapper.mapTo(scoots);
+    return mapper.mapToDTO(scoots);
   }
 
   public ScootDTO update(ScootDTO scootDTO,Long id) throws Exception {
 	  Scoot scoot = mapper.mapTo(scootDTO);
 	  scootRepository.save(scoot);
-	  return mapper.mapTo(scoot);
+	  return mapper.mapToDTO(scoot);
   }
 
   public String delete(Long id){

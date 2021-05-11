@@ -39,7 +39,7 @@ public class Coach {
     public Coach(User user, List<Team> teams) throws Exception {
         super();
         boolean isCorrect=false;
-        for (UserType userType: user.getTypes()) {
+        for (UserType userType: user.getUserTypes()) {
             if(userType.getType().equals("coach")){
                 isCorrect=true;
             }

@@ -2,34 +2,28 @@ package com.projet.scootop.model.configuration;
 
 import java.util.List;
 
+import com.projet.scootop.model.tools.SaisonDTO;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@ToString
 public class LeagueDTO {
-    public Long id;
-    public String name;
-    public List<DivisionDTO> divisions;
+	
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+	private String name;
+	
+	@Getter @Setter
+	private List<DivisionDTO> divisions;
+	
+	@Getter @Setter
+    private CompetitionTypeDTO competitionType;
+	
+	@Getter @Setter
+	private SaisonDTO saison;
 
-    public static LeagueDTO create(Long id, String name, List<DivisionDTO> divisions) {
-        LeagueDTO league = new LeagueDTO();
-        league.id = id;
-        league.name = name;
-        league.divisions = divisions;
-
-        return league;
-    }
-    public static LeagueDTO get(Long id, String name, List<DivisionDTO> divisions) {
-        LeagueDTO league = new LeagueDTO();
-        league.id = id;
-        league.name = name;
-        league.divisions = divisions;
-
-        return league;
-    }
-
-    @Override
-    public String toString() {
-        return "LeagueDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", divisions=" + divisions +
-                '}';
-    }
 }

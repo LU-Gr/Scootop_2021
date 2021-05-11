@@ -3,10 +3,10 @@ package com.projet.scootop.model.services;
 
 import java.util.List;
 
-import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
-import com.projet.scootop.domain.user.domainuser.Player;
-import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.model.tools.TeamDTO;
+import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domainuser.ScootDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,13 +20,13 @@ public class ShortlistDTO {
 	private User user;
 	
 	@Getter @Setter
-	private List <Player> Players;
+	private List <PlayerDTO> Players;
 	
 	@Getter @Setter
-	private List <Scoot> Scoots;
+	private List <ScootDTO> Scoots;
 	
 	@Getter @Setter
-	private List <Team> Teams;
+	private List <TeamDTO> Teams;
 	
 	@Getter @Setter
 	private int rank;

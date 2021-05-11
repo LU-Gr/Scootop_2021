@@ -25,7 +25,7 @@ public class LocationWearableService {
         playerRepository.save(wearable.getPlayer());
         teamRepository.save(wearable.getTeam());
         wearableRepository.save(wearable);
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
     public LocationWearableDTO get(Long id){
@@ -33,7 +33,7 @@ public class LocationWearableService {
         if(wearable==null){
             return null;
         }
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
     public LocationWearableDTO getOneByMatchSheetAndTeamAndPlayer(Long matchsheetId,Long teamId, Long playersId){
@@ -41,7 +41,7 @@ public class LocationWearableService {
         if(wearable==null){
             return null;
         }
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
     public LocationWearableDTO update(LocationWearableDTO wearableDTO){
@@ -49,17 +49,17 @@ public class LocationWearableService {
         playerRepository.save(wearable.getPlayer());
         teamRepository.save(wearable.getTeam());
         wearableRepository.save(wearable);
-        return mapper.mapTo(wearable);
+        return mapper.mapToDTO(wearable);
     }
 
     public List<LocationWearableDTO> getAll(){
         List<LocationWearable> wearables = wearableRepository.findAll();
-        return mapper.mapTo(wearables);
+        return mapper.mapToDTO(wearables);
     }
 
     public List<LocationWearableDTO> getAllByMatchSheetAndTeam(Long matchSheet, Long team){
         List<LocationWearable> wearables = wearableRepository.findAllByMatchAndTeam(matchSheet,team);
-        return mapper.mapTo(wearables);
+        return mapper.mapToDTO(wearables);
     }
 
 

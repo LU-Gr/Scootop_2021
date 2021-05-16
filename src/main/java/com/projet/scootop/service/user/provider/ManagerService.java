@@ -50,4 +50,10 @@ public class ManagerService {
         return "Deleted";
     }
 
+	public ManagerDTO update(ManagerDTO managerDTO) {
+		Manager manager = mapper.mapTo(managerDTO);
+        managerRepository.save(manager);
+        return mapper.mapToDTO(manager);
+	}
+
 }

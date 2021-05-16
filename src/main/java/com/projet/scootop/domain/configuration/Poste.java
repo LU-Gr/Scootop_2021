@@ -2,7 +2,7 @@ package com.projet.scootop.domain.configuration;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;

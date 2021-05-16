@@ -18,29 +18,14 @@ import java.util.List;
 public class LeagueService {
 	
     @Autowired private LeagueRepository leagueRepository;
-    
     @Autowired private DivisionRepository divisionsRepository;
-    
-    @Autowired private LeagueMapper lMapper;
+    @Autowired private LeagueMapper mapper;
 
     public LeagueDTO add(LeagueDTO leagueDTO){
-        List<DivisionDTO> divisionsDTOS = leagueDTO.getDivisions();
-        ArrayList<Division> divisions =  new ArrayList<>();
-        League newLeague = new League(leagueDTO.getName());
-        League league=leagueRepository.save(newLeague);
-        for (DivisionDTO divisionDTO: divisionsDTOS) {
-            League league1=leagueRepository.findById(league.getId()).orElse(null);
-            Division newDivision = new Division(divisionDTO.getName());
-            league1.getDivisions().add(newDivision);
-            divisionsRepository.save(newDivision);
-            //divisionsService.add(divisionDTO,league.id);
-            //Divisions newDivision = new Divisions(divisionDTO.name);
-
-            //league.divisions.add(newDivision);
-            //divisionsRepository.save(newDivision);
-
-        }
-        return leagueDTO;
+    	League league = mapper.mapTo(leagueDTO);
+    	divisionsRepository.saveAll(league.getDivisions());
+        leagueRepository.save(league); 
+        return mapper.mapToDTO(league);
     }
     
     public LeagueDTO get(Long id){
@@ -49,13 +34,13 @@ public class LeagueService {
         if(league==null){
             return null;
         }
-        return lMapper.mapToDTO(league);
+        return mapper.mapToDTO(league);
         
     }
     
     public List<LeagueDTO> getAll(){
         List<League> leagues = leagueRepository.findAll();
-        return lMapper.mapToDTO(leagues); 
+        return mapper.mapToDTO(leagues); 
     }
     
     
@@ -71,4 +56,11 @@ public class LeagueService {
 
         return "Deleted";
     }
+
+	public LeagueDTO update(LeagueDTO leagueDTO) {
+		League league = mapper.mapTo(leagueDTO);
+    	divisionsRepository.saveAll(league.getDivisions());
+        leagueRepository.save(league); 
+        return mapper.mapToDTO(league);
+	}
 }

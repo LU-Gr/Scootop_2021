@@ -7,7 +7,7 @@ import lombok.ToString;
 import java.util.List;
 
 import com.projet.scootop.model.user.ContactDTO;
-import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.model.user.domain.ScootDTO;
 
 @ToString
 public class ClubDTO {

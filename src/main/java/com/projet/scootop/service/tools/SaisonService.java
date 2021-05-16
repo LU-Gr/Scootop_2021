@@ -16,7 +16,7 @@ public class SaisonService {
     @Autowired private SaisonRepository saisonRepository;
     @Autowired private SaisonMapper mapper;
     
-    public SaisonDTO addSaison(SaisonDTO saisonDTO) {
+    public SaisonDTO add(SaisonDTO saisonDTO) {
         Saison saison = mapper.mapTo(saisonDTO);
         saisonRepository.save(saison);
         return mapper.mapToDTO(saison);

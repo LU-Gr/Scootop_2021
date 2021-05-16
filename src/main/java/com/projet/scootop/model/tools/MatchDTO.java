@@ -5,7 +5,7 @@ import java.util.List;
 import com.projet.scootop.model.configuration.StadeDTO;
 import com.projet.scootop.model.services.EventDTO;
 import com.projet.scootop.model.services.LocationWearableDTO;
-import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.model.user.domain.ScootDTO;
 
 import lombok.Getter;
 import lombok.Setter;

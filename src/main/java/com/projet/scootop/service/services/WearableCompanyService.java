@@ -38,7 +38,7 @@ public class WearableCompanyService {
         return mapper.mapToDTO(wearableSociety);
     }
 
-    public WearableCompanyDTO update(WearableCompanyDTO wearableSocietyDTO, Long id){
+    public WearableCompanyDTO update(WearableCompanyDTO wearableSocietyDTO){
     	WearableCompany wearableSociety = mapper.mapTo(wearableSocietyDTO);
         contactRepository.save(wearableSociety.getContact());
         wearableSocietyRepository.save(wearableSociety);

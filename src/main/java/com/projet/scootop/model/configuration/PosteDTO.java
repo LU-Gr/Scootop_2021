@@ -2,8 +2,8 @@ package com.projet.scootop.model.configuration;
 
 import java.util.List;
 
-import com.projet.scootop.domain.user.domainuser.Player;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.domain.user.domain.Player;
+import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
 import lombok.Setter;

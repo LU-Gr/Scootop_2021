@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.projet.scootop.domain.services.tools.video.SearchKeyWord;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.model.configuration.CompetitionTypeDTO;
 import com.projet.scootop.model.services.EventDTO;
 

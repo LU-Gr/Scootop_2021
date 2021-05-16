@@ -9,8 +9,8 @@ import com.projet.scootop.model.services.ShortlistDTO;
 import com.projet.scootop.repository.services.ShortlistRepository;
 import com.projet.scootop.repository.tools.TeamRepository;
 import com.projet.scootop.repository.user.UserRepository;
-import com.projet.scootop.repository.user.domainuser.PlayerRepository;
-import com.projet.scootop.repository.user.domainuser.ScootRepository;
+import com.projet.scootop.repository.user.domain.PlayerRepository;
+import com.projet.scootop.repository.user.domain.ScootRepository;
 
 import java.util.List;
 
@@ -61,4 +61,10 @@ public class ShortlistService {
 
         return "Deleted";
     }
+
+	public ShortlistDTO update(ShortlistDTO shortlistDTO) {
+		Shortlist shortlist = mapper.mapTo(shortlistDTO);
+		shortlistRepository.save(shortlist);
+        return mapper.mapToDTO(shortlist);
+	}
 }

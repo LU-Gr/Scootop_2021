@@ -12,7 +12,7 @@ import com.projet.scootop.repository.tools.MatchRepository;
 import com.projet.scootop.repository.tools.SaisonRepository;
 import com.projet.scootop.repository.tools.StatisticalSheetRepository;
 import com.projet.scootop.repository.tools.TeamRepository;
-import com.projet.scootop.repository.user.domainuser.ScootRepository;
+import com.projet.scootop.repository.user.domain.ScootRepository;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class MatchService {
     @Autowired private SaisonRepository saisonRepository;
     @Autowired private MatchMapper mapper;
 
-    public MatchDTO add(MatchDTO matchSheetDTO) throws Exception {
+    public MatchDTO add(MatchDTO matchSheetDTO){
     	Match matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());
@@ -38,7 +38,7 @@ public class MatchService {
         return mapper.mapToDTO(matchSheet);
     }
     
-    public MatchDTO update(MatchDTO matchSheetDTO) throws Exception {
+    public MatchDTO update(MatchDTO matchSheetDTO){
     	Match matchSheet = mapper.mapTo(matchSheetDTO);
         scootRepository.saveAll(matchSheet.getScoots());
         statisticalSheetRepository.saveAll(matchSheet.getStatisticalSheetsTeamA());

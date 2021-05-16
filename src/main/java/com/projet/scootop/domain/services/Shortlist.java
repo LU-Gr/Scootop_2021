@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
-import com.projet.scootop.domain.user.domainuser.Player;
-import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.domain.user.domain.Player;
+import com.projet.scootop.domain.user.domain.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;

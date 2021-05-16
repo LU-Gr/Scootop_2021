@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.projet.scootop.model.services.EventDTO;
 import com.projet.scootop.model.tools.SaisonDTO;
 import com.projet.scootop.model.user.UserDTO;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
 import lombok.Setter;

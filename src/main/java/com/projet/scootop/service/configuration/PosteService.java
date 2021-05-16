@@ -33,7 +33,7 @@ public class PosteService {
         return mapper.mapToDTO(poste);
     }
     
-    public PosteDTO update(PosteDTO posteDTO, Long id) {
+    public PosteDTO update(PosteDTO posteDTO) {
         Poste poste = mapper.mapTo(posteDTO);
         posteRepository.save(poste);
         return mapper.mapToDTO(poste);

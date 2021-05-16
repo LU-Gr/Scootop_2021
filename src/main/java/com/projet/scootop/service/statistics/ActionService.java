@@ -37,4 +37,10 @@ public class ActionService {
         return "Deleted";
     }
 
+	public ActionDTO update(ActionDTO actionDTO) {
+		Action action = mapper.mapTo(actionDTO);
+        actionRepository.save(action);
+        return mapper.mapToDTO(action);
+	}
+
 }

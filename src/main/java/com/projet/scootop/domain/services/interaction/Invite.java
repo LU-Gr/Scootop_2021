@@ -5,7 +5,7 @@ import javax.persistence.*;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.user.User;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -6,7 +6,7 @@ import com.projet.scootop.domain.services.tools.video.Video;
 import com.projet.scootop.domain.tools.Competition;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
-import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.domain.user.domain.Scoot;
 import com.projet.scootop.domain.user.provider.Analyst;
 import com.projet.scootop.domain.user.provider.Cameraman;
 

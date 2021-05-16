@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.configuration.TouchType;
 import com.projet.scootop.domain.tools.Match;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.tools.StatisticalSheet;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -40,6 +41,10 @@ public class Shoot {
     @OneToOne
     @Getter @Setter
     private Pass pass;
+    
+    @ManyToOne
+    @Getter @Setter
+    private StatisticalSheet statisticalSheet;
     
     @ManyToOne
     @Getter @Setter

@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.tools.Club;
-import com.projet.scootop.domain.tools.Team;
-import com.projet.scootop.domain.user.domainuser.Scoot;
 import com.projet.scootop.mappers.tools.ClubMapper;
 import com.projet.scootop.model.tools.ClubDTO;
 import com.projet.scootop.repository.tools.ClubRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +22,7 @@ public class ClubService {
         return clubMapper.mapToDTO(club);
 
     }
-    public ClubDTO update(ClubDTO clubDTO,Integer id){
+    public ClubDTO update(ClubDTO clubDTO){
     	Club club = clubMapper.mapTo(clubDTO);
         clubRepository.save(club);
         return clubMapper.mapToDTO(club); 

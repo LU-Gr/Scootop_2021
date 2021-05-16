@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.projet.scootop.domain.tools.Match;
 import com.projet.scootop.domain.tools.Team;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;

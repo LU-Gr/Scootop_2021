@@ -49,4 +49,10 @@ public class MarketingAdvisorService {
         return "Deleted";
     }
 
+	public MarketingAdvisorDTO update(MarketingAdvisorDTO marketingAdvisorDTO) {
+		 MarketingAdvisor marketingAdvisor = mapper.mapTo(marketingAdvisorDTO);
+	     marketingAdvisorRepository.save(marketingAdvisor);
+	     return mapper.mapToDTO(marketingAdvisor);      
+	}
+
 }

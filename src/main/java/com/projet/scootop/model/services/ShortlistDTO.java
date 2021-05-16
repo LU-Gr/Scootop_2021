@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.model.tools.TeamDTO;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
-import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.model.user.domain.PlayerDTO;
+import com.projet.scootop.model.user.domain.ScootDTO;
 
 import lombok.Getter;
 import lombok.Setter;

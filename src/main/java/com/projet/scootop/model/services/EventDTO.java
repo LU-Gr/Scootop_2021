@@ -7,7 +7,7 @@ import com.projet.scootop.model.services.tools.video.VideoDTO;
 import com.projet.scootop.model.tools.CompetitionDTO;
 import com.projet.scootop.model.tools.SaisonDTO;
 import com.projet.scootop.model.tools.TeamDTO;
-import com.projet.scootop.model.user.domainuser.ScootDTO;
+import com.projet.scootop.model.user.domain.ScootDTO;
 import com.projet.scootop.model.user.provider.AnalysteDTO;
 import com.projet.scootop.model.user.provider.CameramanDTO;
 

@@ -27,7 +27,7 @@ public class StatisticalSheetService {
 	@Autowired private StatisticalSheetMapper mapper;
 	
 	
-    public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
+    public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO){
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
         shootRepository.saveAll(statisticalSheet.getShoots());
         passRepository.saveAll(statisticalSheet.getPasses());
@@ -37,7 +37,7 @@ public class StatisticalSheetService {
         return mapper.mapToDTO(statisticalSheet);
     }
     
-    public StatisticalSheetDTO update(StatisticalSheetDTO statisticalSheetDTO) throws Exception {
+    public StatisticalSheetDTO update(StatisticalSheetDTO statisticalSheetDTO){
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
         shootRepository.saveAll(statisticalSheet.getShoots());
         passRepository.saveAll(statisticalSheet.getPasses());

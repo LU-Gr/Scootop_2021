@@ -29,7 +29,7 @@ public class WearableService {
         return mapper.mapToDTO(wearable);
     }
 
-    public WearableDTO update(WearableDTO wearableDTO, Long id){
+    public WearableDTO update(WearableDTO wearableDTO){
     	Wearable wearable = mapper.mapTo(wearableDTO);
         wearableRepository.save(wearable);
         return mapper.mapToDTO(wearable);

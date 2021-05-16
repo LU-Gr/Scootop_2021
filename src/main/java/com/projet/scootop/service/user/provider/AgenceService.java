@@ -48,4 +48,10 @@ public class AgenceService {
         return "Deleted";
     }
 
+	public AgenceDTO update(AgenceDTO agenceDTO) {
+		Agence agence = mapper.mapTo(agenceDTO);
+        agenceRepository.save(agence);
+        return mapper.mapToDTO(agence);
+	}
+
 }

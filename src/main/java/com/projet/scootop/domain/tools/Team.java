@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.configuration.Category;
 import com.projet.scootop.domain.configuration.CompetitionType;
-import com.projet.scootop.domain.user.domainuser.Coach;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Coach;
+import com.projet.scootop.domain.user.domain.Player;
 
 import java.time.LocalDate;
 import java.util.List;

@@ -3,7 +3,7 @@ package com.projet.scootop.domain.tools;
 import javax.persistence.*;
 
 import com.projet.scootop.domain.user.Contact;
-import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.domain.user.domain.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -47,8 +47,7 @@ public class Club {
 
 
     public Club() {
-    	//this.scoots = new ArrayList<>();
-    	//this.teams = new ArrayList<>();
+
     }
 
     public Club(String name, Contact contact, String colorInside, String colorOutSide, List<Team> teams, List<Scoot> scoots) throws Exception {

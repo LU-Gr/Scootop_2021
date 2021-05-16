@@ -10,7 +10,7 @@ import com.projet.scootop.mappers.services.LocationWearableMapper;
 import com.projet.scootop.model.services.LocationWearableDTO;
 import com.projet.scootop.repository.services.LocationWearableRepository;
 import com.projet.scootop.repository.tools.TeamRepository;
-import com.projet.scootop.repository.user.domainuser.PlayerRepository;
+import com.projet.scootop.repository.user.domain.PlayerRepository;
 
 @Service
 public class LocationWearableService {

@@ -5,8 +5,8 @@ import javax.persistence.*;
 import com.projet.scootop.domain.configuration.Stade;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.services.LocationWearable;
-import com.projet.scootop.domain.user.domainuser.Player;
-import com.projet.scootop.domain.user.domainuser.Scoot;
+import com.projet.scootop.domain.user.domain.Player;
+import com.projet.scootop.domain.user.domain.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;

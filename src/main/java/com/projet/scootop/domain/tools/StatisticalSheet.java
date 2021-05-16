@@ -7,7 +7,7 @@ import com.projet.scootop.domain.statistics.Action;
 import com.projet.scootop.domain.statistics.Goal;
 import com.projet.scootop.domain.statistics.Pass;
 import com.projet.scootop.domain.statistics.Shoot;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;

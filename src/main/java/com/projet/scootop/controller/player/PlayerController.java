@@ -7,16 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projet.scootop.model.tools.StatisticalSheetDTO;
-import com.projet.scootop.model.user.domainuser.FicheJoueurDTO;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domain.FicheJoueurDTO;
+import com.projet.scootop.model.user.domain.PlayerDTO;
 import com.projet.scootop.service.tools.StatisticalSheetService;
-import com.projet.scootop.service.user.domainuser.PlayerService;
+import com.projet.scootop.service.user.domain.PlayerService;
 
 
 @RestController
+@RequestMapping("/player")
 public class PlayerController {
 	
 	@Autowired PlayerService playerService;

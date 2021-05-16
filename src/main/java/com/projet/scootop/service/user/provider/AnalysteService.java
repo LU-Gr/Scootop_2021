@@ -48,4 +48,10 @@ public class AnalysteService {
         return "Deleted";
     }
 
+	public AnalysteDTO update(AnalysteDTO analysteDTO) {
+		Analyst analyste = mapper.mapTo(analysteDTO);
+        analysteRepository.save(analyste);
+        return mapper.mapToDTO(analyste);
+	}
+
 }

@@ -9,8 +9,8 @@ import java.util.List;
 import com.projet.scootop.domain.configuration.CompetitionType;
 import com.projet.scootop.model.configuration.CategoryDTO;
 import com.projet.scootop.model.configuration.CompetitionTypeDTO;
-import com.projet.scootop.model.user.domainuser.CoachDTO;
-import com.projet.scootop.model.user.domainuser.PlayerDTO;
+import com.projet.scootop.model.user.domain.CoachDTO;
+import com.projet.scootop.model.user.domain.PlayerDTO;
 
 @ToString
 public class TeamDTO {

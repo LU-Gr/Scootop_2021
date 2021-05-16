@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 import com.projet.scootop.domain.configuration.ActionType;
 import com.projet.scootop.domain.tools.Match;
-import com.projet.scootop.domain.user.domainuser.Player;
+import com.projet.scootop.domain.tools.StatisticalSheet;
+import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +36,10 @@ public class Action {
     @JoinColumn
     @Getter @Setter
     private ActionType actionType;
+    
+    @ManyToOne
+    @Getter @Setter
+    private StatisticalSheet statisticalSheet;
 
     @ManyToOne
     @Getter @Setter

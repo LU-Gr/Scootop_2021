@@ -1,58 +1,69 @@
 package com.projet.scootop.controller;
 
-import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.projet.scootop.model.services.tools.AgenceTypeDTO;
+import com.projet.scootop.model.services.tools.PrestationTypeDTO;
+import com.projet.scootop.service.services.tools.AgenceTypeService;
+import com.projet.scootop.service.services.tools.PrestationTypeService;
+
+@RequestMapping("/services/tools")
 @RestController
 public class ServiceToolsController {
+	
+	@Autowired AgenceTypeService agenceTypeService;
+	@Autowired PrestationTypeService prestationTypeService;
 
-    @GetMapping("api/agence_types")
-    String getAllAgenceType(){
-        String agence = "[{\"name\": \"Gestions d'image & Marketing\"}]";
-        return agence;
+    @GetMapping("/agence/types")
+    List<AgenceTypeDTO> getAllAgenceType(){
+        return agenceTypeService.getAll();
     }
-    @GetMapping("api/agence_type/{id}")
-    String getAgenceType(@PathVariable("id") int id){
-        String agence = "{\"name\": \"Gestions d'image & Marketing\"}";
-        return agence;
+    @GetMapping("/agence/type/{id}")
+    AgenceTypeDTO getAgenceType(@PathVariable("id") Long id){
+        return agenceTypeService.get(id);
     }
-    @PutMapping("api/agence_type/{id}")
-    String updateAgenceType(@RequestBody String body,@PathVariable("id") int id){
-        String agence = body;
-        return agence;
+    @PutMapping("/agence/type")
+    AgenceTypeDTO updateAgenceType(@RequestBody AgenceTypeDTO body){
+        return agenceTypeService.update(body);
     }
-    @PostMapping("api/agence_type")
-    String addAgenceType(@RequestBody String body){
-        String agence = body;
-        return agence;
+    @PostMapping("/agence/type")
+    AgenceTypeDTO addAgenceType(@RequestBody AgenceTypeDTO body){
+        return agenceTypeService.add(body);
     }
-    @DeleteMapping("api/agence_type/{id}")
-    String deleteAgenceType(@PathVariable("id") int id) {
+    @DeleteMapping("/agence/type/{id}")
+    String deleteAgenceType(@PathVariable("id") Long id) {
         return "delete";
     }
 
 
-    @GetMapping("api/prestations")
-    String getAllPrestationType(){
-        String prestationtype = "[{\"name\": \"Marketing\"}]";
-        return prestationtype;
+    @GetMapping("/prestations")
+    List<PrestationTypeDTO> getAllPrestationType(){
+        return prestationTypeService.getAll();
     }
-    @GetMapping("api/prestation/{id}")
-    String getPrestationType(@PathVariable("id") int id){
-        String prestationtype = "{\"name\": \"Marketing\"}";
-        return prestationtype;
+    @GetMapping("/prestation/{id}")
+    PrestationTypeDTO getPrestationType(@PathVariable("id") Long id){
+        return prestationTypeService.get(id);
     }
-    @PutMapping("api/prestation/{id}")
-    String updatePrestationType(@RequestBody String body,@PathVariable("id") int id){
-        String prestationtype = body;
-        return prestationtype;
+    @PutMapping("/prestation")
+    PrestationTypeDTO updatePrestationType(@RequestBody PrestationTypeDTO body){
+        return prestationTypeService.update(body);
     }
-    @PostMapping("api/prestation")
-    String addPrestationType(@RequestBody String body){
-        String prestationtype = body;
-        return prestationtype;
+    @PostMapping("/prestation")
+    PrestationTypeDTO addPrestationType(@RequestBody PrestationTypeDTO body){
+        return prestationTypeService.add(body);
     }
-    @DeleteMapping("api/prestation/{id}")
-    String deletePrestationType(@PathVariable("id") int id) {
+    @DeleteMapping("/prestation/{id}")
+    String deletePrestationType(@PathVariable("id") Long id) {
         return "delete";
     }
 

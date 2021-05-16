@@ -14,16 +14,11 @@ import java.util.List;
 @Service
 public class CategoryService {
 	
-    @Autowired
-    public CategoryRepository categoryRepository;
-    @Autowired
-    public CategoryTypeRepository categoryTypeRepository;
-    
-    @Autowired
-    private CategoryMapper categoryMapper;
+    @Autowired private CategoryRepository categoryRepository;
+    @Autowired private CategoryTypeRepository categoryTypeRepository;
+    @Autowired private CategoryMapper categoryMapper;
 
     public CategoryDTO add(CategoryDTO categoryDTO){
-        
         Category category = categoryMapper.mapTo(categoryDTO);
         categoryTypeRepository.save(category.getCategoryType());
         categoryRepository.save(category);
@@ -38,14 +33,14 @@ public class CategoryService {
         return categoryMapper.mapToDTO(category);
     }
 
-    public CategoryDTO update(CategoryDTO categoryDTO,Integer id){
+    public CategoryDTO update(CategoryDTO categoryDTO){
         
         Category category = categoryMapper.mapTo(categoryDTO);
         categoryTypeRepository.save(category.getCategoryType());
-        category.setId(id);
         categoryRepository.save(category);
         return categoryMapper.mapToDTO(category);   
     }
+    
     public CategoryDTO updateEntity(Category category){
         categoryTypeRepository.save(category.getCategoryType());
         categoryRepository.save(category);

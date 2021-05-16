@@ -15,7 +15,6 @@ import java.util.List;
 public class ActionTypeService {
 	
     @Autowired private ActionTypeRepository skillRepository;
-    
     @Autowired private ActionTypeMapper mapper;
     
     public ActionTypeDTO addSkill(ActionTypeDTO skillsDTO) {
@@ -50,5 +49,11 @@ public class ActionTypeService {
 
         return "Deleted";
     }
+
+	public ActionTypeDTO update(ActionTypeDTO body) {
+		ActionType actionType = mapper.mapTo(body);
+        skillRepository.save(actionType);
+        return mapper.mapToDTO(actionType);
+	}
 
 }

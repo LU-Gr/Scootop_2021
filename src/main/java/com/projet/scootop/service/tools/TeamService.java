@@ -8,8 +8,8 @@ import com.projet.scootop.mappers.tools.TeamMapper;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.repository.configuration.CategoryRepository;
 import com.projet.scootop.repository.tools.TeamRepository;
-import com.projet.scootop.repository.user.domainuser.CoachRepository;
-import com.projet.scootop.repository.user.domainuser.PlayerRepository;
+import com.projet.scootop.repository.user.domain.CoachRepository;
+import com.projet.scootop.repository.user.domain.PlayerRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,7 +23,7 @@ public class TeamService {
     @Autowired private CategoryRepository categoryRepository;
     @Autowired private TeamMapper mapper;
     
-    public TeamDTO addTeam(TeamDTO teamDTO) throws Exception {
+    public TeamDTO add(TeamDTO teamDTO){
     	
     	Team team = mapper.mapTo(teamDTO);
         coachRepository.saveAll(team.getCoaches());
@@ -32,7 +32,7 @@ public class TeamService {
         return mapper.mapToDTO(team);
 
     }
-    public TeamDTO update(TeamDTO teamDTO,Long id) throws Exception {
+    public TeamDTO update(TeamDTO teamDTO){
     	Team team = mapper.mapTo(teamDTO);
         coachRepository.saveAll(team.getCoaches());
         categoryRepository.save(team.getCategory());

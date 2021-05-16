@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.model.user.domain.CoachDTO;
+import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 import com.projet.scootop.model.user.domain.ScootDTO;
 import com.projet.scootop.service.user.domain.ChairmanService;
@@ -79,6 +80,11 @@ public class UserDomainController {
     PlayerDTO getPlayer(@PathVariable Long id){
         return playerService.get(id);
     }
+    
+    @GetMapping("/player/fiche")
+	FicheJoueurDTO getFicheJoueur(@RequestBody FicheJoueurDTO params) {
+		return playerService.getFicheJoueur(params);
+	}
     
     @GetMapping("/coach/{id}")
     CoachDTO getCoach(@PathVariable Long id){

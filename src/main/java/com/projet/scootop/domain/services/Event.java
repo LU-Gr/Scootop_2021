@@ -2,6 +2,7 @@ package com.projet.scootop.domain.services;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.services.tools.video.Video;
 import com.projet.scootop.domain.tools.Competition;
 import com.projet.scootop.domain.tools.Saison;
@@ -41,6 +42,7 @@ public class Event {
     @OneToMany
     @JoinColumn(name = "event_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties("event")
     private List<Video> videos;
     
     @ManyToOne

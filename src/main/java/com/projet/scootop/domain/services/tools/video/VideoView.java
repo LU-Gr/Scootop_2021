@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class VideoView {
 
     @Getter @Setter
     @OneToOne
+    @JsonIgnoreProperties("views")
     private Video video;
     
     @Getter @Setter

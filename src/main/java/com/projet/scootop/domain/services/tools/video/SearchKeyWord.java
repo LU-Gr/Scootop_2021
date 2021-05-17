@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +24,7 @@ public class SearchKeyWord {
 
     @ManyToMany
     @Getter @Setter
+    @JsonIgnoreProperties("keywords")
     private List<Video> videos;
 
 

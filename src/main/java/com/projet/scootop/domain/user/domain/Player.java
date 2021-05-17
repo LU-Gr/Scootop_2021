@@ -85,6 +85,7 @@ public class Player{
     @OneToMany
     @JoinColumn(name="player_videos",referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties("player")
     private List<Video> videos;
 
     @ManyToMany

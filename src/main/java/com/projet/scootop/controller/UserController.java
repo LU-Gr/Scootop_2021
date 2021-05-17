@@ -1,8 +1,12 @@
 package com.projet.scootop.controller;
 
+import com.projet.scootop.AuthRequest;
+import com.projet.scootop.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import com.projet.scootop.model.user.ContactDTO;
@@ -22,15 +26,33 @@ public class UserController {
 	@Autowired private ContactService contactService;
 	@Autowired private UserService userService;
 	@Autowired private UserTypeService userTypeService;
-	
-	@PostMapping("/register")
+    @Autowired private JwtUtil jwtUtil;
+    @Autowired private AuthenticationManager authenticationManager;
+
+    @PostMapping("/api/register")
     public String register(@RequestBody UserDTO userDTO, HttpServletResponse response){
-	    return userService.register(userDTO, response);
+        return userService.register(userDTO, response);
     }
-    
-    @PostMapping("/login")
+
+    @PostMapping("/api/login")
     public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception {
-	    return userService.login(userDTO, response);
+        return userService.login(userDTO, response);
+    }
+
+    @PostMapping("/api/authenticate")
+    public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+        }
+        catch (Exception ex){
+            throw new Exception("invalid username/password");
+        }
+        return jwtUtil.generateToken(authRequest.getUsername());
+    }
+
+    @GetMapping("/hello")
+    String hello(){
+        return "Hello World!";
     }
 
     @GetMapping("/contacts")

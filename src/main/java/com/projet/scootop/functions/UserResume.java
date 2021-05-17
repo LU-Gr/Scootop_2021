@@ -7,14 +7,17 @@ import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 // Stats d'un joueur selon le type de compétition
+@ToString
 public class UserResume {
 
-    private List<StatisticalSheet> statisticalSheets;
+    @Getter private List<StatisticalSheet> statisticalSheets;
     
     @Getter private int goals = 0;
     @Getter private int matchPlayed = 0;
@@ -110,7 +113,7 @@ public class UserResume {
     }
     public void countBallPlayed(){
         for (StatisticalSheet sheet: this.statisticalSheets) {
-        	this.ballsSuccess = this.ballsSuccess + sheet.getNbBallplayed();
+        	this.ballsPlayed = this.ballsSuccess + sheet.getNbBallplayed();
         }
     }
 

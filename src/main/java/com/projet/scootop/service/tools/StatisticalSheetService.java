@@ -29,10 +29,10 @@ public class StatisticalSheetService {
 	
     public StatisticalSheetDTO add(StatisticalSheetDTO statisticalSheetDTO){
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
-        shootRepository.saveAll(statisticalSheet.getShoots());
-        passRepository.saveAll(statisticalSheet.getPasses());
-        skillRepository.saveAll(statisticalSheet.getActions());
-        goalRepository.saveAll(statisticalSheet.getGoals());
+        //shootRepository.saveAll(statisticalSheet.getShoots());
+        //passRepository.saveAll(statisticalSheet.getPasses());
+        //skillRepository.saveAll(statisticalSheet.getActions());
+        //goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
         return mapper.mapToDTO(statisticalSheet);
     }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projet.scootop.model.services.ComparatorParamsDTO;
 import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.model.user.domain.CoachDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
@@ -57,6 +58,11 @@ public class UserDomainController {
         return playerService.getAll();
     }
     
+    @GetMapping("/player/comparator")
+    List<FicheJoueurDTO> getComparator(@RequestBody ComparatorParamsDTO params){
+    	return playerService.compareTwoPlayers(params);
+    }
+    
     @GetMapping("/coaches")
     List<CoachDTO> getAllCoaches(){
         return coachService.getAll();
@@ -82,8 +88,8 @@ public class UserDomainController {
     }
     
     @GetMapping("/player/fiche")
-	FicheJoueurDTO getFicheJoueur(@RequestBody FicheJoueurDTO params) {
-		return playerService.getFicheJoueur(params);
+	FicheJoueurDTO getFicheJoueur(@RequestBody ComparatorParamsDTO params) {
+		return playerService.getUserResume(params);
 	}
     
     @GetMapping("/coach/{id}")

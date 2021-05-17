@@ -1,18 +1,27 @@
 package com.projet.scootop.domain.tools;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.configuration.Category;
 import com.projet.scootop.domain.configuration.CompetitionType;
 import com.projet.scootop.domain.user.domain.Coach;
 import com.projet.scootop.domain.user.domain.Player;
 
-import java.time.LocalDate;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @ToString
 @Entity
@@ -51,6 +60,7 @@ public class Team {
     			joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
     			inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
+    @JsonIgnoreProperties("team")
     private List<Player> players;
 
    
@@ -89,6 +99,6 @@ public class Team {
     }
 
     public Team(){
-
+    	players = new ArrayList<>();
     }
 }

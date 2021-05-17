@@ -17,6 +17,7 @@ public class ApiApplication {
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
+		//modelMapper.getConfiguration().setSkipNullEnabled(true);
 		return modelMapper;
 	}
 	public static void main(String[] args) {

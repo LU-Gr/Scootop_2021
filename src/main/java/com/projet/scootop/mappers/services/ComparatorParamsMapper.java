@@ -1,4 +1,4 @@
-package com.projet.scootop.mappers.configuration;
+package com.projet.scootop.mappers.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,30 +8,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import com.projet.scootop.domain.configuration.CompetitionType;
-import com.projet.scootop.model.configuration.CompetitionTypeDTO;
-
+import com.projet.scootop.domain.services.ComparatorParams;
+import com.projet.scootop.model.services.ComparatorParamsDTO;
 
 @Component
-public class CompetitionTypeMapper {
+public class ComparatorParamsMapper {
 	
 	@Autowired private ModelMapper modelMapper;
 	
-	public CompetitionType mapTo(CompetitionTypeDTO dto) {
-		return modelMapper.map(dto, CompetitionType.class);
+	public ComparatorParams mapTo(ComparatorParamsDTO dto) {
+		return modelMapper.map(dto, ComparatorParams.class);
     }
 	
-    public CompetitionTypeDTO mapToDTO(CompetitionType entity) {
-    	return modelMapper.map(entity, CompetitionTypeDTO.class);
+    public ComparatorParamsDTO mapToDTO(ComparatorParams entity) {
+    	return modelMapper.map(entity, ComparatorParamsDTO.class);
     }
 
-    public List<CompetitionTypeDTO> mapToDTO(List<CompetitionType> entities) {
+    public List<ComparatorParamsDTO> mapToDTO(List<ComparatorParams> entities) {
         Assert.notNull(entities, "entities must not be null");
         return entities.stream().map(entity -> this.mapToDTO(entity)).collect(Collectors.toList());
     }
     
-    public List<CompetitionType> mapTo(List<CompetitionTypeDTO> dtos) {
+    public List<ComparatorParams> mapTo(List<ComparatorParamsDTO> dtos) {
         Assert.notNull(dtos, "entities must not be null");
         return dtos.stream().map(entity -> this.mapTo(entity)).collect(Collectors.toList());
     }
+
 }

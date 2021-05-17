@@ -6,7 +6,9 @@ import com.projet.scootop.model.tools.TeamDTO;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 public class FicheJoueurDTO {
 	
 	@Getter 
@@ -21,34 +23,34 @@ public class FicheJoueurDTO {
 	@Getter @Setter
 	private Long playerId;
 	
-	@Setter
+	@Getter @Setter
 	private String playerFirstName;
 	
-	@Setter
+	@Getter @Setter
 	private String playerLastName;
 	
-	@Setter
+	@Getter @Setter
 	private String photoUrl;
 	
-	@Setter
+	@Getter @Setter
 	private int nbMatchPlayed;
 	
-	@Setter
+	@Getter @Setter
 	private int nbMinutePlayed;
 	
-	@Setter
+	@Getter @Setter
 	private int nbGoals;
 	
-	@Setter
+	@Getter @Setter
 	private int nbSuccededPasses;
 	
-	@Setter
+	@Getter @Setter
 	private int nbShootsInBox;
 	
-	@Setter
+	@Getter @Setter
 	private int nbSuccededDribbles;
 	
-	@Setter
+	@Getter @Setter
 	private int nbBallonsRecuperes;
 
 }

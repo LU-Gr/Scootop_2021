@@ -1,7 +1,21 @@
 package com.projet.scootop.domain.user.domain;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.configuration.Category;
 import com.projet.scootop.domain.configuration.Poste;
 import com.projet.scootop.domain.services.tools.video.Video;
@@ -11,11 +25,8 @@ import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.util.List;
 
-@ToString
 @Entity
 public class Player{
 	
@@ -65,9 +76,10 @@ public class Player{
     @Getter @Setter
     private Category category;
     
-    @OneToMany
+    @OneToMany(mappedBy = "player", cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     @Getter @Setter
-    @JoinColumn(name="player_id",referencedColumnName = "id")
+    //@JoinColumn(name="player_id",referencedColumnName = "id")
+    @JsonIgnoreProperties("player")
     private List<StatisticalSheet> statisticalSheets;
     
     @OneToMany
@@ -80,6 +92,7 @@ public class Player{
 			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
+    @JsonIgnoreProperties("players")
     private List<Team> teams;
     
     @ManyToMany
@@ -87,9 +100,14 @@ public class Player{
 	joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
     @Getter @Setter
+    @JsonIgnoreProperties("players")
     private List<Poste> postes;
 
     public Player() {
+    	statisticalSheets = new ArrayList<>();
+    	teams = new ArrayList<>();
+    	postes = new ArrayList<>();
+    	videos = new ArrayList<>();
     }
 
 }

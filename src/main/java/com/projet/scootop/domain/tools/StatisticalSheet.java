@@ -1,7 +1,20 @@
 package com.projet.scootop.domain.tools;
 
-import javax.persistence.*;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.statistics.Action;
 import com.projet.scootop.domain.statistics.Goal;
@@ -11,12 +24,8 @@ import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.util.List;
 
 //Feuille de stats pour un joueur
-@ToString
 @Entity
 @Table(name = "statisticalSheet")
 public class StatisticalSheet {
@@ -47,12 +56,15 @@ public class StatisticalSheet {
     @Getter @Setter
     private Event event;
 
-    @ManyToOne
+    
     @Getter @Setter
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"statisticalSheets","teams"})
     private Player player;
     
     @ManyToOne
     @Getter @Setter
+    @JsonIgnoreProperties("players")
     private Team team;
   
     @OneToMany

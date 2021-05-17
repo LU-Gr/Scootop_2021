@@ -1,36 +1,31 @@
 package com.projet.scootop.service.user.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projet.scootop.domain.configuration.CompetitionType;
+import com.projet.scootop.domain.services.ComparatorParams;
+import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.functions.UserResume;
-import com.projet.scootop.mappers.configuration.CompetitionTypeMapper;
-import com.projet.scootop.mappers.tools.SaisonMapper;
-import com.projet.scootop.mappers.tools.TeamMapper;
+import com.projet.scootop.mappers.services.ComparatorParamsMapper;
 import com.projet.scootop.mappers.user.domain.PlayerMapper;
+import com.projet.scootop.model.services.ComparatorParamsDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
-import com.projet.scootop.repository.configuration.CategoryRepository;
-import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.PlayerRepository;
-
-import java.util.List;
 
 @Service
 public class PlayerService {
 	
 	@Autowired private PlayerRepository playerRepository;
 	
-	@Autowired private UserRepository userRepository;
-    
-    @Autowired private CategoryRepository categoryRepository;
-   
 	@Autowired private PlayerMapper mapper;
-	@Autowired private SaisonMapper sMapper;
-	@Autowired private CompetitionTypeMapper ctMapper;
-	@Autowired private TeamMapper tMapper;
+	@Autowired private ComparatorParamsMapper cpMapper;
 
 
     public PlayerDTO add(PlayerDTO playerDTO){
@@ -50,7 +45,10 @@ public class PlayerService {
     
     public PlayerDTO get(Long id) {
     	Player player = playerRepository.findById(id).orElse(null);
-    	return mapper.mapToDTO(player);
+    	System.out.println(player.toString());
+    	PlayerDTO p = mapper.mapToDTO(player);
+    	System.out.println(p.toString());
+    	return p;
     }
     
     public List<PlayerDTO> getAll() {
@@ -63,21 +61,38 @@ public class PlayerService {
         playerRepository.delete(player);
         return "delete";
     }
+    
+    public List<FicheJoueurDTO> compareTwoPlayers(ComparatorParamsDTO params){
+    	List<FicheJoueurDTO> comparator = new ArrayList<>();
+    	ComparatorParams cp = cpMapper.mapTo(params);
+    	comparator.add(generateUserResume(cp.getCompetitionType(), cp.getSaison(), cp.getTeam(), cp.getPlayerAId()));
+    	comparator.add(generateUserResume(cp.getCompetitionType(), cp.getSaison(), cp.getTeam(), cp.getPlayerBId()));
+    	return comparator;
+    }
 
 
-	public FicheJoueurDTO getFicheJoueur(FicheJoueurDTO ficheJoueur) {
-		if(ficheJoueur.getPlayerId() == null) {
+	public FicheJoueurDTO getUserResume(ComparatorParamsDTO params) {
+		System.out.println(params.toString());
+		ComparatorParams cp = cpMapper.mapTo(params);
+		System.out.println(cp.toString());
+		return generateUserResume(cp.getCompetitionType(), cp.getSaison(), cp.getTeam(), cp.getPlayerAId());
+	}
+	
+	private FicheJoueurDTO generateUserResume(CompetitionType competitionType, Saison saison, Team team, Long playerId) {
+		if(playerId == null) {
 			return null;
 		}
-		Player player = playerRepository.getOne(ficheJoueur.getPlayerId());
-		ficheJoueur.setPlayerFirstName(player.getUser().getFirstName());
-		ficheJoueur.setPlayerFirstName(player.getUser().getLastName());
-		ficheJoueur.setPhotoUrl(player.getPhotoUrl());
+		Player player = playerRepository.getOne(playerId);
 		UserResume ur = new UserResume(
 				player, 
-				ctMapper.mapTo(ficheJoueur.getCompetitionType()), 
-				sMapper.mapTo(ficheJoueur.getSaison()),
-				tMapper.mapTo(ficheJoueur.getTeam()));
+				competitionType, 
+				saison,
+				team);
+		///System.out.println(ur.toString());
+		FicheJoueurDTO ficheJoueur = new FicheJoueurDTO();
+		ficheJoueur.setPlayerFirstName(player.getUser().getFirstName());
+		ficheJoueur.setPlayerLastName(player.getUser().getLastName());
+		ficheJoueur.setPhotoUrl(player.getPhotoUrl());
 		ficheJoueur.setNbMatchPlayed(ur.getMatchPlayed());
 		ficheJoueur.setNbGoals(ur.getGoals());
 		ficheJoueur.setNbMinutePlayed(0);
@@ -85,8 +100,7 @@ public class PlayerService {
 		ficheJoueur.setNbShootsInBox(ur.getShootsInBox());
 		ficheJoueur.setNbSuccededDribbles(ur.getDribblesSuccess());
 		ficheJoueur.setNbBallonsRecuperes(ur.getBallsPlayed());
-		
-		
+		System.out.println(ficheJoueur.toString());
 		return ficheJoueur;
 	}
 }

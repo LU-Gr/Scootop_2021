@@ -10,11 +10,13 @@ import com.projet.scootop.domain.user.domain.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 // Feuille de match
+@ToString
 @Entity
 @Table(name = "MatchSheet")
 public class Match {

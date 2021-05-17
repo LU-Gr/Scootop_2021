@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -19,11 +18,11 @@ public class EventMapper {
 	@Autowired private ModelMapper modelMapper;
 	
 	public Event mapTo(EventDTO dto) {
-		    	return modelMapper.map(dto, Event.class);
+		return modelMapper.map(dto, Event.class);
     }
 	
     public EventDTO mapToDTO(Event entity) {
-            	return modelMapper.map(entity, EventDTO.class);
+    	return modelMapper.map(entity, EventDTO.class);
     }
 
     public List<EventDTO> mapToDTO(List<Event> entities) {

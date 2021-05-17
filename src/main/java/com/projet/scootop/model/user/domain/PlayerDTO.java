@@ -2,6 +2,7 @@ package com.projet.scootop.model.user.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.configuration.CategoryDTO;
 import com.projet.scootop.model.configuration.PosteDTO;
 import com.projet.scootop.model.services.tools.video.VideoDTO;
@@ -53,6 +54,7 @@ public class PlayerDTO {
     private CategoryDTO category;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties({"player"})
     private List<StatisticalSheetDTO> statisticalSheets;
 	
 	@Getter @Setter

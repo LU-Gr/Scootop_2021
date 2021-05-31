@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.user.ContactDTO;
 import com.projet.scootop.model.user.domain.ScootDTO;
 
@@ -28,8 +29,10 @@ public class ClubDTO {
 	private ContactDTO contact;
 	
 	@Getter @Setter
-	private List<ScootDTO> scoots;
+	@JsonIgnoreProperties({"club"})
+	private List<TeamDTO> teams;
 	
 	@Getter @Setter
-	private List<TeamDTO> teams;
+	private List<ScootDTO> scoots;
+	
 }

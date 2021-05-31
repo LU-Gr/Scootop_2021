@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
-import com.projet.scootop.domain.services.tools.video.SearchKeyWord;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.model.configuration.CompetitionTypeDTO;
 import com.projet.scootop.model.services.EventDTO;
@@ -14,9 +14,10 @@ import com.projet.scootop.model.services.EventDTO;
 public class VideoDTO {
 
 	@Getter @Setter
-    private Integer id;
+    private Long id;
 
     @Getter @Setter
+    @JsonIgnoreProperties({"videos","statisticalSheets"})
     private Player player;
 
     @Getter @Setter
@@ -26,15 +27,18 @@ public class VideoDTO {
     private Date posted;
     
     @Getter @Setter
+    @JsonIgnoreProperties("videos")
     private EventDTO event;
 
     @Getter @Setter
     private CompetitionTypeDTO competitionType;
 
     @Getter @Setter
+    @JsonIgnoreProperties("video")
     private List<VideoViewDTO> views;
     
     @Getter @Setter
+    @JsonIgnoreProperties("videos")
     private List<SearchKeyWordDTO> keywords;
 
 }

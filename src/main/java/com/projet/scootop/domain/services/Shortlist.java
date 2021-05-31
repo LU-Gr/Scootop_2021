@@ -2,6 +2,7 @@ package com.projet.scootop.domain.services;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.domain.Player;
@@ -13,8 +14,6 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "Shortlist")
-
 public class Shortlist {
 
     @Id
@@ -35,21 +34,22 @@ public class Shortlist {
 	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
-    private List <Player> Players;
+    private List<Player> players;
     
     @ManyToMany
     @JoinTable(name = "shortlist_scoot", 
 	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "scoot_id", referencedColumnName = "id"))
     @Getter @Setter
-    private List <Scoot> Scoots;
+    @JsonIgnoreProperties("shortlists")
+    private List<Scoot> scoots;
     
     @ManyToMany
     @JoinTable(name = "shortlist_team", 
 	joinColumns = @JoinColumn(name = "shortlist_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
-    private List <Team> Teams;
+    private List<Team> teams;
 
     
 

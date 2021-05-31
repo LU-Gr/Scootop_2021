@@ -2,7 +2,7 @@ package com.projet.scootop.model.configuration;
 
 import java.util.List;
 
-import com.projet.scootop.domain.user.domain.Player;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
@@ -19,6 +19,7 @@ public class PosteDTO {
 	private String name;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties({"postes","statisticalSheets"})
 	private List<PlayerDTO> players;
 
 }

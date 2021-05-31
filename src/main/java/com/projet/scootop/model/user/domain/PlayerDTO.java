@@ -39,6 +39,12 @@ public class PlayerDTO {
     private String origin;
 	
 	@Getter @Setter
+    private boolean isSelected;
+    
+    @Getter @Setter
+    private boolean isSubstitute;
+	
+	@Getter @Setter
     private int interaction;
 	
 	@Getter @Setter
@@ -46,6 +52,9 @@ public class PlayerDTO {
 	
 	@Getter @Setter
     private String weekFoot;
+	
+	@Getter @Setter
+    private String photoUrl;
 	
 	@Getter @Setter
     private UserDTO user;
@@ -58,12 +67,15 @@ public class PlayerDTO {
     private List<StatisticalSheetDTO> statisticalSheets;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("player")
     private List<VideoDTO> videos;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("players")
     private List<TeamDTO> teams;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("players")
     private List<PosteDTO> postes;
 	
 }

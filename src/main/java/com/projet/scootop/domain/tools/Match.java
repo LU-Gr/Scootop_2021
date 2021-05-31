@@ -2,6 +2,7 @@ package com.projet.scootop.domain.tools;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.configuration.Stade;
 import com.projet.scootop.domain.services.Event;
 import com.projet.scootop.domain.services.LocationWearable;
@@ -53,16 +54,19 @@ public class Match {
     @OneToMany
     @Getter @Setter
     @JoinColumn(name="match_sheet_id", referencedColumnName="id")
+    @JsonIgnoreProperties("match")
     private List<StatisticalSheet> statisticalSheetsTeamA;
     
     @OneToMany
     @Getter @Setter
     @JoinColumn(name="match_sheet_id", referencedColumnName="id")
+    @JsonIgnoreProperties("match")
     private List<StatisticalSheet> statisticalSheetsTeamB;
     
     @OneToMany
     @JoinColumn(name = "match_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties("match")
     private List<LocationWearable> wearables;
     
     @ManyToMany
@@ -103,7 +107,8 @@ public class Match {
     }
 
     public Match(){
-
+    	this.statisticalSheetsTeamA = new ArrayList<>();
+    	this.statisticalSheetsTeamB = new ArrayList<>();
     }
 
     public List<Player> checkTeam(List<Player> playerList ){

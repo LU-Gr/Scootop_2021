@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.model.user.UserDTO;
 
@@ -17,5 +18,6 @@ public class CoachDTO {
     private UserDTO user;
 
 	@Getter @Setter
+	@JsonIgnoreProperties("coaches")
     private List<TeamDTO> teams;
 }

@@ -2,6 +2,7 @@ package com.projet.scootop.domain.user.provider;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
 
@@ -24,6 +25,7 @@ public class MarketingAdvisor {
     
     @ManyToOne
     @Getter @Setter
+    @JsonIgnoreProperties("marketingAdvisors")
     private Agence agence;
 
     public MarketingAdvisor(User user, Agence agence) throws Exception {

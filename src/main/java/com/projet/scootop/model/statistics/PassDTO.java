@@ -1,8 +1,8 @@
 package com.projet.scootop.model.statistics;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.configuration.TouchTypeDTO;
 import com.projet.scootop.model.tools.MatchDTO;
-import com.projet.scootop.model.tools.StatisticalSheetDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
@@ -26,13 +26,11 @@ public class PassDTO {
     private Boolean isLongPass;
     
     @Getter @Setter
-	private StatisticalSheetDTO statisticalSheet;
-	
-	@Getter @Setter
-    private MatchDTO match;
-	
-	@Getter @Setter
     private PlayerDTO player;
+	
+	@Getter @Setter
+	@JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB"})
+    private MatchDTO match;
     
     @Getter @Setter
     private TouchTypeDTO touchType;

@@ -1,5 +1,6 @@
 package com.projet.scootop.model.user.provider;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.user.UserDTO;
 
 import lombok.Getter;
@@ -13,11 +14,9 @@ public class ManagerDTO {
 	private Long id;
 	
 	@Getter @Setter
-	private String name;
-	
-	@Getter @Setter
 	private UserDTO user;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("managers")
 	private AgenceDTO agence;
 }

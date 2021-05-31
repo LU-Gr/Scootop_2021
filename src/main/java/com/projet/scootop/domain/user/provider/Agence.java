@@ -2,6 +2,8 @@ package com.projet.scootop.domain.user.provider;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -24,18 +26,20 @@ public class Agence {
     @OneToMany
     @JoinColumn(name = "agence_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties("agence")
     private List<MarketingAdvisor> marketingAdvisors;
     
     @OneToMany
     @JoinColumn(name = "agence_id", referencedColumnName = "id")
     @Getter @Setter
-    private List<Manager> manager;
+    @JsonIgnoreProperties("agence")
+    private List<Manager> managers;
 
-    public Agence( String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> manager) {
+    public Agence( String region, List<MarketingAdvisor> marketingAdvisors, List<Manager> managers) {
         super();
         this.region = region;
         this.marketingAdvisors = marketingAdvisors;
-        this.manager = manager;
+        this.managers = managers;
     }
 
     public Agence() {

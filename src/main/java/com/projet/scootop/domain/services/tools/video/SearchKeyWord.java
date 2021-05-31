@@ -17,7 +17,7 @@ public class SearchKeyWord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private Integer id;
+    private Long id;
     
     @Getter @Setter
     private String name;

@@ -17,6 +17,9 @@ public class UserResumeDTO {
     private Long id;
 	
 	@Getter @Setter
+	private int rank;
+
+	@Getter @Setter
 	private PlayerDTO player;
     
     @Getter @Setter

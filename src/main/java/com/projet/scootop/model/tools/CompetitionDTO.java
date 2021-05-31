@@ -1,11 +1,10 @@
 package com.projet.scootop.model.tools;
 
 import com.projet.scootop.model.configuration.CompetitionTypeDTO;
+
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@ToString
 public class CompetitionDTO {
 	
 	@Getter @Setter
@@ -21,13 +20,13 @@ public class CompetitionDTO {
 	private int playerMin;
 
 	@Getter @Setter
-	private int titulaire;
+	private int nbTitulaire;
 	
 	@Getter @Setter
-	private int remplacant;
+	private int nbRemplacant;
 
 	@Getter @Setter
-	private int substition;
+	private int nbSubstition;
 	
 	@Getter @Setter
 	private int dureeMiTemps;

@@ -9,6 +9,6 @@ public class TouchTypeDTO {
 	private Long id;
 	
 	@Getter @Setter
-	private String physical;
+	private String name;
 
 }

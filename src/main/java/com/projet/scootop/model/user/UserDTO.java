@@ -1,5 +1,6 @@
 package com.projet.scootop.model.user;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import lombok.Getter;
@@ -20,6 +21,9 @@ public class UserDTO {
     
     @Getter @Setter
     private String email;
+    
+    @Getter @Setter
+    private LocalDate birthday;
     
     @Getter @Setter
     private String password;

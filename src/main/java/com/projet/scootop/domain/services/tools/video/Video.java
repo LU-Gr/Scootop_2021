@@ -28,7 +28,7 @@ public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @Getter @Setter

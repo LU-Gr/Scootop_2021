@@ -1,5 +1,6 @@
 package com.projet.scootop.domain.tools;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.services.Event;
@@ -27,7 +27,6 @@ import lombok.Setter;
 
 //Feuille de stats pour un joueur
 @Entity
-@Table(name = "statisticalSheet")
 public class StatisticalSheet {
 	
 	//global
@@ -50,6 +49,7 @@ public class StatisticalSheet {
 
     @OneToOne
     @Getter @Setter
+    @JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB","event"})
     private Match match;
 
     @OneToOne
@@ -70,39 +70,42 @@ public class StatisticalSheet {
     @OneToMany
     @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
-    private List<Shoot> Shoots;
+    @JsonIgnoreProperties({"match", "player"})
+    private List<Shoot> shoots;
 
     @OneToMany
     @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<Pass> passes;
 
     @OneToMany
     @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<Action> actions;
 
     @OneToMany
     @JoinColumn(name = "statistical_sheet_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<Goal> goals;
     
 
-    public StatisticalSheet(Match matchSheet, Player player, Event events, int ballplayed,int balllost,int ballSuccess, List<Shoot> shoots, List<Pass> assists, List<Action> skills, List<Goal> goals, float distancekm) {
+    public StatisticalSheet(Match matchSheet, Player player, Event event) {
         this.match = matchSheet;
         this.player = player;
-        this.event = events;
-        this.nbBallplayed = ballplayed;
-        this.nbBalllost = balllost;
-        this.nbBallSuccess = ballSuccess;
-        this.Shoots = shoots;
-        this.passes = assists;
-        this.actions = skills;
-        this.goals = goals;
-        this.distancekm = distancekm;
+        this.event = event;
+        this.shoots = new ArrayList<>();
+        this.passes = new ArrayList<>();
+        this.actions = new ArrayList<>();
+        this.goals = new ArrayList<>();
     }
 
     public StatisticalSheet() {
-
+    	this.shoots = new ArrayList<>();
+        this.passes = new ArrayList<>();
+        this.actions = new ArrayList<>();
+        this.goals = new ArrayList<>();
     }
 }

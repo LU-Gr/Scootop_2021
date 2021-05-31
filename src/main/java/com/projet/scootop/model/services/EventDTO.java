@@ -3,6 +3,7 @@ package com.projet.scootop.model.services;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.services.tools.video.VideoDTO;
 import com.projet.scootop.model.tools.CompetitionDTO;
 import com.projet.scootop.model.tools.SaisonDTO;
@@ -34,6 +35,7 @@ public class EventDTO {
     private boolean prestaZoom;
     
     @Getter @Setter
+    @JsonIgnoreProperties("event")
     private List<VideoDTO> videos;
 	
 	@Getter @Setter

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.tools.Match;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.domain.Player;
@@ -36,6 +37,7 @@ public class LocationWearable {
     @ManyToOne
     @JoinColumn
     @Getter @Setter
+    @JsonIgnoreProperties("wearables")
     private Match match;
     
     @Getter @Setter

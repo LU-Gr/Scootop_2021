@@ -2,6 +2,8 @@ package com.projet.scootop.domain.configuration;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +25,7 @@ public class Division {
     @ManyToOne
     @JoinColumn
     @Getter @Setter
+    @JsonIgnoreProperties("divisions")
     private League league;
     
     @ManyToOne

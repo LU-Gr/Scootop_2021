@@ -2,6 +2,7 @@ package com.projet.scootop.domain.user.provider;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.user.User;
 
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Manager {
     
     @ManyToOne
     @Getter @Setter
+    @JsonIgnoreProperties("managers")
     private Agence agence;
 
     public Manager(User user, Agence agence) {

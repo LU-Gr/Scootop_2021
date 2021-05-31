@@ -31,28 +31,34 @@ public class StatisticalSheetDTO {
     private float distancekm;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB","event"})
     private MatchDTO match;
     
     @Getter @Setter
     private EventDTO event;
 	
 	@Getter @Setter
-	@JsonIgnoreProperties("statisticalSheets")
+	@JsonIgnoreProperties({"statisticalSheets","teams"})
     private PlayerDTO player;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("players")
     private TeamDTO team;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<ShootDTO> Shoots;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<PassDTO> passes;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<ActionDTO> actions;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"match", "player"})
     private List<GoalDTO> goals;
     
    

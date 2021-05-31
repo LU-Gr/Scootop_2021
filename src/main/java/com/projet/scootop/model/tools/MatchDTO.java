@@ -2,6 +2,7 @@ package com.projet.scootop.model.tools;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.configuration.StadeDTO;
 import com.projet.scootop.model.services.EventDTO;
 import com.projet.scootop.model.services.LocationWearableDTO;
@@ -34,16 +35,21 @@ public class MatchDTO {
 	private SaisonDTO saison;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties("match")
 	private List<StatisticalSheetDTO> statisticalSheetsTeamB;
 	
     @Getter @Setter
+    @JsonIgnoreProperties("match")
     private List<StatisticalSheetDTO> statisticalSheetsTeamA;
+    
+    @Getter @Setter
+    @JsonIgnoreProperties("match")
+	private List<LocationWearableDTO> wearables;
 	
 	@Getter @Setter
 	private List <ScootDTO> scoots;
 	
-	@Getter @Setter
-	private List<LocationWearableDTO> wearables;
+	
 	
 	
 	

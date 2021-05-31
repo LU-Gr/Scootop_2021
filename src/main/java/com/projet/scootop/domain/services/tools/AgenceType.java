@@ -6,20 +6,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="AgenceType")
 public class AgenceType {
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
-    private int id;
+    private Long id;
     
     @Getter @Setter
-    private String Name;
+    private String name;
 
-    public AgenceType(int id, String name) {
+    public AgenceType(Long id, String name) {
         this.id = id;
-        Name = name;
+        this.name = name;
     }
 
     public AgenceType() {

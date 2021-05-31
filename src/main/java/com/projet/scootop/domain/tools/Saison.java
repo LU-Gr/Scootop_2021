@@ -2,8 +2,7 @@ package com.projet.scootop.domain.tools;
 
 import javax.persistence.*;
 
-import com.projet.scootop.domain.configuration.League;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,13 +24,10 @@ public class Saison {
     @Getter @Setter
     private LocalDate dateFin;
     
-    @ManyToOne
-    @Getter @Setter
-    private League league;
-    
     @OneToMany
     @JoinColumn(name="saison_id", referencedColumnName="id")
     @Getter @Setter
+    @JsonIgnoreProperties("saison")
     private List<Match> matchs;
 
     public Saison(LocalDate dateDebut, LocalDate dateFin, List<Match> matchSheets) {

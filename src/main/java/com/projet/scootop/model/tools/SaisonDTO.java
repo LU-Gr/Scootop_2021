@@ -1,12 +1,12 @@
 package com.projet.scootop.model.tools;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
 
-import com.projet.scootop.model.configuration.LeagueDTO;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class SaisonDTO {
 
@@ -20,9 +20,7 @@ public class SaisonDTO {
     private LocalDate dateFin;
 	
 	@Getter @Setter
-    private LeagueDTO league;
-	
-	@Getter @Setter
+	@JsonIgnoreProperties("saison")
     private List<MatchDTO> matchs;
 
 }

@@ -1,5 +1,6 @@
 package com.projet.scootop.model.services;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.tools.MatchDTO;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
@@ -19,6 +20,7 @@ public class LocationWearableDTO {
     private TeamDTO team;
     
     @Getter @Setter
+    @JsonIgnoreProperties("wearables")
     private MatchDTO match;
     
     @Getter @Setter

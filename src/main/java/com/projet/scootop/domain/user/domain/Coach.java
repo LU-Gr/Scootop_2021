@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.UserType;
@@ -31,6 +32,7 @@ public class Coach {
 			joinColumns = @JoinColumn(name = "coach_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
+    @JsonIgnoreProperties("coaches")
     private List<Team> teams;
 
     public Coach() {

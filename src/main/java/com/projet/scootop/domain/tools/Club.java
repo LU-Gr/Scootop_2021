@@ -1,15 +1,26 @@
 package com.projet.scootop.domain.tools;
 
-import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.user.Contact;
 import com.projet.scootop.domain.user.domain.Scoot;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "Club")
@@ -36,6 +47,7 @@ public class Club {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties({"club"})
     private List<Team> teams;
 
     @ManyToMany
@@ -47,7 +59,8 @@ public class Club {
 
 
     public Club() {
-
+    	teams = new ArrayList<>();
+    	scoots = new ArrayList<>();
     }
 
     public Club(String name, Contact contact, String colorInside, String colorOutSide, List<Team> teams, List<Scoot> scoots) throws Exception {

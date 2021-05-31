@@ -1,24 +1,14 @@
 package com.projet.scootop.model.services.tools;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class PrestationTypeDTO {
 
-    int id;
-    String name;
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private String name;
 
-    public static PrestationTypeDTO create(int id, String name) {
-
-        PrestationTypeDTO prestationtype = new PrestationTypeDTO();
-        prestationtype.id = id;
-        prestationtype.name = name;
-
-        return prestationtype;
-    }
-
-    @Override
-    public String toString() {
-        return "PrestationTypeDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

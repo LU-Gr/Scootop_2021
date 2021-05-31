@@ -1,22 +1,14 @@
 package com.projet.scootop.model.configuration;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class CompetitionTypeDTO {
-	Long id;
-    String name;
+	
+	@Getter @Setter
+	private Long id;
+	
+	@Getter @Setter
+    private String name;
 
-    public static CompetitionTypeDTO create(Long id, String name) {
-
-        CompetitionTypeDTO typeDTO=new CompetitionTypeDTO();
-        typeDTO.id = id;
-        typeDTO.name = name;
-        return typeDTO;
-    }
-
-    @Override
-    public String toString() {
-        return "TypeRepository{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

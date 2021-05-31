@@ -20,9 +20,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
-
-    @Getter @Setter
-    private LocalDate birthday;
     
     @Getter @Setter
     private String firstName;
@@ -33,6 +30,9 @@ public class User {
     @Column(unique=true)
     @Getter @Setter
     private String email;
+    
+    @Getter @Setter
+    private LocalDate birthday;
     
     @Getter @Setter
     private String password;

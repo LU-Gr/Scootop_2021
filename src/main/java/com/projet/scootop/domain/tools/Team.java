@@ -21,9 +21,7 @@ import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@ToString
 @Entity
 public class Team {
 
@@ -38,6 +36,7 @@ public class Team {
     @ManyToOne
     @JoinColumn
     @Getter @Setter
+    @JsonIgnoreProperties({"teams"})
     private Club club;
     
     @ManyToOne
@@ -53,6 +52,7 @@ public class Team {
     			joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
     			inverseJoinColumns = @JoinColumn(name = "coach_id", referencedColumnName = "id"))
     @Getter @Setter
+    @JsonIgnoreProperties({"teams"})
     private List<Coach> coaches;
 
     @ManyToMany
@@ -60,7 +60,7 @@ public class Team {
     			joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
     			inverseJoinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"))
     @Getter @Setter
-    @JsonIgnoreProperties("team")
+    @JsonIgnoreProperties({"teams","statisticalSheets"})
     private List<Player> players;
 
    

@@ -2,8 +2,8 @@ package com.projet.scootop.model.statistics;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.tools.MatchDTO;
-import com.projet.scootop.model.tools.StatisticalSheetDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
@@ -21,12 +21,11 @@ public class GoalDTO {
 	private Integer rating;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties({"match"})
 	private ShootDTO shoot;
 	
 	@Getter @Setter
-	private StatisticalSheetDTO statisticalSheet;
-	
-	@Getter @Setter
+	@JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB"})
     private MatchDTO match;
 	
 	@Getter @Setter

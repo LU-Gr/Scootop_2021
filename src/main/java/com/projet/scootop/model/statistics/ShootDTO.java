@@ -1,8 +1,8 @@
 package com.projet.scootop.model.statistics;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.model.configuration.TouchTypeDTO;
 import com.projet.scootop.model.tools.MatchDTO;
-import com.projet.scootop.model.tools.StatisticalSheetDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 
 import lombok.Getter;
@@ -34,12 +34,11 @@ public class ShootDTO {
     private Boolean isInBox;
 	
 	@Getter @Setter
+	@JsonIgnoreProperties({"match"})
 	private PassDTO pass;
 	
 	@Getter @Setter
-	private StatisticalSheetDTO statisticalSheet;
-	
-	@Getter @Setter
+	@JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB"})
 	private MatchDTO match;
 	
 	@Getter @Setter

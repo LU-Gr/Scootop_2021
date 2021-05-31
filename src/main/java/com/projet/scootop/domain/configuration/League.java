@@ -2,6 +2,7 @@ package com.projet.scootop.domain.configuration;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.tools.Saison;
 
 import lombok.Getter;
@@ -30,6 +31,7 @@ public class League {
     @OneToMany
     @JoinColumn(name = "league_id", referencedColumnName = "id")
     @Getter @Setter
+    @JsonIgnoreProperties("league")
     private List<Division> divisions;
     
     @ManyToOne

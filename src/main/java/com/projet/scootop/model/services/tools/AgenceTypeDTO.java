@@ -1,23 +1,14 @@
 package com.projet.scootop.model.services.tools;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class AgenceTypeDTO {
 
-    int id;
-    String name;
+	@Getter @Setter
+    private Long id;
+	
+	@Getter @Setter
+    private String name;
 
-    public static AgenceTypeDTO create(int id, String name) {
-        AgenceTypeDTO agencetype = new AgenceTypeDTO();
-        agencetype.id = id;
-        agencetype.name = name;
-
-        return  agencetype;
-    }
-
-    @Override
-    public String toString() {
-        return "AgenceTypeDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

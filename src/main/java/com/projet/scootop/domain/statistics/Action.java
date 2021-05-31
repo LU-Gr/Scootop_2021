@@ -1,10 +1,16 @@
 package com.projet.scootop.domain.statistics;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.configuration.ActionType;
 import com.projet.scootop.domain.tools.Match;
-import com.projet.scootop.domain.tools.StatisticalSheet;
 import com.projet.scootop.domain.user.domain.Player;
 
 import lombok.Getter;
@@ -36,13 +42,10 @@ public class Action {
     @JoinColumn
     @Getter @Setter
     private ActionType actionType;
-    
-    @ManyToOne
-    @Getter @Setter
-    private StatisticalSheet statisticalSheet;
 
     @ManyToOne
     @Getter @Setter
+    @JsonIgnoreProperties({"statisticalSheetsTeamA","statisticalSheetsTeamB"})
     private Match match;
 
     @ManyToOne

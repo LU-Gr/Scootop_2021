@@ -2,6 +2,7 @@ package com.projet.scootop.domain.user.domain;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projet.scootop.domain.services.Shortlist;
 import com.projet.scootop.domain.tools.Club;
 import com.projet.scootop.domain.user.User;
@@ -32,6 +33,7 @@ public class Scoot {
     @OneToOne
     @JoinColumn(name = "Shortlist_id")
     @Getter @Setter
+    @JsonIgnoreProperties({"scoots","user"})
     private Shortlist shortlist;
 
     @ManyToMany

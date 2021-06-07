@@ -26,16 +26,12 @@ public class TeamService {
     public TeamDTO add(TeamDTO teamDTO){
     	
     	Team team = mapper.mapTo(teamDTO);
-        coachRepository.saveAll(team.getCoaches());
-        categoryRepository.save(team.getCategory());
         teamRepository.save(team);
         return mapper.mapToDTO(team);
 
     }
     public TeamDTO update(TeamDTO teamDTO){
     	Team team = mapper.mapTo(teamDTO);
-        coachRepository.saveAll(team.getCoaches());
-        categoryRepository.save(team.getCategory());
         teamRepository.save(team);
         return mapper.mapToDTO(team);
 

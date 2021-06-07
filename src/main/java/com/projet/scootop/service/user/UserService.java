@@ -74,6 +74,7 @@ public class UserService {
         String newPassword = bCryptPasswordEncoder.encode(password);
         userDTO.setPassword(newPassword);
         User user = mapper.mapTo(userDTO);
+        contactRepository.save(user.getContact());
         userRepository.save(user);
         return "{\"id\":" + user.getId() +"}"; // retourner le user
 
@@ -82,16 +83,13 @@ public class UserService {
     public ResponseEntity<UserDTO> login(UserDTO userDTO, HttpServletResponse response) throws Exception {
         String password = userDTO.getPassword().toString();
         String email = userDTO.getEmail().toString();
-        String firstname = userDTO.getFirstName().toString();
-        String lastname = userDTO.getLastName().toString();
         
         Optional<User> user = userRepository.findByEmail(email);
         
         if(bCryptPasswordEncoder.matches(password, user.get().getPassword())){
             UserDTO dto = new UserDTO();
             dto.setEmail(email);
-            dto.setFirstName(firstname);
-            dto.setLastName(lastname);
+            
             return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
         }
         else{

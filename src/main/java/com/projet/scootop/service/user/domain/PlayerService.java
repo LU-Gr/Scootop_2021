@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projet.scootop.domain.configuration.CompetitionType;
 import com.projet.scootop.domain.services.ComparatorParams;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
+import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.functions.UserResume;
+import com.projet.scootop.functions.search_engine.SearchPlayer;
 import com.projet.scootop.mappers.services.ComparatorParamsMapper;
 import com.projet.scootop.mappers.user.domain.PlayerMapper;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
@@ -102,5 +107,24 @@ public class PlayerService {
 		ficheJoueur.setNbBallonsRecuperes(ur.getBallsPlayed());
 		System.out.println(ficheJoueur.toString());
 		return ficheJoueur;
+	}
+
+	public List<PlayerDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
+		
+		//Player p = new Player();
+		//p.setTeams(params.getTeams());
+		//p.setPostes(params.getPostes());
+		//p.setUser(new User());
+		//p.getUser().set
+		
+		Player p = playerRepository.findById((long) 1).orElse(null);
+		List<Long> teams = new ArrayList<>();
+		//teams.add(3l);
+		//teams.add(p.getTeams().get(0));
+		
+		
+		System.out.println("teams: "+new ObjectMapper().writeValueAsString(params.getTeams()));
+		List<Player> players = playerRepository.searchPlayers(params.getTeams());//playerRepository.findAll(Example.of(p));
+		return mapper.mapToDTO(players);
 	}
 }

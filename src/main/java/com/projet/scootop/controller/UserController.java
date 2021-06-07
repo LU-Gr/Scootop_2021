@@ -29,17 +29,17 @@ public class UserController {
     @Autowired private JwtUtil jwtUtil;
     @Autowired private AuthenticationManager authenticationManager;
 
-    @PostMapping("/api/register")
+    @PostMapping("/register")
     public String register(@RequestBody UserDTO userDTO, HttpServletResponse response){
         return userService.register(userDTO, response);
     }
 
-    @PostMapping("/api/login")
+    @PostMapping("/login")
     public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception {
         return userService.login(userDTO, response);
     }
 
-    @PostMapping("/api/authenticate")
+    @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
@@ -48,11 +48,6 @@ public class UserController {
             throw new Exception("invalid username/password");
         }
         return jwtUtil.generateToken(authRequest.getUsername());
-    }
-
-    @GetMapping("/hello")
-    String hello(){
-        return "Hello World!";
     }
 
     @GetMapping("/contacts")

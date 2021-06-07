@@ -24,9 +24,9 @@ public class UserSecurityConfiguration extends WebSecurityConfigurerAdapter {
     JwtFilter jwtFilter;
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/api/authenticate", "/api/register")
+        http.csrf().disable();
+                /*.authorizeRequests()
+                .antMatchers("/user/authenticate", "/user/register","/user/login")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -34,8 +34,8 @@ public class UserSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);*/
+        //http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

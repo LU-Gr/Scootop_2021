@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.projet.scootop.functions.search_engine.SearchPlayer;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
 import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.model.user.domain.CoachDTO;
@@ -56,6 +58,11 @@ public class UserDomainController {
     @GetMapping("/players")
     List<PlayerDTO> getAllPlayers(){
         return playerService.getAll();
+    }
+    
+    @GetMapping("/players/search")
+    List<PlayerDTO> searchPlayers(@RequestBody SearchPlayer params) throws JsonProcessingException{
+    	return playerService.searchPlayers(params);
     }
     
     @GetMapping("/player/comparator")

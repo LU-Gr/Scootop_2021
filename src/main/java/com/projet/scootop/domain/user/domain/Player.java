@@ -27,7 +27,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
+@Entity(name="player")
 public class Player{
 	
     @Id

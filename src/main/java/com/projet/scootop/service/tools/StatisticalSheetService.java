@@ -39,10 +39,10 @@ public class StatisticalSheetService {
     
     public StatisticalSheetDTO update(StatisticalSheetDTO statisticalSheetDTO){
     	StatisticalSheet statisticalSheet = mapper.mapTo(statisticalSheetDTO);
-        shootRepository.saveAll(statisticalSheet.getShoots());
-        passRepository.saveAll(statisticalSheet.getPasses());
-        skillRepository.saveAll(statisticalSheet.getActions());
-        goalRepository.saveAll(statisticalSheet.getGoals());
+        //shootRepository.saveAll(statisticalSheet.getShoots());
+        //passRepository.saveAll(statisticalSheet.getPasses());
+        //skillRepository.saveAll(statisticalSheet.getActions());
+        //goalRepository.saveAll(statisticalSheet.getGoals());
         statisticalSheetRepository.save(statisticalSheet);
         return mapper.mapToDTO(statisticalSheet);
     }
@@ -59,6 +59,11 @@ public class StatisticalSheetService {
             return null;
         }
         return mapper.mapToDTO(statisticalSheet);
+    }
+    
+    public StatisticalSheetDTO getSheetByPlayerAndEvent(Long playerId, Long eventId){
+    	StatisticalSheet sheet = statisticalSheetRepository.findByPlayerIdAndEventId(playerId, eventId);
+    	return mapper.mapToDTO(sheet);
     }
 
     public List<StatisticalSheetDTO> getAll(){

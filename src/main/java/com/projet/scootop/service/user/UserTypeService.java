@@ -16,6 +16,10 @@ public class UserTypeService {
     @Autowired private UserTypeRepository userTypeRepository;
     @Autowired private UserTypeMapper mapper;
     
+    public UserType getOneByType(String type) {
+    	return userTypeRepository.findByType(type);
+    }
+    
     public UserTypeDTO addUserType(UserTypeDTO userTypeDTO) {
         UserType userType = mapper.mapTo(userTypeDTO);
         userTypeRepository.save(userType);

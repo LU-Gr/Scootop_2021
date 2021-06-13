@@ -10,4 +10,5 @@ public interface StatisticalSheetRepository extends JpaRepository<StatisticalShe
 
 	StatisticalSheet findByPlayerId(Long playerId);
     StatisticalSheet findByMatch(Long gameSheet);
+    StatisticalSheet findByPlayerIdAndEventId(Long playerId, Long eventId);
 }

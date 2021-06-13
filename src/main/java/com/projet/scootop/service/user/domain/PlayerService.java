@@ -22,21 +22,25 @@ import com.projet.scootop.mappers.user.domain.PlayerMapper;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
+import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.PlayerRepository;
+import com.projet.scootop.service.user.UserTypeService;
 
 @Service
 public class PlayerService {
 	
 	@Autowired private PlayerRepository playerRepository;
-	
+	@Autowired private UserRepository userRepository;   
+	@Autowired private UserTypeService userTypeService;	
 	@Autowired private PlayerMapper mapper;
 	@Autowired private ComparatorParamsMapper cpMapper;
 
 
     public PlayerDTO add(PlayerDTO playerDTO){
-    	System.out.println(playerDTO.toString());
     	Player newPlayer = mapper.mapTo(playerDTO);
-    	System.out.println(newPlayer.toString());
+    	User user = userRepository.getOne(newPlayer.getUser().getId());
+    	user.getUserTypes().add(userTypeService.getOneByType("Player"));
+    	userRepository.save(user);
     	playerRepository.save(newPlayer);
         return mapper.mapToDTO(newPlayer);
         

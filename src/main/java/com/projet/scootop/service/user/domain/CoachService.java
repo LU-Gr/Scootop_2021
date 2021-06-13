@@ -3,34 +3,29 @@ package com.projet.scootop.service.user.domain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.domain.Coach;
 import com.projet.scootop.mappers.user.domain.CoachMapper;
 import com.projet.scootop.model.user.domain.CoachDTO;
-import com.projet.scootop.repository.tools.TeamRepository;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.CoachRepository;
+import com.projet.scootop.service.user.UserTypeService;
 
 import java.util.List;
 
 @Service
 public class CoachService {
 
-    @Autowired
-    public CoachRepository coachRepository;
-    
-    @Autowired
-    public TeamRepository teamRepository;
-    
-    @Autowired
-	public UserRepository userRepository;
-	
-	@Autowired
-	private CoachMapper mapper;
+    @Autowired private CoachRepository coachRepository;
+    @Autowired private UserRepository userRepository;   
+    @Autowired private UserTypeService userTypeService;	
+	@Autowired private CoachMapper mapper;
 
     public CoachDTO add(CoachDTO coachDTO) throws Exception {
-        
         Coach coach = mapper.mapTo(coachDTO);
-        userRepository.save(coach.getUser());
+        User user = userRepository.getOne(coach.getUser().getId());
+    	user.getUserTypes().add(userTypeService.getOneByType("Coach"));
+    	userRepository.save(user);
         coachRepository.save(coach);
         return mapper.mapToDTO(coach);
     }

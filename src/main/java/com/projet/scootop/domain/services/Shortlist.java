@@ -57,7 +57,8 @@ public class Shortlist {
 
     }
 
-    public Shortlist(User user, List<Player> players, List<Scoot> scoots, List<Team> teams, int rank) {
+    public Shortlist(User user) {
+    	this.user = user;
     }
 
 }

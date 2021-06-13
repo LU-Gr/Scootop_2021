@@ -66,6 +66,11 @@ public class ToolsController {
     StatisticalSheetDTO getStatisticalSheet(@PathVariable Long id){
 	    return statisticalSheetService.get(id);
     }
+    
+    @GetMapping("/stats/{playerId}/{eventId}")
+    StatisticalSheetDTO getStatisticalSheetByPlayerAndEvent(@PathVariable Long playerId, @PathVariable Long eventId) {
+    	return statisticalSheetService.getSheetByPlayerAndEvent(playerId, eventId);
+    }
 	
     @GetMapping("/team/{id}")
     TeamDTO getTeam(@PathVariable Long id){

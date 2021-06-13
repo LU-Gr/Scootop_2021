@@ -1,31 +1,31 @@
 package com.projet.scootop.service.user.domain;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projet.scootop.domain.user.User;
 import com.projet.scootop.domain.user.domain.Chairman;
 import com.projet.scootop.mappers.user.domain.ChairmanMapper;
 import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.ChairmanRepository;
-
-import java.util.List;
+import com.projet.scootop.service.user.UserTypeService;
 
 @Service
 public class ChairmanService {
 
-	@Autowired
-    public ChairmanRepository chairmanRepository;
-	
-	@Autowired
-	public UserRepository userRepository;
-	
-	@Autowired
-	private ChairmanMapper mapper;
+	@Autowired private ChairmanRepository chairmanRepository;
+	@Autowired private UserRepository userRepository;
+	@Autowired private UserTypeService userTypeService;
+	@Autowired private ChairmanMapper mapper;
 	
     public ChairmanDTO add(ChairmanDTO chairmanDTO) throws Exception{
     	Chairman chairman = mapper.mapTo(chairmanDTO);
-    	userRepository.save(chairman.getUser());
+    	User user = userRepository.getOne(chairman.getUser().getId());
+    	user.getUserTypes().add(userTypeService.getOneByType("Chairman"));
+    	userRepository.save(user);
     	chairmanRepository.save(chairman);
     	return mapper.mapToDTO(chairman);
     }

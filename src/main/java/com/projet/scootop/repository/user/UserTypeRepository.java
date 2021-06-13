@@ -8,4 +8,5 @@ import com.projet.scootop.domain.user.UserType;
 @Repository
 public interface UserTypeRepository extends JpaRepository<UserType, Long> {
 
+	public UserType findByType(String type);
 }

@@ -34,10 +34,7 @@ public class UserService {
     	System.out.println(userDTO.toString());
         User user = mapper.mapTo(userDTO);
         System.out.println(user.toString());
-        //TODO: comprendre cette ligne
-        //List<UserType> types = user.getTypes().stream().map(userType -> userTypeRepository.findById(userType.getId()).orElse(null)).collect(Collectors.toList());
         contactRepository.save(user.getContact());
-        //user.getTypes().addAll(types);
         userRepository.save(user);
         return mapper.mapToDTO(user);
     }

@@ -21,6 +21,7 @@ import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.model.user.domain.CoachDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
+import com.projet.scootop.model.user.domain.PlayerSearchListDTO;
 import com.projet.scootop.model.user.domain.ScootDTO;
 import com.projet.scootop.service.user.domain.ChairmanService;
 import com.projet.scootop.service.user.domain.CoachService;
@@ -61,7 +62,7 @@ public class UserDomainController {
     }
     
     @GetMapping("/players/search")
-    List<PlayerDTO> searchPlayers(@RequestBody SearchPlayer params) throws JsonProcessingException{
+    List<PlayerSearchListDTO> searchPlayers(@RequestBody SearchPlayer params) throws JsonProcessingException{
     	return playerService.searchPlayers(params);
     }
     

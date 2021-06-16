@@ -22,6 +22,7 @@ import com.projet.scootop.mappers.user.domain.PlayerMapper;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
+import com.projet.scootop.model.user.domain.PlayerSearchListDTO;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.PlayerRepository;
 import com.projet.scootop.service.user.UserTypeService;
@@ -113,7 +114,16 @@ public class PlayerService {
 		return ficheJoueur;
 	}
 
-	public List<PlayerDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
+	public List<PlayerSearchListDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
+		List<Player> players = playerRepository.findAll();
+		
+		if(params.getPostes() != null) {
+			
+		}
+		
+		if(params.getTeams() != null) {
+			
+		}
 		
 		//Player p = new Player();
 		//p.setTeams(params.getTeams());
@@ -121,14 +131,14 @@ public class PlayerService {
 		//p.setUser(new User());
 		//p.getUser().set
 		
-		Player p = playerRepository.findById((long) 1).orElse(null);
-		List<Long> teams = new ArrayList<>();
+		//Player p = playerRepository.findById((long) 1).orElse(null);
+		//List<Long> teams = new ArrayList<>();
 		//teams.add(3l);
 		//teams.add(p.getTeams().get(0));
 		
 		
-		System.out.println("teams: "+new ObjectMapper().writeValueAsString(params.getTeams()));
-		List<Player> players = playerRepository.searchPlayers(params.getTeams());//playerRepository.findAll(Example.of(p));
-		return mapper.mapToDTO(players);
+		//System.out.println("teams: "+new ObjectMapper().writeValueAsString(params.getTeams()));
+		//List<Player> players = playerRepository.searchPlayers(params.getTeams());//playerRepository.findAll(Example.of(p));
+		return mapper.mapToSearchDTO(players);
 	}
 }

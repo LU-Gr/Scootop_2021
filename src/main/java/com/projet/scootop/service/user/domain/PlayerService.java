@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -115,14 +114,34 @@ public class PlayerService {
 	}
 
 	public List<PlayerSearchListDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
+		
 		List<Player> players = playerRepository.findAll();
+		System.out.println(players.size());
+		
+		
+		
+		if(params.getName() != null) {
+			for(Player player: players) {
+				for(String mot : params.getName().split(" ")) {
+					System.out.println(mot);
+					
+				}
+			}
+		}
 		
 		if(params.getPostes() != null) {
 			
 		}
-		
-		if(params.getTeams() != null) {
-			
+		System.out.println(params.toString());
+		if(params.getTeam() != null) {
+			for(Player player: players) {
+				int count = (int) player.getTeams()
+						.stream().filter(p -> p.getId() == params.getTeam().getId()).count();
+				/*
+				Collection<Team> similar = new HashSet<Team>(params.getTeams());
+				similar.retainAll(p.getTeams());*/
+				System.out.println(count);
+			}	
 		}
 		
 		//Player p = new Player();
@@ -137,7 +156,7 @@ public class PlayerService {
 		//teams.add(p.getTeams().get(0));
 		
 		
-		//System.out.println("teams: "+new ObjectMapper().writeValueAsString(params.getTeams()));
+		System.out.println("players: "+new ObjectMapper().writeValueAsString(players));
 		//List<Player> players = playerRepository.searchPlayers(params.getTeams());//playerRepository.findAll(Example.of(p));
 		return mapper.mapToSearchDTO(players);
 	}

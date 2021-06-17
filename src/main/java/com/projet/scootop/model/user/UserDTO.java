@@ -27,7 +27,7 @@ public class UserDTO {
     @Getter @Setter
     private LocalDate birthday;
     
-    @JsonIgnore
+   // @JsonIgnore
     @Getter @Setter
     private String password;
     

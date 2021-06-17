@@ -40,6 +40,7 @@ public class PlayerMapper {
         	dto.setPhotoUrl(p.getPhotoUrl());
         	dto.setFirstName(p.getUser().getFirstName());
         	dto.setLastName(p.getUser().getLastName());
+        	dtos.add(dto);
         }
         
         return dtos;

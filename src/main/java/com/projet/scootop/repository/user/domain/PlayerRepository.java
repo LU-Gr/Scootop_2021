@@ -21,7 +21,8 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
 	
 	//List<Player> findAll();
 	
-	@Query("SELECT id FROM player p WHERE (:teams is null or p.teams IN :teams)")
+	@Query("SELECT id FROM player p WHERE ((:teams) is null or p.teams IN :teams)")
 	List<Player> searchPlayers(@Param("teams") List<Team> teams/* ,@Param("postes")List<Poste> postes */);
 	/* and (:postes is null or p.postes IN :postes)")*/
+	
 }

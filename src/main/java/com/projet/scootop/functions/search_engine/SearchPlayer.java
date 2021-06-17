@@ -6,7 +6,9 @@ import com.projet.scootop.domain.configuration.Poste;
 import com.projet.scootop.domain.tools.Team;
 
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString
 public class SearchPlayer {
 	
 	@Getter
@@ -16,6 +18,6 @@ public class SearchPlayer {
 	List<Poste> postes;
 	
 	@Getter
-	List<Team> teams;
+	Team team;
 
 }

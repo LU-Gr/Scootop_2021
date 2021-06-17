@@ -67,6 +67,7 @@ public class UserService {
     }
 
     public String register(UserDTO userDTO, HttpServletResponse response){
+    	System.out.println(userDTO.toString());
         String password = userDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
         userDTO.setPassword(newPassword);

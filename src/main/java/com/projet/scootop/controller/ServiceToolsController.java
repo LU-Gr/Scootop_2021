@@ -32,8 +32,8 @@ public class ServiceToolsController {
     AgenceTypeDTO getAgenceType(@PathVariable("id") Long id){
         return agenceTypeService.get(id);
     }
-    @PutMapping("/agence/type")
-    AgenceTypeDTO updateAgenceType(@RequestBody AgenceTypeDTO body){
+    @PutMapping("/agence/type/{id}")
+    AgenceTypeDTO updateAgenceType(@RequestBody AgenceTypeDTO body, @PathVariable Long id){
         return agenceTypeService.update(body);
     }
     @PostMapping("/agence/type")
@@ -54,8 +54,8 @@ public class ServiceToolsController {
     PrestationTypeDTO getPrestationType(@PathVariable("id") Long id){
         return prestationTypeService.get(id);
     }
-    @PutMapping("/prestation")
-    PrestationTypeDTO updatePrestationType(@RequestBody PrestationTypeDTO body){
+    @PutMapping("/prestation/{id}")
+    PrestationTypeDTO updatePrestationType(@RequestBody PrestationTypeDTO body, @PathVariable Long id){
         return prestationTypeService.update(body);
     }
     @PostMapping("/prestation")

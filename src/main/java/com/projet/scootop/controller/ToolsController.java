@@ -96,12 +96,12 @@ public class ToolsController {
         return matchSheetService.getAll();
     }
 	
-	@GetMapping("/saison")
+	@GetMapping("/saisons")
     List<SaisonDTO> getAllSaison(){
         return saisonService.getAll();
     }
     
-    @GetMapping("/statisticalsheet")
+    @GetMapping("/statisticalsheets")
     List<StatisticalSheetDTO> getStatisticalSheet(){
         return statisticalSheetService.getAll();
     }
@@ -155,33 +155,33 @@ public class ToolsController {
     
 	
 	//UPDATE
-	@PutMapping("/club")
-    ClubDTO updateClub(@RequestBody ClubDTO body) {
+	@PutMapping("/club/{id}")
+    ClubDTO updateClub(@RequestBody ClubDTO body, @PathVariable Long id) {
         return clubService.update(body);
     }
 	
-	@PutMapping("/competition")
-	CompetitionDTO updateTeam(@RequestBody CompetitionDTO body) {
+	@PutMapping("/competition/{id}")
+	CompetitionDTO updateTeam(@RequestBody CompetitionDTO body, @PathVariable Long id) {
         return competitionService.update(body);
     }
 	
-	@PutMapping("/match")
-    MatchDTO updateMatchSheet(@RequestBody MatchDTO body){
+	@PutMapping("/match/{id}")
+    MatchDTO updateMatchSheet(@RequestBody MatchDTO body, @PathVariable Long id){
         return matchSheetService.update(body);
     }
 	
-	@PutMapping("/saison")
+	@PutMapping("/saison/{id}")
     String updateSaison(@RequestBody String body,@PathVariable Long id){
         return body;
     }
     
-    @PutMapping("/stats")
-    StatisticalSheetDTO updateStatisticalSheet(@RequestBody StatisticalSheetDTO body){
+    @PutMapping("/statisticalsheet/{id}")
+    StatisticalSheetDTO updateStatisticalSheet(@RequestBody StatisticalSheetDTO body, @PathVariable Long id){
         return statisticalSheetService.update(body);
     }
 	
-    @PutMapping("/team")
-	TeamDTO updateTeam(@RequestBody TeamDTO body) {
+    @PutMapping("/team/{id}")
+	TeamDTO updateTeam(@RequestBody TeamDTO body, @PathVariable Long id) {
         return teamService.update(body);
     }
     

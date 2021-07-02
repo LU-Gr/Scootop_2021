@@ -192,48 +192,48 @@ public class ConfigurationController {
     
     
 	//UPDATE
-	@PutMapping("/action/type")
-	ActionTypeDTO updateActionType(@RequestBody ActionTypeDTO body){
+	@PutMapping("/action/type/{id}")
+	ActionTypeDTO updateActionType(@RequestBody ActionTypeDTO body, @PathVariable Long id){
         return actionTypeService.update(body);
     }
 	
-	@PutMapping("/category")
-	CategoryDTO updateCategory(@RequestBody CategoryDTO body){
+	@PutMapping("/category/{id}")
+	CategoryDTO updateCategory(@RequestBody CategoryDTO body, @PathVariable Long id){
 		return categoryService.update(body);
     }
 	
-	@PutMapping("/category/type")
-    CategoryTypeDTO updateCategoryType(@RequestBody CategoryTypeDTO body){
+	@PutMapping("/category/type/{id}")
+    CategoryTypeDTO updateCategoryType(@RequestBody CategoryTypeDTO body, @PathVariable Long id){
         return categoryTypeService.update(body);
     }
 	
-	@PutMapping("/competition/type")
-    CompetitionTypeDTO updateCompetitionType(@RequestBody CompetitionTypeDTO body){
+	@PutMapping("/competition/type/{id}")
+    CompetitionTypeDTO updateCompetitionType(@RequestBody CompetitionTypeDTO body, @PathVariable Long id){
         return competitionTypeService.update(body);
     }
 	
-	@PutMapping("/division")
-    DivisionDTO updateDivision(@RequestBody DivisionDTO body){
+	@PutMapping("/division/{id}")
+    DivisionDTO updateDivision(@RequestBody DivisionDTO body, @PathVariable Long id){
         return divisionsService.update(body);
     }
     
-    @PutMapping("/league")
-    LeagueDTO updateLeague(@RequestBody LeagueDTO body){
+    @PutMapping("/league/{id}")
+    LeagueDTO updateLeague(@RequestBody LeagueDTO body, @PathVariable Long id){
         return leagueService.update(body);
     }
     
-    @PutMapping("/poste")
-    PosteDTO updatePoste(@RequestBody PosteDTO body){
+    @PutMapping("/poste/{id}")
+    PosteDTO updatePoste(@RequestBody PosteDTO body, @PathVariable Long id){
         return posteService.update(body);
     }
     
-    @PutMapping("/stade")
-    StadeDTO updateStade(@RequestBody StadeDTO body){
+    @PutMapping("/stade/{id}")
+    StadeDTO updateStade(@RequestBody StadeDTO body, @PathVariable Long id){
         return stadeService.update(body);
     }
     
-    @PutMapping("/touch/types")
-    TouchTypeDTO updateType(@RequestBody TouchTypeDTO body){
+    @PutMapping("/touch/types/{id}")
+    TouchTypeDTO updateType(@RequestBody TouchTypeDTO body, @PathVariable Long id){
         return touchTypeService.update(body);
     }
     

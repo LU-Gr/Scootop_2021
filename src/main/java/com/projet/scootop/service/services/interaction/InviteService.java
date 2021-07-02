@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.interaction.Invite;
 import com.projet.scootop.mappers.services.interaction.InviteMapper;
+import com.projet.scootop.model.APIResultDTO;
 import com.projet.scootop.model.services.interaction.InviteDTO;
 import com.projet.scootop.repository.services.interaction.InviteRepository;
 
@@ -17,10 +18,10 @@ public class InviteService {
     @Autowired private InviteRepository inviteRepository;
     @Autowired private InviteMapper mapper;
     
-    public InviteDTO add(InviteDTO inviteDTO){
+    public APIResultDTO add(InviteDTO inviteDTO){
         Invite invite = mapper.mapTo(inviteDTO);
         inviteRepository.save(invite);
-        return mapper.mapToDTO(invite);
+        return new APIResultDTO("Success", null);
     }
     
     public InviteDTO get(Long id){

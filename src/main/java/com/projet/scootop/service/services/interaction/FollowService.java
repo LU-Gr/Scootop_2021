@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.interaction.Follow;
 import com.projet.scootop.mappers.services.interaction.FollowMapper;
+import com.projet.scootop.model.APIResultDTO;
 import com.projet.scootop.model.services.interaction.FollowDTO;
 import com.projet.scootop.repository.services.interaction.FollowRepository;
 
@@ -17,10 +18,10 @@ public class FollowService {
     @Autowired private FollowRepository followRepository;
     @Autowired private FollowMapper mapper;
     
-    public FollowDTO add(FollowDTO followDTO){
+    public APIResultDTO add(FollowDTO followDTO){
         Follow follow = mapper.mapTo(followDTO);
         followRepository.save(follow);
-        return mapper.mapToDTO(follow);
+        return new APIResultDTO("Success", null);
     }
     
     public FollowDTO get(Long id){

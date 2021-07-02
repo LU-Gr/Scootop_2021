@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.projet.scootop.domain.services.interaction.Alert;
 import com.projet.scootop.mappers.services.interaction.AlertMapper;
+import com.projet.scootop.model.APIResultDTO;
 import com.projet.scootop.model.services.interaction.AlertDTO;
 import com.projet.scootop.repository.services.interaction.AlertRepository;
 
@@ -18,10 +19,10 @@ public class AlertService {
     
     
     
-    public AlertDTO add(AlertDTO alertDTO){
+    public APIResultDTO add(AlertDTO alertDTO){
         Alert alert = mapper.mapTo(alertDTO);
         alertRepository.save(alert);
-        return alertDTO;
+        return new APIResultDTO("Success", null);
     }
     
     public AlertDTO get(Long id){

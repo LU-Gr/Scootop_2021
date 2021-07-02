@@ -3,6 +3,7 @@ package com.projet.scootop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.projet.scootop.model.APIResultDTO;
 import com.projet.scootop.model.services.interaction.AlertDTO;
 import com.projet.scootop.model.services.interaction.FollowDTO;
 import com.projet.scootop.model.services.interaction.InviteDTO;
@@ -36,6 +37,12 @@ public class ServiceInteractionController {
         return inviteService.getAll();
     }
     
+    @GetMapping("/invites/{id}")
+    List<InviteDTO> getAllInvitesByUser(@PathVariable Long id){
+        return inviteService.getAllByUserId(id);
+    }
+    
+    
     
     
     //GET ONE
@@ -59,17 +66,17 @@ public class ServiceInteractionController {
     
     //CREATE
     @PostMapping("/alert")
-    AlertDTO addAlert(@RequestBody AlertDTO body){
+    APIResultDTO addAlert(@RequestBody AlertDTO body){
         return alertService.add(body);
     }
     
     @PostMapping("/follow")
-    FollowDTO addFollow(@RequestBody FollowDTO body){
+    APIResultDTO addFollow(@RequestBody FollowDTO body){
         return followService.add(body);
     }
     
     @PostMapping("/invite")
-    InviteDTO addInvite(@RequestBody InviteDTO body){
+    APIResultDTO addInvite(@RequestBody InviteDTO body){
         return inviteService.add(body);
     }
     

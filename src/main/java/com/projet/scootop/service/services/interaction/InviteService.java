@@ -19,7 +19,7 @@ public class InviteService {
     
     public InviteDTO add(InviteDTO inviteDTO){
         Invite invite = mapper.mapTo(inviteDTO);
-        inviteRepository.equals(invite);
+        inviteRepository.save(invite);
         return mapper.mapToDTO(invite);
     }
     
@@ -33,6 +33,11 @@ public class InviteService {
     
     public List<InviteDTO> getAll(){
         List<Invite> invites = inviteRepository.findAll();
+        return mapper.mapToDTO(invites);
+    }
+    
+    public List<InviteDTO> getAllByUserId(Long id){
+        List<Invite> invites = inviteRepository.findAllByUserId(id);
         return mapper.mapToDTO(invites);
     }
     

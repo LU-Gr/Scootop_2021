@@ -29,7 +29,7 @@ public class Pass {
     private int minute;
 
     @Getter @Setter
-    private Boolean decisive;
+    private Boolean isDecisive;
 
     @Getter @Setter
     private Boolean isSuccess;
@@ -60,7 +60,7 @@ public class Pass {
         this.minute = minute;
         this.player = player;
         this.touchType = typeTouch;
-        this.decisive = decisive;
+        this.isDecisive = decisive;
         this.isSuccess = isSuccess;
         this.isLongPass = longPass;
     }

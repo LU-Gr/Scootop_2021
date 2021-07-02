@@ -103,12 +103,20 @@ public class PlayerService {
 		ficheJoueur.setPlayerLastName(player.getUser().getLastName());
 		ficheJoueur.setPhotoUrl(player.getPhotoUrl());
 		ficheJoueur.setNbMatchPlayed(ur.getMatchPlayed());
+		ficheJoueur.setNbMatchWon(ur.getMatchWon());
 		ficheJoueur.setNbGoals(ur.getGoals());
+		ficheJoueur.setNbShoots(ur.getShoots());
+		ficheJoueur.setNbPasses(ur.getPasses());
+		ficheJoueur.setNbAssists(ur.getAssists());
+		ficheJoueur.setNbSkills(ur.getActions());
+		ficheJoueur.setNbSucceededSkills(ur.getActionsSuccess());
 		ficheJoueur.setNbMinutePlayed(0);
-		ficheJoueur.setNbSuccededPasses(ur.getAssistsSuccess());
+		ficheJoueur.setNbSucceededPasses(ur.getPassesSuccess());
 		ficheJoueur.setNbShootsInBox(ur.getShootsInBox());
-		ficheJoueur.setNbSuccededDribbles(ur.getDribblesSuccess());
-		ficheJoueur.setNbBallonsRecuperes(ur.getBallsPlayed());
+		ficheJoueur.setNbSucceededDribbles(ur.getDribblesSuccess());
+		ficheJoueur.setNbBallsRecuperes(ur.getBallsPlayed());
+		ficheJoueur.setNbBallsPlayed(ur.getBallsPlayed());
+		ficheJoueur.setNbBallsLost(ur.getBallsLost());
 		System.out.println(ficheJoueur.toString());
 		return ficheJoueur;
 	}

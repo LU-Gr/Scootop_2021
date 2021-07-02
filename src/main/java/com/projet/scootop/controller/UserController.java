@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 
 import com.projet.scootop.model.user.ContactDTO;
+import com.projet.scootop.model.user.LoginDTO;
 import com.projet.scootop.model.user.UserDTO;
 import com.projet.scootop.model.user.UserTypeDTO;
 import com.projet.scootop.service.user.ContactService;
@@ -26,29 +27,23 @@ public class UserController {
 	@Autowired private ContactService contactService;
 	@Autowired private UserService userService;
 	@Autowired private UserTypeService userTypeService;
-    @Autowired private JwtUtil jwtUtil;
-    @Autowired private AuthenticationManager authenticationManager;
+    
+    
 
     @PostMapping("/register")
     public String register(@RequestBody UserDTO userDTO, HttpServletResponse response){
         return userService.register(userDTO, response);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<UserDTO> login(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception {
+    /*@PostMapping("/login")
+    public ResponseEntity<LoginDTO> login(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception {
         return userService.login(userDTO, response);
     }
 
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        }
-        catch (Exception ex){
-            throw new Exception("invalid username/password");
-        }
-        return jwtUtil.generateToken(authRequest.getUsername());
-    }
+       return userService.authenticate(authRequest);
+    }*/
 
     @GetMapping("/contacts")
     List<ContactDTO> getAllContacts(){

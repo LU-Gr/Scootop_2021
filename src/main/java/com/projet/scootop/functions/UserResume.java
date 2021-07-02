@@ -21,18 +21,20 @@ public class UserResume {
     
     @Getter private int goals = 0;
     @Getter private int matchPlayed = 0;
+    @Getter private int matchWon = 0;
     @Getter private int ballsPlayed = 0;
     @Getter private int ballsSuccess = 0;
     @Getter private int ballsLost = 0;
     @Getter private int actions = 0;
     @Getter private int actionsSuccess = 0;
     @Getter private int actionsFailed = 0;
+    @Getter private int assists = 0;
     @Getter private int shoots = 0;
     @Getter private int shootsInBox = 0;
     @Getter private int shootsFailed = 0;
-    @Getter private int assists = 0;
-    @Getter private int assistsSuccess = 0;
-    @Getter private int assistsFailed = 0;
+    @Getter private int passes = 0;
+    @Getter private int passesSuccess = 0;
+    @Getter private int passesFailed = 0;
     @Getter private Float traveledDistance = 0f;
 	@Getter private int dribblesSuccess;
     
@@ -60,9 +62,10 @@ public class UserResume {
         }
 
         countGoals();
-        countAssits();
+        countPasses();
         countTraveledDistance();
         countMatchPlayed();
+        countMatchWon();
         countBallPlayed();
         countBallSuccess();
         countBallLost();
@@ -71,35 +74,46 @@ public class UserResume {
         countActionsSuccess();
         countShootsInBox();
         countShootsFailed();
-        countAssistsSuccess();
-        countAssistsFailed();
+        countPassesSuccess();
+        countPassesFailed();
+        countAssists();
     }
 
 
-    public void countGoals(){
+	private void countAssists() {
+		for (StatisticalSheet sheet: this.statisticalSheets) {
+        	this.assists = this.assists + (int) sheet.getPasses()
+        		.stream()
+        		.filter(p -> p.getIsDecisive())
+        		.count();
+        }	
+	}
+
+
+	public void countGoals(){
         for (StatisticalSheet sheet: this.statisticalSheets) {
         	this.goals = this.goals + sheet.getGoals().size();
         }
     }
     
-    public void countAssits(){
+    public void countPasses(){
         for (StatisticalSheet sheet: this.statisticalSheets) {
-        	this.assists = this.assists + sheet.getPasses().size();
+        	this.passes = this.passes + sheet.getPasses().size();
         }
     }
 
-    public void countAssistsSuccess(){
+    public void countPassesSuccess(){
         for (StatisticalSheet sheet: this.statisticalSheets) {
-        	this.assistsSuccess = this.assistsSuccess + (int) sheet.getPasses()
+        	this.passesSuccess = this.passesSuccess + (int) sheet.getPasses()
         		.stream()
         		.filter(p -> p.getIsSuccess() == true)
         		.count();
         }
     }
     
-    public void countAssistsFailed(){
+    public void countPassesFailed(){
     	for (StatisticalSheet sheet: this.statisticalSheets) {
-    		this.assistsFailed = this.assistsFailed + (int) sheet.getPasses()
+    		this.passesFailed = this.passesFailed + (int) sheet.getPasses()
         		.stream()
         		.filter(p -> p.getIsSuccess() == true)
         		.count();
@@ -180,6 +194,10 @@ public class UserResume {
     public void countMatchPlayed(){
         this.matchPlayed = this.statisticalSheets.size();
     }
+    
+    private void countMatchWon() {
+    	this.matchWon = (int) this.statisticalSheets.stream().filter(s -> s.getTeam() == s.getMatch().getWinner()).count();
+	}
     
     public void countDribblesSuccess(){
     	for (StatisticalSheet sheet: this.statisticalSheets) {

@@ -45,6 +45,10 @@ public class Match {
     
     @ManyToOne
     @Getter @Setter
+    private Team winner;
+    
+    @ManyToOne
+    @Getter @Setter
     private Stade stade;
     
     @ManyToOne

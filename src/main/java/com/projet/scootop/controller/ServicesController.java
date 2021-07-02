@@ -86,7 +86,7 @@ public class ServicesController {
     }
     
     // **** MatchSheet Data return One wearable in matchSheet Team wearables list by Team ****
-    @GetMapping("/matchsheet/{matchId}/team/{TeamId}/wearables/{playerId}")
+    @GetMapping("/match/{matchId}/team/{TeamId}/wearables/{playerId}")
     LocationWearableDTO getOneByMatchSheetAndTeamAndPlayer(@PathVariable("matchId") Long matchsheetId,@PathVariable("TeamId") Long teamId,@PathVariable("playerId") Long playerId ){
         return locationWearableService.getOneByMatchSheetAndTeamAndPlayer(matchsheetId, teamId, playerId);
     }
@@ -144,28 +144,28 @@ public class ServicesController {
     
     
     //UPDATE
-    @PutMapping("/event")
-    EventDTO updateEvent(@RequestBody EventDTO body){
+    @PutMapping("/event/{id}")
+    EventDTO updateEvent(@RequestBody EventDTO body, @PathVariable Long id){
         return eventService.update(body);
     }
     
-    @PutMapping("/match/wearable")
-    LocationWearableDTO updateLocationWearable(@RequestBody LocationWearableDTO wearableDTO){
+    @PutMapping("/match/wearable/{id}")
+    LocationWearableDTO updateLocationWearable(@RequestBody LocationWearableDTO wearableDTO, @PathVariable Long id){
         return locationWearableService.update(wearableDTO);
     }
 
-    @PutMapping("/shortlist")
-    ShortlistDTO updateShortlist(@RequestBody ShortlistDTO body){
+    @PutMapping("/shortlist/{id}")
+    ShortlistDTO updateShortlist(@RequestBody ShortlistDTO body, @PathVariable Long id){
         return shortlistService.update(body);
     }
     
-    @PutMapping("/wearable/company")
-    WearableCompanyDTO updateWearableCompany(@RequestBody WearableCompanyDTO body){
+    @PutMapping("/wearable/company/{id}")
+    WearableCompanyDTO updateWearableCompany(@RequestBody WearableCompanyDTO body, @PathVariable Long id){
         return wearableCompanyService.update(body);
     }
     
-    @PutMapping("/wearable")
-    WearableDTO updateWearable(@RequestBody WearableDTO body){
+    @PutMapping("/wearable/{id}")
+    WearableDTO updateWearable(@RequestBody WearableDTO body, @PathVariable Long id){
         return wearableService.update(body);
     }
     

@@ -135,23 +135,23 @@ public class UserDomainController {
     
 	
 	//UPDATE
-    @PutMapping("/chairman")
-    ChairmanDTO updateChairman(@RequestBody ChairmanDTO body) throws Exception {
+    @PutMapping("/chairman/{id}")
+    ChairmanDTO updateChairman(@RequestBody ChairmanDTO body, @PathVariable Long id) throws Exception {
         return chairmanService.update(body);
     }
     
-    @PutMapping("/scoot")
-    ScootDTO updateScoot(@RequestBody ScootDTO body) throws Exception {
+    @PutMapping("/scoot/{id}")
+    ScootDTO updateScoot(@RequestBody ScootDTO body, @PathVariable Long id) throws Exception {
         return scootService.update(body);
     }
     
-    @PutMapping("/player")
-    PlayerDTO updatePlayer(@RequestBody PlayerDTO body){
+    @PutMapping("/player/{id}")
+    PlayerDTO updatePlayer(@RequestBody PlayerDTO body, @PathVariable Long id){
         return playerService.update(body);
     }
     
-    @PutMapping("/coach")
-    CoachDTO updateCoach(@RequestBody CoachDTO body) throws Exception {
+    @PutMapping("/coach/{id}")
+    CoachDTO updateCoach(@RequestBody CoachDTO body, @PathVariable Long id) throws Exception {
         return coachService.update(body);
     }
     
@@ -164,12 +164,12 @@ public class UserDomainController {
         return chairmanService.delete(id);
     }
 
-    @DeleteMapping("/scoots/{id}")
+    @DeleteMapping("/scoot/{id}")
     String deleteScoot(@PathVariable("id") Long id) {
         return scootService.delete(id);
     }
     
-    @DeleteMapping("/players/{id}")
+    @DeleteMapping("/player/{id}")
     String deletePlayer(@PathVariable Long id){
         return playerService.delete(id);
     }

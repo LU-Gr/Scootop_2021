@@ -116,17 +116,17 @@ public class StatisticsController {
     }
 	
 	@PutMapping("/action/{id}")
-    ActionDTO updateAction(@RequestBody ActionDTO body){
+    ActionDTO updateAction(@RequestBody ActionDTO body, @PathVariable Long id){
         return actionService.update(body);
     }
     
     @PutMapping("/assist/{id}")
-    PassDTO updateAssist(@RequestBody PassDTO body){
+    PassDTO updateAssist(@RequestBody PassDTO body, @PathVariable Long id){
         return assistService.update(body);
     }
     
     @PutMapping("/shoot/{id}")
-    ShootDTO updateShoot(@RequestBody ShootDTO body){
+    ShootDTO updateShoot(@RequestBody ShootDTO body, @PathVariable Long id){
         return shootService.update(body);
     }
 	

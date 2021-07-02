@@ -116,28 +116,28 @@ public class UserProviderController {
     
     
     //UPDATE
-    @PutMapping("/cameraman")
-    CameramanDTO updateCameraman(@RequestBody CameramanDTO body) throws Exception {
+    @PutMapping("/cameraman/{id}")
+    CameramanDTO updateCameraman(@RequestBody CameramanDTO body, @PathVariable Long id) throws Exception {
         return cameramanService.update(body);
     }
     
-    @PutMapping("/agence")
-    AgenceDTO updateAgence(@RequestBody AgenceDTO body){
+    @PutMapping("/agence/{id}")
+    AgenceDTO updateAgence(@RequestBody AgenceDTO body, @PathVariable Long id){
         return agenceService.update(body);
     }
     
-    @PutMapping("/analyst")
-    AnalysteDTO updateAnalyst(@RequestBody AnalysteDTO body){
+    @PutMapping("/analyst/{id}")
+    AnalysteDTO updateAnalyst(@RequestBody AnalysteDTO body, @PathVariable Long id){
         return analysteService.update(body);
     }
     
-    @PutMapping("/manager")
-    ManagerDTO updateManager(@RequestBody ManagerDTO body){
+    @PutMapping("/manager/{id}")
+    ManagerDTO updateManager(@RequestBody ManagerDTO body, @PathVariable Long id){
         return managerService.update(body);
     }
     
-    @PutMapping("/marketing/advisor")
-    MarketingAdvisorDTO updateMarketingAdvisor(@RequestBody MarketingAdvisorDTO body){
+    @PutMapping("/marketing/advisor/{id}")
+    MarketingAdvisorDTO updateMarketingAdvisor(@RequestBody MarketingAdvisorDTO body, @PathVariable Long id){
         return marketingAdvisorService.update(body);
     }
     

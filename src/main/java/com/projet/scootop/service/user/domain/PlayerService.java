@@ -1,8 +1,10 @@
 package com.projet.scootop.service.user.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.Normalizer;
+import java.util.*;
 
+import com.projet.scootop.domain.configuration.Poste;
+import com.projet.scootop.repository.tools.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,7 @@ import com.projet.scootop.service.user.UserTypeService;
 public class PlayerService {
 	
 	@Autowired private PlayerRepository playerRepository;
+	@Autowired private TeamRepository teamRepository;
 	@Autowired private UserRepository userRepository;   
 	@Autowired private UserTypeService userTypeService;	
 	@Autowired private PlayerMapper mapper;
@@ -121,35 +124,69 @@ public class PlayerService {
 		return ficheJoueur;
 	}
 
+	public static String stripAccents(String s)
+	{
+		s = Normalizer.normalize(s, Normalizer.Form.NFD);
+		s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+		return s;
+	}
+
 	public List<PlayerSearchListDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
 		
 		List<Player> players = playerRepository.findAll();
 		System.out.println(players.size());
 		
-		
-		
+		List<Player> toReturn = new ArrayList<>();
+				
 		if(params.getName() != null) {
-			for(Player player: players) {
-				for(String mot : params.getName().split(" ")) {
-					System.out.println(mot);
-					
-				}
+			String name = params.getName();
+			Player searchedPlayer = playerRepository.searchPlayerByName(
+					name.substring(0,name.indexOf(' ')),
+					name.substring(name.indexOf(' ')+1)
+			);
+			if(searchedPlayer == null){
+				String nameWritten = stripAccents(params.getName());
+				nameWritten = nameWritten.toLowerCase();
+
+				for(Player player: players) {
+					for(String mot : nameWritten.split(" ")) {
+						System.out.println(mot);
+						if(player.getUser().getFirstName().contains(mot.toLowerCase())){
+							toReturn.add(player);
+						}
+						else if(player.getUser().getLastName().contains(mot.toLowerCase())){
+							toReturn.add(player);
+						}
+					}
+				}	
 			}
 		}
 		
 		if(params.getPostes() != null) {
-			
+			for(Poste poste : params.getPostes()){
+				for(Player player : players){
+					if(player.getPostes().contains(poste)){
+						toReturn.add(player);
+					}
+				}
+			}
 		}
 		System.out.println(params.toString());
 		if(params.getTeam() != null) {
 			for(Player player: players) {
-				int count = (int) player.getTeams()
+				/*int count = (int) player.getTeams()
 						.stream().filter(p -> p.getId() == params.getTeam().getId()).count();
-				/*
+				
 				Collection<Team> similar = new HashSet<Team>(params.getTeams());
-				similar.retainAll(p.getTeams());*/
-				System.out.println(count);
-			}	
+				similar.retainAll(p.getTeams());
+
+
+				System.out.println(count);*/
+
+				Optional<Team> teamSearched = teamRepository.findById(params.getTeam().getId());
+				toReturn.addAll(teamSearched.get().getPlayers());
+				
+			}
 		}
 		
 		//Player p = new Player();
@@ -162,6 +199,9 @@ public class PlayerService {
 		//List<Long> teams = new ArrayList<>();
 		//teams.add(3l);
 		//teams.add(p.getTeams().get(0));
+
+		Set<Player> toReturnSet = new HashSet<>(toReturn);
+		List<Player> finalList = new ArrayList<>(toReturnSet);
 		
 		
 		System.out.println("players: "+new ObjectMapper().writeValueAsString(players));

@@ -83,7 +83,7 @@ public class UserController {
     }
     
     @PutMapping("/user/{id}")
-    ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO body){
+    ResponseEntity<UserDTO> updateUser(@RequestBody UserDTO body, @PathVariable Long id){
         return new ResponseEntity<>(userService.update(body), HttpStatus.OK);
     }
     
@@ -109,7 +109,7 @@ public class UserController {
     }
     
     @PutMapping("/type/{id}")
-    UserTypeDTO updateUserType(@RequestBody UserTypeDTO body){
+    UserTypeDTO updateUserType(@RequestBody UserTypeDTO body, @PathVariable Long id){
         return userTypeService.update(body);
     }
     

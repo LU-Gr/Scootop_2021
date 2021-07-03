@@ -70,7 +70,7 @@ public class UserService {
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
-    public String register(UserDTO userDTO, HttpServletResponse response){
+    public ResponseEntity<LoginDTO> register(UserDTO userDTO, HttpServletResponse response) throws Exception{
     	System.out.println(userDTO.toString());
         String password = userDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
@@ -78,39 +78,42 @@ public class UserService {
         User user = mapper.mapTo(userDTO);
         contactRepository.save(user.getContact());
         userRepository.save(user);
-        return "{\"id\":" + user.getId() +"}"; // retourner le user
+        AuthRequest authRequest = new AuthRequest(userDTO.getEmail(), userDTO.getPassword());
+        return login(authRequest, response); // retourner le user
 
     }
     
-    public ResponseEntity<UserDTO> login(UserDTO userDTO, HttpServletResponse response) throws Exception {
-        String password = userDTO.getPassword().toString();
-        String email = userDTO.getEmail().toString();
+    public ResponseEntity<LoginDTO> login(AuthRequest authRequest, HttpServletResponse response) throws Exception {
+        String password = authRequest.getPassword().toString();
+        String email = authRequest.getEmail().toString();
         
         Optional<User> user = userRepository.findByEmail(email);
-        
+        LoginDTO loginDTO = new LoginDTO();
         if(bCryptPasswordEncoder.matches(password, user.get().getPassword())){
             UserDTO dto = mapper.mapToDTO(user.get());
             //dto.setEmail(email);
-            LoginDTO l = new LoginDTO();
-            l.setUser(dto);
-            //AuthRequest
-            //String auth = authenticate(authRequest)
             
-            return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
+            loginDTO.setUser(dto);
+            String auth = authenticate(authRequest);
+            loginDTO.setJwt(auth);
+            
+            
         }
         else{
-            throw new Exception("email and password does not match");
+        	loginDTO.setCode(401);
+        	loginDTO.setMessage("Email ou mot de passe incorrect");
         }
+        return new ResponseEntity<LoginDTO>(loginDTO, HttpStatus.OK);
     }
 
 	public String authenticate(AuthRequest authRequest) throws Exception {
 		 try {
-			 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+			 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
 		 }
 	     catch (Exception ex){
 	    	 throw new Exception("invalid username/password");
 	     }
-		 return jwtUtil.generateToken(authRequest.getUsername());
+		 return jwtUtil.generateToken(authRequest.getEmail());
 	}
 
 }

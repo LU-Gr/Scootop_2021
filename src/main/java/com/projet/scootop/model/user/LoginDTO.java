@@ -15,8 +15,5 @@ public class LoginDTO {
 	private String jwt;
 	
 	@Getter @Setter
-	private String refreshToken;
-	
-	@Getter @Setter
 	private UserDTO user;
 }

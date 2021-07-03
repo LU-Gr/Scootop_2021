@@ -25,6 +25,15 @@ public class UserDTO {
     private String email;
     
     @Getter @Setter
+    private String nationalite;
+	
+	@Getter @Setter
+    private String origin;
+    
+    @Getter @Setter
+    private String gender;
+    
+    @Getter @Setter
     private LocalDate birthday;
     
    // @JsonIgnore

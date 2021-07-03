@@ -33,12 +33,6 @@ public class PlayerDTO {
     private int vma;
 	
 	@Getter @Setter
-    private String nationalite;
-	
-	@Getter @Setter
-    private String origin;
-	
-	@Getter @Setter
     private boolean isSelected;
     
     @Getter @Setter

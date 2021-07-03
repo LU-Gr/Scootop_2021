@@ -138,7 +138,7 @@ public class PlayerService {
 		
 		List<Player> toReturn = new ArrayList<>();
 				
-		if(params.getName() != null) {
+		/*if(params.getName() != null) {
 			String name = params.getName();
 			Player searchedPlayer = playerRepository.searchPlayerByName(
 					name.substring(0,name.indexOf(' ')),
@@ -160,7 +160,7 @@ public class PlayerService {
 					}
 				}	
 			}
-		}
+		}*/
 		
 		if(params.getPostes() != null) {
 			for(Poste poste : params.getPostes()){

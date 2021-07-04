@@ -65,7 +65,7 @@ public class UserDomainController {
     List<PlayerSearchListDTO> searchPlayers(@RequestBody SearchPlayer params) throws JsonProcessingException{
     	return playerService.searchPlayers(params);
     }
-    
+
     @GetMapping("/player/comparator")
     List<FicheJoueurDTO> getComparator(@RequestBody ComparatorParamsDTO params){
     	return playerService.compareTwoPlayers(params);

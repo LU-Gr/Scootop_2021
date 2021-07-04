@@ -27,4 +27,6 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
 	
 	//@Query("SELECT * FROM player p WHERE p.firstName LIKE '%:firstname%' AND p.lastName LIKE '%lastname%'")
 	//Player searchPlayerByName(@Param("firstname") String firstname, @Param("lastname") String lastname);
+	
+	//List<Player> findByUserFirstNameLikeAndUserLastNameLike(String firstname, String lastName);
 }

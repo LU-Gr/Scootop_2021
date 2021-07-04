@@ -86,6 +86,11 @@ public class ToolsController {
     	return clubService.getAll();
     }
 	
+	@GetMapping("/clubs/{country}")
+    List<ClubDTO> getClubsByCountry(@PathVariable String country){ 
+    	return clubService.findAllByCountry(country);
+    }
+	
 	@GetMapping("/competitions")
     List<CompetitionDTO> getAllCompetitions(){ 
     	return competitionService.getAll();
@@ -111,7 +116,10 @@ public class ToolsController {
         return teamService.getAll();
     }
     
-    
+    @GetMapping("/teams/{club_id}")
+    List<TeamDTO> getTeamsByClub(){
+        return teamService.getAll();
+    }
     
     
     

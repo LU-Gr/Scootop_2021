@@ -3,8 +3,10 @@ package com.projet.scootop.service.tools;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projet.scootop.domain.tools.Club;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.mappers.tools.TeamMapper;
+import com.projet.scootop.model.tools.ClubDTO;
 import com.projet.scootop.model.tools.TeamDTO;
 import com.projet.scootop.repository.configuration.CategoryRepository;
 import com.projet.scootop.repository.tools.TeamRepository;
@@ -61,6 +63,11 @@ public class TeamService {
 
         List<Team> teams = teamRepository.findAll();
         return mapper.mapToDTO(teams);
+    }
+    
+    public List<TeamDTO> findAllByClubId(Long clubId){
+    	List<Team> teams = teamRepository.findTeamByClubId(clubId);
+    	return mapper.mapToDTO(teams);
     }
 
 }

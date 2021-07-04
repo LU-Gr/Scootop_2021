@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -44,6 +45,7 @@ public class UserDTO {
     private ContactDTO contact;
     
     @Getter @Setter
+    @JsonIgnoreProperties({"users"})
     private List<UserTypeDTO> userTypes;
 
 }

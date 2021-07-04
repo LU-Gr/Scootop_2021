@@ -26,6 +26,9 @@ public class ClubDTO {
 	private String name;
 	
 	@Getter @Setter
+    private String country;
+	
+	@Getter @Setter
 	private ContactDTO contact;
 	
 	@Getter @Setter

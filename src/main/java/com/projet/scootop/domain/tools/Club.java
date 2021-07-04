@@ -40,6 +40,9 @@ public class Club {
     @Getter @Setter
     private String name;
     
+    @Getter @Setter
+    private String country;
+    
     @OneToOne
     @Getter @Setter
     private Contact contact;
@@ -47,7 +50,7 @@ public class Club {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "club_id", referencedColumnName = "id")
     @Getter @Setter
-    @JsonIgnoreProperties({"club"})
+    @JsonIgnoreProperties({"club","players"})
     private List<Team> teams;
 
     @ManyToMany

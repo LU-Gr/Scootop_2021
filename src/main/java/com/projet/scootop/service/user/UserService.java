@@ -1,5 +1,6 @@
 package com.projet.scootop.service.user;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import com.projet.scootop.JwtUtil;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.mappers.user.UserMapper;
 import com.projet.scootop.model.user.LoginDTO;
+import com.projet.scootop.model.user.RegisterDTO;
 import com.projet.scootop.model.user.UserDTO;
 import com.projet.scootop.repository.user.ContactRepository;
 import com.projet.scootop.repository.user.UserRepository;
@@ -70,12 +72,19 @@ public class UserService {
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
-    public ResponseEntity<LoginDTO> register(UserDTO userDTO, HttpServletResponse response) throws Exception{
+    public ResponseEntity<LoginDTO> register(RegisterDTO userDTO, HttpServletResponse response) throws Exception{
     	System.out.println(userDTO.toString());
         String password = userDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
         userDTO.setPassword(newPassword);
-        User user = mapper.mapTo(userDTO);
+        
+        User user = new User();
+        user.setBirthday(LocalDate.parse(userDTO.getBirthDate()));
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(newPassword);
+        user.getContact().setTel(userDTO.getPhoneNumber());
         contactRepository.save(user.getContact());
         userRepository.save(user);
         AuthRequest authRequest = new AuthRequest(userDTO.getEmail(), userDTO.getPassword());
@@ -84,6 +93,7 @@ public class UserService {
     }
     
     public ResponseEntity<LoginDTO> login(AuthRequest authRequest, HttpServletResponse response) throws Exception {
+    	System.out.println(authRequest.toString());
         String password = authRequest.getPassword().toString();
         String email = authRequest.getEmail().toString();
         

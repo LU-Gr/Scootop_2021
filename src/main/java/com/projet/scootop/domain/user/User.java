@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -59,6 +60,7 @@ public class User {
     @JoinTable(name = "user_user_type", 
    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
    	inverseJoinColumns = @JoinColumn(name = "user_type_id", referencedColumnName = "id"))
+    @JsonIgnoreProperties({"users"})
     @Getter @Setter
     private List<UserType> userTypes;
 
@@ -71,6 +73,7 @@ public class User {
     }
 
     public User() {
+    	this.contact = new Contact();
     }
 
 }

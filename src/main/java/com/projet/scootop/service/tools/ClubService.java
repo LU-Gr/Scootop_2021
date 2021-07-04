@@ -40,6 +40,11 @@ public class ClubService {
         List<Club> clubs = clubRepository.findAll();
         return clubMapper.mapToDTO(clubs);
     }
+    
+    public List<ClubDTO> findAllByCountry(String country){
+    	List<Club> clubs = clubRepository.findClubByCountry(country);
+    	return clubMapper.mapToDTO(clubs);
+    }
 
     public String delete(Long id){
         Club scoot = clubRepository.findById(id).orElse(null);

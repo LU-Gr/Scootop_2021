@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.projet.scootop.model.user.ContactDTO;
 import com.projet.scootop.model.user.LoginDTO;
+import com.projet.scootop.model.user.RegisterDTO;
 import com.projet.scootop.model.user.UserDTO;
 import com.projet.scootop.model.user.UserTypeDTO;
 import com.projet.scootop.service.user.ContactService;
@@ -28,7 +29,7 @@ public class UserController {
     
 
     @PostMapping("/register")
-    public ResponseEntity<LoginDTO> register(@RequestBody UserDTO userDTO, HttpServletResponse response) throws Exception{
+    public ResponseEntity<LoginDTO> register(@RequestBody RegisterDTO userDTO, HttpServletResponse response) throws Exception{
         return userService.register(userDTO, response);
     }
 

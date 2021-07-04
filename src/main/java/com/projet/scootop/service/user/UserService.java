@@ -21,6 +21,7 @@ import com.projet.scootop.mappers.user.UserMapper;
 import com.projet.scootop.model.user.LoginDTO;
 import com.projet.scootop.model.user.RegisterDTO;
 import com.projet.scootop.model.user.UserDTO;
+import com.projet.scootop.model.user.domain.PlayerDTO;
 import com.projet.scootop.repository.user.ContactRepository;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.UserTypeRepository;
@@ -72,7 +73,7 @@ public class UserService {
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
-    public ResponseEntity<LoginDTO> register(RegisterDTO userDTO, HttpServletResponse response) throws Exception{
+    public ResponseEntity<Long> register(RegisterDTO userDTO, HttpServletResponse response) throws Exception{
     	System.out.println(userDTO.toString());
         String password = userDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
@@ -86,9 +87,10 @@ public class UserService {
         user.setPassword(newPassword);
         user.getContact().setTel(userDTO.getPhoneNumber());
         contactRepository.save(user.getContact());
-        userRepository.save(user);
-        AuthRequest authRequest = new AuthRequest(userDTO.getEmail(), userDTO.getPassword());
-        return login(authRequest, response); // retourner le user
+        user = userRepository.saveAndFlush(user);
+        //AuthRequest authRequest = new AuthRequest(userDTO.getEmail(), userDTO.getPassword());
+        //return login(authRequest, response); // retourner le user
+        return new ResponseEntity<>(user.getId(), HttpStatus.OK);
 
     }
     

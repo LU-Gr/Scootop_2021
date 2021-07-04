@@ -29,7 +29,7 @@ public class UserController {
     
 
     @PostMapping("/register")
-    public ResponseEntity<LoginDTO> register(@RequestBody RegisterDTO userDTO, HttpServletResponse response) throws Exception{
+    public ResponseEntity<Long> register(@RequestBody RegisterDTO userDTO, HttpServletResponse response) throws Exception{
         return userService.register(userDTO, response);
     }
 

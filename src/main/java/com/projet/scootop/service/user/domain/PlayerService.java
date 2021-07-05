@@ -149,80 +149,87 @@ public class PlayerService {
 	}
 
 	public List<PlayerSearchListDTO> searchPlayers(SearchPlayer params) throws JsonProcessingException {
-		
+
 		List<Player> players = playerRepository.findAll();
 		System.out.println(players.size());
-		
-		List<Player> toReturn = new ArrayList<>();
-				
-		/*if(params.getName() != null) {
-			String name = params.getName();
-			Player searchedPlayer = playerRepository.searchPlayerByName(
-					name.substring(0,name.indexOf(' ')),
-					name.substring(name.indexOf(' ')+1)
-			);
-			if(searchedPlayer == null){
-				String nameWritten = stripAccents(params.getName());
-				nameWritten = nameWritten.toLowerCase();
 
+		if(params.getName() != null) {
+			List<Player> toReturn = new ArrayList<>();
+			String name = params.getName();
+			Player searchedPlayer = null;
+			if(name.split(" ").length != 1){
+				searchedPlayer = playerRepository.searchPlayerByName(
+						name.substring(0,name.indexOf(' ')),
+						name.substring(name.indexOf(' ')+1)
+				);
+			}
+			if(searchedPlayer == null){
+				String nameWritten = params.getName().toLowerCase();
 				for(Player player: players) {
 					for(String mot : nameWritten.split(" ")) {
 						System.out.println(mot);
-						if(player.getUser().getFirstName().contains(mot.toLowerCase())){
+						if(player.getUser().getFirstName().toLowerCase().contains(mot.toLowerCase())){
 							toReturn.add(player);
 						}
-						else if(player.getUser().getLastName().contains(mot.toLowerCase())){
+						else if(player.getUser().getLastName().toLowerCase().contains(mot.toLowerCase())){
 							toReturn.add(player);
 						}
 					}
-				}	
+				}
 			}
-		}*/
-		
+			else{
+				players = new ArrayList<>();
+				players.add(searchedPlayer);
+			}
+			if(toReturn.size() != 0){
+				Set<Player> setPlayers = new HashSet<>(toReturn);
+				List<Player> listPlayers = new ArrayList<>(setPlayers);
+				players = listPlayers;
+			}
+			else{
+				players = new ArrayList<>();
+			}
+		}
 		if(params.getPostes() != null) {
-			for(Poste poste : params.getPostes()){
-				for(Player player : players){
-					if(player.getPostes().contains(poste)){
+			List<Player> toReturn = new ArrayList<>();
+
+			for(Player player: players){
+				for(Poste poste: player.getPostes()){
+					for(Poste posteParam: params.getPostes()){
+						if(poste.getId() == posteParam.getId()){
+							toReturn.add(player);
+						}
+					}
+				}
+			}
+			if(toReturn.size() != 0){
+				Set<Player> setPlayers = new HashSet<>(toReturn);
+				List<Player> listPlayers = new ArrayList<>(setPlayers);
+				players = listPlayers;
+			}
+			else{
+				players = new ArrayList<>();
+			}
+		}
+
+		if(params.getTeam() != null) {
+			List<Player> toReturn = new ArrayList<>();
+			for(Player player: players){
+				for(Team team: player.getTeams()){
+					if(team.getId() == params.getTeam().getId()){
 						toReturn.add(player);
 					}
 				}
 			}
-		}
-		System.out.println(params.toString());
-		if(params.getTeam() != null) {
-			for(Player player: players) {
-				/*int count = (int) player.getTeams()
-						.stream().filter(p -> p.getId() == params.getTeam().getId()).count();
-				
-				Collection<Team> similar = new HashSet<Team>(params.getTeams());
-				similar.retainAll(p.getTeams());
-
-
-				System.out.println(count);*/
-
-				Optional<Team> teamSearched = teamRepository.findById(params.getTeam().getId());
-				toReturn.addAll(teamSearched.get().getPlayers());
-				
+			if(toReturn.size() != 0){
+				players = toReturn;
+			}
+			else{
+				players = new ArrayList<>();
 			}
 		}
-		
-		//Player p = new Player();
-		//p.setTeams(params.getTeams());
-		//p.setPostes(params.getPostes());
-		//p.setUser(new User());
-		//p.getUser().set
-		
-		//Player p = playerRepository.findById((long) 1).orElse(null);
-		//List<Long> teams = new ArrayList<>();
-		//teams.add(3l);
-		//teams.add(p.getTeams().get(0));
 
-		Set<Player> toReturnSet = new HashSet<>(toReturn);
-		List<Player> finalList = new ArrayList<>(toReturnSet);
-		
-		
 		System.out.println("players: "+new ObjectMapper().writeValueAsString(players));
-		//List<Player> players = playerRepository.searchPlayers(params.getTeams());//playerRepository.findAll(Example.of(p));
 		return mapper.mapToSearchDTO(players);
 	}
 }

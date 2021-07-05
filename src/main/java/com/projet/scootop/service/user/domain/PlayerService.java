@@ -1,16 +1,22 @@
 package com.projet.scootop.service.user.domain;
 
 import java.text.Normalizer;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-import com.projet.scootop.domain.configuration.Poste;
-import com.projet.scootop.repository.tools.TeamRepository;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projet.scootop.domain.configuration.CompetitionType;
+import com.projet.scootop.domain.configuration.Poste;
 import com.projet.scootop.domain.services.ComparatorParams;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
@@ -19,13 +25,18 @@ import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.functions.UserResume;
 import com.projet.scootop.functions.search_engine.SearchPlayer;
 import com.projet.scootop.mappers.services.ComparatorParamsMapper;
+import com.projet.scootop.mappers.user.UserMapper;
+import com.projet.scootop.mappers.user.UserTypeMapper;
 import com.projet.scootop.mappers.user.domain.PlayerMapper;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
+import com.projet.scootop.model.user.LoginDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
 import com.projet.scootop.model.user.domain.PlayerDTO;
 import com.projet.scootop.model.user.domain.PlayerSearchListDTO;
+import com.projet.scootop.repository.tools.TeamRepository;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.domain.PlayerRepository;
+import com.projet.scootop.service.user.UserService;
 import com.projet.scootop.service.user.UserTypeService;
 
 @Service
@@ -33,19 +44,25 @@ public class PlayerService {
 	
 	@Autowired private PlayerRepository playerRepository;
 	@Autowired private TeamRepository teamRepository;
-	@Autowired private UserRepository userRepository;   
+	@Autowired private UserRepository userRepository;
+	@Autowired private UserService userService;	
 	@Autowired private UserTypeService userTypeService;	
+	@Autowired private UserMapper userMapper;
+	@Autowired private UserTypeMapper userTypeMapper;
 	@Autowired private PlayerMapper mapper;
 	@Autowired private ComparatorParamsMapper cpMapper;
 
 
-    public PlayerDTO add(PlayerDTO playerDTO){
+    public ResponseEntity<LoginDTO> add(PlayerDTO playerDTO, HttpServletResponse response) throws Exception{
     	Player newPlayer = mapper.mapTo(playerDTO);
-    	User user = userRepository.getOne(newPlayer.getUser().getId());
+    	
+    	//User user = userRepository.getOne(newPlayer.getUser().getId());
+    	User user = userMapper.mapTo(playerDTO.getUser());
     	user.getUserTypes().add(userTypeService.getOneByType("Player"));
-    	userRepository.save(user);
+    	ResponseEntity<LoginDTO> loginDTO = userService.register(userMapper.mapToRegisterDTO(user), response);
+    	//userRepository.save(user);
     	playerRepository.save(newPlayer);
-        return mapper.mapToDTO(newPlayer);
+        return loginDTO;
         
     }
     

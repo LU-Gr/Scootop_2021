@@ -1,5 +1,7 @@
 package com.projet.scootop.model.user;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +14,7 @@ public class RegisterDTO {
 	private String lastName;
 	
 	@Getter @Setter
-	private String phoneNumber;
+	private String ContactTel;
 
 	@Getter @Setter
 	private String email;
@@ -31,4 +33,7 @@ public class RegisterDTO {
 
 	@Getter @Setter
 	private String originCountry;
+	
+	@Getter @Setter
+	private List<UserTypeDTO> userTypes;
 }

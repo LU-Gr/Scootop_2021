@@ -18,10 +18,10 @@ import com.projet.scootop.AuthRequest;
 import com.projet.scootop.JwtUtil;
 import com.projet.scootop.domain.user.User;
 import com.projet.scootop.mappers.user.UserMapper;
+import com.projet.scootop.mappers.user.UserTypeMapper;
 import com.projet.scootop.model.user.LoginDTO;
 import com.projet.scootop.model.user.RegisterDTO;
 import com.projet.scootop.model.user.UserDTO;
-import com.projet.scootop.model.user.domain.PlayerDTO;
 import com.projet.scootop.repository.user.ContactRepository;
 import com.projet.scootop.repository.user.UserRepository;
 import com.projet.scootop.repository.user.UserTypeRepository;
@@ -33,6 +33,7 @@ public class UserService {
     @Autowired private UserRepository userRepository;
     @Autowired private ContactRepository contactRepository;
     @Autowired private UserTypeRepository userTypeRepository;
+    @Autowired private UserTypeMapper userTypeMapper;
     @Autowired private UserMapper mapper;
     @Autowired private AuthenticationManager authenticationManager;
     @Autowired private JwtUtil jwtUtil;
@@ -73,24 +74,30 @@ public class UserService {
         return new ResponseEntity<>(id.intValue(), HttpStatus.OK);
     }
 
-    public ResponseEntity<Long> register(RegisterDTO userDTO, HttpServletResponse response) throws Exception{
-    	System.out.println(userDTO.toString());
-        String password = userDTO.getPassword().toString();
+    public ResponseEntity<LoginDTO> register(RegisterDTO registerDTO, HttpServletResponse response) throws Exception{
+    	System.out.println(registerDTO.toString());
+        String password = registerDTO.getPassword().toString();
         String newPassword = bCryptPasswordEncoder.encode(password);
-        userDTO.setPassword(newPassword);
+        registerDTO.setPassword(newPassword);
         
-        User user = new User();
-        user.setBirthday(LocalDate.parse(userDTO.getBirthDate()));
-        user.setFirstName(userDTO.getFirstName());
-        user.setLastName(userDTO.getLastName());
-        user.setEmail(userDTO.getEmail());
+        User user = mapper.mapToRegister(registerDTO);// new User();
+        /*user.setBirthday(LocalDate.parse(registerDTO.getBirthDate()));
+        user.setFirstName(registerDTO.getFirstName());
+        user.setLastName(registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
         user.setPassword(newPassword);
-        user.getContact().setTel(userDTO.getPhoneNumber());
+        user.getContact().setTel(registerDTO.getPhoneNumber());
+        user.setUserTypes(userTypeMapper.mapTo(registerDTO.getUserTypes()));*/
         contactRepository.save(user.getContact());
         user = userRepository.saveAndFlush(user);
+        
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setUser(mapper.mapToDTO(user));
+        loginDTO.setJwt(jwtUtil.generateToken(user.getEmail()));
+        		
         //AuthRequest authRequest = new AuthRequest(userDTO.getEmail(), userDTO.getPassword());
         //return login(authRequest, response); // retourner le user
-        return new ResponseEntity<>(user.getId(), HttpStatus.OK);
+        return new ResponseEntity<>(loginDTO, HttpStatus.OK);
 
     }
     

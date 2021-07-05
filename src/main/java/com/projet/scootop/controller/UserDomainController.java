@@ -3,7 +3,10 @@ package com.projet.scootop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.projet.scootop.functions.search_engine.SearchPlayer;
 import com.projet.scootop.model.services.ComparatorParamsDTO;
+import com.projet.scootop.model.user.LoginDTO;
 import com.projet.scootop.model.user.domain.ChairmanDTO;
 import com.projet.scootop.model.user.domain.CoachDTO;
 import com.projet.scootop.model.user.domain.FicheJoueurDTO;
@@ -121,8 +125,8 @@ public class UserDomainController {
     }
     
     @PostMapping("/player")
-    PlayerDTO addPlayer(@RequestBody PlayerDTO body){
-        return playerService.add(body);
+    ResponseEntity<LoginDTO> addPlayer(@RequestBody PlayerDTO body, HttpServletResponse response) throws Exception{
+        return playerService.add(body,response);
     }
     
     @PostMapping("/coach")

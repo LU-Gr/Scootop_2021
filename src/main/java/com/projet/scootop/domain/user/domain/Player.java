@@ -52,6 +52,9 @@ public class Player{
     
     @Getter @Setter
     private String origin;
+    
+    @Getter @Setter
+    private String description;
 
     @Getter @Setter
     private boolean isSelected; // sert a dire si joueur en train de jouer en temps réel
@@ -93,7 +96,7 @@ public class Player{
 			joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
 			inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     @Getter @Setter
-    @JsonIgnoreProperties("players")
+    @JsonIgnoreProperties({"players"})
     private List<Team> teams;
     
     @ManyToMany
@@ -101,7 +104,7 @@ public class Player{
 	joinColumns = @JoinColumn(name = "player_id", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"))
     @Getter @Setter
-    @JsonIgnoreProperties("players")
+    @JsonIgnoreProperties({"players"})
     private List<Poste> postes;
 
     public Player() {

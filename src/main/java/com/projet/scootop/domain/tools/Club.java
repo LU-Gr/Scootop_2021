@@ -43,6 +43,9 @@ public class Club {
     @Getter @Setter
     private String country;
     
+    @Getter @Setter
+    private String photoUrl;
+    
     @OneToOne
     @Getter @Setter
     private Contact contact;

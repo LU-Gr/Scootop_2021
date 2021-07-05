@@ -33,6 +33,9 @@ public class PlayerDTO {
     private int vma;
 	
 	@Getter @Setter
+    private String description;
+	
+	@Getter @Setter
     private boolean isSelected;
     
     @Getter @Setter

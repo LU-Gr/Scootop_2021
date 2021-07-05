@@ -65,11 +65,11 @@ public class PlayerDTO {
     private List<VideoDTO> videos;
 
 	@Getter @Setter
-	@JsonIgnoreProperties(value={"players"}, allowSetters = true, allowGetters = true)
+	@JsonIgnoreProperties(value={"players"}, allowSetters = true)
 	private List<TeamDTO> teams;
 
 	@Getter @Setter
-	@JsonIgnoreProperties(value={"players"}, allowSetters = true, allowGetters = true)
+	@JsonIgnoreProperties(value={"players"}, allowSetters = true)
 	private List<PosteDTO> postes;
 	
 }

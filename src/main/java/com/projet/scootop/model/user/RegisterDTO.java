@@ -14,7 +14,7 @@ public class RegisterDTO {
 	private String lastName;
 	
 	@Getter @Setter
-	private String ContactTel;
+	private String contactTel;
 
 	@Getter @Setter
 	private String email;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -53,6 +54,7 @@ public class Player{
     @Getter @Setter
     private String origin;
     
+    @Column(name="description", length=1024)
     @Getter @Setter
     private String description;
 

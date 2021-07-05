@@ -20,13 +20,13 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
     //List<Player> findAllPlayerByMatchSheetsAndTeamsIn(Long gameSheet, List<Team> teams);
 	
 	//List<Player> findAll();
-	
-	@Query("SELECT id FROM player p WHERE ((:teams) is null or p.teams IN :teams)")
+
+	@Query("SELECT p FROM player p WHERE ((:teams) is null or p.teams IN :teams)")
 	List<Player> searchPlayers(@Param("teams") List<Team> teams/* ,@Param("postes")List<Poste> postes */);
 	/* and (:postes is null or p.postes IN :postes)")*/
-	
-	//@Query("SELECT * FROM player p WHERE p.firstName LIKE '%:firstname%' AND p.lastName LIKE '%lastname%'")
-	//Player searchPlayerByName(@Param("firstname") String firstname, @Param("lastname") String lastname);
+
+	@Query("SELECT p FROM player p LEFT JOIN p.user u WHERE lower(u.firstName) LIKE %:firstname% AND lower(u.lastName) LIKE %:lastname%")
+	Player searchPlayerByName(@Param("firstname") String firstname, @Param("lastname") String lastname);
 	
 	//List<Player> findByUserFirstNameLikeAndUserLastNameLike(String firstname, String lastName);
 }

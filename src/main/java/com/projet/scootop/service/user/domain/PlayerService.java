@@ -78,9 +78,10 @@ public class PlayerService {
     
     public PlayerDTO get(Long id) {
     	Player player = playerRepository.findById(id).orElse(null);
-    	System.out.println(player.toString());
+    	//System.out.println(player.toString());
     	PlayerDTO p = mapper.mapToDTO(player);
-    	System.out.println(p.toString());
+    	//System.out.println(p.toString());
+    	
     	return p;
     }
     

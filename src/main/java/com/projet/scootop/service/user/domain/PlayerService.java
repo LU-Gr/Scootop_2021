@@ -21,6 +21,7 @@ import com.projet.scootop.domain.services.ComparatorParams;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.Team;
 import com.projet.scootop.domain.user.User;
+import com.projet.scootop.domain.user.UserType;
 import com.projet.scootop.domain.user.domain.Player;
 import com.projet.scootop.functions.UserResume;
 import com.projet.scootop.functions.search_engine.SearchPlayer;
@@ -55,12 +56,15 @@ public class PlayerService {
 
     public ResponseEntity<LoginDTO> add(PlayerDTO playerDTO, HttpServletResponse response) throws Exception{
     	Player newPlayer = mapper.mapTo(playerDTO);
-    	
+    	System.out.println(playerDTO.toString());
     	//User user = userRepository.getOne(newPlayer.getUser().getId());
     	User user = userMapper.mapTo(playerDTO.getUser());
-    	user.getUserTypes().add(userTypeService.getOneByType("Player"));
+    	System.out.println(user);
+    	user.setUserTypes(new ArrayList<>());
+    	UserType u = userTypeService.getOneByType("Player");
+    	user.getUserTypes().add(u);
     	ResponseEntity<LoginDTO> loginDTO = userService.register(userMapper.mapToRegisterDTO(user), response);
-    	//userRepository.save(user);
+    	newPlayer.setUser(userMapper.mapTo(loginDTO.getBody().getUser()));
     	playerRepository.save(newPlayer);
         return loginDTO;
         

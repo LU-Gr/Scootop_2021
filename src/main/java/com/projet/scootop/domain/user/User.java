@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,7 +57,7 @@ public class User {
     @Getter @Setter
     private Contact contact;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     @JoinTable(name = "user_user_type", 
    	joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
    	inverseJoinColumns = @JoinColumn(name = "user_type_id", referencedColumnName = "id"))
@@ -74,6 +75,7 @@ public class User {
 
     public User() {
     	this.contact = new Contact();
+    	this.userTypes = new ArrayList<>();
     }
 
 }

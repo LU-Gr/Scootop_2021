@@ -89,7 +89,7 @@ public class UserService {
         user.getContact().setTel(registerDTO.getPhoneNumber());
         user.setUserTypes(userTypeMapper.mapTo(registerDTO.getUserTypes()));*/
         contactRepository.save(user.getContact());
-        user = userRepository.saveAndFlush(user);
+        user = userRepository.save(user);
         
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.setUser(mapper.mapToDTO(user));

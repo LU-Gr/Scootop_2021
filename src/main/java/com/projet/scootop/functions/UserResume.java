@@ -1,6 +1,8 @@
 package com.projet.scootop.functions;
 
+import com.projet.scootop.domain.configuration.ActionType;
 import com.projet.scootop.domain.configuration.CompetitionType;
+import com.projet.scootop.domain.statistics.Action;
 import com.projet.scootop.domain.tools.Saison;
 import com.projet.scootop.domain.tools.StatisticalSheet;
 import com.projet.scootop.domain.tools.Team;
@@ -198,14 +200,14 @@ public class UserResume {
     private void countMatchWon() {
     	this.matchWon = (int) this.statisticalSheets.stream().filter(s -> s.getTeam() == s.getMatch().getWinner()).count();
 	}
-    
+
     public void countDribblesSuccess(){
-    	for (StatisticalSheet sheet: this.statisticalSheets) {
-        	this.dribblesSuccess = this.dribblesSuccess + (int) (sheet.getActions()
-        			.stream()
-        			.filter(a -> a.getActionType().getName() == "Dribble")
-        			.filter(a -> a.getIsSuccessful() == true)
-        			.count());
+        for (StatisticalSheet sheet: this.statisticalSheets) {
+            this.dribblesSuccess = this.dribblesSuccess + (int) (sheet.getActions()
+                    .stream()
+                    .filter(a -> a.getActionType().getName() == "Dribble")
+                    .filter(a -> a.getIsSuccessful() == true)
+                    .count());
         }
     }
 }

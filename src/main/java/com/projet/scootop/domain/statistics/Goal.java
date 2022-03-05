@@ -26,7 +26,8 @@ public class Goal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long id;
-    
+
+    //A ENLEVER
     @Getter @Setter
     private LocalDate date;
     

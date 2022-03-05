@@ -30,7 +30,8 @@ public class Poste {
     
     @Getter @Setter
     private String name;
-    
+
+    // A ENLEVER
     @ManyToMany
     @JoinTable(name = "player_poste", 
 	joinColumns = @JoinColumn(name = "poste_id", referencedColumnName = "id"),

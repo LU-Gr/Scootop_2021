@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+// Permet de signaler un joueur, le mettre en surbrillance
 @Entity
 @Table(name = "Alert")
 public class Alert {

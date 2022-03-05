@@ -77,17 +77,18 @@ public class UserService {
     public ResponseEntity<LoginDTO> register(RegisterDTO registerDTO, HttpServletResponse response) throws Exception{
     	System.out.println(registerDTO.toString());
         String password = registerDTO.getPassword().toString();
+        System.out.println(password);
         String newPassword = bCryptPasswordEncoder.encode(password);
         registerDTO.setPassword(newPassword);
         
         User user = mapper.mapToRegister(registerDTO);// new User();
-        /*user.setBirthday(LocalDate.parse(registerDTO.getBirthDate()));
+        //user.setBirthday(LocalDate.parse(registerDTO.getBirthDate()));
         user.setFirstName(registerDTO.getFirstName());
         user.setLastName(registerDTO.getLastName());
         user.setEmail(registerDTO.getEmail());
         user.setPassword(newPassword);
-        user.getContact().setTel(registerDTO.getPhoneNumber());
-        user.setUserTypes(userTypeMapper.mapTo(registerDTO.getUserTypes()));*/
+        user.getContact().setTel(registerDTO.getContactTel());
+        //user.setUserTypes(userTypeMapper.mapTo(registerDTO.getUserTypes()));
         contactRepository.save(user.getContact());
         user = userRepository.save(user);
         
@@ -105,10 +106,12 @@ public class UserService {
     	System.out.println(authRequest.toString());
         String password = authRequest.getPassword().toString();
         String email = authRequest.getEmail().toString();
+        System.out.println(password);
         
         Optional<User> user = userRepository.findByEmail(email);
         LoginDTO loginDTO = new LoginDTO();
         if(bCryptPasswordEncoder.matches(password, user.get().getPassword())){
+            System.out.println("password match");
             UserDTO dto = mapper.mapToDTO(user.get());
             //dto.setEmail(email);
             

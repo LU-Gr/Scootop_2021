@@ -27,6 +27,8 @@ public class Match {
     @Getter @Setter
     private Long id;
 
+    //RAJOUTER DATE
+
     @OneToOne
     @Getter @Setter
     private Event event;

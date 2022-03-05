@@ -61,7 +61,8 @@ public class StatisticalSheet {
     @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"statisticalSheets","teams"})
     private Player player;
-    
+
+    //Pour quelle team le joueur a joué
     @ManyToOne
     @Getter @Setter
     @JsonIgnoreProperties("players")

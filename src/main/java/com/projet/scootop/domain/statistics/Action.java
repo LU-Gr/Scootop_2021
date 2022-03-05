@@ -17,7 +17,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-// Action : Exemple : Skill: Controle
+import java.util.List;
+
+// Ensemble d'actionType, que l'on détaille avec les booleens
 @ToString
 @Entity
 @Table(name = "Action")

@@ -5,6 +5,7 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+// Type de touche ( Tete, pieds, torse)
 @Entity
 @Table(name = "TouchType")
 public class TouchType {

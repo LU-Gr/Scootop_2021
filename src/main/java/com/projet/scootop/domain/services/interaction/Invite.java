@@ -12,6 +12,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+//Inviter un joueur pour une session d'entrainement, un evenement sportif
 @Entity
 @Table(name = "Invite")
 

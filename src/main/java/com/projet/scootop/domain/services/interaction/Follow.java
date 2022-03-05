@@ -11,6 +11,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+//Suivre les faits du joueur
 @Entity
 @Table(name = "Follow")
 

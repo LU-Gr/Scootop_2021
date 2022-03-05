@@ -26,7 +26,10 @@ public class UserController {
 	@Autowired private UserService userService;
 	@Autowired private UserTypeService userTypeService;
     
-    
+    @GetMapping("/hello")
+    public ResponseEntity<String> hello(){
+        return new ResponseEntity<>("Hello", HttpStatus.OK);
+    }
 
     @PostMapping("/register")
     public ResponseEntity<LoginDTO> register(@RequestBody RegisterDTO userDTO, HttpServletResponse response) throws Exception{
@@ -38,10 +41,10 @@ public class UserController {
         return userService.login(userDTO, response);
     }
 
-    @PostMapping("/authenticate")
+    /*@PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
        return userService.authenticate(authRequest);
-    }
+    }*/
 
     @GetMapping("/contacts")
     List<ContactDTO> getAllContacts(){

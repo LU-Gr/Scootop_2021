@@ -65,6 +65,10 @@ public class User {
     @Getter @Setter
     private List<UserType> userTypes;
 
+    public String toString(){
+        return this.getEmail()+" " + this.getPassword();
+    }
+
     public User(String name, String firstName, Contact contact) {
         super();
         this.lastName = name;
